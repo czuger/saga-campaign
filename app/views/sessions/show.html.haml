@@ -10,4 +10,8 @@
 
     = @current_player.name
 
+  = image_tag( @current_player.icon_url )
+
+  %br
+
   = link_to 'Sign out', '/auth/signout', method: :get
