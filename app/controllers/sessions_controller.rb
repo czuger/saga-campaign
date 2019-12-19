@@ -6,8 +6,13 @@ class SessionsController < ApplicationController
 		# pp @user
 
 		session['current_user_id'] = @user.id
-		redirect_to boards_path
+		redirect_to '/'
 	end
+
+  # Welcome screen
+  def show
+    p current_player
+  end
 
 	protected
 

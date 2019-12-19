@@ -1,0 +1,11 @@
+- unless @current_player
+  %h1
+    Login screen
+
+  = link_to 'Sign in', '/auth/discord', method: :post
+
+- else
+  %h1
+    Welcome
+
+    = @current_player.name
