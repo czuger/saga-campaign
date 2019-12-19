@@ -1,17 +1,4 @@
-- unless @current_player
-  %h1
-    Login screen
+%h1
+  Login screen
 
-  = link_to 'Sign in', '/auth/discord', method: :post
-
-- else
-  %h1
-    Welcome
-
-    = @current_player.name
-
-  = image_tag( @current_player.icon_url )
-
-  %br
-
-  = link_to 'Sign out', '/auth/signout', method: :get
+= link_to 'Sign in', '/auth/discord', method: :post

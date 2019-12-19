@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 		@user = User.find_or_create_from_auth_hash(auth_hash)
 
 		session['current_user_id'] = @user.id
-		redirect_to root_url
+		redirect_to users_show_path
   end
 
   def destroy
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   # Welcome screen
   def show
-    current_player
+		current_user
   end
 
 	protected
