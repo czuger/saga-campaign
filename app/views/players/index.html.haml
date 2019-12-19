@@ -1,0 +1,21 @@
+%h1 Liste des joueurs
+
+%table.table
+  %thead
+    %tr
+      %th Joueur
+      %th
+      %th
+
+  %tbody
+    - @players.each do |player|
+      %tr
+        %td= player.name
+        %td= link_to 'Détail', player
+        %td= link_to 'Supprimer', player, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'Ajouter un joueur', new_campaign_player_path, class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
+
+

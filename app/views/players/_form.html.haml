@@ -1,0 +1,23 @@
+= form_for [ @campaign, @player ] do |f|
+  - if @player.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
+      %ul
+        - @player.errors.full_messages.each do |message|
+          %li= message
+
+  %table.table
+    %thead
+      %tr
+        %th
+        %th Joueur
+
+    %tbody
+      - @players.each do |player|
+        %tr
+          %td
+            = check_box_tag( 'players[]', player.id )
+          %td= player.name
+
+  .actions
+    = f.submit 'Ajouter'

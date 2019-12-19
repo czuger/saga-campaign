@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_185514) do
+ActiveRecord::Schema.define(version: 2019_12_19_152909) do
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_campaigns_on_user_id"
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.string "data", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_logs_on_campaign_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.integer "user_id", null: false
+    t.integer "pp", default: 0, null: false
+    t.integer "god_favor"
+    t.integer "god_favored"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_players_on_campaign_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", null: false
@@ -22,4 +50,8 @@ ActiveRecord::Schema.define(version: 2019_12_18_185514) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "campaigns", "users"
+  add_foreign_key "logs", "campaigns"
+  add_foreign_key "players", "campaigns"
+  add_foreign_key "players", "users"
 end

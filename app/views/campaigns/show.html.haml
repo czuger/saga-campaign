@@ -1,0 +1,36 @@
+%p#notice= notice
+
+= link_to 'Edition', edit_campaign_path(@campaign)
+\|
+= link_to 'Retour', campaigns_path
+\|
+= link_to 'Ajouter des joueurs', new_campaign_player_path( @campaign )
+
+%hr
+
+%p
+  %b Créateur:
+  = @campaign.user.name
+%p
+  %b Nom de la campagne:
+  = @campaign.name
+%p
+  %b Joueurs:
+  = @players_names.join( ', ')
+
+
+%table.table
+  %thead
+    %tr
+      %th Log
+      %th
+
+  %tbody
+    - @campaign.logs.order( 'updated_at DESC' ).each do |log|
+      %tr
+        %td= log.data
+        %td= log.updated_at
+
+
+
+

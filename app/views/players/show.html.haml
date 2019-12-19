@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @player.user
+%p
+  %b Pp:
+  = @player.pp
+%p
+  %b God favor:
+  = @player.god_favor
+
+= link_to 'Edit', edit_player_path(@player)
+\|
+= link_to 'Back', players_path

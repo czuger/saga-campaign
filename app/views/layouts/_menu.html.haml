@@ -6,8 +6,12 @@
     %ul.navbar-nav.mr-auto
       - if @current_user
         %li.nav-item
-          %a.nav-link{:href => "#"}
-            Home
+          = link_to 'Mon compte', users_show_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Campagnes', campaigns_path, class: 'nav-link'
+        -#%li.nav-item
+        -#  = link_to 'Log', log_show_path, class: 'nav-link'
+
         -#%li.nav-item
         -#  %a.nav-link{:href => "#"} Link
         -#%li.nav-item.dropdown
@@ -21,7 +25,7 @@
         -#%li.nav-item
         -#  %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
         %li.nav-item
-          = link_to 'Sign out', '/auth/signout', class: 'nav-link'
+          = link_to 'Deconnection', '/auth/signout', class: 'nav-link'
       - else
         %li.nav-item
-          = link_to 'Sign in', '/auth/discord', method: :post, class: 'nav-link'
+          = link_to 'Login', '/auth/discord', method: :post, class: 'nav-link'

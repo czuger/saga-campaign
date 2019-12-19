@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   # Welcome screen
   def show
-		current_user
+    redirect_to campaigns_path if current_user
   end
 
 	protected
