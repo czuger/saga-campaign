@@ -1,8 +1,6 @@
 class PlayersController < ApplicationController
-  # before_action :set_player, only: [:show, :edit, :update, :destroy]
-
   before_action :require_logged_in!
-  before_action :set_campaign
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
   # GET /players.json
@@ -56,16 +54,6 @@ class PlayersController < ApplicationController
   end
 
   private
-
-    def set_campaign
-      @campaign = Campaign.find(params[:campaign_id] )
-      @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params

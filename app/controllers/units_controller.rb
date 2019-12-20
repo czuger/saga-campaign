@@ -1,4 +1,5 @@
 class UnitsController < ApplicationController
+  before_action :require_logged_in!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
   before_action :set_gang, only: [:index]
 
@@ -64,19 +65,6 @@ class UnitsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-
-    def set_gang
-      @campaign = Campaign.find(params[:campaign_id] )
-      # This ensure that a player can't mess with other player data
-      @player = @campaign.players.find_by_user_id( current_user.id )
-      @gang = @player.gangs.find( params[ :gang_id ] )
-    end
-
-    def set_unit
-      set_gang
-      @unit = @gang.units.find( params[ :id ] )
-      raise "unit #{params[ :id ]} not found for gang #{@gang}" unless @unit
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params

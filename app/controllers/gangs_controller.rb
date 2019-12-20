@@ -1,6 +1,8 @@
 class GangsController < ApplicationController
-  before_action :set_gang, only: []
-  before_action :set_campaign, only: [ :new, :create, :destroy ]
+  before_action :require_logged_in!
+  before_action :set_gang, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:index, :new]
+  before_action :set_player, only: [:create]
 
   # GET /gangs
   # GET /gangs.json
@@ -27,17 +29,23 @@ class GangsController < ApplicationController
   # POST /gangs
   # POST /gangs.json
   def create
-    @gang = Gang.new({ campaign_id: @campaign.id, player_id: @player.id, icon: params[:icon] } )
+    new_gang_number = @player.gangs.empty? ? 1 : @player.gangs.max( :number )
+    @gang = Gang.new({ campaign_id: @campaign.id, player_id: @player.id, icon: params[:icon], number: new_gang_number } )
 
-    respond_to do |format|
-      if @gang.save
-        format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
-        format.json { render :show, status: :created, location: @gang }
-      else
-        format.html { render :new }
-        format.json { render json: @gang.errors, status: :unprocessable_entity }
+    Gang.transaction do
+      respond_to do |format|
+        if @gang.save
+          @campaign.logs.create!( data: "#{@player.user.name} a ajouté la bande n°#{new_gang_number}." )
+
+          format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
+          format.json { render :show, status: :created, location: @gang }
+        else
+          format.html { render :new }
+          format.json { render json: @gang.errors, status: :unprocessable_entity }
+        end
       end
     end
+
   end
 
   # PATCH/PUT /gangs/1
@@ -66,23 +74,6 @@ class GangsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_gang
-      @gang = Gang.find(params[:id] )
-      unless @gang.player.user_id == current_user.id
-        raise "#{current_user} not allowed to modify #{@gang}"
-      end
-    end
-
-  def set_campaign
-    @campaign = Campaign.find(params[:campaign_id] )
-    @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
-  end
-
-    def set_campaign
-      @campaign = Campaign.find(params[:campaign_id] )
-      @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
-      raise "Player not found = current_user = #{current_user}, @campaign = #{@campaign}" unless @player
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
