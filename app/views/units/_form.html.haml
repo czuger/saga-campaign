@@ -1,4 +1,4 @@
-= form_for @unit do |f|
+= form_for [ @campaign, @gang, @unit ] do |f|
   - if @unit.errors.any?
     #error_explanation
       %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
@@ -6,17 +6,15 @@
         - @unit.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :gang
-    = f.text_field :gang
-  .field
-    = f.label :libe
-    = f.text_field :libe
-  .field
-    = f.label :amount
-    = f.number_field :amount
-  .field
-    = f.label :points
-    = f.text_field :points
+  .row
+    .col-3
+      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
+
+    .col
+      = f.text_field :libe, class: 'form-control', placeholder: 'Description'
+
+    .col-2
+      = f.number_field :amount, class: 'form-control', placeholder: 'Points', step: 0.5
+
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-light'

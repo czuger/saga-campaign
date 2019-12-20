@@ -3,25 +3,23 @@
 %table
   %thead
     %tr
-      %th Gang
-      %th Libe
-      %th Amount
+      %th Nombre
+      %th Unité
       %th Points
-      %th
-      %th
+      -#%th
+      -#%th
       %th
 
   %tbody
     - @units.each do |unit|
       %tr
-        %td= unit.gang
-        %td= unit.libe
         %td= unit.amount
+        %td= unit.libe
         %td= unit.points
-        %td= link_to 'Show', unit
-        %td= link_to 'Edit', edit_unit_path(unit)
+        -#%td= link_to 'Show', unit
+        -#%td= link_to 'Edit', edit_unit_path(unit)
         %td= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Unit', campaign_gang_units_path( @campaign, @gang )
+= link_to 'Ajouter une unité', new_campaign_gang_unit_path( @campaign, @gang )

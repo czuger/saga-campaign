@@ -1,7 +1,7 @@
 class UnitsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
-  before_action :set_gang, only: [:index]
+  before_action :set_gang, only: [:index, :new, :create]
 
   # GET /units
   # GET /units.json
