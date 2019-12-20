@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Gang:
+  = @unit.gang
+%p
+  %b Libe:
+  = @unit.libe
+%p
+  %b Amount:
+  = @unit.amount
+%p
+  %b Points:
+  = @unit.points
+
+= link_to 'Edit', edit_unit_path(@unit)
+\|
+= link_to 'Back', units_path

@@ -1,6 +1,6 @@
 class GangsController < ApplicationController
-  before_action :set_gang, only: [:show, :edit, :update, :destroy]
-  before_action :set_campaign
+  before_action :set_gang, only: [ :destroy ]
+  before_action :set_campaign, only: [ :new, :create ]
 
   # GET /gangs
   # GET /gangs.json
@@ -67,12 +67,16 @@ class GangsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gang
-      @gang = Gang.find(params[:id])
+      @gang = Gang.find(params[:id] )
+      unless @gang.player.user_ui == current_user.id
+        raise "#{current_user} not allowed to modify #{@gang}"
+      end
     end
 
     def set_campaign
       @campaign = Campaign.find(params[:campaign_id] )
       @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
+      raise "Player not found = current_user = #{current_user}, @campaign = #{@campaign}" unless @player
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

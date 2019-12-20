@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_034117) do
+ActiveRecord::Schema.define(version: 2019_12_20_100204) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2019_12_20_034117) do
   create_table "gangs", force: :cascade do |t|
     t.integer "campaign_id", null: false
     t.integer "player_id", null: false
-    t.string "icon"
+    t.string "icon", null: false
+    t.float "points", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
@@ -50,6 +51,24 @@ ActiveRecord::Schema.define(version: 2019_12_20_034117) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "unit_old_libe_strings", force: :cascade do |t|
+    t.integer "gang_id", null: false
+    t.string "libe", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gang_id"], name: "index_unit_old_libe_strings_on_gang_id"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.integer "gang_id", null: false
+    t.string "libe", null: false
+    t.integer "amount", null: false
+    t.float "points", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gang_id"], name: "index_units_on_gang_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -66,4 +85,6 @@ ActiveRecord::Schema.define(version: 2019_12_20_034117) do
   add_foreign_key "logs", "campaigns"
   add_foreign_key "players", "campaigns"
   add_foreign_key "players", "users"
+  add_foreign_key "unit_old_libe_strings", "gangs"
+  add_foreign_key "units", "gangs"
 end
