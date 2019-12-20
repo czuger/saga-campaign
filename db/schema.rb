@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_100204) do
     t.integer "player_id", null: false
     t.string "icon", null: false
     t.float "points", default: 0.0, null: false
+    t.integer "number", limit: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
@@ -52,17 +53,17 @@ ActiveRecord::Schema.define(version: 2019_12_20_100204) do
   end
 
   create_table "unit_old_libe_strings", force: :cascade do |t|
-    t.integer "gang_id", null: false
+    t.integer "user_id", null: false
     t.string "libe", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["gang_id"], name: "index_unit_old_libe_strings_on_gang_id"
+    t.index ["user_id"], name: "index_unit_old_libe_strings_on_user_id"
   end
 
   create_table "units", force: :cascade do |t|
     t.integer "gang_id", null: false
     t.string "libe", null: false
-    t.integer "amount", null: false
+    t.integer "amount", limit: 1, null: false
     t.float "points", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,6 +86,6 @@ ActiveRecord::Schema.define(version: 2019_12_20_100204) do
   add_foreign_key "logs", "campaigns"
   add_foreign_key "players", "campaigns"
   add_foreign_key "players", "users"
-  add_foreign_key "unit_old_libe_strings", "gangs"
+  add_foreign_key "unit_old_libe_strings", "users"
   add_foreign_key "units", "gangs"
 end

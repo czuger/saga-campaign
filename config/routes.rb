@@ -2,12 +2,10 @@ Rails.application.routes.draw do
 
   resources :campaigns do
     resources :players, except: [ :edit, :update ]
-    resources :gangs, only: [ :new, :create ]
+    resources :gangs, only: [ :new, :create, :destroy ] do
+      resources :units
+    end
     get 'log/show', to: 'log#show'
-  end
-
-  resources :gangs, only: [ :destroy  ] do
-    resources :units
   end
 
   get 'users/show'

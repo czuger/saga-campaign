@@ -30,5 +30,5 @@
       %tr
         %td
           = image_tag( gang.icon, class: 'gang_icon' )
-        %td= link_to 'Edition', edit_campaign_gang_path( @campaign, gang )
+        %td= link_to 'Modifier la composition', campaign_gang_units_path( @campaign, gang )
         %td= link_to 'Supprimer', [ @campaign, gang ], method: :delete, data: { confirm: 'Etes vous sur de vouloi supprimer cette bande ?' }
