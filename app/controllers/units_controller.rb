@@ -40,6 +40,9 @@ class UnitsController < ApplicationController
             @player.user.unit_old_libe_strings.create!( libe: params['libe'] )
           end
 
+          points_total = @gang.units.sum( :points )
+          @gang.update!( points: points_total )
+
           @campaign.logs.create!( data:
             "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
           )
