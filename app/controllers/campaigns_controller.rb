@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    @players_names = @campaign.users.map{ |u| u.name }.sort
+    @players = @campaign.players.includes( :user ).all
   end
 
   # GET /campaigns/new

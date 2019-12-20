@@ -1,0 +1,25 @@
+%h1 Listing gangs
+
+%table
+  %thead
+    %tr
+      %th Campaign
+      %th Player
+      %th Icon
+      %th
+      %th
+      %th
+
+  %tbody
+    - @gangs.each do |gang|
+      %tr
+        %td= gang.campaign
+        %td= gang.player
+        %td= gang.icon
+        %td= link_to 'Show', gang
+        %td= link_to 'Edit', edit_gang_path(gang)
+        %td= link_to 'Destroy', gang, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Gang', new_gang_path

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :campaigns do
     resources :players, except: [ :edit, :update ]
+    resources :gangs
     get 'log/show', to: 'log#show'
   end
 
