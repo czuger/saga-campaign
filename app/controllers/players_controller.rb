@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   before_action :require_logged_in!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:new, :create]
 
   # GET /players
   # GET /players.json
