@@ -1,3 +1,3 @@
 class UnitOldLibeString < ApplicationRecord
-  belongs_to :gang
+  belongs_to :user
 end

@@ -10,11 +10,12 @@
     .col-3
       = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
 
+    - # In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
     .col
       = f.text_field :libe, class: 'form-control', placeholder: 'Description'
 
     .col-2
-      = f.number_field :amount, class: 'form-control', placeholder: 'Points', step: 0.5
+      = f.number_field :points, class: 'form-control', placeholder: 'Points', step: 0.5
 
   .actions
     = f.submit 'Save', class: 'btn btn-light'

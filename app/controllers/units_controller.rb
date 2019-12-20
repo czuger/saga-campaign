@@ -26,17 +26,33 @@ class UnitsController < ApplicationController
   # POST /units
   # POST /units.json
   def create
-    @unit = Unit.new(unit_params)
 
-    respond_to do |format|
-      if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        format.json { render :show, status: :created, location: @unit }
-      else
-        format.html { render :new }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+    params = unit_params.to_h
+    params[ :gang_id ] = @gang.id
+
+    @unit = Unit.new( params )
+
+    Unit.transaction do
+      respond_to do |format|
+        if @unit.save
+
+          unless @player.user.unit_old_libe_strings.exists?( libe: params['libe'] )
+            @player.user.unit_old_libe_strings.create!( libe: params['libe'] )
+          end
+
+          @campaign.logs.create!( data:
+            "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
+          )
+
+          format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: 'Unit was successfully created.' }
+          format.json { render :show, status: :created, location: @unit }
+        else
+          format.html { render :new }
+          format.json { render json: @unit.errors, status: :unprocessable_entity }
+        end
       end
     end
+
   end
 
   # PATCH/PUT /units/1
@@ -68,6 +84,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:gang_id, :libe, :amount, :points)
+      params.require(:unit).permit(:libe, :amount, :points)
     end
 end
