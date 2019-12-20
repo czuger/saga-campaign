@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CampaignsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @campaign = campaigns(:one)
+    create_full_campaign
   end
 
   test "should get index" do
