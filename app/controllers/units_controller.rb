@@ -6,7 +6,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @units = @gang.units
   end
 
   # GET /units/1
@@ -26,25 +26,13 @@ class UnitsController < ApplicationController
   # POST /units
   # POST /units.json
   def create
-
-    params = unit_params.to_h
-    params[ :gang_id ] = @gang.id
-
-    @unit = Unit.new( params )
+    add_gang_to_unit
 
     Unit.transaction do
       respond_to do |format|
         if @unit.save
 
-          unless @player.user.unit_old_libe_strings.exists?( libe: params['libe'] )
-            @player.user.unit_old_libe_strings.create!( libe: params['libe'] )
-          end
-
-          set_gang_points
-
-          @campaign.logs.create!( data:
-            "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
-          )
+          after_unit_update( "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}." )
 
           format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: 'Unit was successfully created.' }
           format.json { render :show, status: :created, location: @unit }
@@ -60,8 +48,13 @@ class UnitsController < ApplicationController
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
   def update
+    add_gang_to_unit
+
     respond_to do |format|
       if @unit.update(unit_params)
+
+        after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
+
         format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
         format.json { render :show, status: :ok, location: @unit }
       else
@@ -94,6 +87,23 @@ class UnitsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def add_gang_to_unit
+      @h_params = unit_params.to_h
+      @h_params[ :gang_id ] = @gang.id
+
+      @unit = Unit.new( @h_params )
+    end
+
+    def after_unit_update( log_string )
+      unless @player.user.unit_old_libe_strings.exists?( libe: @h_params['libe'] )
+        @player.user.unit_old_libe_strings.create!( libe: @h_params['libe'] )
+      end
+
+      set_gang_points
+
+      @campaign.logs.create!( data: log_string )
+    end
 
     def set_gang_points
       points_total = @gang.units.sum( :points )

@@ -29,7 +29,7 @@ class GangsController < ApplicationController
   # POST /gangs
   # POST /gangs.json
   def create
-    new_gang_number = @player.gangs.empty? ? 1 : @player.gangs.max( :number )
+    new_gang_number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number )
     @gang = Gang.new({ campaign_id: @campaign.id, player_id: @player.id, icon: params[:icon], number: new_gang_number } )
 
     Gang.transaction do
