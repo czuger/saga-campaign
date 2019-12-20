@@ -59,7 +59,7 @@ class GangsController < ApplicationController
   def destroy
     @gang.destroy
     respond_to do |format|
-      format.html { redirect_to gangs_url, notice: 'Gang was successfully destroyed.' }
+      format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a été correctement supprimée.' }
       format.json { head :no_content }
     end
   end

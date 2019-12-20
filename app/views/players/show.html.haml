@@ -18,5 +18,17 @@
       %span.badge.badge-light
         = @player.pp
 
-%hr
+%table.table
+  %thead
+    %tr
+      %th Bande
+      %th
+      %th
 
+  %tbody
+    - @player.gangs.order( 'updated_at DESC' ).each do |gang|
+      %tr
+        %td
+          = image_tag( gang.icon, class: 'gang_icon' )
+        %td= link_to 'Edition', edit_campaign_gang_path( @campaign, gang )
+        %td= link_to 'Supprimer', [ @campaign, gang ], method: :delete, data: { confirm: 'Etes vous sur de vouloi supprimer cette bande ?' }
