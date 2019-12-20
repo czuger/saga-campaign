@@ -40,8 +40,7 @@ class UnitsController < ApplicationController
             @player.user.unit_old_libe_strings.create!( libe: params['libe'] )
           end
 
-          points_total = @gang.units.sum( :points )
-          @gang.update!( points: points_total )
+          set_gang_points
 
           @campaign.logs.create!( data:
             "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
@@ -75,15 +74,31 @@ class UnitsController < ApplicationController
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
-    @unit.destroy
+    Unit.transaction do
+      @unit.destroy
+
+      set_gang_points
+
+      @campaign.logs.create!(
+        data:
+          "#{@player.user.name} a supprimé une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
+      )
+    end
+
     respond_to do |format|
-      format.html { redirect_to units_url, notice: 'Unit was successfully destroyed.' }
+      format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: "L'unité a bien été supprimée." }
       format.json { head :no_content }
     end
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_gang_points
+      points_total = @gang.units.sum( :points )
+      @gang.update!( points: points_total )
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params

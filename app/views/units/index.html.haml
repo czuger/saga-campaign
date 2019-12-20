@@ -1,6 +1,6 @@
 %h1 Listing units
 
-%table
+%table.table
   %thead
     %tr
       %th Nombre
@@ -18,7 +18,7 @@
         %td= unit.points
         -#%td= link_to 'Show', unit
         -#%td= link_to 'Edit', edit_unit_path(unit)
-        %td= link_to 'Destroy', [@campaign, @gang, unit], method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Supprimer', [@campaign, @gang, unit], method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
 
 %br
 
