@@ -1,4 +1,4 @@
-= form_for @gang do |f|
+= form_for [@campaign, @gang] do |f|
   - if @gang.errors.any?
     #error_explanation
       %h2= "#{pluralize(@gang.errors.count, "error")} prohibited this gang from being saved:"
@@ -6,14 +6,11 @@
         - @gang.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :campaign
-    = f.text_field :campaign
-  .field
-    = f.label :player
-    = f.text_field :player
-  .field
-    = f.label :icon
-    = f.text_field :icon
+  - @icons.each do |icons_groups|
+    .row
+      - icons_groups.each do |icon|
+        - next unless icon
+        = link_to image_tag( icon, class: 'gang_icon' ), campaign_gangs_path( @campaign.id, icon: icon ), method: :post
+
   .actions
     = f.submit 'Save'

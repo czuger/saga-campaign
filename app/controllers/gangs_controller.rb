@@ -1,5 +1,6 @@
 class GangsController < ApplicationController
   before_action :set_gang, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign
 
   # GET /gangs
   # GET /gangs.json
@@ -15,6 +16,8 @@ class GangsController < ApplicationController
   # GET /gangs/new
   def new
     @gang = Gang.new
+
+    @icons = Dir['app/assets/images/**/*.svg'].map{ |e| e.gsub( 'app/assets/images/', '' ) }.in_groups_of( 7 )
   end
 
   # GET /gangs/1/edit
@@ -24,11 +27,11 @@ class GangsController < ApplicationController
   # POST /gangs
   # POST /gangs.json
   def create
-    @gang = Gang.new(gang_params)
+    @gang = Gang.new({ campaign_id: @campaign.id, player_id: @player.id, icon: params[:icon] } )
 
     respond_to do |format|
       if @gang.save
-        format.html { redirect_to @gang, notice: 'Gang was successfully created.' }
+        format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
         format.json { render :show, status: :created, location: @gang }
       else
         format.html { render :new }
@@ -67,8 +70,13 @@ class GangsController < ApplicationController
       @gang = Gang.find(params[:id])
     end
 
+    def set_campaign
+      @campaign = Campaign.find(params[:campaign_id] )
+      @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
-      params.require(:gang).permit(:campaign_id, :player_id, :icon)
+      params.permit(:campaign_id, :icon)
     end
 end

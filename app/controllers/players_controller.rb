@@ -59,6 +59,7 @@ class PlayersController < ApplicationController
 
     def set_campaign
       @campaign = Campaign.find(params[:campaign_id] )
+      @player = Player.find_by_campaign_id_and_user_id( @campaign.id, current_user.id )
     end
 
     # Use callbacks to share common setup or constraints between actions.

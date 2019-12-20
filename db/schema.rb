@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 2019_12_20_034117) do
   create_table "gangs", force: :cascade do |t|
     t.integer "campaign_id", null: false
     t.integer "player_id", null: false
-    t.string "icon", null: false
+    t.string "icon"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"campaign\", \"player\"", name: "index_gangs_on_campaign_and_player", unique: true
+    t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
+    t.index ["player_id"], name: "index_gangs_on_player_id"
   end
 
   create_table "logs", force: :cascade do |t|
