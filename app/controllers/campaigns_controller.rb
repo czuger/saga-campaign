@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @campaigns = current_user.participating_campaigns
   end
 
   # GET /campaigns/1
@@ -28,18 +28,22 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(campaign_params)
 
-    respond_to do |format|
-      if @campaign.save
+    Campaign.transaction do
+      respond_to do |format|
+        if @campaign.save
 
-        @campaign.logs.create!( data: 'Campagne crée' )
+          @campaign.logs.create!( data: 'Campagne crée' )
 
-        format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
-        
-      else
-        format.html { render :new }
-        
+          Player.create!( user_id: current_user.id, campaign_id: @campaign.id )
+          @campaign.logs.create!( data: "Joueur #{current_user.name} ajouté à la campagne.")
+
+          format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
+        else
+          format.html { render :new }
+        end
       end
     end
+
   end
 
   # PATCH/PUT /campaigns/1

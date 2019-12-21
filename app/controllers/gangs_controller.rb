@@ -1,13 +1,13 @@
 class GangsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_gang, only: [:show, :edit, :update, :destroy]
-  before_action :set_campaign, only: [:index, :new]
-  before_action :set_player, only: [:create]
+  before_action :set_campaign, only: [:new]
+  before_action :set_player, only: [:create, :index]
 
   # GET /gangs
   # GET /gangs.json
   def index
-    @gangs = Gang.all
+    @gangs = Gang.find_by_campaign_id_and_player_id( @campaign, @player )
   end
 
   # GET /gangs/1

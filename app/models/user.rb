@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
   has_many :unit_old_libe_strings
+  has_many :owned_campaigns, class_name: 'Campaign'
+  has_many :participating_campaigns, through: :players, class_name: 'Campaign'
 
   def self.find_or_create_from_auth_hash(auth_hash)
 

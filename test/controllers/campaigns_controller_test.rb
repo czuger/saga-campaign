@@ -5,40 +5,56 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
     create_full_campaign
   end
 
-  test "should get index" do
+  test 'should get index' do
     get campaigns_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_campaign_url
     assert_response :success
   end
 
-  test "should create campaign" do
+  # Create a new campaign and assert that current user is added as a player
+  test 'should create campaign' do
     assert_difference('Campaign.count') do
-      post campaigns_url, params: { campaign: { name: @campaign.name, user_id: @campaign.user_id } }
+      assert_difference('Player.count') do
+        post campaigns_url, params: { campaign: { name: @campaign.name, user_id: @campaign.user_id } }
+      end
     end
+
+    assert_equal @user.id, Player.last.user_id
 
     assert_redirected_to campaign_url(Campaign.last)
   end
 
-  test "should show campaign" do
+  # Create a new campaign and assert that current user is added as a player
+  test 'should fail creating a campaign' do
+    assert_no_difference('Campaign.count') do
+      assert_no_difference('Player.count') do
+        post campaigns_url, params: { campaign: { name: '', user_id: @campaign.user_id } }
+      end
+    end
+
+    assert_response :success
+  end
+
+  test 'should show campaign' do
     get campaign_url(@campaign)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_campaign_url(@campaign)
     assert_response :success
   end
 
-  test "should update campaign" do
+  test 'should update campaign' do
     patch campaign_url(@campaign), params: { campaign: { name: @campaign.name, user_id: @campaign.user_id } }
     assert_redirected_to campaign_url(@campaign)
   end
 
-  test "should destroy campaign" do
+  test 'should destroy campaign' do
     assert_difference('Campaign.count', -1) do
       delete campaign_url(@campaign)
     end
