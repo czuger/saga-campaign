@@ -38,10 +38,10 @@ class GangsController < ApplicationController
           @campaign.logs.create!( data: "#{@player.user.name} a ajouté la bande n°#{new_gang_number}." )
 
           format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
-          format.json { render :show, status: :created, location: @gang }
+
         else
           format.html { render :new }
-          format.json { render json: @gang.errors, status: :unprocessable_entity }
+
         end
       end
     end
@@ -54,10 +54,10 @@ class GangsController < ApplicationController
     respond_to do |format|
       if @gang.update(gang_params)
         format.html { redirect_to @gang, notice: 'Gang was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gang }
+
       else
         format.html { render :edit }
-        format.json { render json: @gang.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -68,7 +68,7 @@ class GangsController < ApplicationController
     @gang.destroy
     respond_to do |format|
       format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a été correctement supprimée.' }
-      format.json { head :no_content }
+
     end
   end
 

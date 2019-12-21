@@ -35,10 +35,10 @@ class UnitsController < ApplicationController
           after_unit_update( "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}." )
 
           format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: 'Unit was successfully created.' }
-          format.json { render :show, status: :created, location: @unit }
+
         else
           format.html { render :new }
-          format.json { render json: @unit.errors, status: :unprocessable_entity }
+
         end
       end
     end
@@ -56,10 +56,10 @@ class UnitsController < ApplicationController
   #       after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
   #
   #       format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @unit }
+  #
   #     else
   #       format.html { render :edit }
-  #       format.json { render json: @unit.errors, status: :unprocessable_entity }
+  #
   #     end
   #   end
   # end
@@ -80,7 +80,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: "L'unité a bien été supprimée." }
-      format.json { head :no_content }
+
     end
 
   end

@@ -35,10 +35,10 @@ class PlayersController < ApplicationController
       respond_to do |format|
         if new_players_creation_result
           format.html { redirect_to @campaign, notice: 'Player was successfully created.' }
-          format.json { render :show, status: :created, location: @player }
+
         else
           format.html { render :new }
-          format.json { render json: @player.errors, status: :unprocessable_entity }
+
         end
       end
     end
@@ -50,7 +50,7 @@ class PlayersController < ApplicationController
     @player.destroy
     respond_to do |format|
       format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
-      format.json { head :no_content }
+
     end
   end
 
