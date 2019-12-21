@@ -16,6 +16,7 @@ class ActiveSupport::TestCase
   def create_full_campaign
     @user = create( :user )
     @campaign = create( :campaign, user: @user )
+    @player = create( :player, user: @user, campaign: @campaign )
 
     OmniAuth.config.test_mode = true
 
