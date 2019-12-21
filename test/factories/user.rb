@@ -7,7 +7,7 @@ FactoryBot.define do
     end
 
     sequence :name do |n|
-      "name-#{n}"
+      "user-#{n}"
     end
 
     sequence :icon_url do |n|

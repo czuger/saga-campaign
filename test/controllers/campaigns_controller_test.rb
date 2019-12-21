@@ -6,7 +6,17 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
+    # Create a second campaign and add it to the campaign
+    second_user = create( :user )
+    create( :campaign, name: 'unwanted_campaign', user: second_user )
+
     get campaigns_url
+
+    # puts response.body
+
+    # We ensure that the second campaign created is not present because it belongs to another user
+    assert_select 'td', { count: 0, text: 'unwanted_campaign' }
+
     assert_response :success
   end
 
@@ -52,6 +62,13 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   test 'should update campaign' do
     patch campaign_url(@campaign), params: { campaign: { name: @campaign.name, user_id: @campaign.user_id } }
     assert_redirected_to campaign_url(@campaign)
+  end
+
+  test 'should fail updating a campaign' do
+    patch campaign_url(@campaign), params: { campaign: { name: '', user_id: @campaign.user_id } }
+
+    assert_response :success
+    assert_select 'h2', 'il y a une erreur pour cette campagne:'
   end
 
   test 'should destroy campaign' do

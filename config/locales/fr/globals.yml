@@ -1,0 +1,4 @@
+fr:
+  error_explanation_message:
+   one: "Une erreur s'est produite lors de la sauvegarde de %{subject} :"
+   others: "%{count} erreurs se sont produites lors de la sauvegarde de %{subject} :"

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :campaign do
     sequence :name do |n|
-      "name-#{n}"
+      "campaign-#{n}"
     end
   end
 end
