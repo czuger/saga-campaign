@@ -68,7 +68,9 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
     patch campaign_url(@campaign), params: { campaign: { name: '', user_id: @campaign.user_id } }
 
     assert_response :success
-    assert_select 'h2', 'il y a une erreur pour cette campagne:'
+
+    assert_select 'h2', "Une erreur s'est produite lors de la sauvegarde de cette campagne :"
+    assert_select 'li', 'Nom doit être rempli(e)'
   end
 
   test 'should destroy campaign' do
