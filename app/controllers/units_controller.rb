@@ -5,9 +5,9 @@ class UnitsController < ApplicationController
 
   # GET /units
   # GET /units.json
-  # def index
-  #   @units = @gang.units
-  # end
+  def index
+    @units = @gang.units
+  end
 
   # GET /units/1
   # GET /units/1.json

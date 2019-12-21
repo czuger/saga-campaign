@@ -5,10 +5,10 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
     create_full_campaign
   end
 
-  # test 'should get index' do
-  #   get campaign_gang_units_url( @campaign, @gang )
-  #   assert_response :success
-  # end
+  test 'should get index' do
+    get campaign_gang_units_url( @campaign, @gang )
+    assert_response :success
+  end
 
   test 'should get new' do
     get new_campaign_gang_unit_url( @campaign, @gang )

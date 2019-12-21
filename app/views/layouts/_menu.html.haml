@@ -5,25 +5,14 @@
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
       - if @current_user
-        %li.nav-item
-          = link_to 'Mon compte', users_show_path, class: 'nav-link'
+
         %li.nav-item
           = link_to 'Campagnes', campaigns_path, class: 'nav-link'
-        -#%li.nav-item
-        -#  = link_to 'Log', log_show_path, class: 'nav-link'
 
-        -#%li.nav-item
-        -#  %a.nav-link{:href => "#"} Link
-        -#%li.nav-item.dropdown
-        -#  %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        -#    Dropdown
-        -#  .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-        -#    %a.dropdown-item{:href => "#"} Action
-        -#    %a.dropdown-item{:href => "#"} Another action
-        -#    .dropdown-divider
-        -#    %a.dropdown-item{:href => "#"} Something else here
-        -#%li.nav-item
-        -#  %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
+        -#- if @player
+        -#  %li.nav-item
+        -#    = link_to 'Mes infos', campaign_player_path( @campaign, @player ), class: 'nav-link'
+
         %li.nav-item
           = link_to 'Deconnection', '/auth/signout', class: 'nav-link'
       - else
