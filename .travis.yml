@@ -17,3 +17,10 @@ after_script:
 
 script:
   - bundle exec rails webpacker:compile
+
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn
