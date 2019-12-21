@@ -5,14 +5,14 @@ class UnitsController < ApplicationController
 
   # GET /units
   # GET /units.json
-  def index
-    @units = @gang.units
-  end
+  # def index
+  #   @units = @gang.units
+  # end
 
   # GET /units/1
   # GET /units/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /units/new
   def new
@@ -20,8 +20,8 @@ class UnitsController < ApplicationController
   end
 
   # GET /units/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /units
   # POST /units.json
@@ -47,22 +47,22 @@ class UnitsController < ApplicationController
 
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
-  def update
-    add_gang_to_unit
-
-    respond_to do |format|
-      if @unit.update(unit_params)
-
-        after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
-
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @unit }
-      else
-        format.html { render :edit }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   add_gang_to_unit
+  #
+  #   respond_to do |format|
+  #     if @unit.update(unit_params)
+  #
+  #       after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
+  #
+  #       format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @unit }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @unit.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /units/1
   # DELETE /units/1.json

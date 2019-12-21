@@ -77,6 +77,6 @@ class GangsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
-      params.permit(:campaign_id, :icon)
+      params.permit(:icon )
     end
 end

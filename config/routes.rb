@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :campaigns do
     resources :players, except: [ :edit, :update, :index, :destroy ]
     resources :gangs, only: [ :new, :create, :destroy ] do
-      resources :units
+      resources :units, only: [ :new, :create, :destroy ]
     end
     get 'log/show', to: 'log#show'
   end

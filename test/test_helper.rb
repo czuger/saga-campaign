@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
@@ -17,6 +20,8 @@ class ActiveSupport::TestCase
     @user = create( :user )
     @campaign = create( :campaign, user: @user )
     @player = create( :player, user: @user, campaign: @campaign )
+    @gang = create( :gang, player: @player, campaign: @campaign )
+    @unit = create( :unit, gang: @gang )
 
     OmniAuth.config.test_mode = true
 

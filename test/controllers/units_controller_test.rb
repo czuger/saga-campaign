@@ -2,47 +2,47 @@ require 'test_helper'
 
 class UnitsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @unit = create( :unit )
+    create_full_campaign
   end
 
-  test "should get index" do
-    get units_url
+  # test 'should get index' do
+  #   get campaign_gang_units_url( @campaign, @gang )
+  #   assert_response :success
+  # end
+
+  test 'should get new' do
+    get new_campaign_gang_unit_url( @campaign, @gang )
     assert_response :success
   end
 
-  test "should get new" do
-    get new_unit_url
-    assert_response :success
-  end
-
-  test "should create unit" do
+  test 'should create unit' do
     assert_difference('Unit.count') do
-      post units_url, params: { unit: { amount: @unit.amount, gang_id: @unit.gang_id, libe: @unit.libe, points: @unit.points } }
+      post campaign_gang_units_url( @campaign, @gang ), params: { unit: { libe: 'guards', amount: 4, points: 1 } }
     end
 
-    assert_redirected_to unit_url(Unit.last)
+    assert_redirected_to campaign_gang_units_url( @campaign, @gang )
   end
 
-  test "should show unit" do
-    get unit_url(@unit)
-    assert_response :success
-  end
+  # test 'should show unit' do
+  #   get campaign_gang_unit_url( @campaign, @gang, @unit )
+  #   assert_response :success
+  # end
+  #
+  # test 'should get edit' do
+  #   get edit_campaign_gang_unit_url( @campaign, @gang, @unit )
+  #   assert_response :success
+  # end
+  #
+  # test 'should update unit' do
+  #   patch campaign_gang_unit_url( @campaign, @gang, @unit ), params: { unit: { amount: @unit.amount, gang_id: @unit.gang_id, libe: @unit.libe, points: @unit.points } }
+  #   assert_redirected_to campaign_gang_units_url( @campaign, @gang )
+  # end
 
-  test "should get edit" do
-    get edit_unit_url(@unit)
-    assert_response :success
-  end
-
-  test "should update unit" do
-    patch unit_url(@unit), params: { unit: { amount: @unit.amount, gang_id: @unit.gang_id, libe: @unit.libe, points: @unit.points } }
-    assert_redirected_to unit_url(@unit)
-  end
-
-  test "should destroy unit" do
+  test 'should destroy unit' do
     assert_difference('Unit.count', -1) do
-      delete unit_url(@unit)
+      delete campaign_gang_unit_url( @campaign, @gang, @unit )
     end
 
-    assert_redirected_to units_url
+    assert_redirected_to campaign_gang_units_url( @campaign, @gang )
   end
 end

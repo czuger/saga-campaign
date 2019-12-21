@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '2.6.5'
 
@@ -56,7 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'omniauth-discord'
 gem 'omniauth-rails_csrf_protection'
-gem "haml-rails", "~> 2.0"
+gem 'haml-rails', '~> 2.0'
 
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+
+gem 'simplecov', require: false, group: :test
