@@ -17,6 +17,7 @@ after_script:
 
 script:
   - bundle exec rails webpacker:compile
+  - rake test
 
 install:
   - bundle install
