@@ -12,3 +12,5 @@ before_script:
 #  - bundle exec rspec
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+steps:
+  run: NODE_ENV=test bundle exec rails webpacker:compile
