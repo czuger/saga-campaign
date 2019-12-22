@@ -9,7 +9,7 @@
         %li.nav-item
           = link_to 'Campagnes', campaigns_path, class: 'nav-link'
 
-        - if @player
+        - if @player&.id
           %li.nav-item
             = link_to 'Mes infos', campaign_player_path( @campaign, @player ), class: 'nav-link'
 
