@@ -26,7 +26,8 @@ end
 fr_translation['fr'] = {}
 
 File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each do |line|
-  nature, horde, morts, souterrains, royaumes, outremonde, unit_name, weapon_name, armor, damage, options = line.split("\t")
+  nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice, min_units_for_saga_dice, unit_name,
+    weapon_name, armor, damage, options = line.split("\t")
 
   options = options.chomp.gsub('.', '')
 
@@ -54,6 +55,11 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each do |line|
   [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
     allowance = set_allowance( allowance, libe, unit_key, weapon_key )
   end
+
+  data[unit_key][weapon_key][:cost] = cost.to_i
+  data[unit_key][weapon_key][:amount] = amount.to_i
+  data[unit_key][weapon_key][:saga_dice] = saga_dice.to_i
+  data[unit_key][weapon_key][:min_units_for_saga_dice] = min_units_for_saga_dice.to_i
 
   data[unit_key][weapon_key][:armor] ||= {}
   armor_cac, armor_ranged = armor.scan( /\d+/ )

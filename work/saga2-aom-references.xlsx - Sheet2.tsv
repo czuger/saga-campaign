@@ -1,61 +1,62 @@
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Seigneur	-	5 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-	Horde		Souterrains	Royaumes	Outremonde	Seigneur	Arme lourde	4 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-Nature						Seigneur	Arc	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-Nature	Horde	Morts		Royaumes		Seigneur	Monture (Animal)	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-					Outremonde	Seigneur	Volant	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-				Royaumes		Seigneur	Monture ailée	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-Nature				Royaumes		Seigneur	Monture (Animal), Arc composite	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Seigneur	Monture (Bête)	5 (5)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
-Nature		Morts		Royaumes	Outremonde	Seigneur	Monture (Bête) (Vol)	5 (4)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Lieutenant	-	5 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-	Horde			Royaumes		Lieutenant	Arme lourde	4 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-Nature						Lieutenant	Arc	4 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-	Horde	Morts		Royaumes		Lieutenant	Monture (Animal)	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-				Royaumes		Lieutenant	Monture ailée	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-					Outremonde	Lieutenant	Volant	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Sorcier	-	3 (4)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
-Nature	Horde	Morts		Royaumes		Sorcier	Monture (Animal)	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
-				Royaumes	Outremonde	Sorcier	Volant	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
-				Royaumes		Sorcier	Monture ailée	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Monstre	Béhémoth	4 (4)	14 (0)	Résistance (2), Présence, Imposant, Primitif.
-Nature	Horde	Morts	Souterrains	Royaumes		Monstre	Titan	5 (5)	12 (0)	Résistance (2), Présence, Imposant, Primitif, Lent.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Monstre	Fléau (Vol)	4 (4)	10 (4)	Résistance (2), Présence, Imposant, Primitif, Souffle.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Créatures	Bipèdes	4 (4)	5 (1)	Résistance (1), Présence, Imposant.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Créatures	Quadrupèdes	4 (3)	5 (1)	Résistance (1), Présence, Imposant, Rapide.
-Nature		Morts			Outremonde	Créatures	Volants (Vol)	4 (3)	4 (1)	Résistance (1), Présence, Imposant.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Gardes	-	5 (5)	2 (1)	
-Nature						Gardes	Arc	4 (4)	2 (1)	
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Gardes	Arme lourde	4 (5)	2 (1)	
-Nature	Horde	Morts		Royaumes		Gardes	Monture (Animal)	5 (4)	2 (1)	
-					Outremonde	Gardes	Volant	5 (4)	2 (1)	
-				Royaumes		Gardes	Monture ailée	5 (4)	2 (1)	
-Nature						Gardes	Monture (Animal), Arc composite	4 (4)	2 (1)	
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	Guerriers	-	4 (4)	1 (1/2)	
-	Horde		Souterrains		Outremonde	Guerriers	Arme lourde	3 (4)	1 (1/2)	
-Nature		Morts				Guerriers	Arc	3 (3)	1 (1/2)	
-			Souterrains			Guerriers	Arbalète	3 (3)	1 (1/2)	
-			Souterrains			Guerriers	Arme à feu	3 (3)	1 (1/2)	
-					Outremonde	Guerriers	Volant	4 (3)	1 (1/2)	
-Nature	Horde			Royaumes		Guerriers	Monture (Animal)	4 (3)	1 (1/2)	
-Nature	Horde					Guerriers	Monture (Animal), Arc composite	3 (3)	1 (1/2)	
-			Souterrains			Levées	-	4 (4)	1/2 (1/2)	
-Nature						Levées	Javelots	3 (4)	1/3 (1/2)	
-	Horde		Souterrains	Royaumes		Levées	Arc ou Fronde	3 (4)	1/3 (1/2)	
-				Royaumes		Levées	Arbalète	3 (3)	1/3 (1/2)	
-				Royaumes		Levées	Arme à feu	3 (3)	1/3 (1/2)	
-	Horde	Morts	Souterrains	Royaumes		Machine de Guerre	Statique	3 (4)	1 (4 ou 2)	Résistance (1), Désarmé, Présence, Tir Puissant, Encombrant.
-	Horde		Souterrains	Royaumes		Machine de Guerre	Mobile	4 (4)	2 (4)	Résistance (1), Désarmé, Présence, Armes à feu.
-			Souterrains	Royaumes		Machine de Guerre	Volante (Vol)	4 (4)	1 (4)	Résistance (1), Désarmé, Présence, Souffle.
-		Morts				Nécromant	-	4 (4)	2 (0)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps.
-		Morts				Nécromant	Monture (Animal)	4 (3)	2 (0)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps.
-		Morts				Nécromant	Monture (Bête)	4 (4)	4 (0)	Détermination, Résistance (2), Présence, Imposant.
-		Morts				Nécromant	Monture (Bête) (Vol)	4 (3)	4 (0)	Détermination, Résistance (2), Présence, Imposant.
-				Royaumes		Paladin	-	5 (5)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
-				Royaumes		Paladin	Arme lourde	4 (5)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
-				Royaumes		Paladin	Monture (Animal)	5 (4)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
-				Royaumes		Paladin	Monture ailée (Vol)	5 (4)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
-Nature				Royaumes		Nuée	-	4 (3)	1/2 (0)	Primitif. Insignifiant, Minuscule.
-		Morts				Décérébrés	-	4 (4)	1/5 (0)	Décérébré, Lent, Horde.
-	Horde					Char de Guerre	-	5 (5)	4 (2)	Résistance (1), Présence, Javelots, Monture (Animal), Charge dévastatrice.
-					Outremonde	Traqueurs	-	3 (3)	1 (0)	Primitif, Ne peut pas serrer les rangs, Traque.
-			Souterrains			Équipe de destrucion	-	3 (4)	1 (3)	Résistance (1), Arme à feu, Instable et dangereux.
+Type	Type	Type	Type	Type	Type	Cout	Nombre	Dés SAGA	Min pour dé SAGA	Unité	Arme	Defense	Agressivité	Options
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0	1	1	1	Seigneur	-	5 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+	Horde		Souterrains	Royaumes	Outremonde	0	1	1	1	Seigneur	Arme lourde	4 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+Nature						0	1	1	1	Seigneur	Arc	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+Nature	Horde	Morts		Royaumes		0	1	1	1	Seigneur	Monture (Animal)	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+					Outremonde	0	1	1	1	Seigneur	Volant	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+				Royaumes		0	1	1	1	Seigneur	Monture ailée	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+Nature				Royaumes		0	1	1	1	Seigneur	Monture (Animal), Arc composite	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0	1	1	1	Seigneur	Monture (Bête)	5 (5)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
+Nature		Morts		Royaumes	Outremonde	0	1	1	1	Seigneur	Monture (Bête) (Vol)	5 (4)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0,5	1	0	0	Lieutenant	-	5 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+	Horde			Royaumes		0,5	1	0	0	Lieutenant	Arme lourde	4 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+Nature						0,5	1	0	0	Lieutenant	Arc	4 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+	Horde	Morts		Royaumes		0,5	1	0	0	Lieutenant	Monture (Animal)	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+				Royaumes		0,5	1	0	0	Lieutenant	Monture ailée	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+					Outremonde	0,5	1	0	0	Lieutenant	Volant	5 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	1	0	0	Sorcier	-	3 (4)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
+Nature	Horde	Morts		Royaumes		1	1	0	0	Sorcier	Monture (Animal)	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
+				Royaumes	Outremonde	1	1	0	0	Sorcier	Volant	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
+				Royaumes		1	1	0	0	Sorcier	Monture ailée	3 (3)	2 (0)	Détermination, Résistance (1), Présence, Gardes du corps, Désarmé, Magie.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	1	1	1	Monstre	Béhémoth	4 (4)	14 (0)	Résistance (2), Présence, Imposant, Primitif.
+Nature	Horde	Morts	Souterrains	Royaumes		1	1	1	1	Monstre	Titan	5 (5)	12 (0)	Résistance (2), Présence, Imposant, Primitif, Lent.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	1	1	1	Monstre	Fléau (Vol)	4 (4)	10 (4)	Résistance (2), Présence, Imposant, Primitif, Souffle.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	2	1	1	Créatures	Bipèdes	4 (4)	5 (1)	Résistance (1), Présence, Imposant.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	2	1	1	Créatures	Quadrupèdes	4 (3)	5 (1)	Résistance (1), Présence, Imposant, Rapide.
+Nature		Morts			Outremonde	1	2	1	1	Créatures	Volants (Vol)	4 (3)	4 (1)	Résistance (1), Présence, Imposant.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	4	1	1	Gardes	-	5 (5)	2 (1)	
+Nature						1	4	1	1	Gardes	Arc	4 (4)	2 (1)	
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	4	1	1	Gardes	Arme lourde	4 (5)	2 (1)	
+Nature	Horde	Morts		Royaumes		1	4	1	1	Gardes	Monture (Animal)	5 (4)	2 (1)	
+					Outremonde	1	4	1	1	Gardes	Volant	5 (4)	2 (1)	
+				Royaumes		1	4	1	1	Gardes	Monture ailée	5 (4)	2 (1)	
+Nature						1	4	1	1	Gardes	Monture (Animal), Arc composite	4 (4)	2 (1)	
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	1	8	1	4	Guerriers	-	4 (4)	1 (1/2)	
+	Horde		Souterrains		Outremonde	1	8	1	4	Guerriers	Arme lourde	3 (4)	1 (1/2)	
+Nature		Morts				1	8	1	4	Guerriers	Arc	3 (3)	1 (1/2)	
+			Souterrains			1	8	1	4	Guerriers	Arbalète	3 (3)	1 (1/2)	
+			Souterrains			1	8	1	4	Guerriers	Arme à feu	3 (3)	1 (1/2)	
+					Outremonde	1	8	1	4	Guerriers	Volant	4 (3)	1 (1/2)	
+Nature	Horde			Royaumes		1	8	1	4	Guerriers	Monture (Animal)	4 (3)	1 (1/2)	
+Nature	Horde					1	8	1	4	Guerriers	Monture (Animal), Arc composite	3 (3)	1 (1/2)	
+			Souterrains			1	12	1	6	Levées	-	4 (4)	1/2 (1/2)	
+Nature						1	12	1	6	Levées	Javelots	3 (4)	1/3 (1/2)	
+	Horde		Souterrains	Royaumes		1	12	1	6	Levées	Arc ou Fronde	3 (4)	1/3 (1/2)	
+				Royaumes		1	12	1	6	Levées	Arbalète	3 (3)	1/3 (1/2)	
+				Royaumes		1	12	1	6	Levées	Arme à feu	3 (3)	1/3 (1/2)	
+	Horde	Morts	Souterrains	Royaumes		0,5	1	0	0	Machine de Guerre	Statique	3 (4)	1 (4 ou 2)	Résistance (1), Désarmé, Présence, Tir Puissant, Encombrant.
+	Horde		Souterrains	Royaumes		0,5	1	0	0	Machine de Guerre	Mobile	4 (4)	2 (4)	Résistance (1), Désarmé, Présence, Armes à feu.
+			Souterrains	Royaumes		0,5	1	0	0	Machine de Guerre	Volante (Vol)	4 (4)	1 (4)	Résistance (1), Désarmé, Présence, Souffle.
+		Morts				1	1	1	1	Nécromant	-	4 (4)	2 (0)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps.
+		Morts				1	1	1	1	Nécromant	Monture (Animal)	4 (3)	2 (0)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps.
+		Morts				1	1	1	1	Nécromant	Monture (Bête)	4 (4)	4 (0)	Détermination, Résistance (2), Présence, Imposant.
+		Morts				1	1	1	1	Nécromant	Monture (Bête) (Vol)	4 (3)	4 (0)	Détermination, Résistance (2), Présence, Imposant.
+				Royaumes		0,5	1	0	0	Paladin	-	5 (5)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
+				Royaumes		0,5	1	0	0	Paladin	Arme lourde	4 (5)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
+				Royaumes		0,5	1	0	0	Paladin	Monture (Animal)	5 (4)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
+				Royaumes		0,5	1	0	0	Paladin	Monture ailée (Vol)	5 (4)	5 (0)	Résistance (1), Présence, Détermination, Héroïque.
+Nature				Royaumes		1	12	1	6	Nuée	-	4 (3)	1/2 (0)	Primitif. Insignifiant, Minuscule.
+		Morts				1	20	0	0	Décérébrés	-	4 (4)	1/5 (0)	Décérébré, Lent, Horde.
+	Horde					1	1	1	1	Char de Guerre	-	5 (5)	4 (2)	Résistance (1), Présence, Javelots, Monture (Animal), Charge dévastatrice.
+					Outremonde	1	8	1	4	Traqueurs	-	3 (3)	1 (0)	Primitif, Ne peut pas serrer les rangs, Traque.
+			Souterrains			1	8	0	0	Équipe de destrucion	-	3 (4)	1 (3)	Résistance (1), Arme à feu, Instable et dangereux.

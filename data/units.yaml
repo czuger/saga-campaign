@@ -1,6 +1,24 @@
 ---
+unite:
+  arme:
+    :cost: 0
+    :amount: 0
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
+    :armor:
+      :cac: 0
+      :ranged: 0
+    :damage:
+      :cac: 0
+      :ranged: 0
+    :options:
+    - options
 seigneur:
   "-":
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -15,6 +33,10 @@ seigneur:
     - fierte
     :resistance: 1
   arme_lourde:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -29,6 +51,10 @@ seigneur:
     - fierte
     :resistance: 1
   arc:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -43,6 +69,10 @@ seigneur:
     - fierte
     :resistance: 1
   monture_animal:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -57,6 +87,10 @@ seigneur:
     - fierte
     :resistance: 1
   volant:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -72,6 +106,10 @@ seigneur:
     - vol
     :resistance: 1
   monture_ailee:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -87,6 +125,10 @@ seigneur:
     - vol
     :resistance: 1
   monture_animal_arc_composite:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -101,6 +143,10 @@ seigneur:
     - fierte
     :resistance: 1
   monture_bete:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -114,6 +160,10 @@ seigneur:
     - fierte
     :resistance: 2
   monture_bete_vol:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -129,6 +179,10 @@ seigneur:
     :resistance: 2
 lieutenant:
   "-":
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 5
@@ -141,6 +195,10 @@ lieutenant:
     - regle_speciale_de_faction
     :resistance: 1
   arme_lourde:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 5
@@ -153,6 +211,10 @@ lieutenant:
     - regle_speciale_de_faction
     :resistance: 1
   arc:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -165,6 +227,10 @@ lieutenant:
     - regle_speciale_de_faction
     :resistance: 1
   monture_animal:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -177,6 +243,10 @@ lieutenant:
     - regle_speciale_de_faction
     :resistance: 1
   monture_ailee:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -190,6 +260,10 @@ lieutenant:
     - vol
     :resistance: 1
   volant:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -204,6 +278,10 @@ lieutenant:
     :resistance: 1
 sorcier:
   "-":
+    :cost: 1
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 4
@@ -218,6 +296,10 @@ sorcier:
     - magie
     :resistance: 1
   monture_animal:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 3
@@ -232,6 +314,10 @@ sorcier:
     - magie
     :resistance: 1
   volant:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 3
@@ -247,6 +333,10 @@ sorcier:
     - vol
     :resistance: 1
   monture_ailee:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 3
@@ -263,6 +353,10 @@ sorcier:
     :resistance: 1
 monstre:
   behemoth:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -275,6 +369,10 @@ monstre:
     - imposant
     - primitif
   titan:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -288,6 +386,10 @@ monstre:
     - primitif
     - lent
   fleau_vol:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -303,6 +405,10 @@ monstre:
     - vol
 creatures:
   bipedes:
+    :cost: 1
+    :amount: 2
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -314,6 +420,10 @@ creatures:
     - presence
     - imposant
   quadrupedes:
+    :cost: 1
+    :amount: 2
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -326,6 +436,10 @@ creatures:
     - imposant
     - rapide
   volants_vol:
+    :cost: 1
+    :amount: 2
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -339,6 +453,10 @@ creatures:
     - vol
 gardes:
   "-":
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -346,6 +464,10 @@ gardes:
       :cac: 2
       :ranged: 1
   arc:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -353,6 +475,10 @@ gardes:
       :cac: 2
       :ranged: 1
   arme_lourde:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -360,6 +486,10 @@ gardes:
       :cac: 2
       :ranged: 1
   monture_animal:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -367,6 +497,10 @@ gardes:
       :cac: 2
       :ranged: 1
   volant:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -376,6 +510,10 @@ gardes:
     :options:
     - vol
   monture_ailee:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -385,6 +523,10 @@ gardes:
     :options:
     - vol
   monture_animal_arc_composite:
+    :cost: 1
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -393,6 +535,10 @@ gardes:
       :ranged: 1
 guerriers:
   "-":
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 4
       :ranged: 4
@@ -400,6 +546,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   arme_lourde:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 4
@@ -407,6 +557,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   arc:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -414,6 +568,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   arbalete:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -421,6 +579,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   arme_a_feu:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -428,6 +590,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   volant:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 4
       :ranged: 3
@@ -437,6 +603,10 @@ guerriers:
     :options:
     - vol
   monture_animal:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 4
       :ranged: 3
@@ -444,6 +614,10 @@ guerriers:
       :cac: 1
       :ranged: 1
   monture_animal_arc_composite:
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -452,6 +626,10 @@ guerriers:
       :ranged: 1
 levees:
   "-":
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 4
       :ranged: 4
@@ -459,6 +637,10 @@ levees:
       :cac: 1
       :ranged: 2
   javelots:
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 3
       :ranged: 4
@@ -466,6 +648,10 @@ levees:
       :cac: 1
       :ranged: 3
   arc_ou_fronde:
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 3
       :ranged: 4
@@ -473,6 +659,10 @@ levees:
       :cac: 1
       :ranged: 3
   arbalete:
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 3
       :ranged: 3
@@ -480,6 +670,10 @@ levees:
       :cac: 1
       :ranged: 3
   arme_a_feu:
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 3
       :ranged: 3
@@ -488,6 +682,10 @@ levees:
       :ranged: 3
 machine_de_guerre:
   statique:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 4
@@ -501,6 +699,10 @@ machine_de_guerre:
     - tir_puissant
     - encombrant
   mobile:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -513,6 +715,10 @@ machine_de_guerre:
     - presence
     - armes_a_feu
   volante_vol:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -527,6 +733,10 @@ machine_de_guerre:
     - vol
 necromant:
   "-":
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -540,6 +750,10 @@ necromant:
     - gardes_du_corps
     :resistance: 1
   monture_animal:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -553,6 +767,10 @@ necromant:
     - gardes_du_corps
     :resistance: 1
   monture_bete:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -565,6 +783,10 @@ necromant:
     - imposant
     :resistance: 2
   monture_bete_vol:
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -579,6 +801,10 @@ necromant:
     :resistance: 2
 paladin:
   "-":
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 5
@@ -591,6 +817,10 @@ paladin:
     - determination
     - heroïque
   arme_lourde:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 5
@@ -603,6 +833,10 @@ paladin:
     - determination
     - heroïque
   monture_animal:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -615,6 +849,10 @@ paladin:
     - determination
     - heroïque
   monture_ailee_vol:
+    :cost: 0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -629,6 +867,10 @@ paladin:
     - vol
 nuee:
   "-":
+    :cost: 1
+    :amount: 12
+    :saga_dice: 1
+    :min_units_for_saga_dice: 6
     :armor:
       :cac: 4
       :ranged: 3
@@ -640,6 +882,10 @@ nuee:
     - minuscule
 decerebres:
   "-":
+    :cost: 1
+    :amount: 20
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -652,6 +898,10 @@ decerebres:
     - horde
 char_de_guerre:
   "-":
+    :cost: 1
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -666,6 +916,10 @@ char_de_guerre:
     - charge_devastatrice
 traqueurs:
   "-":
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -678,6 +932,10 @@ traqueurs:
     - traque
 equipe_de_destrucion:
   "-":
+    :cost: 1
+    :amount: 8
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
     :armor:
       :cac: 3
       :ranged: 4

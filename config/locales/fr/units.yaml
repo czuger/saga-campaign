@@ -1,6 +1,7 @@
 ---
 fr:
   units:
+    unite: Unité
     seigneur: Seigneur
     lieutenant: Lieutenant
     sorcier: Sorcier
@@ -18,6 +19,7 @@ fr:
     traqueurs: Traqueurs
     equipe_de_destrucion: Équipe de destrucion
   weapon:
+    arme: Arme
     "-": "-"
     arme_lourde: Arme lourde
     arc: Arc
@@ -42,6 +44,7 @@ fr:
     volante_vol: Volante
     monture_ailee_vol: Monture ailée
   option:
+    options: Options
     determination: Détermination
     resistance: Résistance
     nous_sommes_a_vos_ordres: Nous sommes à vos ordres
