@@ -1,0 +1,222 @@
+---
+Nature:
+  seigneur:
+  - "-"
+  - arc
+  - monture_animal
+  - monture_animal_arc_composite
+  - monture_bete
+  - monture_bete_vol
+  lieutenant:
+  - "-"
+  - arc
+  sorcier:
+  - "-"
+  - monture_animal
+  monstre:
+  - behemoth
+  - titan
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  - volants_vol
+  gardes:
+  - "-"
+  - arc
+  - arme_lourde
+  - monture_animal
+  - monture_animal_arc_composite
+  guerriers:
+  - "-"
+  - arc
+  - monture_animal
+  - monture_animal_arc_composite
+  levees:
+  - javelots
+  nuee:
+  - "-"
+Horde:
+  seigneur:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_bete
+  lieutenant:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  sorcier:
+  - "-"
+  - monture_animal
+  monstre:
+  - behemoth
+  - titan
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  gardes:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  guerriers:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_animal_arc_composite
+  levees:
+  - arc_ou_fronde
+  machine_de_guerre:
+  - statique
+  - mobile
+  char_de_guerre:
+  - "-"
+Morts:
+  seigneur:
+  - "-"
+  - monture_animal
+  - monture_bete
+  - monture_bete_vol
+  lieutenant:
+  - "-"
+  - monture_animal
+  sorcier:
+  - "-"
+  - monture_animal
+  monstre:
+  - behemoth
+  - titan
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  - volants_vol
+  gardes:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  guerriers:
+  - "-"
+  - arc
+  machine_de_guerre:
+  - statique
+  necromant:
+  - "-"
+  - monture_animal
+  - monture_bete
+  - monture_bete_vol
+  decerebres:
+  - "-"
+Souterrains:
+  seigneur:
+  - "-"
+  - arme_lourde
+  - monture_bete
+  lieutenant:
+  - "-"
+  sorcier:
+  - "-"
+  monstre:
+  - behemoth
+  - titan
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  gardes:
+  - "-"
+  - arme_lourde
+  guerriers:
+  - "-"
+  - arme_lourde
+  - arbalete
+  - arme_a_feu
+  levees:
+  - "-"
+  - arc_ou_fronde
+  machine_de_guerre:
+  - statique
+  - mobile
+  - volante_vol
+  equipe_de_destrucion:
+  - "-"
+Royaumes:
+  seigneur:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_ailee
+  - monture_animal_arc_composite
+  - monture_bete
+  - monture_bete_vol
+  lieutenant:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_ailee
+  sorcier:
+  - "-"
+  - monture_animal
+  - volant
+  - monture_ailee
+  monstre:
+  - behemoth
+  - titan
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  gardes:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_ailee
+  guerriers:
+  - "-"
+  - monture_animal
+  levees:
+  - arc_ou_fronde
+  - arbalete
+  - arme_a_feu
+  machine_de_guerre:
+  - statique
+  - mobile
+  - volante_vol
+  paladin:
+  - "-"
+  - arme_lourde
+  - monture_animal
+  - monture_ailee_vol
+  nuee:
+  - "-"
+Outremonde:
+  seigneur:
+  - "-"
+  - arme_lourde
+  - volant
+  - monture_bete
+  - monture_bete_vol
+  lieutenant:
+  - "-"
+  - volant
+  sorcier:
+  - "-"
+  - volant
+  monstre:
+  - behemoth
+  - fleau_vol
+  creatures:
+  - bipedes
+  - quadrupedes
+  - volants_vol
+  gardes:
+  - "-"
+  - arme_lourde
+  - volant
+  guerriers:
+  - "-"
+  - arme_lourde
+  - volant
+  traqueurs:
+  - "-"

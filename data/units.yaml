@@ -1,0 +1,690 @@
+---
+seigneur:
+  "-":
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    :resistance: 1
+  arme_lourde:
+    :armor:
+      :cac: 4
+      :ranged: 5
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    :resistance: 1
+  arc:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    :resistance: 1
+  monture_animal:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    :resistance: 1
+  volant:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    - vol
+    :resistance: 1
+  monture_ailee:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    - vol
+    :resistance: 1
+  monture_animal_arc_composite:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 8
+      :ranged: 4
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    - fierte
+    :resistance: 1
+  monture_bete:
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 10
+      :ranged: 4
+    :options:
+    - determination
+    - presence
+    - imposant
+    - fierte
+    :resistance: 2
+  monture_bete_vol:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 10
+      :ranged: 4
+    :options:
+    - determination
+    - presence
+    - imposant
+    - fierte
+    - vol
+    :resistance: 2
+lieutenant:
+  "-":
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    :resistance: 1
+  arme_lourde:
+    :armor:
+      :cac: 4
+      :ranged: 5
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    :resistance: 1
+  arc:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    :resistance: 1
+  monture_animal:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    :resistance: 1
+  monture_ailee:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    - vol
+    :resistance: 1
+  volant:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :options:
+    - determination
+    - presence
+    - regle_speciale_de_faction
+    - vol
+    :resistance: 1
+sorcier:
+  "-":
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - gardes_du_corps
+    - desarme
+    - magie
+    :resistance: 1
+  monture_animal:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - gardes_du_corps
+    - desarme
+    - magie
+    :resistance: 1
+  volant:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - gardes_du_corps
+    - desarme
+    - magie
+    - vol
+    :resistance: 1
+  monture_ailee:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - gardes_du_corps
+    - desarme
+    - magie
+    - vol
+    :resistance: 1
+monstre:
+  behemoth:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 14
+      :ranged: 0
+    :resistance: 2
+    :options:
+    - presence
+    - imposant
+    - primitif
+  titan:
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 12
+      :ranged: 0
+    :resistance: 2
+    :options:
+    - presence
+    - imposant
+    - primitif
+    - lent
+  fleau_vol:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 10
+      :ranged: 4
+    :resistance: 2
+    :options:
+    - presence
+    - imposant
+    - primitif
+    - souffle
+    - vol
+creatures:
+  bipedes:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 5
+      :ranged: 1
+    :resistance: 1
+    :options:
+    - presence
+    - imposant
+  quadrupedes:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 5
+      :ranged: 1
+    :resistance: 1
+    :options:
+    - presence
+    - imposant
+    - rapide
+  volants_vol:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 4
+      :ranged: 1
+    :resistance: 1
+    :options:
+    - presence
+    - imposant
+    - vol
+gardes:
+  "-":
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 2
+      :ranged: 1
+  arc:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 1
+  arme_lourde:
+    :armor:
+      :cac: 4
+      :ranged: 5
+    :damage:
+      :cac: 2
+      :ranged: 1
+  monture_animal:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 1
+  volant:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 1
+    :options:
+    - vol
+  monture_ailee:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 1
+    :options:
+    - vol
+  monture_animal_arc_composite:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 1
+guerriers:
+  "-":
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 1
+  arme_lourde:
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 1
+  arc:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+  arbalete:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+  arme_a_feu:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+  volant:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+    :options:
+    - vol
+  monture_animal:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+  monture_animal_arc_composite:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 1
+levees:
+  "-":
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 2
+  javelots:
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 3
+  arc_ou_fronde:
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 3
+  arbalete:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 3
+  arme_a_feu:
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 3
+machine_de_guerre:
+  statique:
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 4
+    :resistance: 1
+    :options:
+    - desarme
+    - presence
+    - tir_puissant
+    - encombrant
+  mobile:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 4
+    :resistance: 1
+    :options:
+    - desarme
+    - presence
+    - armes_a_feu
+  volante_vol:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 4
+    :resistance: 1
+    :options:
+    - desarme
+    - presence
+    - souffle
+    - vol
+necromant:
+  "-":
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    :resistance: 1
+  monture_animal:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - determination
+    - nous_sommes_a_vos_ordres
+    - presence
+    - gardes_du_corps
+    :resistance: 1
+  monture_bete:
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 4
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - imposant
+    :resistance: 2
+  monture_bete_vol:
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 4
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - imposant
+    - vol
+    :resistance: 2
+paladin:
+  "-":
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 5
+      :ranged: 0
+    :resistance: 1
+    :options:
+    - presence
+    - determination
+    - heroïque
+  arme_lourde:
+    :armor:
+      :cac: 4
+      :ranged: 5
+    :damage:
+      :cac: 5
+      :ranged: 0
+    :resistance: 1
+    :options:
+    - presence
+    - determination
+    - heroïque
+  monture_animal:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 5
+      :ranged: 0
+    :resistance: 1
+    :options:
+    - presence
+    - determination
+    - heroïque
+  monture_ailee_vol:
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 5
+      :ranged: 0
+    :resistance: 1
+    :options:
+    - presence
+    - determination
+    - heroïque
+    - vol
+nuee:
+  "-":
+    :armor:
+      :cac: 4
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 2
+    :options:
+    - primitif_insignifiant
+    - minuscule
+decerebres:
+  "-":
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 5
+    :options:
+    - decerebre
+    - lent
+    - horde
+char_de_guerre:
+  "-":
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: 4
+      :ranged: 2
+    :resistance: 1
+    :options:
+    - presence
+    - javelots
+    - monture_animal
+    - charge_devastatrice
+traqueurs:
+  "-":
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 1
+      :ranged: 0
+    :options:
+    - primitif
+    - ne_peut_pas_serrer_les_rangs
+    - traque
+equipe_de_destrucion:
+  "-":
+    :armor:
+      :cac: 3
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 3
+    :resistance: 1
+    :options:
+    - arme_a_feu
+    - instable_et_dangereux

@@ -1,0 +1,74 @@
+---
+fr:
+  units:
+    seigneur: Seigneur
+    lieutenant: Lieutenant
+    sorcier: Sorcier
+    monstre: Monstre
+    creatures: Créatures
+    gardes: Gardes
+    guerriers: Guerriers
+    levees: Levées
+    machine_de_guerre: Machine de Guerre
+    necromant: Nécromant
+    paladin: Paladin
+    nuee: Nuée
+    decerebres: Décérébrés
+    char_de_guerre: Char de Guerre
+    traqueurs: Traqueurs
+    equipe_de_destrucion: Équipe de destrucion
+  weapon:
+    "-": "-"
+    arme_lourde: Arme lourde
+    arc: Arc
+    monture_animal: Monture animal
+    volant: Volant
+    monture_ailee: Monture ailée
+    monture_animal_arc_composite: Monture animal, Arc composite
+    monture_bete: Monture bete
+    monture_bete_vol: Monture bete
+    behemoth: Béhémoth
+    titan: Titan
+    fleau_vol: Fléau
+    bipedes: Bipèdes
+    quadrupedes: Quadrupèdes
+    volants_vol: Volants
+    arbalete: Arbalète
+    arme_a_feu: Arme à feu
+    javelots: Javelots
+    arc_ou_fronde: Arc ou Fronde
+    statique: Statique
+    mobile: Mobile
+    volante_vol: Volante
+    monture_ailee_vol: Monture ailée
+  option:
+    determination: Détermination
+    resistance: Résistance
+    nous_sommes_a_vos_ordres: Nous sommes à vos ordres
+    presence: Présence
+    gardes_du_corps: Gardes du corps
+    fierte: Fierté
+    vol: Vol
+    imposant: Imposant
+    regle_speciale_de_faction: Règle spéciale de faction
+    desarme: Désarmé
+    magie: Magie
+    primitif: Primitif
+    lent: Lent
+    souffle: Souffle
+    rapide: Rapide
+    tir_puissant: Tir Puissant
+    encombrant: Encombrant
+    armes_a_feu: Armes à feu
+    heroïque: Héroïque
+    primitif_insignifiant: Primitif Insignifiant
+    minuscule: Minuscule
+    decerebre: Décérébré
+    horde: Horde
+    javelots: Javelots
+    monture_animal: Monture (Animal)
+    charge_devastatrice: Charge dévastatrice
+    ne_peut_pas_serrer_les_rangs: Ne peut pas serrer les rangs
+    traque: Traque
+    arme_a_feu: Arme à feu
+    instable_et_dangereux: Instable et dangereux
