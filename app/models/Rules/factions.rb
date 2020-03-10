@@ -11,13 +11,17 @@ module Rules
         data = YAML.load_file( 'data/factions.yaml' )
         @@data ||= {}
 
-        @@select_options = data.keys.map{ |e| [ I18n.t( "faction.#{e}" ), e ] }
+        @@select_options_array = data.keys.map{ |e| [ I18n.t( "faction.#{e}" ), e ] }
 
         data.each do |unit|
           @@data[unit] = unit
         end
         
       end
+    end
+
+    def select_options_array
+      @@select_options_array
     end
 
   end

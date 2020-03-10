@@ -1,3 +1,9 @@
 %h1 Ajouter une unité
 
-= render 'form'
+-#= render 'form'
+
+%b
+  Faction
+
+= select_tag('select_faction', options_for_select(@select_factions_options))
+

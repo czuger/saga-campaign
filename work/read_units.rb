@@ -109,7 +109,7 @@ File.open('../data/units.yaml', 'w') do |f|
   f.write(data.to_yaml)
 end
 
-File.open('../data/faction.yaml', 'w') do |f|
+File.open('../data/factions.yaml', 'w') do |f|
   f.write(allowance.to_yaml)
 end
 
