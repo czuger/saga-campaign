@@ -18,11 +18,14 @@
       %span.badge.badge-light
         = @player.pp
 
+%br
+
 %table.table
   %thead
     %tr
       %th Bande
       %th Points
+      %th Position
       %th
       %th
 
@@ -32,5 +35,7 @@
         %td
           = image_tag( gang.icon, class: 'gang_icon' )
         %td= gang.points
+        %td
+          = select_tag('select_location', options_for_select(@localisations, gang.location))
         %td= link_to 'Modifier la composition', campaign_gang_units_path( @campaign, gang )
-        %td= link_to 'Supprimer', [ @campaign, gang ], method: :delete, data: { confirm: 'Etes vous sur de vouloi supprimer cette bande ?' }
+        %td= link_to 'Supprimer', [ @campaign, gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }

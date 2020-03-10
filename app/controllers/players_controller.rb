@@ -12,6 +12,8 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    @localisations = 1.upto(6).map{ |e| "D#{e}" } + 1.upto(7).map{ |e| "F#{e}" } + 1.upto(9).map{ |e| "L#{e}" }
+    @localisations += 1.upto(5).map{ |e| "P#{e}" }
   end
 
   # GET /players/new
