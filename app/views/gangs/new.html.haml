@@ -6,7 +6,7 @@
 = select_tag('select_faction', options_for_select(@select_factions_options))
 
 - @icons.each do |icons_group_key, icons|
-  .row{ class: "hide_group_#{icons_group_key}", style: 'display:none;' }
+  .row{ class: "factions_icons #{icons_group_key}" }
     - icons.each do |icon|
       - next unless icon
       = link_to image_tag( icon, class: 'gang_icon' ), campaign_gangs_path( @campaign.id, icon: icon ), method: :post
