@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     get 'log/show', to: 'log#show'
   end
 
+  resources :gangs, only: [] do
+    post 'change_location', to: 'gangs#change_location'
+  end
+
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

@@ -41,6 +41,16 @@ class ApplicationController < ActionController::Base
     raise "Gang (gang_id: #{params[:gang_id] || params[:id]} not found for player_id: #{@player.id}" unless @gang
   end
 
+  def set_gang_for_modification
+    @gang = Gang.find( params[:gang_id] || params[:id] )
+    raise "Gang (gang_id: #{params[:gang_id] || params[:id]} not found" unless @gang
+
+    unless @gang.player.user_id == current_user.id
+      "#{current_user} is not allowed to modify #{@gang}"
+    end
+  end
+
+
   def set_unit
     set_gang
     @unit = @gang.units.find( params[ :id ] )

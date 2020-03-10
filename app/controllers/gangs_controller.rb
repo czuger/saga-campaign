@@ -3,6 +3,12 @@ class GangsController < ApplicationController
   before_action :set_gang, only: [:show, :edit, :update, :destroy]
   before_action :set_campaign, only: [:new]
   before_action :set_player, only: [:create, :index]
+  before_action :set_gang_for_modification, only: [:change_location]
+
+  def change_location
+    @gang.location = params[:location]
+    @gang.save!
+  end
 
   # GET /gangs
   # GET /gangs.json
