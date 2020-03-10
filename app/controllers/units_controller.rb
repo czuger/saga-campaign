@@ -18,7 +18,7 @@ class UnitsController < ApplicationController
   def new
     @unit = Unit.new
 
-    @select_factions_options = Rules::Factions.new.select_options_array
+
   end
 
   # GET /units/1/edit

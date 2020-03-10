@@ -25,7 +25,16 @@ class GangsController < ApplicationController
   def new
     @gang = Gang.new
 
-    @icons = Dir['app/assets/images/**/*.svg'].map{ |e| e.gsub( 'app/assets/images/', '' ) }.in_groups_of( 7 )
+    @icons = {}
+    Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
+      @icons_set = File.basename(icons_path)
+      # p icons_set
+      @icons[@icons_set] = Dir["#{icons_path}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) } # .in_groups_of( 7 )
+    end
+
+    # p @icons
+
+    @select_factions_options = Rules::Factions.new.select_options_array
   end
 
   # GET /gangs/1/edit
