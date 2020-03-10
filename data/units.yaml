@@ -1,18 +1,4 @@
 ---
-unite:
-  arme:
-    :cost: 0
-    :amount: 0
-    :saga_dice: 0
-    :min_units_for_saga_dice: 0
-    :armor:
-      :cac: 0
-      :ranged: 0
-    :damage:
-      :cac: 0
-      :ranged: 0
-    :options:
-    - options
 seigneur:
   "-":
     :cost: 0

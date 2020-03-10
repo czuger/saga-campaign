@@ -1,13 +1,5 @@
 ---
-Type:
-  unite:
-  - arme
-  - arme
-  - arme
-  - arme
-  - arme
-  - arme
-Nature:
+nature:
   seigneur:
   - "-"
   - arc
@@ -44,7 +36,7 @@ Nature:
   - javelots
   nuee:
   - "-"
-Horde:
+horde:
   seigneur:
   - "-"
   - arme_lourde
@@ -80,7 +72,7 @@ Horde:
   - mobile
   char_de_guerre:
   - "-"
-Morts:
+morts:
   seigneur:
   - "-"
   - monture_animal
@@ -116,7 +108,7 @@ Morts:
   - monture_bete_vol
   decerebres:
   - "-"
-Souterrains:
+souterrains:
   seigneur:
   - "-"
   - arme_lourde
@@ -149,7 +141,7 @@ Souterrains:
   - volante_vol
   equipe_de_destrucion:
   - "-"
-Royaumes:
+royaumes:
   seigneur:
   - "-"
   - arme_lourde
@@ -198,7 +190,7 @@ Royaumes:
   - monture_ailee_vol
   nuee:
   - "-"
-Outremonde:
+outremonde:
   seigneur:
   - "-"
   - arme_lourde

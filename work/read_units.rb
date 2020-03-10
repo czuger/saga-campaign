@@ -5,15 +5,6 @@ data = {}
 allowance = {}
 fr_translation = {}
 
-def set_allowance(allowance, libe, unit, weapon_key)
-  if libe != ''
-    allowance[libe] ||= {}
-    allowance[libe][unit] ||= []
-    allowance[libe][unit] << weapon_key
-  end
-  return allowance
-end
-
 def to_key( _libe )
   libe = _libe.downcase
   libe.gsub!( /[(),]/, '' )
@@ -23,9 +14,26 @@ def to_key( _libe )
   libe
 end
 
+def set_allowance(allowance, fr_translation, libe, unit, weapon_key)
+  if libe != ''
+    libe_key = to_key( libe )
+
+    fr_translation['fr']['faction'] ||= {}
+    fr_translation['fr']['faction'][libe_key] = libe
+
+    allowance[libe_key] ||= {}
+    allowance[libe_key][unit] ||= []
+    allowance[libe_key][unit] << weapon_key
+  end
+
+  return allowance, fr_translation
+end
+
 fr_translation['fr'] = {}
 
-File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each do |line|
+File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do |line, index|
+  next if index == 0
+
   nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice, min_units_for_saga_dice, unit_name,
     weapon_name, armor, damage, options = line.split("\t")
 
@@ -53,7 +61,7 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each do |line|
   data[unit_key][weapon_key] ||= {}
 
   [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
-    allowance = set_allowance( allowance, libe, unit_key, weapon_key )
+    allowance, fr_translation = set_allowance( allowance, fr_translation, libe, unit_key, weapon_key )
   end
 
   data[unit_key][weapon_key][:cost] = cost.to_i
@@ -101,7 +109,7 @@ File.open('../data/units.yaml', 'w') do |f|
   f.write(data.to_yaml)
 end
 
-File.open('../data/allowance.yaml', 'w') do |f|
+File.open('../data/faction.yaml', 'w') do |f|
   f.write(allowance.to_yaml)
 end
 
