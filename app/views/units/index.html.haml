@@ -1,4 +1,4 @@
-%h1 Listing units
+%h1 Liste des unités de la bande
 
 %table.table
   %thead
@@ -18,8 +18,8 @@
         %td= unit.points
         -#%td= link_to 'Show', unit
         -#%td= link_to 'Edit', edit_unit_path(unit)
-        %td= link_to 'Supprimer', [@campaign, @gang, unit], method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
+        %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
 
 %br
 
-= link_to 'Ajouter une unité', new_campaign_gang_unit_path( @campaign, @gang ), class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'

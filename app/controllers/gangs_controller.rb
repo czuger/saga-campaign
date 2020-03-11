@@ -53,9 +53,9 @@ class GangsController < ApplicationController
     Gang.transaction do
       respond_to do |format|
         if @gang.save
-          @campaign.logs.create!( data: "#{@player.user.name} a ajouté la bande n°#{@gang.number}." )
+          @campaign.logs.create!( data: "#{@player.user.name} a créé la bande n°#{@gang.number}." )
 
-          format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
+          format.html { redirect_to gang_units_path( @gang ), notice: 'La bande a bien été créée.' }
 
         else
           format.html { render :new }

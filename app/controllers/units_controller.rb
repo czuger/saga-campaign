@@ -17,8 +17,6 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
-
-
   end
 
   # GET /units/1/edit
