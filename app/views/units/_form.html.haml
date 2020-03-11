@@ -8,12 +8,11 @@
 
   %b
     Type d'unité
-  = f.select(:libe, options_for_select(@faction_data.keys), {}, class: 'form-control')
+  = f.select(:libe, options_for_select(@unit_select_options_for_faction), {}, class: 'form-control')
 
   %b
     Arme
   = select_tag(:weapon, [], class: 'form-control')
-
 
   .mt-5
 
@@ -30,4 +29,4 @@
   .actions
     = f.submit 'Save', class: 'btn btn-light'
 
-= hidden_field_tag :faction_data, @faction_data.to_json
+= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json

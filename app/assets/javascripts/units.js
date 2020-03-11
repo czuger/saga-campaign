@@ -1,18 +1,12 @@
 // Unit type part
 
-var faction_data = null;
+var weapon_select_options_prepared_strings = null;
 
 const set_unit_type_selection = function() {
     $('#unit_libe').change(
         function() {
             var selected_unit_type = $( "#unit_libe" ).val();
-
-            var options = ""
-            for (var item of faction_data[selected_unit_type]) {
-                options += "<option>" + item + "</option>"
-            }
-
-            $('#weapon').html( options )
+            $('#weapon').html( weapon_select_options_prepared_strings[selected_unit_type] )
     });
 };
 
@@ -40,8 +34,8 @@ const set_unit_type_selection = function() {
 $(function() {
     if (window.location.pathname.match( /units/ )) {
 
-        faction_data = JSON.parse( $('#faction_data').val() )
-        console.log(faction_data)
+        weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() )
+        console.log(weapon_select_options_prepared_strings)
 
         set_unit_type_selection();
         // set_unit_type_selection();

@@ -18,7 +18,10 @@ class UnitsController < ApplicationController
   def new
     @unit = Unit.new
 
-    @faction_data = Rules::Factions.new.data[ @gang.faction ]
+    faction_data = Rules::Factions.new
+
+    @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
+    @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
   end
 
   # GET /units/1/edit
