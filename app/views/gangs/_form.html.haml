@@ -6,11 +6,18 @@
         - @gang.errors.full_messages.each do |message|
           %li= message
 
-  - @icons.each do |icons_groups|
-    .row
-      - icons_groups.each do |icon|
-        - next unless icon
-        = link_to image_tag( icon, class: 'gang_icon' ), campaign_gangs_path( @campaign.id, icon: icon ), method: :post
+  %b
+    Faction
 
-  .actions
-    = f.submit 'Save'
+  = select_tag('select_faction', options_for_select(@select_factions_options), class: 'form-control')
+  = hidden_field_tag :selected_gang_icon, nil
+
+  .mt-2.ml-2
+    - @icons.each do |icons_group_key, icons|
+      .row{ class: "factions_icons #{icons_group_key}" }
+        - icons.each do |icon|
+          - next unless icon
+          = image_tag( icon, class: 'gang_icon' )
+
+  .actions.mt-2
+    = f.submit 'Enregistrer', class: 'btn btn-secondary'
