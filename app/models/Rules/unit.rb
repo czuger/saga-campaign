@@ -3,17 +3,11 @@ require 'yaml'
 module Rules
   class Unit
 
-    @@data = nil
+    attr_reader :data
 
     def initialize
-      unless @@data
-        data = YAML.load_file( 'data/units.yaml' )
-
-        data.each do |unit|
-          @@data ||= {}
-          @@data[unit] = unit
-        end
-
+      unless @data
+        @data = YAML.load_file( 'data/units.yaml' )
       end
     end
 

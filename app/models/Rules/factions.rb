@@ -21,7 +21,9 @@ module Rules
     def weapon_select_options_prepared_strings( faction )
       result = @data[faction].keys.map{ |unit|
         [
-          unit, ActionController::Base.helpers.options_for_select( @data[faction][unit].map{ |e| [ I18n.t( "weapon.#{e}" ), e ] } )
+          unit, ActionController::Base.helpers.options_for_select(
+            @data[faction][unit].map{ |e| [ I18n.t( "weapon.#{e}" ), e ] }
+          )
         ]
       }
 

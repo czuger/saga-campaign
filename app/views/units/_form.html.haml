@@ -8,25 +8,24 @@
 
   %b
     Type d'unité
-  = f.select(:libe, options_for_select(@unit_select_options_for_faction), {}, class: 'form-control')
+  = f.select( :libe, options_for_select(@unit_select_options_for_faction), {}, class: 'form-control')
 
   %b
     Arme
-  = select_tag(:weapon, [], class: 'form-control')
+  = select_tag( :weapon, [], class: 'form-control')
 
-  .mt-5
+  .mt-3
 
-  .col-3
-    = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
+  -# In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
+  .row
+    .col-3
+      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
 
-  - # In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
-  .col
-    = f.text_field :libe, class: 'form-control', placeholder: 'Description'
-
-  .col-2
-    = f.number_field :points, class: 'form-control', placeholder: 'Points', step: 0.5
+    .col-2
+      = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true
 
   .actions
     = f.submit 'Save', class: 'btn btn-light'
 
 = hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
+= hidden_field_tag :units_data, @units.to_json
