@@ -1,21 +1,16 @@
 require 'yaml'
+require 'ostruct'
 
 module Rules
   class Factions
 
-    attr_reader :select_options_array
+    attr_reader :select_options_array, :data
 
     def initialize
       unless @data
-        data = YAML.load_file( 'data/factions.yaml' )
-        @data ||= {}
+        @data = YAML.load_file( 'data/factions.yaml' )
 
         @select_options_array = data.keys.map{ |e| [ I18n.t( "faction.#{e}" ), e ] }
-
-        data.each do |unit|
-          @data[unit] = unit
-        end
-        
       end
     end
 

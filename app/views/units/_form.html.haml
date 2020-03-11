@@ -1,4 +1,4 @@
-= form_for [ @campaign, @gang, @unit ] do |f|
+= form_for [ @gang, @unit ] do |f|
   - if @unit.errors.any?
     #error_explanation
       %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
@@ -6,16 +6,28 @@
         - @unit.errors.full_messages.each do |message|
           %li= message
 
-  .row
-    .col-3
-      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
+  %b
+    Type d'unité
+  = f.select(:libe, options_for_select(@faction_data.keys), {}, class: 'form-control')
 
-    - # In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
-    .col
-      = f.text_field :libe, class: 'form-control', placeholder: 'Description'
+  %b
+    Arme
+  = select_tag(:weapon, [], class: 'form-control')
 
-    .col-2
-      = f.number_field :points, class: 'form-control', placeholder: 'Points', step: 0.5
+
+  .mt-5
+
+  .col-3
+    = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
+
+  - # In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
+  .col
+    = f.text_field :libe, class: 'form-control', placeholder: 'Description'
+
+  .col-2
+    = f.number_field :points, class: 'form-control', placeholder: 'Points', step: 0.5
 
   .actions
     = f.submit 'Save', class: 'btn btn-light'
+
+= hidden_field_tag :faction_data, @faction_data.to_json

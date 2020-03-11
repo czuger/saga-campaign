@@ -17,6 +17,8 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
+
+    @faction_data = Rules::Factions.new.data[ @gang.faction ]
   end
 
   # GET /units/1/edit
