@@ -1,31 +1,40 @@
-const show_corresponding_factions_icons = function() {
+// Faction part
+const on_faction_selection = function() {
     var selected_faction = $( "#select_faction" ).val();
     $('.factions_icons').hide();
     $("." + selected_faction).show();
-    random_icon_select();
+    select_random_gang_icon();
 };
 
-const set_faction_icons_show = function() {
-    $('#select_faction').change(show_corresponding_factions_icons);
+const set_faction_selection = function() {
+    $('#select_faction').change(on_faction_selection);
 };
 
-const set_icon_select = function() {
+// Gang part
+const set_gang_icon_selection = function() {
     $('.gang_icon').click(function(){
         $('.gang_icon').removeClass('selected_gang_icon');
-        $(this).addClass('selected_gang_icon');
+        select_gang_icon($(this))
     })
 };
 
-const random_icon_select = function() {
+const select_random_gang_icon = function() {
     var selected_icon = _.sample($('.gang_icon:visible'));
-
-    $(selected_icon).addClass('selected_gang_icon');
+    select_gang_icon($(selected_icon))
 };
 
+const select_gang_icon = function( icon ){
+    console.log(icon.attr('gang_icon_name'))
+    icon.addClass('selected_gang_icon');
+    $('#selected_gang_icon').val( icon.attr('gang_icon_name') )
+}
+
+
+// Initialisation
 $(function() {
     if (window.location.pathname.match( /gangs/ )) {
-        show_corresponding_factions_icons();
-        set_faction_icons_show();
-        set_icon_select();
+        on_faction_selection();
+        set_faction_selection();
+        set_gang_icon_selection();
     }
 });

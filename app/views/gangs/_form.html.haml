@@ -17,7 +17,7 @@
       .row{ class: "factions_icons #{icons_group_key}" }
         - icons.each do |icon|
           - next unless icon
-          = image_tag( icon, class: 'gang_icon' )
+          = image_tag( icon, class: 'gang_icon', gang_icon_name: icon.gsub('gangs_icons/', '' ) )
 
   .actions.mt-2
     = f.submit 'Enregistrer', class: 'btn btn-secondary'
