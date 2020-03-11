@@ -1,8 +1,7 @@
 class GangsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_gang, only: [:show, :edit, :update, :destroy]
-  before_action :set_campaign, only: [:new]
-  before_action :set_player, only: [:create, :index]
+  before_action :set_player, only: [:create, :index, :new]
   before_action :set_gang_for_modification, only: [:change_location]
 
   def change_location
@@ -24,6 +23,8 @@ class GangsController < ApplicationController
   # GET /gangs/new
   def new
     @gang = Gang.new
+    @gang.faction = :nature
+    @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number )
 
     @icons = {}
     Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
@@ -35,6 +36,7 @@ class GangsController < ApplicationController
     # p @icons
 
     @select_factions_options = Rules::Factions.new.select_options_array
+    @select_localisations_options = Rules::Location.new.localisations
   end
 
   # GET /gangs/1/edit
@@ -44,13 +46,14 @@ class GangsController < ApplicationController
   # POST /gangs
   # POST /gangs.json
   def create
-    new_gang_number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number )
-    @gang = Gang.new({ campaign_id: @campaign.id, player_id: @player.id, icon: params[:icon], number: new_gang_number } )
+    @gang = Gang.new(gang_params)
+    @gang.campaign = @campaign
+    @gang.player = @player
 
     Gang.transaction do
       respond_to do |format|
         if @gang.save
-          @campaign.logs.create!( data: "#{@player.user.name} a ajouté la bande n°#{new_gang_number}." )
+          @campaign.logs.create!( data: "#{@player.user.name} a ajouté la bande n°#{@gang.number}." )
 
           format.html { redirect_to campaign_player_path( @campaign, @player ), notice: 'La bande a bien été ajoutée.' }
 
@@ -92,6 +95,6 @@ class GangsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
-      params.permit(:icon )
+      params.require( :gang ).permit( :icon, :faction, :number, :location )
     end
 end

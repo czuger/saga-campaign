@@ -6,11 +6,16 @@
         - @gang.errors.full_messages.each do |message|
           %li= message
 
+  = f.hidden_field :icon
+  = f.hidden_field :number
+
   %b
     Faction
+  = f.select(:faction, options_for_select(@select_factions_options), {}, class: 'form-control')
 
-  = select_tag('select_faction', options_for_select(@select_factions_options), class: 'form-control')
-  = hidden_field_tag :selected_gang_icon, nil
+  %b
+    Localisation
+  = f.select(:location, options_for_select(@select_localisations_options), {}, class: 'form-control')
 
   .mt-2.ml-2
     - @icons.each do |icons_group_key, icons|

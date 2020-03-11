@@ -33,7 +33,7 @@
     - @player.gangs.order( 'updated_at DESC' ).each do |gang|
       %tr
         %td
-          = image_tag( gang.icon, class: 'gang_icon' )
+          = image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
         %td= gang.points
         %td
           - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }

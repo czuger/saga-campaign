@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_213025) do
     t.integer "number", limit: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "location"
+    t.string "location", null: false
+    t.string "faction", null: false
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end
