@@ -11,7 +11,7 @@ def to_key( _libe )
   libe.gsub!( ' ', '_' )
   libe.gsub!( /[éèê]/, 'e' )
   libe.gsub!( /[à]/, 'a' )
-  libe.gsub!( /[ï]/, 'i' )
+  libe.gsub!( /[ïî]/, 'i' )
   libe
 end
 

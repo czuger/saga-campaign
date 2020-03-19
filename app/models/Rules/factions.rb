@@ -18,6 +18,10 @@ module Rules
       @data[faction].keys.map{ |e| [ I18n.t( "units.#{e}" ), e.to_s ] }
     end
 
+    def weapon_select_options_for_faction_and_unit( faction, unit )
+      @data[faction][unit].map{ |e| [ I18n.t( "weapon.#{e}" ), e ] }
+    end
+
     def weapon_select_options_prepared_strings( faction )
       result = @data[faction].keys.map{ |unit|
         [

@@ -17,12 +17,16 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
+
+    @unit.libe = :seigneur
+    @unit.weapon = '-'
+
+    @unit.amount =
     set_units_rules_data
   end
 
   # GET /units/1/edit
   def edit
-    p @unit
     set_units_rules_data
   end
 
@@ -50,22 +54,22 @@ class UnitsController < ApplicationController
 
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
-  # def update
-  #   add_gang_to_unit
-  #
-  #   respond_to do |format|
-  #     if @unit.update(unit_params)
-  #
-  #       after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
-  #
-  #       format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-  #
-  #     else
-  #       format.html { render :edit }
-  #
-  #     end
-  #   end
-  # end
+  def update
+    # add_gang_to_unit
+
+    respond_to do |format|
+      if @unit.update(unit_params)
+
+        # after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
+
+        format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
+
+      else
+        format.html { render :edit }
+
+      end
+    end
+  end
 
   # DELETE /units/1
   # DELETE /units/1.json
@@ -117,7 +121,9 @@ class UnitsController < ApplicationController
       faction_data = Rules::Factions.new
 
       @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
-      p @unit_select_options_for_faction
+      @weapon_select_options_for_faction_warlord = faction_data.weapon_select_options_for_faction_and_unit(
+        @gang.faction, 'seigneur' )
+
       @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
 
       @units = Rules::Unit.new.data

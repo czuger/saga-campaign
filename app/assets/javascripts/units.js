@@ -7,17 +7,17 @@ const set_unit_type_selection = function() {
     $('#unit_libe').change(
         function() {
             var selected_unit_type = $( "#unit_libe" ).val();
-            $('#weapon').html( weapon_select_options_prepared_strings[selected_unit_type] );
+            $('#unit_weapon').html( weapon_select_options_prepared_strings[selected_unit_type] );
 
-            $('#weapon').trigger('change');
+            $('#unit_weapon').trigger('change');
     });
 };
 
 const set_weapon_selection = function() {
-    $('#weapon').change(
+    $('#unit_weapon').change(
         function() {
             var selected_unit_type = $( "#unit_libe" ).val();
-            var selected_weapon_type = $( "#weapon" ).val();
+            var selected_weapon_type = $( "#unit_weapon" ).val();
 
             var unit_data = units_data[selected_unit_type][selected_weapon_type];
 
@@ -35,7 +35,7 @@ const set_unit_amount_change = function() {
     $('#unit_amount').change(
         function() {
             var selected_unit_type = $( "#unit_libe" ).val();
-            var selected_weapon_type = $( "#weapon" ).val();
+            var selected_weapon_type = $( "#unit_weapon" ).val();
 
             var unit_data = units_data[selected_unit_type][selected_weapon_type];
 
@@ -49,6 +49,7 @@ const set_unit_amount_change = function() {
 $(function() {
     if (window.location.pathname.match( /units/ )) {
 
+        console.log($('#weapon_select_options_prepared_strings').val())
         weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() );
         units_data = JSON.parse( $('#units_data').val() );
         console.log(units_data);
@@ -57,7 +58,7 @@ $(function() {
         set_weapon_selection();
         set_unit_amount_change();
 
-        $('#unit_libe').val( 'seigneur' ).trigger('change');
-        $('#weapon').val( '-' ).trigger('change');
+        // $('#unit_libe').val( 'seigneur' ).trigger('change');
+        // $('#unit_weapon').val( '-' ).trigger('change');
     }
 });
