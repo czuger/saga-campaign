@@ -22,6 +22,16 @@
         %td= link_to 'Modifier', edit_unit_path(unit)
         %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
 
+    %tr
+      %td
+      %td
+      %td
+      %td= @gang.points
+      -#%td= link_to 'Show', unit
+      %td
+      %td
+
+
 %br
 
 = link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
