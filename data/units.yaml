@@ -5,6 +5,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -23,6 +26,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -41,6 +47,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -59,6 +68,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -77,6 +89,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -96,6 +111,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -115,6 +133,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -133,6 +154,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -150,6 +174,9 @@ seigneur:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -169,6 +196,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -185,6 +215,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -201,6 +234,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -217,6 +253,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -233,6 +272,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -250,6 +292,9 @@ lieutenant:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -268,6 +313,9 @@ sorcier:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 3
       :ranged: 4
@@ -286,6 +334,9 @@ sorcier:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 3
       :ranged: 3
@@ -304,6 +355,9 @@ sorcier:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 3
       :ranged: 3
@@ -323,6 +377,9 @@ sorcier:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 3
       :ranged: 3
@@ -343,6 +400,9 @@ monstre:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -359,6 +419,9 @@ monstre:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -376,6 +439,9 @@ monstre:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -395,6 +461,9 @@ creatures:
     :amount: 2
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 6
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -410,6 +479,9 @@ creatures:
     :amount: 2
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 6
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -426,6 +498,9 @@ creatures:
     :amount: 2
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 6
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -443,6 +518,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -454,6 +532,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -465,6 +546,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -476,6 +560,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -487,6 +574,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -500,6 +590,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -513,6 +606,9 @@ gardes:
     :amount: 4
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 12
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -525,6 +621,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 4
       :ranged: 4
@@ -536,6 +635,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 4
@@ -547,6 +649,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -558,6 +663,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -569,6 +677,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -580,6 +691,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 4
       :ranged: 3
@@ -593,6 +707,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 4
       :ranged: 3
@@ -604,6 +721,9 @@ guerriers:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -616,6 +736,9 @@ levees:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 4
       :ranged: 4
@@ -627,6 +750,9 @@ levees:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 3
       :ranged: 4
@@ -638,6 +764,9 @@ levees:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 3
       :ranged: 4
@@ -649,6 +778,9 @@ levees:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 3
       :ranged: 3
@@ -660,6 +792,9 @@ levees:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 3
       :ranged: 3
@@ -672,6 +807,9 @@ machine_de_guerre:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 3
       :ranged: 4
@@ -689,6 +827,9 @@ machine_de_guerre:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -705,6 +846,9 @@ machine_de_guerre:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -723,6 +867,9 @@ necromant:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -740,6 +887,9 @@ necromant:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -757,6 +907,9 @@ necromant:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 4
@@ -773,6 +926,9 @@ necromant:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 3
@@ -791,6 +947,9 @@ paladin:
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -801,12 +960,15 @@ paladin:
     :options:
     - presence
     - determination
-    - heroïque
+    - heroique
   arme_lourde:
     :cost: 0
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 4
       :ranged: 5
@@ -817,12 +979,15 @@ paladin:
     :options:
     - presence
     - determination
-    - heroïque
+    - heroique
   monture_animal:
     :cost: 0
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -833,12 +998,15 @@ paladin:
     :options:
     - presence
     - determination
-    - heroïque
+    - heroique
   monture_ailee_vol:
     :cost: 0
     :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 4
@@ -849,7 +1017,7 @@ paladin:
     :options:
     - presence
     - determination
-    - heroïque
+    - heroique
     - vol
 nuee:
   "-":
@@ -857,6 +1025,9 @@ nuee:
     :amount: 12
     :saga_dice: 1
     :min_units_for_saga_dice: 6
+    :min: 6
+    :max: 12
+    :increment_step: 6
     :armor:
       :cac: 4
       :ranged: 3
@@ -872,6 +1043,9 @@ decerebres:
     :amount: 20
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 6
+    :max: 20
+    :increment_step: 6
     :armor:
       :cac: 4
       :ranged: 4
@@ -888,6 +1062,9 @@ char_de_guerre:
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
     :armor:
       :cac: 5
       :ranged: 5
@@ -906,6 +1083,9 @@ traqueurs:
     :amount: 8
     :saga_dice: 1
     :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
     :armor:
       :cac: 3
       :ranged: 3
@@ -918,10 +1098,13 @@ traqueurs:
     - traque
 equipe_de_destrucion:
   "-":
-    :cost: 1
-    :amount: 8
+    :cost: 0
+    :amount: 1
     :saga_dice: 0
     :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 2
+    :increment_step: 2
     :armor:
       :cac: 3
       :ranged: 4
@@ -932,3 +1115,150 @@ equipe_de_destrucion:
     :options:
     - arme_a_feu
     - instable_et_dangereux
+le_conclave:
+  "-":
+    :cost: 3
+    :amount: 4
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 4
+    :increment_step: 4
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: 1
+      :ranged: 2
+    :options:
+    - determination
+    - magie
+    - prodiges
+    - maîtrise
+    - desarmes
+    - projectiles_magiques
+    :resistance: 2
+la_machine_incroyable_et_extraordinaire:
+  "-":
+    :cost: 2
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :armor:
+      :cac: 5
+      :ranged: 6
+    :damage:
+      :cac: 1
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - imposant
+    - elle_bouge_
+    - plateforme_de_tir
+    - boum_
+    :resistance: 2
+fanatiques_devoues:
+  "-":
+    :cost: 1
+    :amount: 8
+    :saga_dice: 1
+    :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 12
+    :increment_step: 4
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 2
+      :ranged: 0
+    :options:
+    - primitif
+    - determination_fanatique
+le_monstre_de_guerre:
+  "-":
+    :cost: 3
+    :amount: 1
+    :saga_dice: 2
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :armor:
+      :cac: 6
+      :ranged: 5
+    :damage:
+      :cac: 16
+      :ranged: 4
+    :resistance: 3
+    :options:
+    - primitif
+    - imposant
+    - terrifiante_presence
+    - plateforme_de_tir
+les_bersekers:
+  "-":
+    :cost: 1
+    :amount: 4
+    :saga_dice: 0
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 12
+    :increment_step: 1
+    :armor:
+      :cac: 3
+      :ranged: 3
+    :damage:
+      :cac: 4
+      :ranged: 0
+    :options:
+    - determination
+    - destines_a_mourir
+l'archidemon:
+  "-":
+    :cost: 2
+    :amount: 1
+    :saga_dice: 1
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :armor:
+      :cac: 5
+      :ranged: 4
+    :damage:
+      :cac: 10
+      :ranged: 0
+    :options:
+    - determination
+    - presence
+    - vol
+    - imposant
+    - souffle
+    - nous_sommes_a_vos_ordres
+    - magie
+    :resistance: 1
+les_spectres:
+  "-":
+    :cost: 1
+    :amount: 4
+    :saga_dice: 0
+    :min_units_for_saga_dice: 4
+    :min: 4
+    :max: 4
+    :increment_step: 4
+    :armor:
+      :cac: 0
+      :ranged: 0
+    :damage:
+      :cac: 0
+      :ranged: 0
+    :options:
+    - vol
+    - apparitions
+    - intangibles
+    - presence_spectrale

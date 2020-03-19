@@ -72,6 +72,10 @@ horde:
   - mobile
   char_de_guerre:
   - "-"
+  le_monstre_de_guerre:
+  - "-"
+  les_bersekers:
+  - "-"
 morts:
   seigneur:
   - "-"
@@ -107,6 +111,8 @@ morts:
   - monture_bete
   - monture_bete_vol
   decerebres:
+  - "-"
+  les_spectres:
   - "-"
 souterrains:
   seigneur:
@@ -190,6 +196,12 @@ royaumes:
   - monture_ailee_vol
   nuee:
   - "-"
+  le_conclave:
+  - "-"
+  la_machine_incroyable_et_extraordinaire:
+  - "-"
+  fanatiques_devoues:
+  - "-"
 outremonde:
   seigneur:
   - "-"
@@ -219,4 +231,6 @@ outremonde:
   - arme_lourde
   - volant
   traqueurs:
+  - "-"
+  l'archidemon:
   - "-"

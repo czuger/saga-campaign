@@ -8,6 +8,8 @@ const set_unit_type_selection = function() {
         function() {
             var selected_unit_type = $( "#unit_libe" ).val();
             $('#weapon').html( weapon_select_options_prepared_strings[selected_unit_type] );
+
+            $('#weapon').trigger('change');
     });
 };
 
@@ -20,29 +22,27 @@ const set_weapon_selection = function() {
             var unit_data = units_data[selected_unit_type][selected_weapon_type];
 
             $('#unit_amount').val( unit_data.amount );
+            $('#unit_amount').attr( 'min', unit_data.min );
+            $('#unit_amount').attr( 'max', unit_data.max );
+
+            $('#unit_amount').attr( 'step', unit_data.increment_step );
+
             $('#unit_points').val( unit_data.cost );
         });
 };
 
+const set_unit_amount_change = function() {
+    $('#unit_amount').change(
+        function() {
+            var selected_unit_type = $( "#unit_libe" ).val();
+            var selected_weapon_type = $( "#weapon" ).val();
 
-// // Gang part
-// const set_gang_icon_selection = function() {
-//     $('.gang_icon').click(function(){
-//         $('.gang_icon').removeClass('selected_gang_icon');
-//         select_gang_icon($(this))
-//     })
-// };
-//
-// const select_random_gang_icon = function() {
-//     var selected_icon = _.sample($('.gang_icon:visible'));
-//     select_gang_icon($(selected_icon))
-// };
-//
-// const select_gang_icon = function( icon ){
-//     console.log(icon.attr('gang_icon_name'))
-//     icon.addClass('selected_gang_icon');
-//     $('#gang_icon').val( icon.attr('gang_icon_name') )
-// }
+            var unit_data = units_data[selected_unit_type][selected_weapon_type];
+
+            var cost = parseFloat( $('#unit_amount').val() / unit_data.amount ) * unit_data.cost;
+            $('#unit_points').val( cost );
+        });
+};
 
 
 // Initialisation
@@ -55,8 +55,9 @@ $(function() {
 
         set_unit_type_selection();
         set_weapon_selection();
+        set_unit_amount_change();
 
-        // set_unit_type_selection();
-        // set_gang_icon_selection();
+        $('#unit_libe').val( 'seigneur' ).trigger('change');
+        $('#weapon').val( '-' ).trigger('change');
     }
 });

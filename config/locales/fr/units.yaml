@@ -9,14 +9,21 @@ fr:
     gardes: Gardes
     guerriers: Guerriers
     levees: Levées
-    machine_de_guerre: Machine de Guerre
+    machine_de_guerre: Machine de guerre
     necromant: Nécromant
     paladin: Paladin
     nuee: Nuée
     decerebres: Décérébrés
-    char_de_guerre: Char de Guerre
+    char_de_guerre: Char de guerre
     traqueurs: Traqueurs
     equipe_de_destrucion: Équipe de destrucion
+    le_conclave: Le conclave
+    la_machine_incroyable_et_extraordinaire: La machine incroyable et extraordinaire
+    fanatiques_devoues: Fanatiques dévoués
+    le_monstre_de_guerre: Le monstre de guerre
+    les_bersekers: Les bersekers
+    l'archidemon: L'archidémon
+    les_spectres: Les spectres
   weapon:
     "-": "-"
     arme_lourde: Arme lourde
@@ -67,7 +74,7 @@ fr:
     tir_puissant: Tir Puissant
     encombrant: Encombrant
     armes_a_feu: Armes à feu
-    heroïque: Héroïque
+    heroique: Héroïque
     primitif_insignifiant: Primitif Insignifiant
     minuscule: Minuscule
     decerebre: Décérébré
@@ -79,3 +86,16 @@ fr:
     traque: Traque
     arme_a_feu: Arme à feu
     instable_et_dangereux: Instable et dangereux
+    prodiges: Prodiges
+    maîtrise: Maîtrise
+    desarmes: Désarmés
+    projectiles_magiques: Projectiles Magiques
+    elle_bouge_: Elle bouge !
+    plateforme_de_tir: Plateforme de tir
+    boum_: Boum !
+    determination_fanatique: Détermination fanatique
+    terrifiante_presence: Terrifiante présence
+    destines_a_mourir: Destinés à mourir
+    apparitions: Apparitions
+    intangibles: Intangibles
+    presence_spectrale: Présence spectrale
