@@ -38,5 +38,5 @@
         %td
           - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
           = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"))
-        %td= link_to 'Modifier la composition', campaign_gang_units_path( @campaign, gang )
-        %td= link_to 'Supprimer', [ @campaign, gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }
+        %td= link_to 'Modifier la composition', gang_units_path( gang )
+        %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }

@@ -37,19 +37,32 @@ class ApplicationController < ActionController::Base
 
   # Mean set gang for modification. For read only, use find directly
   def set_gang
-    @gang = Gang.find( params[:gang_id] )
+    @gang = Gang.find( params[:gang_id] || params[:id] )
 
-    raise "Gang (gang_id: #{params[:gang_id]} not found" unless @gang
+    raise "Gang (gang_id: #{params[:gang_id] || params[:id]} not found" unless @gang
 
-    unless @gang.player.user_id == current_user.id
+    @campaign = @gang.campaign
+    @player = @gang.player
+    @user = @player.user
+
+    unless @user_id == current_user.id
       "#{current_user} is not allowed to modify #{@gang}"
     end
   end
 
   def set_unit
-    set_gang
-    @unit = @gang.units.find( params[ :id ] )
-    raise "Unit (unit_id: #{params[:unit_id] || params[:id]} not found for gang_id: #{@gang.id}" unless @unit
+    @unit = Unit.find( params[:unit_id] || params[:id] )
+
+    raise "Unit (unit_id: #{params[:unit_id] || params[:id]} not found" unless @unit
+
+    @gang = @unit.gang
+    @campaign = @gang.campaign
+    @player = @gang.player
+    @user = @player.user
+
+    unless @user.id == current_user.id
+      "#{current_user} is not allowed to modify #{@unit}"
+    end
   end
 
 end

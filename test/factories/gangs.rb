@@ -2,11 +2,14 @@ FactoryBot.define do
   factory :gang do
     campaign { nil }
     player { nil }
-    icon { 'gangs_icons/empire/caesar.svg' }
+    icon { 'royaumes/caesar.svg' }
 
     sequence :number do |n|
       n
     end
+
+    location {'L1'}
+    faction {'nature'}
 
   end
 end

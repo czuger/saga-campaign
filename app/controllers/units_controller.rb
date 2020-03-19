@@ -1,7 +1,7 @@
 class UnitsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
-  before_action :set_gang, only: [:index, :new, :create]
+  before_action :set_gang, only: [:index, :new, :create, :destroy]
 
   # GET /units
   # GET /units.json
@@ -39,9 +39,9 @@ class UnitsController < ApplicationController
       respond_to do |format|
         if @unit.save
 
-          after_unit_update( "#{@player.user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}." )
+          after_unit_update( "#{@user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}." )
 
-          format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: 'Unit was successfully created.' }
+          format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully created.' }
 
         else
           format.html { render :new }
@@ -86,7 +86,7 @@ class UnitsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to campaign_gang_units_path( @campaign, @gang ), notice: "L'unité a bien été supprimée." }
+      format.html { redirect_to gang_units_path( @gang ), notice: "L'unité a bien été supprimée." }
 
     end
 
