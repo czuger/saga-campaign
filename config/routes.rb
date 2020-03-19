@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :campaigns do
-    resources :players, except: [ :edit, :update, :index, :destroy ]
+    resources :players, except: [ :edit, :update, :index, :destroy ] do
+      put :modify_pp
+    end
 
     resources :gangs, only: [ :new, :create ]
 
@@ -17,6 +19,11 @@ Rails.application.routes.draw do
   end
 
   resources :units, only: [ :edit, :destroy ]
+
+  resources :players, only: [] do
+    patch :modify_pp
+  end
+
 
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -3,6 +3,9 @@
 var weapon_select_options_prepared_strings = null;
 var units_data = null;
 
+// TODO : switch to vue-js
+// see : https://codepen.io/adnanshussain/pen/KqVxXL?editors=1010
+
 const set_unit_type_selection = function() {
     $('#unit_libe').change(
         function() {

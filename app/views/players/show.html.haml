@@ -4,19 +4,31 @@
 
 %hr
 
-.row
+= form_with model: @player, url: player_modify_pp_path( @player ) do |f|
+  .row
 
-  .col-3
-    %button.btn.btn-secondary.btn-block{ type: :button }
-      Joueur
-      %span.badge.badge-light
-        = @player.user.name
+    .col-3
+      %button.btn.btn-secondary.btn-block{ type: :button }
+        Joueur
+        %span.badge.badge-light
+          = @player.user.name
 
-  .col-3
-    %button.btn.btn-secondary.btn-block{ type: :button }
-      PP
-      %span.badge.badge-light
-        = @player.pp
+    .col-3
+      %button.btn.btn-secondary.btn-block{ type: :button }
+        PP
+        %span.badge.badge-light
+          = @player.pp
+
+
+    .col-3
+      = f.number_field :pp, class: 'form-control'
+
+    .col-3
+      = f.submit 'Enregistrer', class: 'btn btn-secondary btn-block'
+
+-# Vue-js test.
+-##app-vue-1
+-#  = number_field_tag :foo, nil, { 'v-on:click' => 'change' }
 
 %br
 
@@ -24,6 +36,7 @@
   %thead
     %tr
       %th Bande
+      %th
       %th Points
       %th Position
       %th
@@ -32,6 +45,8 @@
   %tbody
     - @player.gangs.order( 'updated_at DESC' ).each do |gang|
       %tr
+        %td
+          = gang.number
         %td
           = image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
         %td= gang.points

@@ -55,6 +55,16 @@ class PlayersController < ApplicationController
     end
   end
 
+  def modify_pp
+    # TODO : use set_player once it is fixed.
+
+    player = Player.find( params[:player_id] )
+    player.pp = params[:player][:pp]
+    player.save!
+
+    player.campaign.logs.create!( data: "#{player.user.name} a modifié son nombre de pp : #{player.pp}." )
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
