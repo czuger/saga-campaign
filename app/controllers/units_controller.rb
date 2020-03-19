@@ -17,18 +17,14 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
-
-    faction_data = Rules::Factions.new
-
-    @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
-    @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
-
-    @units = Rules::Unit.new.data
+    set_units_rules_data
   end
 
   # GET /units/1/edit
-  # def edit
-  # end
+  def edit
+    p @unit
+    set_units_rules_data
+  end
 
   # POST /units
   # POST /units.json
@@ -115,6 +111,16 @@ class UnitsController < ApplicationController
     def set_gang_points
       points_total = @gang.units.sum( :points )
       @gang.update!( points: points_total )
+    end
+
+    def set_units_rules_data
+      faction_data = Rules::Factions.new
+
+      @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
+      p @unit_select_options_for_faction
+      @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
+
+      @units = Rules::Unit.new.data
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

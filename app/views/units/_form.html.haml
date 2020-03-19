@@ -1,4 +1,4 @@
-= form_for [ @gang, @unit ] do |f|
+= form_with model: @unit, url: '' do |f|
   - if @unit.errors.any?
     #error_explanation
       %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
@@ -8,11 +8,13 @@
 
   %b
     Type d'unité
-  = f.select( :libe, options_for_select(@unit_select_options_for_faction), {}, class: 'form-control')
+  = select_tag( :libe, options_for_select( @unit_select_options_for_faction, @unit.libe ), class: 'form-control')
 
   %b
     Arme
   = select_tag( :weapon, [], class: 'form-control')
+
+  -#= f.text_field :amount
 
   .mt-3
 

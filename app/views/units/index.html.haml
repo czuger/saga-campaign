@@ -14,10 +14,10 @@
     - @units.each do |unit|
       %tr
         %td= unit.amount
-        %td= unit.libe
+        %td= I18n.t( "units.#{unit.libe}" )
         %td= unit.points
         -#%td= link_to 'Show', unit
-        -#%td= link_to 'Edit', edit_unit_path(unit)
+        %td= link_to 'Modifier', edit_unit_path(unit)
         %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
 
 %br

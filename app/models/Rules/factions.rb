@@ -15,7 +15,7 @@ module Rules
     end
 
     def unit_select_options_for_faction( faction )
-      @data[faction].keys.map{ |e| [ I18n.t( "units.#{e}" ), e ] }
+      @data[faction].keys.map{ |e| [ I18n.t( "units.#{e}" ), e.to_s ] }
     end
 
     def weapon_select_options_prepared_strings( faction )
