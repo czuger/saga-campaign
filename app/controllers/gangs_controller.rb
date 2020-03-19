@@ -1,8 +1,7 @@
 class GangsController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_gang, only: [:show, :edit, :update, :destroy]
+  before_action :set_gang, only: [:show, :edit, :update, :destroy, :change_location]
   before_action :set_player, only: [:create, :index, :new]
-  before_action :set_gang_for_modification, only: [:change_location]
 
   def change_location
     @gang.location = params[:location]
@@ -35,7 +34,7 @@ class GangsController < ApplicationController
 
     # p @icons
 
-    @select_factions_options = Rules::Factions.new.select_options_array
+    @select_factions_options = Rules::Factions.new.faction_select_options
     @select_localisations_options = Rules::Location.new.localisations
   end
 

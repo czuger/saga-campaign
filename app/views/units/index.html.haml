@@ -5,6 +5,7 @@
     %tr
       %th Nombre
       %th Unité
+      %th Type
       %th Points
       -#%th
       -#%th
@@ -15,6 +16,7 @@
       %tr
         %td= unit.amount
         %td= I18n.t( "units.#{unit.libe}" )
+        %td= I18n.t( "weapon.#{unit.weapon}" )
         %td= unit.points
         -#%td= link_to 'Show', unit
         %td= link_to 'Modifier', edit_unit_path(unit)

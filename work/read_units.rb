@@ -65,7 +65,7 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
     allowance, fr_translation = set_allowance( allowance, fr_translation, libe, unit_key, weapon_key )
   end
 
-  data[unit_key][weapon_key][:cost] = cost.to_i
+  data[unit_key][weapon_key][:cost] = cost.gsub( ',', '.' ).to_f
   data[unit_key][weapon_key][:amount] = amount.to_i
   data[unit_key][weapon_key][:saga_dice] = saga_dice.to_i
   data[unit_key][weapon_key][:min_units_for_saga_dice] = min_units_for_saga_dice.to_i

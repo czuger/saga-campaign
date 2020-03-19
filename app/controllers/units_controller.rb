@@ -1,7 +1,7 @@
 class UnitsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
-  before_action :set_gang, only: [:index, :new, :create, :destroy]
+  before_action :set_gang, only: [:index, :new, :create]
 
   # GET /units
   # GET /units.json
@@ -20,8 +20,9 @@ class UnitsController < ApplicationController
 
     @unit.libe = :seigneur
     @unit.weapon = '-'
+    @unit.amount = 1
+    @unit.points = 1
 
-    @unit.amount =
     set_units_rules_data
   end
 
@@ -60,7 +61,7 @@ class UnitsController < ApplicationController
     respond_to do |format|
       if @unit.update(unit_params)
 
-        # after_unit_update( "#{@player.user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
+        after_unit_update( "#{@user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
 
         format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
 
@@ -103,10 +104,6 @@ class UnitsController < ApplicationController
     end
 
     def after_unit_update( log_string )
-      unless @player.user.unit_old_libe_strings.exists?( libe: @h_params['libe'] )
-        @player.user.unit_old_libe_strings.create!( libe: @h_params['libe'] )
-      end
-
       set_gang_points
 
       @campaign.logs.create!( data: log_string )
@@ -131,6 +128,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:libe, :amount, :points)
+      params.require(:unit).permit(:libe, :amount, :points, :weapon)
     end
 end

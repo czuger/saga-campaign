@@ -47,12 +47,11 @@ const set_unit_amount_change = function() {
 
 // Initialisation
 $(function() {
-    if (window.location.pathname.match( /units/ )) {
+    if ( window.location.pathname.match( /units\/\d+\/edit/ ) ||
+        window.location.pathname.match( /gangs\/\d+\/units\/new/ ) ) {
 
-        console.log($('#weapon_select_options_prepared_strings').val())
         weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() );
         units_data = JSON.parse( $('#units_data').val() );
-        console.log(units_data);
 
         set_unit_type_selection();
         set_weapon_selection();
