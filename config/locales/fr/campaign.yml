@@ -2,3 +2,6 @@ fr:
   campaigns:
     form:
       name: Nom
+
+    new:
+      title: Nouvelle campagne
