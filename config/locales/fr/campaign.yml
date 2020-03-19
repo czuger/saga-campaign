@@ -5,3 +5,7 @@ fr:
 
     new:
       title: Nouvelle campagne
+
+    edit:
+      title: Edition d'une campagne
+

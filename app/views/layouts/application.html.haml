@@ -12,4 +12,9 @@
     .container
 
       = render partial: 'layouts/menu'
+
+      - if notice
+        .mt-1.alert.alert-success{ role: :alert }
+          = notice
+
       = yield

@@ -4,3 +4,15 @@ fr:
    others: "%{count} erreurs se sont produites lors de la sauvegarde de %{subject} :"
 
   save: Enregistrer
+
+  creation_success:
+    m: "%{item} a été créé avec succès."
+    f: "%{item} a été créée avec succès."
+
+  update_success:
+    m: "%{item} a été modifié avec succès."
+    f: "%{item} a été modifiée avec succès."
+
+  deletion_success:
+    m: "%{item} a été supprimé avec succès."
+    f: "%{item} a été supprimée avec succès."

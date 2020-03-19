@@ -14,8 +14,8 @@
       %tr
         %td= campaign.user.name
         %td= campaign.name
-        %td= link_to 'Détail', campaign
-        %td= link_to 'Modifier', edit_campaign_path(campaign)
+        %td= link_to 'Détails', campaign
+        %td= link_to 'Renommer', edit_campaign_path(campaign)
         %td= link_to 'Supprimer', campaign, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
