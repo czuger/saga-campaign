@@ -11,4 +11,8 @@ class Unit < ApplicationRecord
     @unit_data = OpenHash.new( @@units_data.data[libe][weapon] )
   end
 
+  def full_name
+    "#{libe}, #{weapon}"
+  end
+
 end

@@ -15,22 +15,33 @@ class Fight
   def initialize
     @player_1 = Gang.find( 1 )
     @player_2 = Gang.find( 2 )
+
+    @player_1_units = @player_1.units.to_a
+    @player_2_units = @player_2.units.to_a
   end
 
   def go
     1.upto(6).each do |i|
       puts "Tour #{i}"
 
-      round( @player_1, @player_2 )
-      round( @player_2, @player_1 )
+      round( @player_1_units, @player_2_units )
+      round( @player_2_units, @player_1_units )
     end
+
+    p @player_1_units
+    p @player_2_units
   end
 
-  def round( attacker, defender )
-    attacker.units.each do |unit|
+  def round( attacker_units, defender_units )
+    attacker_units.each do |unit|
+      if check_for_victory
+        puts "Victory"
+        return true
+      end
+
       puts "Attacking unit : #{unit.libe} #{unit.weapon}"
       if will_attack?(unit)
-        target = get_target( defender )
+        target = get_target( defender_units )
 
         puts "Will attack : #{target.libe} #{target.weapon}"
 
@@ -64,8 +75,13 @@ class Fight
         saves = saves_result.rolls.select{ |d| d >= save_value }
         puts "Saves : #{saves.count} (#{saves} >= #{save_value})"
 
-        final_hits = hits.count - saves.count
+        final_hits = [hits.count - saves.count, 0].max
         puts "Final hits = #{final_hits}"
+
+        unless assign_hits( target, final_hits )
+          puts "#{target.full_name} is destroyed"
+          defender_units.delete( target )
+        end
       end
 
       puts
@@ -73,6 +89,27 @@ class Fight
   end
 
   private
+
+  def check_for_victory
+    if @player_1_units.empty?
+      puts 'Defender win'
+      return true
+    end
+
+    if @player_2_units.empty?
+      puts 'Attacker win'
+      return true
+    end
+
+    false
+  end
+
+  def assign_hits( unit, hit )
+    unit.amount -= hit
+    puts "#{unit.full_name} take #{hit}, amount = #{unit.amount}"
+    return false if unit.amount <= 0
+    true
+  end
 
   def will_attack?( unit )
     ca = unit.unit_data.fight_info.can_attack
@@ -89,10 +126,11 @@ class Fight
     return false
   end
 
-  def get_target( defender )
+  def get_target( defender_units )
     wt = WeightedTable.new( floating_points: true )
 
-    units = defender.units.map{ |u| [ u.unit_data.fight_info.being_targeted, u ] }
+
+    units = defender_units.map{ |u| [ u.unit_data.fight_info.being_targeted, u ] }
     wt.from_weighted_table( units)
 
     wt.sample
