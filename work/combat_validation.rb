@@ -103,14 +103,27 @@ class Fight
       puts 'Attacker win'
       return :attacker
     else
+      if @player_1_units.count >= @player_2_units.count
+        puts 'Attacker win'
+        return :attacker
+      else
+        puts 'Defender win'
+        return :defender
+      end
       puts 'Equality'
       return :equality
     end
   end
 
   def assign_hits( unit, hit )
-    unit.amount -= hit
-    puts "#{unit.full_name} take #{hit}, amount = #{unit.amount}" unless @silent
+    if unit.protection > 0
+      unit.protection -= hit
+      puts "#{unit.full_name} has protection. Protection take #{hit}, protection = #{unit.protection}" unless @silent
+    else
+      unit.amount -= hit
+      puts "#{unit.full_name} take #{hit}, amount = #{unit.amount}" unless @silent
+    end
+
     return false if unit.amount <= 0
     true
   end
@@ -143,7 +156,7 @@ end
 def stats
   results = {}
   f = Fight.new( true )
-  1.upto(100) do
+  1.upto(200) do
     r = f.go
     results[r] ||= 0
     results[r] += 1
@@ -151,8 +164,8 @@ def stats
   pp results
 end
 
-# stats
+stats
 
-Fight.new.go
+# Fight.new.go
 
 
