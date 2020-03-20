@@ -37,8 +37,20 @@ def options( unite, arme, opt_array )
 
     options << :imposant if opt_array.include?( 'imposant' )
   end
+  
+  options.uniq!
+  
+  being_targeted = 1
+  options.each do |o|
+     being_targeted *= 0.75 if [ :rapide, :lent, :distance ].include?( o )
+  end
 
-  options
+  can_attack = 1
+  options.each do |o|
+    can_attack *= 0.75 if [ :lent ].include?( o )
+  end
+
+  return options, being_targeted, can_attack
 end
 
 def hp( data )
@@ -55,11 +67,12 @@ end
   v.keys.each do |e|
     # puts "#{k}, #{e}, #{options(e, @data[k][e][:options] )}" #, e.split( _ ).flatten.uniq.sort
 
-    o = options(k, e, @data[k][e][:options] )
+    o, being_targeted, can_attack = options(k, e, @data[k][e][:options] )
 
     @data[k][e][:fight_info] = {
       rapide: o.include?( :rapide ), lent: o.include?( :lent ), distance: o.include?( :distance ),
-      protection_points: hp( @data[k][e] )
+      protection_points: hp( @data[k][e] ), being_targeted: being_targeted,
+      can_attack: (can_attack*100).to_i
     }
   end
 end
