@@ -81,8 +81,10 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   data[unit_key][weapon_key][:damage] ||= {}
   m = damage.match( /(.+) \((.+)\)/ )
 
-  damage_cac = m[0]
-  damage_ranged = m[1]
+  damage_cac = m[1]
+  damage_ranged = m[2]
+
+  puts "#{unit_key}, #{weapon_key} => damage = #{damage}, match=#{m.inspect}, damage_cac=#{damage_cac}, damage_ranged=#{damage_ranged}"
 
   data[unit_key][weapon_key][:damage][:cac] = damage_cac.to_r
   data[unit_key][weapon_key][:damage][:ranged] = damage_ranged.to_r
