@@ -79,9 +79,13 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   data[unit_key][weapon_key][:armor][:ranged] = armor_ranged.to_i
 
   data[unit_key][weapon_key][:damage] ||= {}
-  damage_cac, damage_ranged = damage.scan( /\d+/ )
-  data[unit_key][weapon_key][:damage][:cac] = damage_cac.to_i
-  data[unit_key][weapon_key][:damage][:ranged] = damage_ranged.to_i
+  m = damage.match( /(.+) \((.+)\)/ )
+
+  damage_cac = m[0]
+  damage_ranged = m[1]
+
+  data[unit_key][weapon_key][:damage][:cac] = damage_cac.to_r
+  data[unit_key][weapon_key][:damage][:ranged] = damage_ranged.to_r
 
   options = options.split(',').map{ |e| e.strip }
   # p options
