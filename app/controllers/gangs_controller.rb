@@ -35,7 +35,7 @@ class GangsController < ApplicationController
     # p @icons
 
     @select_factions_options = Rules::Factions.new.faction_select_options
-    @select_localisations_options = Rules::Location.new.localisations
+    @select_localisations_options = Rules::Map.new.localisations
   end
 
   # GET /gangs/1/edit

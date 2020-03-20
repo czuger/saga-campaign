@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @localisations = Rules::Location.new.localisations
+    @localisations = Rules::Map.new.localisations
   end
 
   # GET /players/new
