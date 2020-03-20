@@ -6,9 +6,9 @@ module Rules
 
     attr_reader :data, :parsed_data
 
-    def initialize( unit_file_path: nil )
+    def initialize
       unless @data
-        @data = YAML.load_file( unit_file_path ? unit_file_path : 'data/units.yaml' )
+        @data = YAML.load_file( 'data/units.yaml' )
 
         @parsed_data = OpenHash.new( @data )
       end

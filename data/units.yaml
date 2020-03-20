@@ -17,7 +17,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -49,7 +49,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -81,7 +81,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -113,7 +113,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -145,7 +145,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -178,7 +178,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -211,7 +211,7 @@ seigneur:
         numerator: 8
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 8
+        numerator: 4
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -243,7 +243,7 @@ seigneur:
         numerator: 10
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 10
+        numerator: 4
     :options:
     - determination
     - presence
@@ -274,7 +274,7 @@ seigneur:
         numerator: 10
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 10
+        numerator: 4
     :options:
     - determination
     - presence
@@ -307,7 +307,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -337,7 +337,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -367,7 +367,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -397,7 +397,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -427,7 +427,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -458,7 +458,7 @@ lieutenant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :options:
     - determination
     - presence
@@ -490,7 +490,7 @@ sorcier:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - presence
@@ -522,7 +522,7 @@ sorcier:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - presence
@@ -554,7 +554,7 @@ sorcier:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - presence
@@ -587,7 +587,7 @@ sorcier:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - presence
@@ -621,7 +621,7 @@ monstre:
         numerator: 14
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 14
+        numerator: 0
     :resistance: 2
     :options:
     - presence
@@ -651,7 +651,7 @@ monstre:
         numerator: 12
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 12
+        numerator: 0
     :resistance: 2
     :options:
     - presence
@@ -682,7 +682,7 @@ monstre:
         numerator: 10
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 10
+        numerator: 4
     :resistance: 2
     :options:
     - presence
@@ -715,7 +715,7 @@ creatures:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 1
     :resistance: 1
     :options:
     - presence
@@ -744,7 +744,7 @@ creatures:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 1
     :resistance: 1
     :options:
     - presence
@@ -774,7 +774,7 @@ creatures:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 1
     :resistance: 1
     :options:
     - presence
@@ -805,7 +805,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :fight_info:
       :rapide: false
       :lent: false
@@ -830,7 +830,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :fight_info:
       :rapide: false
       :lent: false
@@ -855,7 +855,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :fight_info:
       :rapide: false
       :lent: false
@@ -880,7 +880,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :fight_info:
       :rapide: true
       :lent: false
@@ -905,7 +905,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :options:
     - vol
     :fight_info:
@@ -932,7 +932,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :options:
     - vol
     :fight_info:
@@ -959,7 +959,7 @@ gardes:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 1
     :fight_info:
       :rapide: true
       :lent: false
@@ -984,7 +984,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1009,7 +1009,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1034,7 +1034,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1059,7 +1059,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1084,7 +1084,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1109,7 +1109,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :options:
     - vol
@@ -1136,7 +1136,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: true
@@ -1161,7 +1161,7 @@ guerriers:
         denominator: 1
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 1
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: true
@@ -1212,7 +1212,7 @@ levees:
         denominator: 3
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 3
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1237,7 +1237,7 @@ levees:
         denominator: 3
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 3
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1262,7 +1262,7 @@ levees:
         denominator: 3
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 3
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1287,7 +1287,7 @@ levees:
         denominator: 3
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 3
+        denominator: 2
         numerator: 1
     :fight_info:
       :rapide: false
@@ -1314,7 +1314,7 @@ machine_de_guerre:
         numerator: 1
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 1
+        numerator: 4
     :resistance: 1
     :options:
     - desarme
@@ -1345,7 +1345,7 @@ machine_de_guerre:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 4
     :resistance: 1
     :options:
     - desarme
@@ -1375,7 +1375,7 @@ machine_de_guerre:
         numerator: 1
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 1
+        numerator: 4
     :resistance: 1
     :options:
     - desarme
@@ -1407,7 +1407,7 @@ necromant:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -1438,7 +1438,7 @@ necromant:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - determination
     - nous_sommes_a_vos_ordres
@@ -1469,7 +1469,7 @@ necromant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 0
     :options:
     - determination
     - presence
@@ -1499,7 +1499,7 @@ necromant:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 0
     :options:
     - determination
     - presence
@@ -1531,7 +1531,7 @@ paladin:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 0
     :resistance: 1
     :options:
     - presence
@@ -1561,7 +1561,7 @@ paladin:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 0
     :resistance: 1
     :options:
     - presence
@@ -1591,7 +1591,7 @@ paladin:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 0
     :resistance: 1
     :options:
     - presence
@@ -1621,7 +1621,7 @@ paladin:
         numerator: 5
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 5
+        numerator: 0
     :resistance: 1
     :options:
     - presence
@@ -1652,8 +1652,8 @@ nuee:
         denominator: 2
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 2
-        numerator: 1
+        denominator: 1
+        numerator: 0
     :options:
     - primitif_insignifiant
     - minuscule
@@ -1681,8 +1681,8 @@ decerebres:
         denominator: 5
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 5
-        numerator: 1
+        denominator: 1
+        numerator: 0
     :options:
     - decerebre
     - lent
@@ -1712,7 +1712,7 @@ char_de_guerre:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 2
     :resistance: 1
     :options:
     - presence
@@ -1744,7 +1744,7 @@ traqueurs:
         numerator: 1
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 1
+        numerator: 0
     :options:
     - primitif
     - ne_peut_pas_serrer_les_rangs
@@ -1774,7 +1774,7 @@ equipe_de_destrucion:
         numerator: 1
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 1
+        numerator: 3
     :resistance: 1
     :options:
     - arme_a_feu
@@ -1803,7 +1803,7 @@ le_conclave:
         denominator: 2
         numerator: 1
       :ranged: !ruby/object:Rational
-        denominator: 2
+        denominator: 1
         numerator: 1
     :options:
     - determination
@@ -1838,7 +1838,7 @@ la_machine_incroyable_et_extraordinaire:
         numerator: 1
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 1
+        numerator: 0
     :options:
     - determination
     - presence
@@ -1872,7 +1872,7 @@ fanatiques_devoues:
         numerator: 2
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 2
+        numerator: 0
     :options:
     - primitif
     - determination_fanatique
@@ -1901,7 +1901,7 @@ le_monstre_de_guerre:
         numerator: 16
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 16
+        numerator: 4
     :resistance: 3
     :options:
     - primitif
@@ -1933,7 +1933,7 @@ les_bersekers:
         numerator: 4
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 4
+        numerator: 0
     :options:
     - determination
     - destines_a_mourir
@@ -1962,7 +1962,7 @@ l'archidemon:
         numerator: 10
       :ranged: !ruby/object:Rational
         denominator: 1
-        numerator: 10
+        numerator: 0
     :options:
     - determination
     - presence
