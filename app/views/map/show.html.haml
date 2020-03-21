@@ -2,6 +2,6 @@
   = image_tag 'map_2_small.jpg'
 
   - @gangs.each do |gang|
-    = image_tag( 'gangs_icons/' + gang.icon, class: 'on_map_gang_icon', style: @map.position_style( gang ) )
+    = image_tag( 'gangs_icons/' + gang.icon, class: 'on_map_gang_icon', style: @map.position_style( gang.location ) )
 
 

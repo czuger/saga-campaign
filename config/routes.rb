@@ -27,8 +27,12 @@ Rails.application.routes.draw do
   end
 
   # Used to set icons position on map
-  get 'map/edit', to: 'map#edit'
+  get 'map/create_positions', to: 'map#create_positions'
   post 'map/save_position', to: 'map#save_position'
+
+  get 'map/modify_positions', to: 'map#modify_positions'
+  post 'map/save_position', to: 'map#save_position'
+
 
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

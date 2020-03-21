@@ -1,0 +1,6 @@
+#map
+  = image_tag 'map_2_small.jpg'
+
+  - @map.localisations.each do |location|
+    = image_tag( 'gangs_icons/royaumes/laurels.svg', class: 'on_map_gang_icon', style: @map.position_style( location ),
+      location: location )

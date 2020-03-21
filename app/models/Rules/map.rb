@@ -17,10 +17,9 @@ module Rules
       @localisations = @positions.keys
     end
 
-    def position_style( gang )
-      # p gang
-      p = OpenStruct.new( @positions[ gang.location ] )
-      # p p
+    def position_style( location )
+      p = OpenStruct.new( @positions[ location ] )
+
       if p.x
         "left:#{p.x-162}px;top:#{p.y-58}px;"
       else
