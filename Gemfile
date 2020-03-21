@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :production do
-  gem 'therubyracer', :platforms => :ruby
+  gem 'mini_racer', :platforms => :ruby
 end
 
 group :development, :test do
