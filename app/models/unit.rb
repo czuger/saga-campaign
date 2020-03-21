@@ -7,14 +7,13 @@ class Unit < ApplicationRecord
   @@units_data = nil
 
   def unit_data
-    @@units_data = GameRules::Unit.new unless @@units_data
+    @@units_data ||= GameRules::Unit.new
 
-    return @unit_data if @unit_data
+    @unit_data ||= OpenHash.new( @@units_data.data[libe][weapon] )
+  end
 
-    @unit_data = OpenHash.new( @@units_data.data[libe][weapon] )
-    @protection = @unit_data.fight_info.protection_points || 0
-
-    @unit_data
+  def protection
+    @protection ||= ( @unit_data.fight_info.protection_points || 0 )
   end
 
   # Because OpenHash seems not handling nil correctly
@@ -23,7 +22,7 @@ class Unit < ApplicationRecord
   end
 
   def full_name
-    "#{libe}, #{weapon}"
+    "[#{libe}, #{weapon}]"
   end
 
 end
