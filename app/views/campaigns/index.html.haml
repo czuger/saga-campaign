@@ -14,12 +14,10 @@
       %tr
         %td= campaign.user.name
         %td= campaign.name
-        %td= link_to 'Détails', campaign
-        %td= link_to 'Renommer', edit_campaign_path(campaign)
-        %td= link_to 'Supprimer', campaign, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Détails', campaign, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Renommer', edit_campaign_path(campaign), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Supprimer', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
-%br
-
-= link_to 'Nouvelle campagne', new_campaign_path, class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Nouvelle campagne', new_campaign_path, class: 'btn btn-secondary btn-lg', role: 'button', 'aria-disabled' => 'true'
 
 

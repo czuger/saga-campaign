@@ -1,21 +1,26 @@
 
-= link_to 'Ajouter des joueurs', new_campaign_player_path( @campaign ), class: 'mt-2 btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Ajouter des joueurs', new_campaign_player_path( @campaign ), class: 'mt-2 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
 
 %hr
 
-%p
-  %b Créateur:
-  = @campaign.user.name
-%p
-  %b Nom de la campagne:
-  = @campaign.name
-%p
-  %b Joueurs:
-  - @players.each do |player|
-    -if player.user.id == @current_user.id
-      = link_to player.user.name, campaign_player_path( @campaign, player.id )
-    - else
-      = player.user.name
+.row.mb-3
+  .col
+    %button.btn.btn-secondary.btn-block{ type: :button }
+      Créateur
+      %span.badge.badge-light
+        = @campaign.user.name
+
+  .col
+    %button.btn.btn-secondary.btn-block{ type: :button }
+      Nom de la campagne
+      %span.badge.badge-light
+        = @campaign.name
+
+  .col
+    %button.btn.btn-secondary.btn-block{ type: :button }
+      Joueurs
+      %span.badge.badge-light
+        = @players.map{ |e| e.user.name }.join( ', ' )
 
 %table.table
   %thead
