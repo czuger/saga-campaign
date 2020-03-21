@@ -17,6 +17,11 @@ class Unit < ApplicationRecord
     @unit_data
   end
 
+  # Because OpenHash seems not handling nil correctly
+  def raw_unit_data
+    @@units_data.data[libe][weapon]
+  end
+
   def full_name
     "#{libe}, #{weapon}"
   end

@@ -32,20 +32,10 @@ module GameRules
       attacker_units.each do |attacker|
         return if attacker_units.empty? || defender_units.empty?
 
-        puts "Attacking unit : #{attacker.full_name}" unless @silent
         if will_attack?(attacker)
-          defender = get_target( defender_units )
-
-          puts "Will attack : #{defender.full_name}" unless @silent
-          attacking_hits = roll_attack( attacker, defender )
-
-          if @last_attack_cac
-            puts "#{defender.full_name} riposte." unless @silent
-            defending_hits = roll_attack( defender, attacker )
-          end
-
-          defender_units = assign_hits( defender_units, defender, attacking_hits )
-          attacker_units = assign_hits( attacker_units, attacker, defending_hits ) if defending_hits
+          attacker_units, defender_units = perform_attack( attacker_units, defender_units, attacker )
+        else
+          puts "#{attacker.full_name} n'attaquera pas ce tour." unless @silent
         end
 
         puts unless @silent
@@ -60,6 +50,38 @@ module GameRules
       @player_2_units = @player_2.units.to_a
     end
 
+    def perform_attack( attacker_units, defender_units, attacker )
+      defender = get_target( defender_units )
+
+      puts "#{attacker.full_name} attaque #{defender.full_name}" unless @silent
+      attacking_hits = roll_attack( attacker, defender )
+
+      if @last_attack_cac
+        puts "#{defender.full_name} riposte." unless @silent
+        defending_hits = roll_attack( defender, attacker )
+      end
+
+      defender_units = assign_hits( defender_units, defender, attacking_hits )
+      attacker_units = assign_hits( attacker_units, attacker, defending_hits ) if defending_hits
+
+      [ attacker_units, defender_units ]
+    end
+
+
+    # Set the type of the attack
+    #
+    # @param attacker [Unit] the attacker.
+    #
+    # @return [Symbol] the type of the attack that will be performed.
+    def get_attack_type( attacker )
+      return :magic if attacker.raw_unit_data[:options]&.include?( 'magie' )
+
+      # Probably a OpenHash conversion issue. == true is required
+      return :distance if attacker.raw_unit_data[:fight_info][:distance]
+
+      :cac
+    end
+
     # Compute the the attacking and defending values required for the fight.
     #
     # @param attacker [Unit] the attacker.
@@ -67,23 +89,26 @@ module GameRules
     #
     # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
     def get_attack_info( attacker, defender )
-      # Probably a OpenHash conversion issue. == true is required
-      if( attacker.unit_data.fight_info.distance == true )
-        @last_attack_cac = false
 
-        dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
+      ai = get_attack_type( attacker )
+      @last_attack_cac = false
 
-        puts "Ranged attack with #{dice_pool} dice" unless @silent
+      case ai
+        when :magic
+          puts 'Attaque magique' unless @silent
+          [ 6, 4, 6 ]
+        when :distance
+          dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
+          puts "Ranged attack with #{dice_pool} dice" unless @silent
+          [ dice_pool, defender.unit_data.armor.ranged, 5 ]
+        when :cac
+          @last_attack_cac = true
 
-        [ dice_pool, defender.unit_data.armor.ranged, 5 ]
-      else
-        @last_attack_cac = true
-
-        dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
-
-        puts "Melee attack #{dice_pool} dice" unless @silent
-
-        [ dice_pool, defender.unit_data.armor.cac, 4 ]
+          dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
+          puts "Melee attack #{dice_pool} dice" unless @silent
+          [ dice_pool, defender.unit_data.armor.cac, 4 ]
+        else
+          raise "Attack type unknown : #{ai}"
       end
     end
 
@@ -161,12 +186,10 @@ module GameRules
       puts "Unit rolled a #{dice} and will attack if roll is below #{ca}" unless @silent
 
       if dice <= ca
-        puts 'Unit will attack.' unless @silent
-        return true
+        true
+      else
+        false
       end
-
-      puts 'Unit will not attack.' unless @silent
-      return false
     end
 
     def get_target( defender_units )

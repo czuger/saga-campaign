@@ -23,8 +23,8 @@ def stats
   pp results
 end
 
-stats
+# stats
 
-# GameRules::Fight.new.go
+GameRules::Fight.new.go
 
 
