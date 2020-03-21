@@ -9,6 +9,10 @@ set :rbenv_ruby, '2.6.5'
 
 set :keep_releases, 3
 
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
+append :linked_files,  'config/secrets.yml', 'config/omniauth.yaml', 'config/email.txt', 'config/character_id.txt'
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
