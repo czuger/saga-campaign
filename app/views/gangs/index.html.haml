@@ -1,6 +1,6 @@
 %p#notice= notice
 
-= link_to 'Ajouter une bande', new_campaign_gang_path( @campaign ), class: 'mb-3 btn btn-secondary btn-lg', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Ajouter une bande', new_campaign_gang_path( @campaign ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
 
 -# Vue-js test.
 -##app-vue-1
@@ -30,5 +30,5 @@
           - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
           = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"), class: 'location_selector')
 
-        %td= link_to 'Modifier la composition', gang_units_path( gang )
-        %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }
+        %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

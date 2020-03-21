@@ -26,7 +26,7 @@
       = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true
 
   .actions
-    = f.submit 'Enregistrer', class: 'mt-2 btn btn-light'
+    = f.submit 'Enregistrer', class: 'mt-2 btn btn-secondary'
 
 = hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
 = hidden_field_tag :units_data, @units.to_json

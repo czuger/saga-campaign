@@ -19,8 +19,8 @@
         %td= I18n.t( "weapon.#{unit.weapon}" )
         %td= unit.points
         -#%td= link_to 'Show', unit
-        %td= link_to 'Modifier', edit_unit_path(unit)
-        %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }
+        %td= link_to 'Modifier', edit_unit_path(unit), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
     %tr
       %td
@@ -34,4 +34,4 @@
 
 %br
 
-= link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'btn btn-light btn-lg', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
