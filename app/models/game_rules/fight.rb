@@ -30,39 +30,7 @@ module GameRules
 
           puts "Will attack : #{target.libe} #{target.weapon}" unless @silent
 
-          dice_pool = nil
-          opponent_armor = nil
-          save_value = nil
-          # Probably a OpenHash conversion issue. == true is required
-          if( unit.unit_data.fight_info.distance == true )
-            dice_pool = (unit.amount * unit.unit_data.damage.ranged).to_i
-            opponent_armor = target.unit_data.armor.ranged
-            save_value = 5
-            puts "Ranged attack with #{dice_pool} dice" unless @silent
-          else
-            dice_pool = (unit.amount * unit.unit_data.damage.cac).to_i
-            opponent_armor = target.unit_data.armor.cac
-            save_value = 4
-            puts "Melee attack #{dice_pool} dice" unless @silent
-          end
-
-          roll_string = "s#{dice_pool}d6"
-          roll_result = Hazard.from_string roll_string
-          puts "Rolled dice : #{roll_result.rolls}" unless @silent
-
-          hits = roll_result.rolls.select{ |d| d >= opponent_armor }
-          puts "Hits : #{hits.count} (#{hits} >= #{opponent_armor})" unless @silent
-
-          roll_saves = "s#{hits.count}d6"
-          saves_result = Hazard.from_string roll_saves
-          puts "Rolled saves : #{saves_result.rolls}" unless @silent
-
-          saves = saves_result.rolls.select{ |d| d >= save_value }
-          puts "Saves : #{saves.count} (#{saves} >= #{save_value})" unless @silent
-
-          final_hits = [hits.count - saves.count, 0].max
-          puts "Final hits = #{final_hits}" unless @silent
-
+          final_hits = roll_attack( unit, target )
           unless assign_hits( target, final_hits )
             puts "#{target.full_name} is destroyed" unless @silent
             defender_units.delete( target )
@@ -81,6 +49,58 @@ module GameRules
 
       @player_1_units = @player_1.units.to_a
       @player_2_units = @player_2.units.to_a
+    end
+
+    # Compute the the attacking and defending values required for the fight.
+    #
+    # @param attacker [Unit] the attacker.
+    # @param defender [Unit] the defender.
+    #
+    # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
+    def get_attack_info( attacker, defender )
+      # Probably a OpenHash conversion issue. == true is required
+      if( attacker.unit_data.fight_info.distance == true )
+        dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
+
+        puts "Ranged attack with #{dice_pool} dice" unless @silent
+
+        [ dice_pool, defender.unit_data.armor.ranged, 5 ]
+      else
+        dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
+
+        puts "Melee attack #{dice_pool} dice" unless @silent
+
+        [ dice_pool, defender.unit_data.armor.cac, 4 ]
+      end
+    end
+
+    # Roll the dice for the attack
+    #
+    # @param attacker [Unit] the attacker.
+    # @param defender [Unit] the defender.
+    #
+    # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
+    def roll_attack( attacker, defender )
+      dice_pool, opponent_armor, save_value = get_attack_info( attacker, defender )
+
+      roll_string = "s#{dice_pool}d6"
+      roll_result = Hazard.from_string roll_string
+      puts "Rolled dice : #{roll_result.rolls}" unless @silent
+
+      hits = roll_result.rolls.select{ |d| d >= opponent_armor }
+      puts "Hits : #{hits.count} (#{hits} >= #{opponent_armor})" unless @silent
+
+      roll_saves = "s#{hits.count}d6"
+      saves_result = Hazard.from_string roll_saves
+      puts "Rolled saves : #{saves_result.rolls}" unless @silent
+
+      saves = saves_result.rolls.select{ |d| d >= save_value }
+      puts "Saves : #{saves.count} (#{saves} >= #{save_value})" unless @silent
+
+      final_hits = [hits.count - saves.count, 0].max
+      puts "Final hits = #{final_hits}" unless @silent
+
+      final_hits
     end
 
     def check_result
