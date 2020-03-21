@@ -16,12 +16,7 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 script:
-  - bundle exec rails webpacker:compile
   - rake test
 
 install:
   - bundle install
-  - nvm install node
-  - node -v
-  - npm i -g yarn
-  - yarn
