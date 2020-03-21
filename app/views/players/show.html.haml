@@ -1,9 +1,5 @@
 %p#notice= notice
 
-= link_to 'Ajouter une bande', new_campaign_gang_path( @campaign ), class: 'btn btn-secondary btn-lg', role: 'button', 'aria-disabled' => 'true'
-
-%hr
-
 = form_with model: @player, url: player_modify_pp_path( @player ) do |f|
   .row
 
@@ -16,9 +12,8 @@
     .col-3
       %button.btn.btn-secondary.btn-block{ type: :button }
         PP
-        %span.badge.badge-light
-          = @player.pp
-
+        -#%span.badge.badge-light
+        -#  = @player.pp
 
     .col-3
       = f.number_field :pp, class: 'form-control'
@@ -29,30 +24,3 @@
 -# Vue-js test.
 -##app-vue-1
 -#  = number_field_tag :foo, nil, { 'v-on:click' => 'change' }
-
-%br
-
-%table.table
-  %thead
-    %tr
-      %th Bande
-      %th
-      %th Points
-      %th Position
-      %th
-      %th
-
-  %tbody
-    - @player.gangs.order( 'updated_at DESC' ).each do |gang|
-      %tr
-        %td
-          = gang.number
-        %td
-          = image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
-        %td= gang.points
-        %td
-          - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
-          = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"), class: 'location_selector')
-
-        %td= link_to 'Modifier la composition', gang_units_path( gang )
-        %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }
