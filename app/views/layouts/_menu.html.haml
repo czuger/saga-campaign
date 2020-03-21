@@ -15,6 +15,9 @@
 
         - if @campaign&.id
           %li.nav-item
+            = link_to 'Campagne actuelle', campaign_path( @campaign ), class: 'nav-link'
+
+          %li.nav-item
             = link_to 'Carte', campaign_map_show_path( @campaign ), class: 'nav-link'
 
 
