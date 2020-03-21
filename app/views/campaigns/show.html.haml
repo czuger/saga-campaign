@@ -27,7 +27,7 @@
     - @campaign.logs.order( 'updated_at DESC' ).each do |log|
       %tr
         %td= log.data
-        %td= log.updated_at
+        %td= l( log.updated_at.localtime, format: :long ).capitalize
 
 
 
