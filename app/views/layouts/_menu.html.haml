@@ -22,6 +22,8 @@
           - if @player&.id
             = link_to 'Joueur', campaign_player_path( @campaign, @player ), class: 'nav-link'
 
+        %li.nav-item
+          = link_to 'Règles', '/rules.pdf', class: 'nav-link'
 
         %li.nav-item
           = link_to 'Deconnection', '/auth/signout', class: 'nav-link'
