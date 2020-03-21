@@ -10,7 +10,7 @@ set :rbenv_ruby, '2.6.5'
 set :keep_releases, 3
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
-append :linked_files,  'config/secrets.yml', 'config/omniauth.yaml', 'config/email.txt', 'config/character_id.txt'
+append :linked_files,  'config/secrets.yml', 'config/omniauth.yaml', 'db/production.sqlite3'
 
 
 # Default branch is :master
