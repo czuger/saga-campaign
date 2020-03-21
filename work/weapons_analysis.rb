@@ -42,7 +42,7 @@ def options( unite, arme, opt_array )
   
   being_targeted = 1
   options.each do |o|
-     being_targeted *= 0.75 if [ :rapide, :lent, :distance ].include?( o )
+     being_targeted *= 0.75 if [ :rapide, :lent, :distance, :magie ].include?( o )
   end
 
   can_attack = 1

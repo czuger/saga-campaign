@@ -503,7 +503,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 0.75
       :can_attack: 100
   monture_animal:
     :cost: 1.0
@@ -535,7 +535,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 0.5625
       :can_attack: 100
   volant:
     :cost: 1.0
@@ -568,7 +568,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 0.5625
       :can_attack: 100
   monture_ailee:
     :cost: 1.0
@@ -601,7 +601,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 0.5625
       :can_attack: 100
 monstre:
   behemoth:
@@ -1818,7 +1818,7 @@ le_conclave:
       :lent: false
       :distance: false
       :protection_points: 6
-      :being_targeted: 1
+      :being_targeted: 0.75
       :can_attack: 100
 la_machine_incroyable_et_extraordinaire:
   "-":
@@ -1977,7 +1977,7 @@ l'archidemon:
       :lent: false
       :distance: false
       :protection_points: 4
-      :being_targeted: 0.75
+      :being_targeted: 0.5625
       :can_attack: 100
 les_spectres:
   "-":
