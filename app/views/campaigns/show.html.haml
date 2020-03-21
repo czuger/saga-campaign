@@ -24,10 +24,12 @@
       %th
 
   %tbody
-    - @campaign.logs.order( 'updated_at DESC' ).each do |log|
+    - @logs.each do |log|
       %tr
         %td= log.data
         %td= l( log.updated_at.localtime, format: :long ).capitalize
+
+= will_paginate( @logs, previous_label: 'Log précédent', next_label: 'Log suivant', renderer: WillPaginate::ActionView::BootstrapLinkRenderer )
 
 
 

@@ -13,6 +13,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @players = @campaign.players.includes( :user ).all
+
+    @logs = @campaign.logs.order( 'updated_at DESC' ).paginate( page: params[:page] )
   end
 
   # GET /campaigns/new
