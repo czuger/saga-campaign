@@ -119,7 +119,7 @@ class UnitsController < ApplicationController
 
       @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
       @weapon_select_options_for_faction_warlord = faction_data.weapon_select_options_for_faction_and_unit(
-        @gang.faction, 'seigneur' )
+        @gang.faction, @unit.libe )
 
       @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
 
