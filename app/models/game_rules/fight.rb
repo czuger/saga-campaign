@@ -11,8 +11,8 @@ module GameRules
       1.upto(6).each do |i|
         puts "Tour #{i}" unless @silent
 
-        round( @player_1_units, @player_2_units )
-        round( @player_2_units, @player_1_units )
+        tour(@player_1_units, @player_2_units )
+        tour(@player_2_units, @player_1_units )
 
         break if @player_1_units.empty? || @player_2_units.empty?
       end
@@ -20,28 +20,37 @@ module GameRules
       check_result
     end
 
-    def round( attacker_units, defender_units )
-      attacker_units.each do |unit|
+    private
+
+    # Play a full tour where player1 and player 2 fights
+    #
+    # @param attacker_units [Array] all attacker units.
+    # @param defender_units [Array] all defender units.
+    #
+    # @return nil
+    def tour(attacker_units, defender_units )
+      attacker_units.each do |attacker|
         return if attacker_units.empty? || defender_units.empty?
 
-        puts "Attacking unit : #{unit.libe} #{unit.weapon}" unless @silent
-        if will_attack?(unit)
-          target = get_target( defender_units )
+        puts "Attacking unit : #{attacker.full_name}" unless @silent
+        if will_attack?(attacker)
+          defender = get_target( defender_units )
 
-          puts "Will attack : #{target.libe} #{target.weapon}" unless @silent
+          puts "Will attack : #{defender.full_name}" unless @silent
+          attacking_hits = roll_attack( attacker, defender )
 
-          final_hits = roll_attack( unit, target )
-          unless assign_hits( target, final_hits )
-            puts "#{target.full_name} is destroyed" unless @silent
-            defender_units.delete( target )
+          if @last_attack_cac
+            puts "#{defender.full_name} riposte." unless @silent
+            defending_hits = roll_attack( defender, attacker )
           end
+
+          defender_units = assign_hits( defender_units, defender, attacking_hits )
+          attacker_units = assign_hits( attacker_units, attacker, defending_hits ) if defending_hits
         end
 
         puts unless @silent
       end
     end
-
-    private
 
     def load
       @player_1 = Gang.find( 1 )
@@ -60,12 +69,16 @@ module GameRules
     def get_attack_info( attacker, defender )
       # Probably a OpenHash conversion issue. == true is required
       if( attacker.unit_data.fight_info.distance == true )
+        @last_attack_cac = false
+
         dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
 
         puts "Ranged attack with #{dice_pool} dice" unless @silent
 
         [ dice_pool, defender.unit_data.armor.ranged, 5 ]
       else
+        @last_attack_cac = true
+
         dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
 
         puts "Melee attack #{dice_pool} dice" unless @silent
@@ -79,7 +92,7 @@ module GameRules
     # @param attacker [Unit] the attacker.
     # @param defender [Unit] the defender.
     #
-    # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
+    # @return nil
     def roll_attack( attacker, defender )
       dice_pool, opponent_armor, save_value = get_attack_info( attacker, defender )
 
@@ -124,17 +137,21 @@ module GameRules
       end
     end
 
-    def assign_hits( unit, hit )
-      if unit.protection > 0
-        unit.protection -= hit
-        puts "#{unit.full_name} has protection. Protection take #{hit}, protection = #{unit.protection}" unless @silent
+    def assign_hits( defender_units, defender, hit )
+      if defender.protection > 0
+        defender.protection -= hit
+        puts "#{defender.full_name} has protection. Protection take #{hit}, protection = #{defender.protection}" unless @silent
       else
-        unit.amount -= hit
-        puts "#{unit.full_name} take #{hit}, amount = #{unit.amount}" unless @silent
+        defender.amount -= hit
+        puts "#{defender.full_name} take #{hit}, amount = #{defender.amount}" unless @silent
       end
 
-      return false if unit.amount <= 0
-      true
+      if defender.amount <= 0
+        puts "#{defender.full_name} is destroyed" unless @silent
+        defender_units.delete( defender )
+      end
+
+      defender_units
     end
 
     def will_attack?( unit )
