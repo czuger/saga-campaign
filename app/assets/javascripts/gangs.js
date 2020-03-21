@@ -1,3 +1,4 @@
+// This part is for the gang creation and the gang icon selection
 // Faction part
 const on_faction_selection = function() {
     var selected_faction = $( "#gang_faction" ).val();
@@ -29,12 +30,31 @@ const select_gang_icon = function( icon ){
     $('#gang_icon').val( icon.attr('gang_icon_name') )
 }
 
+const change_gang_location = function() {
+    $('.location_selector').change(
+        function(){
+
+            var selected_loc = $(this).val();
+            var s = selected_loc.split('#');
+
+            var loc = s[0];
+            var gang_id = s[1];
+
+            $.post( "/gangs/" + gang_id + "/change_location", { location: loc } );
+        }
+    )
+};
 
 // Initialisation
 $(function() {
-    if (window.location.pathname.match( /gangs/ )) {
+    if (window.location.pathname.match( /campaigns\/\d+\/gangs\/new/ )) {
         on_faction_selection();
         set_faction_selection();
         set_gang_icon_selection();
+    }
+
+    console.log( window.location.pathname );
+    if (window.location.pathname.match( /campaigns\/\d+\/gangs/ )) {
+        change_gang_location();
     }
 });

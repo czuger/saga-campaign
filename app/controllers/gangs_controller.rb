@@ -12,6 +12,7 @@ class GangsController < ApplicationController
   # GET /gangs.json
   def index
     @gangs = Gang.find_by_campaign_id_and_player_id( @campaign, @player )
+    @localisations = Rules::Map.new.localisations
   end
 
   # GET /gangs/1

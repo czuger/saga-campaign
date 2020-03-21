@@ -11,7 +11,7 @@
 
         - if @player&.id
           %li.nav-item
-            = link_to 'Bandes', campaign_player_path( @campaign, @player ), class: 'nav-link'
+            = link_to 'Bandes', campaign_gangs_path( @campaign ), class: 'nav-link'
 
         - if @campaign&.id
           %li.nav-item
