@@ -52,6 +52,7 @@
         %td= gang.points
         %td
           - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
-          = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"))
+          = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"), class: 'location_selector')
+
         %td= link_to 'Modifier la composition', gang_units_path( gang )
         %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }

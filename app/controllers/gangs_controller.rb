@@ -23,7 +23,7 @@ class GangsController < ApplicationController
   def new
     @gang = Gang.new
     @gang.faction = :nature
-    @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number )
+    @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number ) + 1
 
     @icons = {}
     Dir['app/assets/images/gangs_icons/*'].each do |icons_path|

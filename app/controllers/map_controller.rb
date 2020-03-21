@@ -1,5 +1,7 @@
 class MapController < ApplicationController
 
+  before_action :set_player, only: [:show]
+
   def show
     @campaign = Campaign.find(params[:campaign_id] )
     @gangs = @campaign.gangs
