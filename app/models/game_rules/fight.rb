@@ -1,18 +1,27 @@
 module GameRules
 
   class Fight
+
+    attr_reader :combat_log
+
     def initialize( silent = false )
       @silent = silent
+
+      @combat_log = []
     end
 
     def go
       load
 
       1.upto(6).each do |i|
-        puts "Tour #{i}" unless @silent
+        @tour_log = []
+
+        @tour_log << "Tour #{i}"
 
         tour(@player_1_units, @player_2_units )
         tour(@player_2_units, @player_1_units )
+
+        @combat_log << @tour_log
 
         break if @player_1_units.empty? || @player_2_units.empty?
       end
@@ -30,15 +39,18 @@ module GameRules
     # @return nil
     def tour(attacker_units, defender_units )
       attacker_units.each do |attacker|
-        return if attacker_units.empty? || defender_units.empty?
 
-        if will_attack?(attacker)
-          attacker_units, defender_units = perform_attack( attacker_units, defender_units, attacker )
-        else
-          puts "#{attacker.full_name} n'attaquera pas ce tour." unless @silent
+        if !attacker_units.empty? && !defender_units.empty?
+
+          if will_attack?(attacker)
+            attacker_units, defender_units = perform_attack( attacker_units, defender_units, attacker )
+          else
+            @tour_log << "#{attacker.full_name} n'attaquera pas ce tour."
+          end
+
         end
 
-        puts unless @silent
+        @tour_log << ''
       end
     end
 
@@ -53,11 +65,11 @@ module GameRules
     def perform_attack( attacker_units, defender_units, attacker )
       defender = get_target( defender_units )
 
-      puts "#{attacker.full_name} attaque #{defender.full_name}" unless @silent
+      @tour_log << "#{attacker.full_name} attaque #{defender.full_name}"
       attacking_hits = roll_attack( attacker, defender )
 
       if @last_attack_cac
-        puts "#{defender.full_name} riposte." unless @silent
+        @tour_log << "#{defender.full_name} riposte."
         defending_hits = roll_attack( defender, attacker )
       end
 
@@ -95,17 +107,20 @@ module GameRules
 
       case ai
         when :magic
-          puts 'Attaque magique' unless @silent
+          @tour_log << 'Attaque magique'
+          
           [ 6, 4, 6 ]
         when :distance
           dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
-          puts "Ranged attack with #{dice_pool} dice" unless @silent
+          @tour_log << "Ranged attack with #{dice_pool} dice"
+          
           [ dice_pool, defender.unit_data.armor.ranged, 5 ]
         when :cac
           @last_attack_cac = true
 
           dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
-          puts "Melee attack #{dice_pool} dice" unless @silent
+          @tour_log << "Melee attack #{dice_pool} dice"
+          
           [ dice_pool, defender.unit_data.armor.cac, 4 ]
         else
           raise "Attack type unknown : #{ai}"
@@ -123,20 +138,20 @@ module GameRules
 
       roll_string = "s#{dice_pool}d6"
       roll_result = Hazard.from_string roll_string
-      puts "Rolled dice : #{roll_result.rolls}" unless @silent
+      @tour_log << "Rolled dice : #{roll_result.rolls}"
 
       hits = roll_result.rolls.select{ |d| d >= opponent_armor }
-      puts "Hits : #{hits.count} (#{hits} >= #{opponent_armor})" unless @silent
+      @tour_log << "Hits : #{hits.count} (#{hits} >= #{opponent_armor})"
 
       roll_saves = "s#{hits.count}d6"
       saves_result = Hazard.from_string roll_saves
-      puts "Rolled saves : #{saves_result.rolls}" unless @silent
+      @tour_log << "Rolled saves : #{saves_result.rolls}"
 
       saves = saves_result.rolls.select{ |d| d >= save_value }
-      puts "Saves : #{saves.count} (#{saves} >= #{save_value})" unless @silent
+      @tour_log << "Saves : #{saves.count} (#{saves} >= #{save_value})"
 
       final_hits = [hits.count - saves.count, 0].max
-      puts "Final hits = #{final_hits}" unless @silent
+      @tour_log << "Final hits = #{final_hits}"
 
       final_hits
     end
@@ -144,20 +159,20 @@ module GameRules
     def check_result
       puts "Attacker units = #{@player_1_units.count}, defender units = #{@player_2_units.count}, "
       if @player_1_units.empty?
-        puts 'Defender win'
+        @tour_log << 'Defender win'
         return :defender
       elsif @player_2_units.empty?
-        puts 'Attacker win'
+        @tour_log << 'Attacker win'
         return :attacker
       else
         if @player_1_units.count >= @player_2_units.count
-          puts 'Attacker win'
+          @tour_log << 'Attacker win'
           return :attacker
         else
-          puts 'Defender win'
+          @tour_log << 'Defender win'
           return :defender
         end
-        puts 'Equality'
+        @tour_log << 'Equality'
         return :equality
       end
     end
@@ -165,14 +180,14 @@ module GameRules
     def assign_hits( defender_units, defender, hit )
       if defender.protection > 0
         defender.protection -= hit
-        puts "#{defender.full_name} has protection. Protection take #{hit}, protection = #{defender.protection}" unless @silent
+        @tour_log << "#{defender.full_name} has protection. Protection take #{hit}, protection = #{defender.protection}"
       else
         defender.amount -= hit
-        puts "#{defender.full_name} take #{hit}, amount = #{defender.amount}" unless @silent
+        @tour_log << "#{defender.full_name} take #{hit}, amount = #{defender.amount}"
       end
 
       if defender.amount <= 0
-        puts "#{defender.full_name} is destroyed" unless @silent
+        @tour_log << "#{defender.full_name} is destroyed"
         defender_units.delete( defender )
       end
 
@@ -183,7 +198,7 @@ module GameRules
       ca = unit.unit_data.fight_info.can_attack
       dice = Hazard.d100
 
-      puts "Unit rolled a #{dice} and will attack if roll is below #{ca}" unless @silent
+      @tour_log << "Unit rolled a #{dice} and will attack if roll is below #{ca}"
 
       if dice <= ca
         true

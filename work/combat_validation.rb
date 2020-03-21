@@ -1,5 +1,6 @@
 require 'active_record'
 require 'hazard'
+require 'pp'
 
 require_relative '../app/models/application_record'
 require_relative '../app/models/gang'
@@ -25,6 +26,9 @@ end
 
 # stats
 
-GameRules::Fight.new.go
+c = GameRules::Fight.new
+c.go
+
+pp c.combat_log
 
 
