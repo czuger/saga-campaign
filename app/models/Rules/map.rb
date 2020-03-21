@@ -10,14 +10,22 @@ module Rules
         @data = YAML.load_file( 'data/map.yaml' )
       end
 
-      @localisations = @data[ :icons_positions ].keys
+      unless @positions
+        @positions = YAML.load_file( 'data/map_positions.yaml' )
+      end
+
+      @localisations = @positions.keys
     end
 
     def position_style( gang )
-      p gang
-      p = OpenStruct.new( @data[ :icons_positions ][ gang.location ] )
-      p p
-      "left:#{p.x}px;top:#{p.y}px;"
+      # p gang
+      p = OpenStruct.new( @positions[ gang.location ] )
+      # p p
+      if p.x
+        "left:#{p.x-162}px;top:#{p.y-58}px;"
+      else
+        ''
+      end
     end
 
   end

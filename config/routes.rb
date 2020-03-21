@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :gangs, only: [ :new, :create ]
 
     get 'log/show', to: 'log#show'
+
     get 'map/show', to: 'map#show'
   end
 
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
     patch :modify_pp
   end
 
+  # Used to set icons position on map
+  get 'map/edit', to: 'map#edit'
+  post 'map/save_position', to: 'map#save_position'
 
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
