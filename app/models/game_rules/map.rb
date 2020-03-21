@@ -1,6 +1,6 @@
 require 'ostruct'
 
-module Rules
+module GameRules
   class Map
 
     attr_reader :localisations

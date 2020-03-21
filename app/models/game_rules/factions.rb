@@ -1,7 +1,7 @@
 require 'yaml'
 require 'ostruct'
 
-module Rules
+module GameRules
   class Factions
 
     def initialize

@@ -12,7 +12,7 @@ class GangsController < ApplicationController
   # GET /gangs.json
   def index
     @gangs = Gang.find_by_campaign_id_and_player_id( @campaign, @player )
-    @localisations = Rules::Map.new.localisations
+    @localisations = GameRules::Map.new.localisations
   end
 
   # GET /gangs/1
@@ -35,8 +35,8 @@ class GangsController < ApplicationController
 
     # p @icons
 
-    @select_factions_options = Rules::Factions.new.faction_select_options
-    @select_localisations_options = Rules::Map.new.localisations
+    @select_factions_options = GameRules::Factions.new.faction_select_options
+    @select_localisations_options = GameRules::Map.new.localisations
   end
 
   # GET /gangs/1/edit

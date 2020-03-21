@@ -1,7 +1,7 @@
 require 'yaml'
 require 'open_hash'
 
-module Rules
+module GameRules
   class Unit
 
     attr_reader :data, :parsed_data

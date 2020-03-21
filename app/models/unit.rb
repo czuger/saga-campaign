@@ -7,7 +7,7 @@ class Unit < ApplicationRecord
   @@units_data = nil
 
   def unit_data
-    @@units_data = Rules::Unit.new unless @@units_data
+    @@units_data = GameRules::Unit.new unless @@units_data
 
     return @unit_data if @unit_data
 

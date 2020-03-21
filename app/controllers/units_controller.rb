@@ -115,7 +115,7 @@ class UnitsController < ApplicationController
     end
 
     def set_units_rules_data
-      faction_data = Rules::Factions.new
+      faction_data = GameRules::Factions.new
 
       @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
       @weapon_select_options_for_faction_warlord = faction_data.weapon_select_options_for_faction_and_unit(
@@ -123,7 +123,7 @@ class UnitsController < ApplicationController
 
       @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
 
-      @units = Rules::Unit.new.data
+      @units = GameRules::Unit.new.data
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

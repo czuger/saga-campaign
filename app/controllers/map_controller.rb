@@ -5,11 +5,11 @@ class MapController < ApplicationController
   def show
     @campaign = Campaign.find(params[:campaign_id] )
     @gangs = @campaign.gangs
-    @map = Rules::Map.new
+    @map = GameRules::Map.new
   end
 
   def modify_positions
-    @map = Rules::Map.new
+    @map = GameRules::Map.new
   end
 
   def save_position

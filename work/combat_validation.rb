@@ -3,7 +3,7 @@ require 'hazard'
 
 require_relative '../app/models/application_record'
 require_relative '../app/models/gang'
-require_relative '../app/models/Rules/unit'
+require_relative '../app/models/game_rules/unit'
 require_relative '../app/models/unit'
 
 db = YAML.load_file( 'config/database.yml' )['development']
