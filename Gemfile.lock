@@ -180,7 +180,7 @@ GEM
       ruby-rc4
       ttfunk
     popper_js (1.16.0)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -281,7 +281,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   openhash
   pdf-reader
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
   sass-rails (>= 6)
   simplecov
