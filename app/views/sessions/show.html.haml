@@ -1,2 +1,10 @@
-%h1
-  Bienvenue, pour continuer, merci de vous enregistrer.
+%h1.mt-5
+  Pour continuer, cliquez sur le bouton ci-dessous.
+
+.row.mt-5
+  .col
+
+  .col
+    = link_to 'Login', '/auth/discord', method: :post, class: 'nav-link btn btn-primary btn-lg', role: 'button', 'aria-disabled' => 'true'
+
+  .col
