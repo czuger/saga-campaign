@@ -16,6 +16,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+group :production do
+  gem 'therubyracer', :platforms => :ruby
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,6 +31,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pdf-reader'
   gem 'spring'
+
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.4", require: false
 end
 
 group :test do
