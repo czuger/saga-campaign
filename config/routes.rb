@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
     resources :gangs, only: [ :new, :create ]
 
-    get 'log/show', to: 'log#show'
+    resources :fights, only: [ :index, :new, :create, :show ]
 
+    get 'log/show', to: 'log#show'
     get 'map/show', to: 'map#show'
   end
 
