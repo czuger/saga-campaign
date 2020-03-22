@@ -67,6 +67,9 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capistrano (3.12.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -255,6 +258,7 @@ GEM
     ttfunk (1.6.2.1)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
+    uniform_notifier (1.13.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -268,6 +272,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.4.1)
+  bullet
   capistrano (~> 3.10)
   capistrano-rails (~> 1.4)
   capistrano-rbenv (~> 2.1)

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign: one
+  location: MyString
+  fight_data: MyString
+  fight_log: MyString
+
+two:
+  campaign: two
+  location: MyString
+  fight_data: MyString
+  fight_log: MyString

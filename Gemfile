@@ -38,6 +38,8 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
 
   gem 'capistrano3-puma'
+
+  gem 'bullet'
 end
 
 group :test do

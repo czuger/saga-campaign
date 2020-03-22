@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_145414) do
+ActiveRecord::Schema.define(version: 2020_03_22_082539) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2020_03_19_145414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
+  end
+
+  create_table "fight_results", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.string "location", null: false
+    t.string "fight_data", null: false
+    t.string "fight_log", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_fight_results_on_campaign_id"
   end
 
   create_table "gangs", force: :cascade do |t|
@@ -84,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_145414) do
   end
 
   add_foreign_key "campaigns", "users"
+  add_foreign_key "fight_results", "campaigns"
   add_foreign_key "gangs", "campaigns"
   add_foreign_key "gangs", "players"
   add_foreign_key "logs", "campaigns"

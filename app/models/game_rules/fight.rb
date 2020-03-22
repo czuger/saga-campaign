@@ -4,10 +4,14 @@ module GameRules
 
     attr_reader :combat_log
 
-    def initialize( silent = false )
-      @silent = silent
-
+    def initialize( campaign_id, location, attacking_gang_id, defender_gang_id )
       @combat_log = []
+
+      @campaign_id = campaign_id
+      @location = location
+
+      @attacking_gang_id = attacking_gang_id
+      @defender_gang_id = defender_gang_id
     end
 
     def go
@@ -27,7 +31,8 @@ module GameRules
         break if @player_1_units.empty? || @player_2_units.empty?
       end
 
-      check_result
+      result = check_result
+      save_result( result )
     end
 
     private
@@ -56,8 +61,8 @@ module GameRules
     end
 
     def load
-      @player_1 = Gang.find( 1 )
-      @player_2 = Gang.find( 2 )
+      @player_1 = Gang.find( @attacking_gang_id )
+      @player_2 = Gang.find( @defender_gang_id )
 
       @player_1_units = @player_1.units.to_a
       @player_2_units = @player_2.units.to_a
@@ -151,6 +156,26 @@ module GameRules
       @sub_tour_log << "Pertes = #{final_hits}"
 
       final_hits
+    end
+
+    # Save results in the database.
+    #
+    # @return nil
+    def save_result( result )
+
+      p @player_1
+
+      fight_data = {
+        attacker: @player_1.player.user.name,
+        defender: @player_2.player.user.name,
+        attacker_gang_no: @player_1.id,
+        defender_gang_no: @player_2.id,
+        result: result
+        }
+
+      FightResult.create!( campaign_id: @campaign_id, location: @location, fight_data: fight_data, fight_log: @combat_log )
+
+      result
     end
 
     def check_result
