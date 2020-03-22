@@ -18,8 +18,9 @@ module GameRules
 
         @tour_log << "Tour #{i}"
 
-        tour(@player_1_units, @player_2_units )
-        tour(@player_2_units, @player_1_units )
+        attack_count = ( i == 1 ? 4 : Float::INFINITY )
+        tour(@player_1_units, @player_2_units, attack_count )
+        tour(@player_2_units, @player_1_units, Float::INFINITY )
 
         @combat_log << @tour_log
 
@@ -37,19 +38,17 @@ module GameRules
     # @param defender_units [Array] all defender units.
     #
     # @return nil
-    def tour(attacker_units, defender_units )
-      attacker_units.each do |attacker|
+    def tour(attacker_units, defender_units, max_attack_count )
+      attacker_units.each_with_index do |attacker, i|
 
         @sub_tour_log = []
 
-        if !attacker_units.empty? && !defender_units.empty?
+        break if i >= max_attack_count || attacker_units.empty? || defender_units.empty?
 
-          if will_attack?(attacker)
-            attacker_units, defender_units = perform_attack( attacker_units, defender_units, attacker )
-          else
-            @sub_tour_log << "#{attacker.full_name} n'attaquera pas ce tour."
-          end
-
+        if will_attack?(attacker)
+          attacker_units, defender_units = perform_attack( attacker_units, defender_units, attacker )
+        else
+          @sub_tour_log << "#{attacker.full_name} n'attaquera pas ce tour."
         end
 
         @tour_log << @sub_tour_log
@@ -155,7 +154,7 @@ module GameRules
     end
 
     def check_result
-      puts "Unités restantes à l'attaquant = #{@player_1_units.count}, unités restantes au défenseur = #{@player_2_units.count}, "
+      @sub_tour_log << "Unités restantes à l'attaquant = #{@player_1_units.count}, unités restantes au défenseur = #{@player_2_units.count}, "
 
       if @player_1_units.empty?
         @sub_tour_log << "L'attaquant gagne."

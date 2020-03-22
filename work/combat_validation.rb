@@ -16,7 +16,9 @@ ActiveRecord::Base.establish_connection(db )
 def stats
   results = {}
   f = GameRules::Fight.new( true )
-  1.upto(200) do
+
+  1.upto(5000) do |i|
+    p i if i % 100 == 0
     r = f.go
     results[r] ||= 0
     results[r] += 1
@@ -24,11 +26,11 @@ def stats
   pp results
 end
 
-# stats
+stats
 
-c = GameRules::Fight.new
-c.go
-
-pp c.combat_log
+# c = GameRules::Fight.new
+# c.go
+#
+# pp c.combat_log
 
 
