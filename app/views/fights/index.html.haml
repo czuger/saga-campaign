@@ -1,0 +1,19 @@
+%table.table
+  %thead
+    %tr
+      %th Lieu
+
+      %th Attaquant
+      %th Défenseur
+
+      %th Date
+
+  %tbody
+    - @fights.each do |f|
+      %tr
+        %td= f.location
+
+        %td= participant_libe( f.fight_data[:attacker], f.fight_data[:attacker_gang_no] )
+        %td= participant_libe( f.fight_data[:defender], f.fight_data[:defender_gang_no] )
+
+        %td= l( f.updated_at.localtime, format: :long ).capitalize

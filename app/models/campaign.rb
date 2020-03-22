@@ -7,5 +7,7 @@ class Campaign < ApplicationRecord
 
   has_many :gangs, dependent: :destroy
 
+  has_many :fight_results, dependent: :destroy
+
   validates :name, presence: true
 end
