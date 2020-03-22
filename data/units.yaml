@@ -8,6 +8,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -40,6 +44,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 5
@@ -72,6 +80,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -104,6 +116,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -136,6 +152,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -169,6 +189,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -202,6 +226,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -234,6 +262,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -265,6 +297,10 @@ seigneur:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -298,6 +334,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -328,6 +368,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 5
@@ -358,6 +402,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -388,6 +436,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -418,6 +470,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -449,6 +505,10 @@ lieutenant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -481,6 +541,10 @@ sorcier:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -513,6 +577,10 @@ sorcier:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -545,6 +613,10 @@ sorcier:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -578,6 +650,10 @@ sorcier:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -612,6 +688,10 @@ monstre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -642,6 +722,10 @@ monstre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -673,6 +757,10 @@ monstre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -706,6 +794,10 @@ creatures:
     :min: 1
     :max: 6
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -735,6 +827,10 @@ creatures:
     :min: 1
     :max: 6
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -765,6 +861,10 @@ creatures:
     :min: 1
     :max: 6
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -796,6 +896,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -821,6 +925,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -846,6 +954,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 5
@@ -871,6 +983,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -896,6 +1012,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -923,6 +1043,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -950,6 +1074,10 @@ gardes:
     :min: 4
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -976,6 +1104,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1001,6 +1133,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -1026,6 +1162,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1051,6 +1191,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1076,6 +1220,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1101,6 +1249,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -1128,6 +1280,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -1153,6 +1309,10 @@ guerriers:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1179,6 +1339,10 @@ levees:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1204,6 +1368,10 @@ levees:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -1229,6 +1397,10 @@ levees:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -1254,6 +1426,10 @@ levees:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1279,6 +1455,10 @@ levees:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1305,6 +1485,10 @@ machine_de_guerre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -1336,6 +1520,10 @@ machine_de_guerre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1366,6 +1554,10 @@ machine_de_guerre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1398,6 +1590,10 @@ necromant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1429,6 +1625,10 @@ necromant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -1460,6 +1660,10 @@ necromant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1490,6 +1694,10 @@ necromant:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -1522,6 +1730,10 @@ paladin:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -1552,6 +1764,10 @@ paladin:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 5
@@ -1582,6 +1798,10 @@ paladin:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -1612,6 +1832,10 @@ paladin:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 4
@@ -1644,6 +1868,10 @@ nuee:
     :min: 6
     :max: 12
     :increment_step: 6
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 3
@@ -1673,6 +1901,10 @@ decerebres:
     :min: 12
     :max: 24
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 3
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 4
       :ranged: 4
@@ -1703,6 +1935,10 @@ char_de_guerre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: false
     :armor:
       :cac: 5
       :ranged: 5
@@ -1735,6 +1971,10 @@ traqueurs:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 3
@@ -1765,6 +2005,10 @@ equipe_de_destrucion:
     :min: 1
     :max: 2
     :increment_step: 2
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: false
     :armor:
       :cac: 3
       :ranged: 4
@@ -1795,6 +2039,10 @@ le_conclave:
     :min: 4
     :max: 4
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 3
+    :legendary: true
     :armor:
       :cac: 4
       :ranged: 4
@@ -1829,6 +2077,10 @@ la_machine_incroyable_et_extraordinaire:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 8
+    :legendary: true
     :armor:
       :cac: 5
       :ranged: 6
@@ -1863,6 +2115,10 @@ fanatiques_devoues:
     :min: 4
     :max: 12
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 2
+      numerator: 1
+    :legendary: true
     :armor:
       :cac: 3
       :ranged: 3
@@ -1892,6 +2148,10 @@ le_monstre_de_guerre:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 12
+    :legendary: true
     :armor:
       :cac: 6
       :ranged: 5
@@ -1924,6 +2184,10 @@ les_bersekers:
     :min: 1
     :max: 12
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: true
     :armor:
       :cac: 3
       :ranged: 3
@@ -1953,6 +2217,10 @@ l'archidemon:
     :min: 1
     :max: 1
     :increment_step: 1
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: true
     :armor:
       :cac: 5
       :ranged: 4
@@ -1988,6 +2256,10 @@ les_spectres:
     :min: 4
     :max: 4
     :increment_step: 4
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: true
     :armor:
       :cac: 0
       :ranged: 0

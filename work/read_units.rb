@@ -36,7 +36,7 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   next if index == 0
 
   nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice, min_units_for_saga_dice,
-    min, max, increment_step, unit_name, weapon_name, armor, damage, options = line.split("\t")
+    min, max, increment_step, massacre_points, legendary, unit_name, weapon_name, armor, damage, options = line.split("\t")
 
   options = options.chomp.gsub('.', '')
 
@@ -72,6 +72,9 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   data[unit_key][weapon_key][:min] = min.to_i
   data[unit_key][weapon_key][:max] = max.to_i
   data[unit_key][weapon_key][:increment_step] = increment_step.to_i
+
+  data[unit_key][weapon_key][:massacre_points] = massacre_points.to_r
+  data[unit_key][weapon_key][:legendary] = legendary == 'Oui'
 
   data[unit_key][weapon_key][:armor] ||= {}
   armor_cac, armor_ranged = armor.scan( /\d+/ )
