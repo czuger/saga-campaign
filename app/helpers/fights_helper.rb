@@ -9,7 +9,7 @@ module FightsHelper
   # For fight log detail
   def pass_detail( log )
     c = OpenStruct.new( log )
-    attacker_name = @game_rules_units.name_from_string_key( c.attacker )
+    attacker_name = @game_rules_units.name_from_string_key( c.can_attack[:attacker] )
 
     "L'unité #{attacker_name} n'attaquera pas ce tour."
     #" (elle a fait #{log[:can_attack][:roll]} et doit faire moins #{log[:can_attack][:min_to_attack]})."
@@ -18,8 +18,10 @@ module FightsHelper
 
   def fight_detail( combat_info, attack_or_retaliation )
     c = OpenStruct.new( combat_info )
-    attacker_name = @game_rules_units.name_from_string_key( c.attacker )
-    defender_name = @game_rules_units.name_from_string_key( c.defender )
+    attacker_name = @game_rules_units.name_from_string_key( c.opponents[:attacker] )
+    attacker_name = attacker_name + "(#{c.opponents[:attacker_count]})"
+    defender_name = @game_rules_units.name_from_string_key( c.opponents[:defender] )
+    defender_name = defender_name + "(#{c.opponents[:defender_count]})"
 
     attack = OpenStruct.new( c.combat_result[attack_or_retaliation] )
     attack_type = OpenStruct.new( attack.attack_type )
@@ -37,12 +39,9 @@ module FightsHelper
 
   def hits_detail( log )
     h = OpenStruct.new( log[:combat_result][:hits_assignment] )
-
-    p h.to_h
     r = []
 
     h.to_h.each do |k, v|
-      p k, v
       name = @game_rules_units.name_from_string_key( k.to_s )
 
       v = OpenStruct.new( v )

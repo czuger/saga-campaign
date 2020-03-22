@@ -50,14 +50,14 @@ module GameRules
 
         break if i >= max_attack_count || attacker_units.empty? || defender_units.empty?
 
-        @single_attack_log = { attacker: attacker.full_name }
+        @single_attack_log = {}
         @step_attack_log = {}
 
-        if will_attack?(attacker)
+        if will_attack?(attacker )
           f = FightAttackWithRetaliation.new
 
           defender = get_target( defender_units )
-          @single_attack_log[ :defender ] = defender.full_name
+          @single_attack_log[ :opponents ] = log_opponents_status( attacker, defender )
 
           attacker_units, defender_units, attacker, defender =
             f.perform_attack( attacker_units, defender_units, attacker, defender )
@@ -117,12 +117,16 @@ module GameRules
       result
     end
 
+    def log_opponents_status( attacker, defender )
+      { attacker: attacker.full_name, attacker_count: attacker.amount, defender: defender.full_name, defender_count: defender.amount }
+    end
 
     def will_attack?( unit )
       ca = unit.unit_data.fight_info.can_attack
       dice = Hazard.d100
 
-      @single_attack_log[ :can_attack ] = { can_attack: dice <= ca, min_to_attack: ca, roll: dice }
+      @single_attack_log[ :can_attack ] = {
+        can_attack: dice <= ca, min_to_attack: ca, roll: dice, attacker: unit.full_name }
 
       dice <= ca
     end
