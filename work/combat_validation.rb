@@ -10,6 +10,8 @@ require_relative '../app/models/unit'
 require_relative '../app/models/fight_result'
 require_relative '../app/models/game_rules/unit'
 require_relative '../app/models/game_rules/fight'
+require_relative '../app/models/game_rules/fight_attack_atomic_step'
+require_relative '../app/models/game_rules/fight_attack_with_retaliation'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5

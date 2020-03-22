@@ -1,0 +1,17 @@
+- @fight.fight_log.each do |fl|
+
+  %h2= "Tour #{ fl[ :round ] }"
+
+  - fl[:turns_log].each do |tl|
+
+    %h3= "Tour de #{ tl[ :turn_of ] }"
+
+    - tl[ :turn_log ].each do |logs|
+
+      %table.table
+        %thead
+
+        %tbody
+          - logs.each do |line|
+            %tr
+              %td= line

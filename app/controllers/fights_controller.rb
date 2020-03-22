@@ -8,7 +8,7 @@ class FightsController < ApplicationController
   end
 
   def index
-    @fights = @campaign.fight_results
+    @fights = @campaign.fight_results.order( 'id DESC' )
   end
 
   def new
