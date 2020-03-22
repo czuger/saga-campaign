@@ -60,8 +60,8 @@ module GameRules
       attack_type = :cac
 
       if @attack_phase == :attack
-        attack_type = :magic if attacker.raw_unit_data[:options]&.include?( 'magie' )
-        attack_type = :distance if attacker.raw_unit_data[:fight_info][:distance]
+        attack_type = :magic if attacker.has_magick?
+        attack_type = :distance if attacker.distance_attacking_unit?
       end
 
       attack_type
@@ -83,14 +83,14 @@ module GameRules
           @opponent_armor = 4
           @opponent_save = 6
         when :distance
-          @dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
-          @opponent_armor = defender.unit_data.armor.ranged
+          @dice_pool = (attacker.amount * attacker.damage_ranged).to_i
+          @opponent_armor = defender.armor_ranged
           @opponent_save = 5
         when :cac
           @last_attack_cac = true
 
-          @dice_pool = (attacker.amount * attacker.unit_data.damage.cac).to_i
-          @opponent_armor = defender.unit_data.armor.cac
+          @dice_pool = (attacker.amount * attacker.damage_cac).to_i
+          @opponent_armor = defender.armor_cac
           @opponent_save = 4
         else
           raise "Attack type unknown : #{@attack_type}"

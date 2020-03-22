@@ -53,10 +53,10 @@ module GameRules
     #
     # @return [Array] the units of the defender.
     def assign_hits( defender_units, defender, hits )
-      if defender.protection > 0
-        @hits_log[ defender.full_name ] = { type: :protection, prot_before: defender.protection }
-        defender.protection -= hits
-        @hits_log[ defender.full_name ][ :prot_after ] = defender.protection
+      if defender.get_protection > 0
+        @hits_log[ defender.full_name ] = { type: :protection, prot_before: defender.get_protection }
+        defender.decrease_protection!( hits )
+        @hits_log[ defender.full_name ][ :prot_after ] = defender.get_protection
       else
         @hits_log[ defender.full_name ] = { type: :loss, amount_before: defender.amount }
         defender.amount -= hits

@@ -122,7 +122,7 @@ module GameRules
     end
 
     def will_attack?( unit )
-      ca = unit.unit_data.fight_info.can_attack
+      ca = unit.can_attack_trigger
       dice = Hazard.d100
 
       @single_attack_log[ :can_attack ] = {
@@ -134,7 +134,7 @@ module GameRules
     def get_target( defender_units )
       wt = WeightedTable.new( floating_points: true )
 
-      units = defender_units.map{ |u| [ u.unit_data.fight_info.being_targeted, u ] }
+      units = defender_units.map{ |u| [ u.being_targeted_probability, u ] }
       wt.from_weighted_table( units)
 
       wt.sample
