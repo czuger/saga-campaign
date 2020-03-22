@@ -7,6 +7,15 @@ module FightsHelper
   end
 
   # For fight log detail
+  def pass_detail( log )
+    c = OpenStruct.new( log )
+    attacker_name = @game_rules_units.name_from_string_key( c.attacker )
+
+    "L'unité #{attacker_name} n'attaquera pas ce tour."
+    #" (elle a fait #{log[:can_attack][:roll]} et doit faire moins #{log[:can_attack][:min_to_attack]})."
+  end
+
+
   def fight_detail( combat_info, attack_or_retaliation )
     c = OpenStruct.new( combat_info )
     attacker_name = @game_rules_units.name_from_string_key( c.attacker )

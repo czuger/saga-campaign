@@ -81,7 +81,7 @@ module GameRules
         when :magic
           @dice_pool = 6
           @opponent_armor = 4
-          @opponent_save = 0
+          @opponent_save = 6
         when :distance
           @dice_pool = (attacker.amount * attacker.unit_data.damage.ranged).to_i
           @opponent_armor = defender.unit_data.armor.ranged

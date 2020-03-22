@@ -63,8 +63,10 @@ module GameRules
             f.perform_attack( attacker_units, defender_units, attacker, defender )
 
           @single_attack_log[ :combat_result ] = f.get_log_data
-          @round_log << @single_attack_log
         end
+
+        @round_log << @single_attack_log
+
       end
     end
 
