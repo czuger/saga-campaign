@@ -120,13 +120,9 @@ module GameRules
       ca = unit.unit_data.fight_info.can_attack
       dice = Hazard.d100
 
-      @single_attack_log[ :can_attack ]= { min_to_attack: ca, roll: dice }
+      @single_attack_log[ :can_attack ] = { can_attack: dice <= ca, min_to_attack: ca, roll: dice }
 
-      if dice <= ca
-        true
-      else
-        false
-      end
+      dice <= ca
     end
 
     def get_target( defender_units )

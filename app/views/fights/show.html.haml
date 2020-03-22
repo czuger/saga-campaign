@@ -6,12 +6,8 @@
 
     %h3= "Tour de #{ tl[ :turn_of ] }"
 
-    - tl[ :turn_log ].each do |logs|
-
-      %table.table
-        %thead
-
-        %tbody
-          - logs.each do |line|
-            %tr
-              %td= line
+    - tl[ :turn_log ].each do |log|
+      %p
+        = fight_detail( log )
+      %p
+        = log
