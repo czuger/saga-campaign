@@ -18,15 +18,17 @@ module GameRules
       load
 
       1.upto(6).each do |i|
-        @tour_log = []
-
-        @tour_log << "Tour #{i}"
+        @round_log = []
+        @round_log_shell = { round: i, turns_log: [] }
 
         attack_count = ( i == 1 ? 4 : Float::INFINITY )
         tour(@player_1_units, @player_2_units, attack_count )
-        tour(@player_2_units, @player_1_units, Float::INFINITY )
+        @round_log_shell[:turns_log] << { turn_of: @player_1.player.user.name, turn_log: @round_log }
 
-        @combat_log << @tour_log
+        tour(@player_2_units, @player_1_units, Float::INFINITY )
+        @round_log_shell[:turns_log] << { turn_of: @player_2.player.user.name, turn_log: @round_log }
+
+        @combat_log << @round_log_shell
 
         break if @player_1_units.empty? || @player_2_units.empty?
       end
@@ -56,7 +58,7 @@ module GameRules
           @sub_tour_log << "#{attacker.full_name} n'attaquera pas ce tour."
         end
 
-        @tour_log << @sub_tour_log
+        @round_log << @sub_tour_log
       end
     end
 

@@ -34,4 +34,6 @@ ActiveRecord::Base.establish_connection(db )
 c = GameRules::Fight.new( 8, 'O1', 1, 2 )
 c.go
 
+pp c.combat_log
+
 
