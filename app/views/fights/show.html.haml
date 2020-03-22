@@ -8,6 +8,13 @@
 
     - tl[ :turn_log ].each do |log|
       %p
-        = fight_detail( log )
+        = fight_detail( log, :attack )
+      - if log[:combat_result][:retaliation]
+        %p
+          = fight_detail( log, :retaliation )
+      %p
+        = hits_detail( log )
       %p
         = log
+
+      %hr

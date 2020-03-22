@@ -39,7 +39,7 @@ module GameRules
     #
     # @return [Hash] Log details
     def get_log_data
-      { attack: @attack.get_log_data(), retailation: @retaliation&.get_log_data(), hits_assignment: @hits_log }
+      { attack: @attack.get_log_data(), retaliation: @retaliation&.get_log_data(), hits_assignment: @hits_log }
     end
 
     private
