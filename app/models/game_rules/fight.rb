@@ -39,7 +39,42 @@ module GameRules
       save_result( result )
     end
 
+    def show_fight_result
+      puts 'Results for player 1'
+      show_fight_result_for_player @player_2
+
+      puts 'Results for player 2'
+      show_fight_result_for_player @player_1
+    end
+
     private
+
+    def show_fight_result_for_player( opponent )
+      total = 0
+
+      opponent.units.each do |unit|
+        if @body_count.has_key?( unit.id )
+          bc = OpenStruct.new( @body_count[ unit.id ] )
+          points = ( bc.deads * unit.massacre_points ).to_i
+
+          puts "#{unit.full_name} give #{points} points."
+          total += points
+
+          if bc.destroyed == true
+            if unit.legendary?
+              points = 4
+            else
+              points = 1
+            end
+
+            puts "#{unit.full_name} destruction give #{points} extra points."
+            total += points
+          end
+        end
+      end
+
+      puts "Total points : #{total}."
+    end
 
     # Play a full tour where player1 and player 2 fights
     #

@@ -54,6 +54,14 @@ class Unit < ApplicationRecord
     unit_data_open_hash.armor.cac
   end
 
+  def massacre_points
+    unit_data_open_hash.massacre_points
+  end
+
+  def legendary?
+    unit_data_open_hash.legendary == true
+  end
+
   private
 
   def unit_data_open_hash

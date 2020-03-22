@@ -40,4 +40,6 @@ pp c.combat_log
 
 pp c.body_count
 
+c.show_fight_result
+
 

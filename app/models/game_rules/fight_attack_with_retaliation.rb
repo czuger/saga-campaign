@@ -68,7 +68,7 @@ module GameRules
         defender.amount -= units_to_loose
         @hits_log[ defender.full_name ][ :amount_after ] = defender.amount
 
-        @body_count[ defender.id ] ||= OpenStruct.new( unit: defender, losses: 0 )
+        @body_count[ defender.id ] ||= OpenStruct.new( unit: defender, deads: 0 )
         @body_count[ defender.id ].deads += units_to_loose
       end
 
