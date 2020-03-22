@@ -2,7 +2,7 @@ module GameRules
 
   class Fight
 
-    attr_reader :combat_log
+    attr_reader :combat_log, :body_count
 
     def initialize( campaign_id, location, attacking_gang_id, defender_gang_id )
       @combat_log = []
@@ -12,6 +12,8 @@ module GameRules
 
       @attacking_gang_id = attacking_gang_id
       @defender_gang_id = defender_gang_id
+
+      @body_count = {}
     end
 
     def go
@@ -54,7 +56,7 @@ module GameRules
         @step_attack_log = {}
 
         if will_attack?(attacker )
-          f = FightAttackWithRetaliation.new
+          f = FightAttackWithRetaliation.new( @body_count )
 
           defender = get_target( defender_units )
           @single_attack_log[ :opponents ] = log_opponents_status( attacker, defender )

@@ -38,4 +38,6 @@ c.go
 
 pp c.combat_log
 
+pp c.body_count
+
 

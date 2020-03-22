@@ -1,10 +1,14 @@
+require 'ostruct'
+
 module GameRules
 
   # Represent a full attack step. Including a retaliation in case of cac attack and hits assignment.
   class FightAttackWithRetaliation
 
-    def initialize
+    def initialize( body_count )
       @hits_log = {}
+
+      @body_count = body_count
     end
 
     # Represent a full attack including retaliation. This method is mutative for all parameters.
@@ -49,7 +53,6 @@ module GameRules
     # @param defender_units [Array] the units of the defender.
     # @param defender [Unit] the defender.
     # @param hits [Integer] the amount of hits to take.
-    # @param attack_phase [Symbol] the attack phase.
     #
     # @return [Array] the units of the defender.
     def assign_hits( defender_units, defender, hits )
@@ -59,8 +62,14 @@ module GameRules
         @hits_log[ defender.full_name ][ :prot_after ] = defender.get_protection
       else
         @hits_log[ defender.full_name ] = { type: :loss, amount_before: defender.amount }
-        defender.amount -= hits
+
+        units_to_loose = [ hits, defender.amount ].min
+
+        defender.amount -= units_to_loose
         @hits_log[ defender.full_name ][ :amount_after ] = defender.amount
+
+        @body_count[ defender.id ] ||= OpenStruct.new( unit: defender, losses: 0 )
+        @body_count[ defender.id ].deads += units_to_loose
       end
 
       @hits_log[ defender.full_name ][ :hits ] = hits
@@ -68,6 +77,7 @@ module GameRules
       if defender.amount <= 0
         @hits_log[ defender.full_name ][ :unit_destroyed ] = true
         defender_units.delete( defender )
+        @body_count[ defender.id ].destroyed = true
       end
 
       defender_units
