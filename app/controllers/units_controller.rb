@@ -21,7 +21,7 @@ class UnitsController < ApplicationController
     @unit.libe = :seigneur
     @unit.weapon = '-'
     @unit.amount = 1
-    @unit.points = 1
+    @unit.points = 0
 
     set_units_rules_data
   end
