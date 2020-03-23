@@ -21,15 +21,21 @@ module GameRules
       @attacker_points_list, @attacker_points_total = compute_result_for @attacker_gang
       @defender_points_list, @defender_points_total = compute_result_for @defender_gang
 
-      if @attacker_points_total > 8 && @attacker_points_total > @defender_points_total + 3
+      if @attacker_points_total >= 8 && @attacker_points_total > @defender_points_total + 3
+
         @winner = @attacker_gang.player.user.name
         @winner_code = :attacker
-      elsif @defender_points_total > 8 && @defender_points_total > @attacker_points_total + 3
+
+      elsif @defender_points_total >= 8 && @defender_points_total > @attacker_points_total + 3
+
         @winner = @defender_gang.player.user.name
         @winner_code = :defender
+
       else
+
         @winner = 'Egalité'
         @winner_code = :equality
+
       end
 
       # As the object will be saved as an YAML object in log it is better to remove ActiveRecord items (they are huge and useless).

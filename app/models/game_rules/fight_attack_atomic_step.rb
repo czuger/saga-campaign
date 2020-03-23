@@ -80,7 +80,7 @@ module GameRules
       case @attack_type
         when :magic
           @dice_pool = 6
-          @opponent_armor = 4
+          @opponent_armor = 3
           @opponent_save = 6
         when :distance
           @dice_pool = (attacker.amount * attacker.damage_ranged).to_i

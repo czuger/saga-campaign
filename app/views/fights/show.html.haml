@@ -8,8 +8,8 @@
 
     - tl[ :turn_log ].each do |log|
 
-      %p
-        = log
+      -#%p
+      -#  = log
 
       - unless log[:can_attack][:can_attack]
         %p= pass_detail( log )

@@ -22,13 +22,15 @@ module GameRules
       load
 
       1.upto(6).each do |i|
-        @round_log = []
         @round_log_shell = { round: i, turns_log: [] }
 
-        attack_count = ( i == 1 ? 4 : Float::INFINITY )
+        attack_count = ( i == 1 ? 3 : 8 )
+
+        @round_log = []
         tour(@player_1_units, @player_2_units, attack_count )
         @round_log_shell[:turns_log] << { turn_of: @player_1.player.user.name, turn_log: @round_log }
 
+        @round_log = []
         tour(@player_2_units, @player_1_units, Float::INFINITY )
         @round_log_shell[:turns_log] << { turn_of: @player_2.player.user.name, turn_log: @round_log }
 
@@ -50,15 +52,20 @@ module GameRules
     #
     # @return nil
     def tour(attacker_units, defender_units, max_attack_count )
-      attacker_units.each_with_index do |attacker, i|
+      # p attacker_units.map{ |e| e.id }
 
-        break if i >= max_attack_count || attacker_units.empty? || defender_units.empty?
+      attacks_performed = 0
+
+      attacker_units.each do |attacker|
+
+        break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
 
         @single_attack_log = {}
         @step_attack_log = {}
 
         if will_attack?(attacker )
           f = FightAttackWithRetaliation.new( @body_count )
+          attacks_performed += 1
 
           defender = get_target( defender_units )
 
@@ -78,7 +85,6 @@ module GameRules
       @player_2 = Gang.find( @defender_gang_id )
 
       @player_1_units = @player_1.units.to_a
-      p @player_1_units.map{ |e| e.id }
       @player_2_units = @player_2.units.to_a
     end
 
