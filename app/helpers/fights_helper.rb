@@ -6,6 +6,18 @@ module FightsHelper
     "Bande n° #{band_no} de #{attacker_name}"
   end
 
+  # Losses details
+  def losses_details( log )
+    u = Unit.find( log.unit_id )
+
+    result = t( '.miniatures_loss', name: u.extended_translated_name, count: log.deads )
+    result += t( '.unit_destroyed' ) if log.destroyed == true
+
+    # result = "L'unité #{u.extended_translated_name} à perdu #{log.deads} figurines. "
+    # result += "L'unité est détruite." if log.destroyed == true
+    result
+  end
+
   # For fight log detail
   def pass_detail( log )
     c = OpenStruct.new( log )

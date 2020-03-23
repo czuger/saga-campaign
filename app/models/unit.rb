@@ -17,6 +17,16 @@ class Unit < ApplicationRecord
     @protection -= amount
   end
 
+  def translated_name
+    result = "#{I18n.t( "units.#{libe}" ) }"
+    result += " #{I18n.t( "weapon.#{weapon}" ) }" unless weapon == '-'
+    result
+  end
+
+  def extended_translated_name
+    translated_name + "##{gang_id}##{id}"
+  end
+
   def full_name
     "[#{libe}, #{weapon}]"
   end

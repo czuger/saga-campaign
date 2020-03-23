@@ -4,6 +4,26 @@
 
 %hr
 
+%h2= "Pertes de l'attaquant #{@result.attacker_name}"
+
+%table.table
+  %tbody
+    - @result.attacker_body_count&.each do |log|
+      %tr
+        %td= losses_details(log)
+
+%hr
+
+%h2= "Pertes du défenseur #{@result.defender_name}"
+
+%table.table
+  %tbody
+    - @result.defender_body_count&.each do |log|
+      %tr
+        %td= losses_details(log)
+
+%hr
+
 %h2= "Score de l'attaquant #{@result.attacker_name} : #{@result.attacker_points_total} points"
 
 %table.table

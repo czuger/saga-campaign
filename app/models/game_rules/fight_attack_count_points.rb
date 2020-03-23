@@ -9,6 +9,7 @@ module GameRules
 
     attr_reader :attacker_points_list, :attacker_points_total, :defender_points_list, :defender_points_total
     attr_reader :winner, :winner_code, :attacker_name, :defender_name
+    attr_reader :attacker_body_count, :defender_body_count
 
     def initialize( attacker_gang, defender_gang, body_count )
       @body_count = body_count
@@ -23,6 +24,9 @@ module GameRules
     def do
       @attacker_points_list, @attacker_points_total = compute_result_for @defender_gang
       @defender_points_list, @defender_points_total = compute_result_for @attacker_gang
+
+      @attacker_body_count = create_readable_body_count @attacker_gang
+      @defender_body_count = create_readable_body_count @defender_gang
 
       if @attacker_points_total >= 8 && @attacker_points_total > @defender_points_total + 3
 
@@ -50,6 +54,22 @@ module GameRules
     end
 
     private
+
+    # Create a readable version of the body_count
+    #
+    # @return [Array] Strings to be printed in the fight log
+    # @return [Integer] The total of the points earned
+    def create_readable_body_count( player )
+      loss_list = []
+      player.units.each do |unit|
+        if @body_count.has_key?( unit.id )
+          bc = OpenStruct.new( @body_count[ unit.id ] )
+
+          loss_list << OpenStruct.new( unit_id: unit.id, deads: bc.deads, destroyed: bc.destroyed )
+        end
+      end
+      loss_list
+    end
 
     # Compute points given by each loss or destroyed units.
     #

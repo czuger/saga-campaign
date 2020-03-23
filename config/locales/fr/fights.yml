@@ -1,0 +1,9 @@
+---
+fr:
+  fights:
+    show:
+      miniatures_loss:
+        zero: "L'unité %{name} n'a rien perdu pendant ce combat."
+        one: "L'unité %{name} à perdu %{count} figurine. "
+        other: "L'unité %{name} à perdu %{count} figurines. "
+      unit_destroyed: "L'unité est détruite."
