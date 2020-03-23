@@ -5,22 +5,11 @@
 %hr
 
 %h2= "Pertes de l'attaquant #{@result.attacker_name}"
-
-%table.table
-  %tbody
-    - @result.attacker_body_count&.each do |log|
-      %tr
-        %td= losses_details(log)
-
+= render partial: 'dead_miniatures', locals: { bc: @result.attacker_body_count }
 %hr
 
 %h2= "Pertes du défenseur #{@result.defender_name}"
-
-%table.table
-  %tbody
-    - @result.defender_body_count&.each do |log|
-      %tr
-        %td= losses_details(log)
+= render partial: 'dead_miniatures', locals: { bc: @result.defender_body_count }
 
 %hr
 

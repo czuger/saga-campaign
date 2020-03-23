@@ -1,0 +1,13 @@
+%table.table
+  %thead
+    %tr
+      %th Unité
+      %th Pertes
+      %th Unité détruite
+
+  %tbody
+    - bc&.each do |log|
+      %tr
+        %td= losses_unit_name(log)
+        %td= log.deads
+        %td= 'X' if log.destroyed

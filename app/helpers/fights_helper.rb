@@ -7,15 +7,9 @@ module FightsHelper
   end
 
   # Losses details
-  def losses_details( log )
+  def losses_unit_name( log )
     u = Unit.find( log.unit_id )
-
-    result = t( '.miniatures_loss', name: u.extended_translated_name, count: log.deads )
-    result += t( '.unit_destroyed' ) if log.destroyed == true
-
-    # result = "L'unité #{u.extended_translated_name} à perdu #{log.deads} figurines. "
-    # result += "L'unité est détruite." if log.destroyed == true
-    result
+    u.extended_translated_name
   end
 
   # For fight log detail
