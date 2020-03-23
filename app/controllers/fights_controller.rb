@@ -32,7 +32,7 @@ class FightsController < ApplicationController
       user = player.user
 
       player.gangs.each do |gang|
-        @gangs << [ "Bande n° #{gang.id} de #{user.name}", gang.id ]
+        @gangs << [ "Bande n° #{gang.id} de #{user.name}", gang.number ]
       end
     end
   end
