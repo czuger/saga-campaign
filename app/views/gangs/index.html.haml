@@ -21,7 +21,7 @@
         %th
 
   %tbody
-    - @player.gangs.order( 'updated_at DESC' ).each do |gang|
+    - @player.gangs.order( 'id DESC' ).each do |gang|
       %tr
         %td= image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
         %td= gang.number
