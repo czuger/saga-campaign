@@ -1,9 +1,23 @@
 %h1 Liste des points controlés
 
 - @campaign.players.each do |player|
-  %b
-    = "Points controllés par #{player.user.name}"
 
-  %ul
-    - player.controls_points&.sort&.each do |control|
-      %li= control
+  %table.table
+    %thead
+      %tr
+        %th
+          = "Lieux controllés par #{player.user.name}"
+        %th
+          Points
+    %tbody
+      - total = 0
+      - player.controls_points&.sort&.each do |control|
+        %tr
+          %td= control
+          %td= @map.position_value( control )
+          - total += @map.position_value( control )
+      %tr
+        %td
+          %b Total
+        %td
+          %b= total
