@@ -7,6 +7,8 @@ class FightsController < ApplicationController
     @fight = FightResult.find( params[:id] )
 
     @game_rules_units = GameRules::Unit.new
+
+    @result = @fight.fight_data[:result]
   end
 
   def index

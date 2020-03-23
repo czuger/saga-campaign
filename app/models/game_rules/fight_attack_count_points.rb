@@ -8,13 +8,16 @@ module GameRules
   class FightAttackCountPoints
 
     attr_reader :attacker_points_list, :attacker_points_total, :defender_points_list, :defender_points_total
-    attr_reader :winner, :winner_code
+    attr_reader :winner, :winner_code, :attacker_name, :defender_name
 
     def initialize( attacker_gang, defender_gang, body_count )
       @body_count = body_count
 
       @attacker_gang = attacker_gang
       @defender_gang = defender_gang
+
+      @attacker_name = @attacker_gang.player.user.name
+      @defender_name = @defender_gang.player.user.name
     end
 
     def do
@@ -63,7 +66,7 @@ module GameRules
           bc = OpenStruct.new( @body_count[ unit.id ] )
           points = ( bc.deads * unit.massacre_points ).to_i
 
-          points_list << "L'unité #{unit.full_name} a eu #{bc.deads} pertes ce qui donne give #{points} points."
+          points_list << "L'unité #{unit.full_name} a eu #{bc.deads} pertes ce qui donne #{points} points."
           total += points
 
           if bc.destroyed == true
@@ -73,7 +76,7 @@ module GameRules
               points = 1
             end
 
-            points_list << "La destruction de l'unité #{unit.full_name} donne #{points} extra points."
+            points_list << "La destruction de l'unité #{unit.full_name} donne #{points} points supplémentaire."
             total += points
           end
         end

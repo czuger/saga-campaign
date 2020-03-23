@@ -1,3 +1,30 @@
+%h1
+  Gagnant :
+  = @result.winner
+
+%hr
+
+%h2= "Score de l'attaquant #{@result.attacker_name} : #{@result.attacker_points_total} points"
+
+%table.table
+  %tbody
+    - @result.attacker_points_list.each do |libe|
+      %tr
+        %td= libe
+
+%hr
+
+%h2= "Score du défenseur #{@result.defender_name} : #{@result.defender_points_total} points"
+
+%table.table
+  %tbody
+    - @result.defender_points_list.each do |libe|
+      %tr
+        %td= libe
+
+%hr
+%hr
+
 - @fight.fight_log.each do |fl|
 
   %h2= "Tour #{ fl[ :round ] }"
