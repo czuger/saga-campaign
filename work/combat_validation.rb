@@ -34,7 +34,7 @@ ActiveRecord::Base.establish_connection(db )
 #
 # stats
 
-c = GameRules::Fight.new( 8, 'O1', 1, 2 )
+c = GameRules::Fight.new( 1, 'O1', 5, 6 )
 c.go
 pp c.combat_log
 pp c.body_count

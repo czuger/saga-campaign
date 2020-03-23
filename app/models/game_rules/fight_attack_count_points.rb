@@ -21,8 +21,8 @@ module GameRules
     end
 
     def do
-      @attacker_points_list, @attacker_points_total = compute_result_for @attacker_gang
-      @defender_points_list, @defender_points_total = compute_result_for @defender_gang
+      @attacker_points_list, @attacker_points_total = compute_result_for @defender_gang
+      @defender_points_list, @defender_points_total = compute_result_for @attacker_gang
 
       if @attacker_points_total >= 8 && @attacker_points_total > @defender_points_total + 3
 
