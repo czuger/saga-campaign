@@ -17,9 +17,9 @@
       - else
         %p= fight_detail( log, :attack )
 
-        -#- if log[:combat_result][:retaliation]
-        -#  %p= fight_detail( log, :retaliation )
-        -#
-        -#%p= hits_detail( log )
+        - if log[:combat_result][:retaliation]
+          %p= fight_detail( log, :retaliation )
+
+        %p= hits_detail( log )
 
       %hr

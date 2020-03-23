@@ -37,9 +37,9 @@ end
 c = GameRules::Fight.new( 8, 'O1', 1, 2 )
 c.go
 
-pp c.combat_log
+# pp c.combat_log
 
-pp c.body_count
+# pp c.body_count
 
 # pp go.result.attacker_points_list
 

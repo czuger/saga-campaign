@@ -78,6 +78,7 @@ module GameRules
       @player_2 = Gang.find( @defender_gang_id )
 
       @player_1_units = @player_1.units.to_a
+      p @player_1_units.map{ |e| e.id }
       @player_2_units = @player_2.units.to_a
     end
 
