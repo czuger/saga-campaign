@@ -18,7 +18,7 @@ require 'pp'
 $rapide = %w( ailee quadrupedes vol volant volante volants monture )
 $distance = %w( arbalete arc feu fronde javelots machine char )
 
-def options( unite, arme, opt_array, activation_chance )
+def options( unite, arme, opt_array, activation_chance, being_hit_chance )
   split_arme = arme.split( '_' ).flatten.uniq.sort
   split_unite = unite.split( '_' ).flatten.uniq.sort
 
@@ -40,7 +40,7 @@ def options( unite, arme, opt_array, activation_chance )
   
   options.uniq!
   
-  being_targeted = 1
+  being_targeted = being_hit_chance
   options.each do |o|
      being_targeted *= 0.75 if [ :rapide, :lent, :distance, :magie ].include?( o )
   end
@@ -67,7 +67,9 @@ end
   v.keys.each do |e|
     # puts "#{k}, #{e}, #{options(e, @data[k][e][:options] )}" #, e.split( _ ).flatten.uniq.sort
 
-    o, being_targeted, can_attack = options(k, e, @data[k][e][:options], @data[k][e][:activation_chance] )
+    o, being_targeted, can_attack = options(
+      k, e, @data[k][e][:options],
+      @data[k][e][:activation_chance], @data[k][e][:being_targeted_chance] )
 
     @data[k][e][:fight_info] = {
       rapide: o.include?( :rapide ), lent: o.include?( :lent ), distance: o.include?( :distance ),

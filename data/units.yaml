@@ -11,6 +11,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -37,7 +38,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 50.0
       :can_attack: 100
   arme_lourde:
     :cost: 0.0
@@ -50,6 +51,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -76,7 +78,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 50.0
       :can_attack: 100
   arc:
     :cost: 0.0
@@ -89,6 +91,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -115,7 +118,7 @@ seigneur:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_animal:
     :cost: 0.0
@@ -128,6 +131,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -154,7 +158,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   volant:
     :cost: 0.0
@@ -167,6 +171,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -194,7 +199,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_ailee:
     :cost: 0.0
@@ -207,6 +212,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -234,7 +240,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_animal_arc_composite:
     :cost: 0.0
@@ -247,6 +253,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -273,7 +280,7 @@ seigneur:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
   monture_bete:
     :cost: 0.0
@@ -286,6 +293,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -311,7 +319,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_bete_vol:
     :cost: 0.0
@@ -324,6 +332,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -350,7 +359,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
 lieutenant:
   "-":
@@ -364,6 +373,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -388,7 +398,7 @@ lieutenant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 100
   arme_lourde:
     :cost: 0.5
@@ -401,6 +411,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -425,7 +436,7 @@ lieutenant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 100
   arc:
     :cost: 0.5
@@ -438,6 +449,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -462,7 +474,7 @@ lieutenant:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 100
   monture_animal:
     :cost: 0.5
@@ -475,6 +487,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -499,7 +512,7 @@ lieutenant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 100
   monture_ailee:
     :cost: 0.5
@@ -512,6 +525,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -537,7 +551,7 @@ lieutenant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 100
   volant:
     :cost: 0.5
@@ -550,6 +564,7 @@ lieutenant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -575,7 +590,7 @@ lieutenant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 100
 sorcier:
   "-":
@@ -589,6 +604,7 @@ sorcier:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -615,7 +631,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_animal:
     :cost: 1.0
@@ -628,6 +644,7 @@ sorcier:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -654,7 +671,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
   volant:
     :cost: 1.0
@@ -667,6 +684,7 @@ sorcier:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -694,7 +712,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
   monture_ailee:
     :cost: 1.0
@@ -707,6 +725,7 @@ sorcier:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -734,7 +753,7 @@ sorcier:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
 monstre:
   behemoth:
@@ -748,6 +767,7 @@ monstre:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -772,7 +792,7 @@ monstre:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 1
+      :being_targeted: 50.0
       :can_attack: 50
   titan:
     :cost: 1.0
@@ -785,6 +805,7 @@ monstre:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -810,7 +831,7 @@ monstre:
       :lent: true
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 37
   fleau_vol:
     :cost: 1.0
@@ -823,6 +844,7 @@ monstre:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -849,7 +871,7 @@ monstre:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 50
 creatures:
   bipedes:
@@ -863,6 +885,7 @@ creatures:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -886,7 +909,7 @@ creatures:
       :lent: false
       :distance: false
       :protection_points: 4
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 66
   quadrupedes:
     :cost: 1.0
@@ -899,6 +922,7 @@ creatures:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -923,7 +947,7 @@ creatures:
       :lent: false
       :distance: false
       :protection_points: 4
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 66
   volants_vol:
     :cost: 1.0
@@ -936,6 +960,7 @@ creatures:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -960,7 +985,7 @@ creatures:
       :lent: false
       :distance: false
       :protection_points: 4
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 66
 gardes:
   "-":
@@ -974,6 +999,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -993,7 +1019,7 @@ gardes:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 100
   arc:
     :cost: 1.0
@@ -1006,6 +1032,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1025,7 +1052,7 @@ gardes:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
   arme_lourde:
     :cost: 1.0
@@ -1038,6 +1065,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1057,7 +1085,7 @@ gardes:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 100
   monture_animal:
     :cost: 1.0
@@ -1070,6 +1098,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1089,7 +1118,7 @@ gardes:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
   volant:
     :cost: 1.0
@@ -1102,6 +1131,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1123,7 +1153,7 @@ gardes:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
   monture_ailee:
     :cost: 1.0
@@ -1136,6 +1166,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1157,7 +1188,7 @@ gardes:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
   monture_animal_arc_composite:
     :cost: 1.0
@@ -1170,6 +1201,7 @@ gardes:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -1189,7 +1221,7 @@ gardes:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.5625
+      :being_targeted: 42.1875
       :can_attack: 100
 guerriers:
   "-":
@@ -1203,6 +1235,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1222,7 +1255,7 @@ guerriers:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 66
   arme_lourde:
     :cost: 1.0
@@ -1235,6 +1268,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1254,7 +1288,7 @@ guerriers:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 66
   arc:
     :cost: 1.0
@@ -1267,6 +1301,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1286,7 +1321,7 @@ guerriers:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 66
   arbalete:
     :cost: 1.0
@@ -1299,6 +1334,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1318,7 +1354,7 @@ guerriers:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 66
   arme_a_feu:
     :cost: 1.0
@@ -1331,6 +1367,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1350,7 +1387,7 @@ guerriers:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 66
   volant:
     :cost: 1.0
@@ -1363,6 +1400,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1384,7 +1422,7 @@ guerriers:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 66
   monture_animal:
     :cost: 1.0
@@ -1397,6 +1435,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1416,7 +1455,7 @@ guerriers:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 66
   monture_animal_arc_composite:
     :cost: 1.0
@@ -1429,6 +1468,7 @@ guerriers:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -1448,7 +1488,7 @@ guerriers:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.5625
+      :being_targeted: 56.25
       :can_attack: 66
 levees:
   "-":
@@ -1462,6 +1502,7 @@ levees:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -1481,7 +1522,7 @@ levees:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 150.0
       :can_attack: 50
   javelots:
     :cost: 1.0
@@ -1494,6 +1535,7 @@ levees:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -1513,7 +1555,7 @@ levees:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 112.5
       :can_attack: 50
   arc_ou_fronde:
     :cost: 1.0
@@ -1526,6 +1568,7 @@ levees:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -1545,7 +1588,7 @@ levees:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 112.5
       :can_attack: 50
   arbalete:
     :cost: 1.0
@@ -1558,6 +1601,7 @@ levees:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -1577,7 +1621,7 @@ levees:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 112.5
       :can_attack: 50
   arme_a_feu:
     :cost: 1.0
@@ -1590,6 +1634,7 @@ levees:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -1609,7 +1654,7 @@ levees:
       :lent: false
       :distance: true
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 112.5
       :can_attack: 50
 machine_de_guerre:
   statique:
@@ -1623,6 +1668,7 @@ machine_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1648,7 +1694,7 @@ machine_de_guerre:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   mobile:
     :cost: 0.5
@@ -1661,6 +1707,7 @@ machine_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1685,7 +1732,7 @@ machine_de_guerre:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   volante_vol:
     :cost: 0.5
@@ -1698,6 +1745,7 @@ machine_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1723,7 +1771,7 @@ machine_de_guerre:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
 necromant:
   "-":
@@ -1737,6 +1785,7 @@ necromant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -1762,7 +1811,7 @@ necromant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 50.0
       :can_attack: 100
   monture_animal:
     :cost: 1.0
@@ -1775,6 +1824,7 @@ necromant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -1800,7 +1850,7 @@ necromant:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_bete:
     :cost: 1.0
@@ -1813,6 +1863,7 @@ necromant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -1837,7 +1888,7 @@ necromant:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
   monture_bete_vol:
     :cost: 1.0
@@ -1850,6 +1901,7 @@ necromant:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -1875,7 +1927,7 @@ necromant:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
 paladin:
   "-":
@@ -1889,6 +1941,7 @@ paladin:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1913,7 +1966,7 @@ paladin:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 100
   arme_lourde:
     :cost: 0.5
@@ -1926,6 +1979,7 @@ paladin:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1950,7 +2004,7 @@ paladin:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 100
   monture_animal:
     :cost: 0.5
@@ -1963,6 +2017,7 @@ paladin:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -1987,7 +2042,7 @@ paladin:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
   monture_ailee_vol:
     :cost: 0.5
@@ -2000,6 +2055,7 @@ paladin:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 2
@@ -2025,7 +2081,7 @@ paladin:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 56.25
       :can_attack: 100
 nuee:
   "-":
@@ -2039,6 +2095,7 @@ nuee:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -2061,7 +2118,7 @@ nuee:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 150.0
       :can_attack: 50
 decerebres:
   "-":
@@ -2075,6 +2132,7 @@ decerebres:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 3
       numerator: 1
@@ -2098,7 +2156,7 @@ decerebres:
       :lent: true
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 37
 char_de_guerre:
   "-":
@@ -2112,6 +2170,7 @@ char_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 2
       numerator: 1
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -2137,7 +2196,7 @@ char_de_guerre:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 0.75
+      :being_targeted: 75.0
       :can_attack: 50
 traqueurs:
   "-":
@@ -2151,6 +2210,7 @@ traqueurs:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -2174,7 +2234,7 @@ traqueurs:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 66
 equipe_de_destrucion:
   "-":
@@ -2188,6 +2248,7 @@ equipe_de_destrucion:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -2211,7 +2272,7 @@ equipe_de_destrucion:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 66
 le_conclave:
   "-":
@@ -2225,6 +2286,7 @@ le_conclave:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 3
@@ -2252,7 +2314,7 @@ le_conclave:
       :lent: false
       :distance: false
       :protection_points: 6
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
 la_machine_incroyable_et_extraordinaire:
   "-":
@@ -2266,6 +2328,7 @@ la_machine_incroyable_et_extraordinaire:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 8
@@ -2293,7 +2356,7 @@ la_machine_incroyable_et_extraordinaire:
       :lent: false
       :distance: true
       :protection_points: 8
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
 fanatiques_devoues:
   "-":
@@ -2307,6 +2370,7 @@ fanatiques_devoues:
     :activation_chance: !ruby/object:Rational
       denominator: 3
       numerator: 2
+    :being_targeted_chance: 100.0
     :massacre_points: !ruby/object:Rational
       denominator: 2
       numerator: 1
@@ -2329,7 +2393,7 @@ fanatiques_devoues:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 100.0
       :can_attack: 66
 le_monstre_de_guerre:
   "-":
@@ -2343,6 +2407,7 @@ le_monstre_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 75.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 12
@@ -2368,7 +2433,7 @@ le_monstre_de_guerre:
       :lent: false
       :distance: false
       :protection_points: 12
-      :being_targeted: 1
+      :being_targeted: 75.0
       :can_attack: 100
 les_bersekers:
   "-":
@@ -2382,6 +2447,7 @@ les_bersekers:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -2404,7 +2470,7 @@ les_bersekers:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 1
+      :being_targeted: 150.0
       :can_attack: 100
 l'archidemon:
   "-":
@@ -2418,6 +2484,7 @@ l'archidemon:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -2446,7 +2513,7 @@ l'archidemon:
       :lent: false
       :distance: false
       :protection_points: 4
-      :being_targeted: 0.5625
+      :being_targeted: 28.125
       :can_attack: 100
 les_spectres:
   "-":
@@ -2460,6 +2527,7 @@ les_spectres:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
+    :being_targeted_chance: 50.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 1
@@ -2484,5 +2552,5 @@ les_spectres:
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 0.75
+      :being_targeted: 37.5
       :can_attack: 100
