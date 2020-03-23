@@ -1,0 +1,12 @@
+%h1 Démarrer un combat
+
+= form_tag campaign_fights_path do
+
+  %h2 Attaquant
+  = select_tag( 'attacker', options_for_select( @gangs ), class: 'form-control' )
+
+  %h2 Défenseur
+  = select_tag( 'defender', options_for_select( @gangs ), class: 'form-control' )
+
+  = submit_tag 'Démarrer', class: 'mt-2 btn btn-secondary'
+

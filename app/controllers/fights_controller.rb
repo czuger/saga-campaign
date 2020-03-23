@@ -15,6 +15,25 @@ class FightsController < ApplicationController
     @fights = @campaign.fight_results.order( 'id DESC' )
   end
 
+  def create
+    attacker = Gang.find( params[:attacker] )
+
+    gf = GameRules::Fight.new( @campaign.id, attacker.location,
+                          params[:attacker], params[:defender] )
+    gf.go
+
+    redirect_to campaign_fights_path( @campaign )
+  end
+
   def new
+    @gangs = []
+
+    @campaign.players.each do |player|
+      user = player.user
+
+      player.gangs.each do |gang|
+        @gangs << [ "Bande n° #{gang.id} de #{user.name}", gang.id ]
+      end
+    end
   end
 end
