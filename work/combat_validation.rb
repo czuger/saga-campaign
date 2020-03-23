@@ -32,13 +32,16 @@ def stats
   pp results
 end
 
-stats
+# stats
 
-# c = GameRules::Fight.new( 8, 'O1', 1, 2 )
-# c.go
-#
-# pp c.combat_log
-#
-# pp c.body_count
+c = GameRules::Fight.new( 8, 'O1', 1, 2 )
+c.go
+
+pp c.combat_log
+
+pp c.body_count
+
+# pp go.result.attacker_points_list
+
 
 
