@@ -11,7 +11,7 @@ module FightsHelper
     c = OpenStruct.new( log )
     attacker_name = @game_rules_units.name_from_string_key( c.can_attack[:attacker] )
 
-    "L'unité #{attacker_name} n'attaquera pas ce tour."
+    "L'unité #{attacker_name} n'attaquera pas ce tour (#{c.can_attack[:min_to_attack]}% de chances d'attaquer)."
     #" (elle a fait #{log[:can_attack][:roll]} et doit faire moins #{log[:can_attack][:min_to_attack]})."
   end
 
