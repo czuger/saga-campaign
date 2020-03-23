@@ -12,23 +12,28 @@
   %thead
     %tr
       %th Bande
-      %th
+      %th N°
+      %th Nom
       %th Points
       %th Position
       %th
       %th
+        %th
 
   %tbody
     - @player.gangs.order( 'updated_at DESC' ).each do |gang|
       %tr
-        %td
-          = gang.number
-        %td
-          = image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
+        %td= image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
+        %td= gang.number
+        %td= gang.name
+
         %td= gang.points
         %td
           - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
           = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"), class: 'location_selector')
 
         %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+
+        %td= link_to 'Renommer la bande', edit_campaign_gang_path( @campaign, gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+
         %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

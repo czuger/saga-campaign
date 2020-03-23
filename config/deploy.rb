@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock '~> 3.11.2'
+lock '~> 3.12.1'
 
 set :application, 'saga_campaign'
 set :repo_url, 'git@github.com:czuger/saga-campaign.git'

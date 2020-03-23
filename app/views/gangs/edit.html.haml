@@ -1,3 +1,14 @@
-%h1 Modifier une bande
+%h1 Renommer la bande
 
-= render 'form'
+= form_for [@campaign, @gang] do |f|
+  - if @gang.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gang.errors.count, "error")} prohibited this gang from being saved:"
+      %ul
+        - @gang.errors.full_messages.each do |message|
+          %li= message
+
+  = f.text_field(:name, class: 'form-control')
+
+  .actions.mt-2
+    = f.submit 'Enregistrer', class: 'btn btn-secondary'

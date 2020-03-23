@@ -26,21 +26,12 @@ class GangsController < ApplicationController
     @gang.faction = :nature
     @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number ) + 1
 
-    @icons = {}
-    Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
-      @icons_set = File.basename(icons_path)
-      # p icons_set
-      @icons[@icons_set] = Dir["#{icons_path}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) } # .in_groups_of( 7 )
-    end
-
-    # p @icons
-
-    @select_factions_options = GameRules::Factions.new.faction_select_options
-    @select_localisations_options = GameRules::Map.new.localisations
+    set_gang_details
   end
 
   # GET /gangs/1/edit
   def edit
+    set_gang_details
   end
 
   # POST /gangs
@@ -71,7 +62,7 @@ class GangsController < ApplicationController
   def update
     respond_to do |format|
       if @gang.update(gang_params)
-        format.html { redirect_to @gang, notice: 'Gang was successfully updated.' }
+        format.html { redirect_to campaign_gangs_path( @campaign ), notice: 'Gang was successfully updated.' }
 
       else
         format.html { render :edit }
@@ -95,6 +86,20 @@ class GangsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
-      params.require( :gang ).permit( :icon, :faction, :number, :location )
+      params.require( :gang ).permit( :icon, :faction, :number, :location, :name )
+    end
+
+    def set_gang_details
+      @icons = {}
+      Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
+        @icons_set = File.basename(icons_path)
+        # p icons_set
+        @icons[@icons_set] = Dir["#{icons_path}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) } # .in_groups_of( 7 )
+      end
+
+      # p @icons
+
+      @select_factions_options = GameRules::Factions.new.faction_select_options
+      @select_localisations_options = GameRules::Map.new.localisations
     end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       put :modify_pp
     end
 
-    resources :gangs, only: [ :index, :new, :create ]
+    resources :gangs, only: [ :index, :new, :create, :edit, :update ]
 
     resources :fights, only: [ :index, :new, :create, :show ]
 
