@@ -12,34 +12,33 @@ require_relative '../app/models/game_rules/unit'
 require_relative '../app/models/game_rules/fight'
 require_relative '../app/models/game_rules/fight_attack_atomic_step'
 require_relative '../app/models/game_rules/fight_attack_with_retaliation'
+require_relative '../app/models/game_rules/fight_attack_count_points'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5
 
 ActiveRecord::Base.establish_connection(db )
 
-# def stats
-#   results = {}
-#   f = GameRules::Fight.new( true )
+def stats
+  results = {}
+  f = GameRules::Fight.new( 8, 'O1', 1, 2, save_result: false )
+
+  1.upto(500) do |i|
+    p i if i % 100 == 0
+    r = f.go.result.winner_code
+    results[r] ||= 0
+    results[r] += 1
+  end
+  pp results
+end
+
+stats
+
+# c = GameRules::Fight.new( 8, 'O1', 1, 2 )
+# c.go
 #
-#   1.upto(5000) do |i|
-#     p i if i % 100 == 0
-#     r = f.go
-#     results[r] ||= 0
-#     results[r] += 1
-#   end
-#   pp results
-# end
-
-# stats
-
-c = GameRules::Fight.new( 8, 'O1', 1, 2 )
-c.go
-
-pp c.combat_log
-
-pp c.body_count
-
-c.show_fight_result
+# pp c.combat_log
+#
+# pp c.body_count
 
 

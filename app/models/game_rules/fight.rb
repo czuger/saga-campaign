@@ -2,9 +2,9 @@ module GameRules
 
   class Fight
 
-    attr_reader :combat_log, :body_count
+    attr_reader :combat_log, :body_count, :result
 
-    def initialize( campaign_id, location, attacking_gang_id, defender_gang_id )
+    def initialize( campaign_id, location, attacking_gang_id, defender_gang_id, save_result: true )
       @combat_log = []
 
       @campaign_id = campaign_id
@@ -14,6 +14,8 @@ module GameRules
       @defender_gang_id = defender_gang_id
 
       @body_count = {}
+
+      @save_result = save_result
     end
 
     def go
@@ -35,45 +37,10 @@ module GameRules
         break if @player_1_units.empty? || @player_2_units.empty?
       end
 
-      result = check_result
-      save_result( result )
-    end
+      @result = FightAttackCountPoints.new( @player_1, @player_2, @body_count ).do
+      save_result( @result ) if @save_result
 
-    def show_fight_result
-      puts 'Results for player 1'
-      show_fight_result_for_player @player_2
-
-      puts 'Results for player 2'
-      show_fight_result_for_player @player_1
-    end
-
-    private
-
-    def show_fight_result_for_player( opponent )
-      total = 0
-
-      opponent.units.each do |unit|
-        if @body_count.has_key?( unit.id )
-          bc = OpenStruct.new( @body_count[ unit.id ] )
-          points = ( bc.deads * unit.massacre_points ).to_i
-
-          puts "#{unit.full_name} give #{points} points."
-          total += points
-
-          if bc.destroyed == true
-            if unit.legendary?
-              points = 4
-            else
-              points = 1
-            end
-
-            puts "#{unit.full_name} destruction give #{points} extra points."
-            total += points
-          end
-        end
-      end
-
-      puts "Total points : #{total}."
+      self
     end
 
     # Play a full tour where player1 and player 2 fights
@@ -140,18 +107,6 @@ module GameRules
     # @return [Boolean] true or false
     def combat_continue?( attacker_units, defender_units )
       attacker_units.empty? || defender_units.empty?
-    end
-
-    def check_result
-      result = :equality
-
-      if @player_1_units.empty? || @player_1_units.count < @player_2_units.count
-        result = :defender
-      elsif @player_2_units.empty? || @player_1_units.count > @player_2_units.count
-        result = :attacker
-      end
-
-      result
     end
 
     def log_opponents_status( attacker, defender )
