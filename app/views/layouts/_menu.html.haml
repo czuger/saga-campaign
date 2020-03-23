@@ -21,6 +21,9 @@
             = link_to 'Carte', campaign_map_show_path( @campaign ), class: 'nav-link'
 
           %li.nav-item
+            = link_to 'Lieux controllés', campaign_controlled_points_path( @campaign ), class: 'nav-link'
+
+          %li.nav-item
             = link_to 'Combats', campaign_fights_path( @campaign ), class: 'nav-link'
 
           - if @player&.id

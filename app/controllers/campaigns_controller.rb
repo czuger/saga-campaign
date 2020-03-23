@@ -1,7 +1,10 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :controlled_points]
   before_action :set_player, only: [:show]
+
+  def controlled_points
+  end
 
   # GET /campaigns
   # GET /campaigns.json

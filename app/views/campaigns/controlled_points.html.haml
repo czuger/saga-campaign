@@ -1,0 +1,9 @@
+%h1 Liste des points controlés
+
+- @campaign.players.each do |player|
+  %b
+    = "Points controllés par #{player.user.name}"
+
+  %ul
+    - player.controls_points&.sort&.each do |control|
+      %li= control

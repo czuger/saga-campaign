@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
     get 'log/show', to: 'log#show'
     get 'map/show', to: 'map#show'
+
+    get :controlled_points
   end
 
   resources :gangs, only: [ :destroy ] do

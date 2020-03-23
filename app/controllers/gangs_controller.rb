@@ -4,8 +4,25 @@ class GangsController < ApplicationController
   before_action :set_player, only: [:create, :index, :new]
 
   def change_location
-    @gang.location = params[:location]
-    @gang.save!
+    Gang.transaction do
+      @gang.location = params[:location]
+      @gang.save!
+
+      @campaign.players.each do |player|
+        player.controls_points ||= []
+        player.controls_points.delete( @gang.location )
+        player.save!
+      end
+
+      @player.controls_points ||= []
+      @player.controls_points << @gang.location
+      @player.save!
+
+      user_name = @player.user.name
+
+      @campaign.logs.create!( data: "La bande #{@gang.number} de #{user_name} se déplace en #{@gang.location}." )
+      @campaign.logs.create!( data: "#{user_name} prend le contrôle de #{@gang.location}." )
+    end
   end
 
   # GET /gangs
