@@ -21,8 +21,8 @@ module GameRules
     end
 
     def position_value( position )
-      return 6 if HIGH_VALUES.include?( position )
-      return 3 if LOW_VALUES.include?( position )
+      return 4 if HIGH_VALUES.include?( position )
+      return 2 if LOW_VALUES.include?( position )
       0
     end
 
