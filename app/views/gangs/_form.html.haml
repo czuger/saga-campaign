@@ -17,6 +17,10 @@
     Localisation
   = f.select(:location, options_for_select(@select_localisations_options), {}, class: 'form-control')
 
+  %b
+    Nom
+  = f.text_field :name, class: 'form-control'
+
   .mt-2.ml-2
     - @icons.each do |icons_group_key, icons|
       .row{ class: "factions_icons #{icons_group_key}" }
