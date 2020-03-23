@@ -9,6 +9,7 @@ class GangsController < ApplicationController
       @gang.save!
 
       @campaign.players.each do |player|
+        next if player.id == @player.id
         player.controls_points ||= []
         player.controls_points.delete( @gang.location )
         player.save!
@@ -16,6 +17,7 @@ class GangsController < ApplicationController
 
       @player.controls_points ||= []
       @player.controls_points << @gang.location
+      @player.controls_points.uniq!
       @player.save!
 
       user_name = @player.user.name
