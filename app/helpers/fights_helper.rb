@@ -17,13 +17,17 @@ module FightsHelper
 
 
   def fight_detail( combat_info, attack_or_retaliation )
-    c = OpenStruct.new( combat_info )
-    attacker_name = @game_rules_units.name_from_string_key( c.opponents[:attacker] )
-    attacker_name = attacker_name + "(#{c.opponents[:attacker_count]})"
-    defender_name = @game_rules_units.name_from_string_key( c.opponents[:defender] )
-    defender_name = defender_name + "(#{c.opponents[:defender_count]})"
+    c = OpenStruct.new( combat_info[:combat_result] )
+    p c.attacker
 
-    attack = OpenStruct.new( c.combat_result[attack_or_retaliation] )
+    attacker_name = @game_rules_units.name_from_string_key( c.attacker.name )
+    attacker_name = attacker_name + "##{c.attacker.id}"
+    attacker_name = attacker_name + " (#{c.attacker.amount})"
+    defender_name = @game_rules_units.name_from_string_key( c.defender.name )
+    defender_name = defender_name + "##{c.defender.id}"
+    defender_name = defender_name + " (#{c.amount})"
+
+    attack = OpenStruct.new( c.attack_or_retaliation )
     attack_type = OpenStruct.new( attack.attack_type )
     attack_result = OpenStruct.new( attack.attack_result )
 

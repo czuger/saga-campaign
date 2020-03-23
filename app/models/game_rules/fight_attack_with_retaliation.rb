@@ -20,6 +20,8 @@ module GameRules
     #
     # @return [all input parameters].
     def perform_attack( attacker_units, defender_units, attacker, defender )
+      @attacker = attacker
+      @defender = defender
 
       # First the regular attack
       @attack = FightAttackAtomicStep.new( attacker, defender, :attack )
@@ -43,7 +45,10 @@ module GameRules
     #
     # @return [Hash] Log details
     def get_log_data
-      { attack: @attack.get_log_data(), retaliation: @retaliation&.get_log_data(), hits_assignment: @hits_log }
+      { attack: @attack.get_log_data(), retaliation: @retaliation&.get_log_data(), hits_assignment: @hits_log,
+        attacker: OpenStruct.new( name: @attacker.full_name, amount: @attacker.amount, id: @attacker.id ),
+        defender: OpenStruct.new( name: @defender.full_name, amount: @defender.amount, id: @defender.id )
+      }
     end
 
     private

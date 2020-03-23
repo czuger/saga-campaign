@@ -61,7 +61,6 @@ module GameRules
           f = FightAttackWithRetaliation.new( @body_count )
 
           defender = get_target( defender_units )
-          @single_attack_log[ :opponents ] = log_opponents_status( attacker, defender )
 
           attacker_units, defender_units, attacker, defender =
             f.perform_attack( attacker_units, defender_units, attacker, defender )
@@ -107,10 +106,6 @@ module GameRules
     # @return [Boolean] true or false
     def combat_continue?( attacker_units, defender_units )
       attacker_units.empty? || defender_units.empty?
-    end
-
-    def log_opponents_status( attacker, defender )
-      { attacker: attacker.full_name, attacker_count: attacker.amount, defender: defender.full_name, defender_count: defender.amount }
     end
 
     def will_attack?( unit )
