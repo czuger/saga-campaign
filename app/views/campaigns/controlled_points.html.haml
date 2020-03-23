@@ -21,3 +21,18 @@
           %b Total
         %td
           %b= total
+
+      - maintenance = compute_maintenance( player )
+      %tr
+        %td
+          %b Maintenance
+        %td
+          %b= maintenance
+
+      %tr
+        %td
+          %b Reste
+        %td
+          %b= total - maintenance
+
+
