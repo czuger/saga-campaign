@@ -15,8 +15,9 @@
         %td= new_combat_libe(fight.defender)
         %td= link_to 'Lancer', campaign_fights_path( @campaign, attacker: fight.attacker.id, defender: fight.defender.id ), method: :post, class: 'mt-2 btn btn-secondary btn-sm'
 
+      -# Defender and attacker are swapped here.
       %tr
         %td= fight.location
         %td= new_combat_libe(fight.defender)
         %td= new_combat_libe(fight.attacker)
-        %td= link_to 'Lancer', campaign_fights_path( @campaign, defender: fight.defender.id, attacker: fight.attacker.id ), method: :post, class: 'mt-2 btn btn-secondary btn-sm'
+        %td= link_to 'Lancer', campaign_fights_path( @campaign, defender: fight.attacker.id, attacker: fight.defender.id ), method: :post, class: 'mt-2 btn btn-secondary btn-sm'
