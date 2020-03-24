@@ -1,12 +1,22 @@
 %h1 Démarrer un combat
 
-= form_tag campaign_fights_path do
+%table.table
+  %thead
+    %tr
+      %th Localisation
+      %th Attaquant
+      %th Defenseur
+      %th
+  %tbody
+    - @fights.each do |fight|
+      %tr
+        %td= fight.location
+        %td= new_combat_libe(fight.attacker)
+        %td= new_combat_libe(fight.defender)
+        %td= link_to 'Lancer', campaign_fights_path( @campaign, attacker: fight.attacker.id, defender: fight.defender.id ), method: :post, class: 'mt-2 btn btn-secondary btn-sm'
 
-  %h2 Attaquant
-  = select_tag( 'attacker', options_for_select( @gangs ), class: 'form-control' )
-
-  %h2 Défenseur
-  = select_tag( 'defender', options_for_select( @gangs ), class: 'form-control' )
-
-  = submit_tag 'Démarrer', class: 'mt-2 btn btn-secondary'
-
+      %tr
+        %td= fight.location
+        %td= new_combat_libe(fight.defender)
+        %td= new_combat_libe(fight.attacker)
+        %td= link_to 'Lancer', campaign_fights_path( @campaign, defender: fight.defender.id, attacker: fight.attacker.id ), method: :post, class: 'mt-2 btn btn-secondary btn-sm'

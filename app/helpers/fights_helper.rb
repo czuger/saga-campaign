@@ -2,6 +2,10 @@ require 'ostruct'
 
 module FightsHelper
 
+  def new_combat_libe( gang )
+    "#{gang.name} (#{gang.player.user.name})"
+  end
+
   def participant_libe( attacker_name, band_no )
     "Bande n° #{band_no} de #{attacker_name}"
   end

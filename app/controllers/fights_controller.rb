@@ -26,14 +26,24 @@ class FightsController < ApplicationController
   end
 
   def new
-    @gangs = []
+    common_locations = {}
+    @campaign.gangs.pluck( :location, :id ).each do |e|
+      common_locations[e.first] ||= []
+      common_locations[e.first] << e.last
+    end
 
-    @campaign.players.each do |player|
-      user = player.user
+    @fights = []
+    common_locations.each_pair do |k, v|
+      if v.count > 1
 
-      player.gangs.each do |gang|
-        @gangs << [ "Bande n° #{gang.number} de #{user.name}", gang.id ]
+        @fights << OpenStruct.new(
+          location: k,
+          attacker: Gang.find( v[0] ),
+          defender: Gang.find( v[1] )
+        )
+
       end
     end
+
   end
 end
