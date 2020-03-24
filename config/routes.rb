@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     get 'map/show', to: 'map#show'
 
     get :controlled_points
+
+    get :initiative_edit
+    post :initiative_save
   end
 
   resources :gangs, only: [ :destroy ] do

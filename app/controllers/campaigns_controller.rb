@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :controlled_points]
-  before_action :set_player, only: [:show]
+  before_action :set_campaign, except: [ :index ]
+  before_action :set_player, only: [ :show ]
 
   def controlled_points
     @map = GameRules::Map.new
@@ -74,6 +74,20 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to campaigns_url, notice: t( 'deletion_success.f', item: 'La campagne' ) }
       
+    end
+  end
+
+  def initiative_edit
+  end
+
+  def initiative_save
+    new_order_hash = Hash[ params[ :new_order ].values ]
+
+    Player.transaction do
+      @campaign.players.includes(:user).each do |player|
+        player.initiative = new_order_hash[ player.id.to_s ].to_i
+        player.save!
+      end
     end
   end
 

@@ -29,6 +29,10 @@
           - if @player&.id
             = link_to 'Joueur', campaign_player_path( @campaign, @player ), class: 'nav-link'
 
+          %li.nav-item
+            = link_to 'Initiative', campaign_initiative_edit_path( @campaign ), class: 'nav-link'
+
+
         %li.nav-item
           = link_to 'Règles', '/rules.pdf', class: 'nav-link'
 

@@ -1,0 +1,9 @@
+%h1 Ordonnez les joueurs en fonction de l'initiative
+
+%ul#sortable.list-group.mt-3
+  - @campaign.players.order( :initiative ).includes( :user ).each do |player|
+    %li.list-group-item{ player_id: player.id }
+      %span{  player_id: player.id }
+        = player.user.name
+
+= hidden_field_tag :campaign_id, @campaign.id
