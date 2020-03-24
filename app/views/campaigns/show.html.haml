@@ -22,6 +22,11 @@
       %span.badge.badge-light
         = @players.map{ |e| e.user.name }.join( ', ' )
 
+.row.mb-3
+  .col-4
+    = link_to 'Planification des mouvements', player_schedule_movements_edit_path( @player ), class: ' btn btn-secondary btn-block', role: 'button', 'aria-disabled' => 'true'
+
+
 %table.table
   %thead
     %tr

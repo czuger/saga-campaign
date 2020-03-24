@@ -1,0 +1,16 @@
+%h1 Planification des mouvements
+
+= form_tag player_schedule_movements_edit_path( @player ) do
+
+  %table.table
+    %thead
+      %tr
+        %th Bande
+        %th Mouvement 1
+        %th Mouvement 2
+    %tbody
+      - @player.gangs.each_with_index do |gang, i|
+        %tr
+          %td= gang.name
+          %td= select_tag( "gang[#{gang.id}]", options_for_select( @loc ), { include_blank: true, class: 'form-control' } )
+          %td= select_tag( "gang[#{gang.id}]", options_for_select( @loc ), { include_blank: true, class: 'form-control'  } )

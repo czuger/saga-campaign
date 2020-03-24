@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
   resources :players, only: [] do
     patch :modify_pp
+
+    get :schedule_movements_edit
+    post :schedule_movements_save
   end
 
   # Used to set icons position on map

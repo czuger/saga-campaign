@@ -65,6 +65,15 @@ class PlayersController < ApplicationController
     player.campaign.logs.create!( data: "#{player.user.name} a modifié son nombre de pp : #{player.pp}." )
   end
 
+  def schedule_movements_edit
+    @player = Player.find( params[:player_id] )
+
+    @loc = GameRules::Map.new.localisations
+  end
+
+  def schedule_movements_save
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
