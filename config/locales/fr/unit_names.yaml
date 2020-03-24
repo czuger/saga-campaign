@@ -1,0 +1,19 @@
+---
+fr:
+  unit_name_long:
+    seigneur: "le seigneur %{name}"
+    sorcier: "le sorcier %{name}"
+    titan: "le titan %{name}"
+    behemoth: "le behemoth %{name}"
+    gardes: "les gardes %{name}"
+    guerriers: "les guerriers %{name}"
+    levees: "la levée %{name}"
+
+  unit_name_short:
+    seigneur: "seigneur %{name}"
+    sorcier: "sorcier %{name}"
+    titan: "titan %{name}"
+    behemoth: "behemoth %{name}"
+    gardes: "gardes %{name}"
+    guerriers: "guerriers %{name}"
+    levees: "levée %{name}"

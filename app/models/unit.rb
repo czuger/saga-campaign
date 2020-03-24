@@ -27,6 +27,14 @@ class Unit < ApplicationRecord
     translated_name + "##{gang_id}##{id}"
   end
 
+  def long_name
+    I18n.t( 'unit_name_long.' + unit_name_code, name: name )
+  end
+
+  def long_name
+    I18n.t( 'unit_name_long.' + unit_name_code, name: name )
+  end
+
   def full_name
     "[#{libe}, #{weapon}]"
   end
@@ -79,5 +87,14 @@ class Unit < ApplicationRecord
 
     @unit_data ||= OpenHash.new( @@units_data.data[libe][weapon] )
   end
+
+  def unit_name_code
+    if libe == 'monster'
+      weapon
+    else
+      libe
+    end
+  end
+
 
 end
