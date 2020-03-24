@@ -1,7 +1,7 @@
 require 'pp'
 require 'yaml'
 
-require_relative 'google_spreadsheet'
+require_relative 'libs/google_spreadsheet'
 
 data = {}
 allowance = {}
@@ -34,14 +34,19 @@ end
 
 fr_translation['fr'] = {}
 
-File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do |line, index|
+gs = GoogleSpreadsheet.new
+
+gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
   next if index == 0
 
-  nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice, min_units_for_saga_dice,
-    min, max, increment_step, massacre_points, activation_chance, being_targeted_chance, legendary,
-    unit_name, weapon_name, armor, damage, options = line.split("\t")
+  unit_name, weapon_name, nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice,
+    min_units_for_saga_dice, min, max, increment_step, massacre_points, activation_chance, being_targeted_chance,
+    legendary, active, movement, attack_range, initiative, armor, damage, options = line
 
+  options ||= ''
   options = options.chomp.gsub('.', '')
+
+  active = (active == 'oui')
 
   unit_key = to_key( unit_name )
 
@@ -64,8 +69,12 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   data[unit_key] ||= {}
   data[unit_key][weapon_key] ||= {}
 
-  [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
-    allowance, fr_translation = set_allowance( allowance, fr_translation, libe, unit_key, weapon_key )
+  p active
+
+  if active
+    [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
+      allowance, fr_translation = set_allowance( allowance, fr_translation, libe, unit_key, weapon_key )
+    end
   end
 
   data[unit_key][weapon_key][:cost] = cost.gsub( ',', '.' ).to_f
@@ -81,6 +90,11 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   data[unit_key][weapon_key][:massacre_points] = massacre_points.to_r
   data[unit_key][weapon_key][:legendary] = legendary == 'Oui'
 
+  data[unit_key][weapon_key][:active] = active
+  data[unit_key][weapon_key][:movement] = movement
+  data[unit_key][weapon_key][:attack_range] = attack_range
+  data[unit_key][weapon_key][:initiative] = initiative
+
   data[unit_key][weapon_key][:armor] ||= {}
   armor_cac, armor_ranged = armor.scan( /\d+/ )
   data[unit_key][weapon_key][:armor][:cac] = armor_cac.to_i
@@ -92,7 +106,7 @@ File.open('saga2-aom-references.xlsx - Sheet2.tsv').readlines.each_with_index do
   damage_cac = m[1]
   damage_ranged = m[2]
 
-  puts "#{unit_key}, #{weapon_key} => damage = #{damage}, match=#{m.inspect}, damage_cac=#{damage_cac}, damage_ranged=#{damage_ranged}"
+  # puts "#{unit_key}, #{weapon_key} => damage = #{damage}, match=#{m.inspect}, damage_cac=#{damage_cac}, damage_ranged=#{damage_ranged}"
 
   data[unit_key][weapon_key][:damage][:cac] = damage_cac.to_r
   data[unit_key][weapon_key][:damage][:ranged] = damage_ranged.to_r

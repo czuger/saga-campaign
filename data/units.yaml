@@ -16,6 +16,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 5
@@ -33,13 +37,6 @@ seigneur:
     - gardes_du_corps
     - fierte
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 10
-      :can_attack: 75
   arme_lourde:
     :cost: 0.0
     :amount: 1
@@ -56,6 +53,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '10'
     :armor:
       :cac: 4
       :ranged: 5
@@ -73,13 +74,6 @@ seigneur:
     - gardes_du_corps
     - fierte
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 10
-      :can_attack: 75
   arc:
     :cost: 0.0
     :amount: 1
@@ -96,6 +90,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '10'
     :armor:
       :cac: 4
       :ranged: 4
@@ -113,13 +111,6 @@ seigneur:
     - gardes_du_corps
     - fierte
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 7.5
-      :can_attack: 75
   monture_animal:
     :cost: 0.0
     :amount: 1
@@ -136,6 +127,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 4
@@ -153,13 +148,6 @@ seigneur:
     - gardes_du_corps
     - fierte
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 7.5
-      :can_attack: 75
   volant:
     :cost: 0.0
     :amount: 1
@@ -176,6 +164,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 4
@@ -194,13 +186,6 @@ seigneur:
     - fierte
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 7.5
-      :can_attack: 75
   monture_ailee:
     :cost: 0.0
     :amount: 1
@@ -217,6 +202,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 4
@@ -235,13 +224,6 @@ seigneur:
     - fierte
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 7.5
-      :can_attack: 75
   monture_animal_arc_composite:
     :cost: 0.0
     :amount: 1
@@ -258,6 +240,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 4
       :ranged: 4
@@ -275,13 +261,6 @@ seigneur:
     - gardes_du_corps
     - fierte
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 5.625
-      :can_attack: 75
   monture_bete:
     :cost: 0.0
     :amount: 1
@@ -298,6 +277,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 5
@@ -314,13 +297,6 @@ seigneur:
     - imposant
     - fierte
     :resistance: 2
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 7.5
-      :can_attack: 75
   monture_bete_vol:
     :cost: 0.0
     :amount: 1
@@ -337,6 +313,10 @@ seigneur:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '10'
     :armor:
       :cac: 5
       :ranged: 4
@@ -354,13 +334,6 @@ seigneur:
     - fierte
     - vol
     :resistance: 2
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 7.5
-      :can_attack: 75
 lieutenant:
   "-":
     :cost: 0.5
@@ -378,6 +351,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 5
@@ -393,13 +370,6 @@ lieutenant:
     - presence
     - regle_speciale_de_faction
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 100.0
-      :can_attack: 75
   arme_lourde:
     :cost: 0.5
     :amount: 1
@@ -416,6 +386,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 5
@@ -431,13 +405,6 @@ lieutenant:
     - presence
     - regle_speciale_de_faction
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 100.0
-      :can_attack: 75
   arc:
     :cost: 0.5
     :amount: 1
@@ -454,6 +421,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -469,13 +440,6 @@ lieutenant:
     - presence
     - regle_speciale_de_faction
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
   monture_animal:
     :cost: 0.5
     :amount: 1
@@ -492,6 +456,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -507,13 +475,6 @@ lieutenant:
     - presence
     - regle_speciale_de_faction
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
   monture_ailee:
     :cost: 0.5
     :amount: 1
@@ -530,6 +491,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -546,13 +511,6 @@ lieutenant:
     - regle_speciale_de_faction
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
   volant:
     :cost: 0.5
     :amount: 1
@@ -569,6 +527,10 @@ lieutenant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -585,13 +547,6 @@ lieutenant:
     - regle_speciale_de_faction
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
 sorcier:
   "-":
     :cost: 1.0
@@ -609,6 +564,10 @@ sorcier:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: '20'
     :armor:
       :cac: 3
       :ranged: 4
@@ -626,13 +585,6 @@ sorcier:
     - desarme
     - magie
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 37.5
-      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 1
@@ -649,6 +601,10 @@ sorcier:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '20'
     :armor:
       :cac: 3
       :ranged: 3
@@ -666,13 +622,6 @@ sorcier:
     - desarme
     - magie
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
-      :can_attack: 75
   volant:
     :cost: 1.0
     :amount: 1
@@ -689,6 +638,10 @@ sorcier:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '20'
     :armor:
       :cac: 3
       :ranged: 3
@@ -707,13 +660,6 @@ sorcier:
     - magie
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
-      :can_attack: 75
   monture_ailee:
     :cost: 1.0
     :amount: 1
@@ -730,6 +676,10 @@ sorcier:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '20'
     :armor:
       :cac: 3
       :ranged: 3
@@ -748,13 +698,6 @@ sorcier:
     - magie
     - vol
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
-      :can_attack: 75
 monstre:
   behemoth:
     :cost: 1.0
@@ -772,6 +715,10 @@ monstre:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '30'
     :armor:
       :cac: 4
       :ranged: 4
@@ -787,13 +734,6 @@ monstre:
     - presence
     - imposant
     - primitif
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 50.0
-      :can_attack: 37
   titan:
     :cost: 1.0
     :amount: 1
@@ -810,6 +750,10 @@ monstre:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: true
+    :movement: '1'
+    :attack_range: '0'
+    :initiative: '30'
     :armor:
       :cac: 5
       :ranged: 5
@@ -826,13 +770,6 @@ monstre:
     - imposant
     - primitif
     - lent
-    :fight_info:
-      :rapide: false
-      :lent: true
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 28
   fleau_vol:
     :cost: 1.0
     :amount: 1
@@ -849,6 +786,10 @@ monstre:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '30'
     :armor:
       :cac: 4
       :ranged: 4
@@ -866,13 +807,6 @@ monstre:
     - primitif
     - souffle
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 37
 creatures:
   bipedes:
     :cost: 1.0
@@ -890,6 +824,10 @@ creatures:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '40'
     :armor:
       :cac: 4
       :ranged: 4
@@ -904,13 +842,6 @@ creatures:
     :options:
     - presence
     - imposant
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 4
-      :being_targeted: 75.0
-      :can_attack: 50
   quadrupedes:
     :cost: 1.0
     :amount: 2
@@ -927,6 +858,10 @@ creatures:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '40'
     :armor:
       :cac: 4
       :ranged: 3
@@ -942,13 +877,6 @@ creatures:
     - presence
     - imposant
     - rapide
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 4
-      :being_targeted: 56.25
-      :can_attack: 50
   volants_vol:
     :cost: 1.0
     :amount: 2
@@ -965,6 +893,10 @@ creatures:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '40'
     :armor:
       :cac: 4
       :ranged: 3
@@ -980,13 +912,6 @@ creatures:
     - presence
     - imposant
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 4
-      :being_targeted: 56.25
-      :can_attack: 50
 gardes:
   "-":
     :cost: 1.0
@@ -1004,6 +929,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '50'
     :armor:
       :cac: 5
       :ranged: 5
@@ -1014,13 +943,6 @@ gardes:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 75
   arc:
     :cost: 1.0
     :amount: 4
@@ -1037,6 +959,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '50'
     :armor:
       :cac: 4
       :ranged: 4
@@ -1047,13 +973,6 @@ gardes:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 56.25
-      :can_attack: 75
   arme_lourde:
     :cost: 1.0
     :amount: 4
@@ -1070,6 +989,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '50'
     :armor:
       :cac: 4
       :ranged: 5
@@ -1080,13 +1003,6 @@ gardes:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 4
@@ -1103,6 +1019,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '50'
     :armor:
       :cac: 5
       :ranged: 4
@@ -1113,13 +1033,6 @@ gardes:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 56.25
-      :can_attack: 75
   volant:
     :cost: 1.0
     :amount: 4
@@ -1136,6 +1049,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '50'
     :armor:
       :cac: 5
       :ranged: 4
@@ -1148,13 +1065,6 @@ gardes:
         numerator: 1
     :options:
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 56.25
-      :can_attack: 75
   monture_ailee:
     :cost: 1.0
     :amount: 4
@@ -1171,6 +1081,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '50'
     :armor:
       :cac: 5
       :ranged: 4
@@ -1183,13 +1097,6 @@ gardes:
         numerator: 1
     :options:
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 56.25
-      :can_attack: 75
   monture_animal_arc_composite:
     :cost: 1.0
     :amount: 4
@@ -1206,6 +1113,10 @@ gardes:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '50'
     :armor:
       :cac: 4
       :ranged: 4
@@ -1216,13 +1127,6 @@ gardes:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 42.1875
-      :can_attack: 75
 guerriers:
   "-":
     :cost: 1.0
@@ -1240,6 +1144,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '80'
     :armor:
       :cac: 4
       :ranged: 4
@@ -1250,13 +1158,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 100.0
-      :can_attack: 50
   arme_lourde:
     :cost: 1.0
     :amount: 8
@@ -1273,6 +1174,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '80'
     :armor:
       :cac: 3
       :ranged: 4
@@ -1283,13 +1188,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 100.0
-      :can_attack: 50
   arc:
     :cost: 1.0
     :amount: 8
@@ -1306,6 +1204,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '80'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1316,13 +1218,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 50
   arbalete:
     :cost: 1.0
     :amount: 8
@@ -1339,6 +1234,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '80'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1349,13 +1248,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 50
   arme_a_feu:
     :cost: 1.0
     :amount: 8
@@ -1372,6 +1264,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '80'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1382,13 +1278,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 50
   volant:
     :cost: 1.0
     :amount: 8
@@ -1405,6 +1294,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '80'
     :armor:
       :cac: 4
       :ranged: 3
@@ -1417,13 +1310,6 @@ guerriers:
         numerator: 1
     :options:
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 50
   monture_animal:
     :cost: 1.0
     :amount: 8
@@ -1440,6 +1326,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '80'
     :armor:
       :cac: 4
       :ranged: 3
@@ -1450,13 +1340,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 50
   monture_animal_arc_composite:
     :cost: 1.0
     :amount: 8
@@ -1473,6 +1356,10 @@ guerriers:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: '80'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1483,13 +1370,6 @@ guerriers:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 56.25
-      :can_attack: 50
 levees:
   "-":
     :cost: 1.0
@@ -1507,6 +1387,10 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '0'
+    :initiative: '100'
     :armor:
       :cac: 4
       :ranged: 4
@@ -1517,13 +1401,6 @@ levees:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 150.0
-      :can_attack: 37
   javelots:
     :cost: 1.0
     :amount: 12
@@ -1540,6 +1417,10 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: '100'
     :armor:
       :cac: 3
       :ranged: 4
@@ -1550,13 +1431,6 @@ levees:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 112.5
-      :can_attack: 37
   arc_ou_fronde:
     :cost: 1.0
     :amount: 12
@@ -1573,6 +1447,10 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '100'
     :armor:
       :cac: 3
       :ranged: 4
@@ -1583,13 +1461,6 @@ levees:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 112.5
-      :can_attack: 37
   arbalete:
     :cost: 1.0
     :amount: 12
@@ -1606,6 +1477,10 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '100'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1616,13 +1491,6 @@ levees:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 112.5
-      :can_attack: 37
   arme_a_feu:
     :cost: 1.0
     :amount: 12
@@ -1639,6 +1507,10 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: true
+    :movement: '2'
+    :attack_range: '4'
+    :initiative: '100'
     :armor:
       :cac: 3
       :ranged: 3
@@ -1649,13 +1521,6 @@ levees:
       :ranged: !ruby/object:Rational
         denominator: 2
         numerator: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 0
-      :being_targeted: 112.5
-      :can_attack: 37
 machine_de_guerre:
   statique:
     :cost: 0.5
@@ -1673,6 +1538,10 @@ machine_de_guerre:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: '0'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 3
       :ranged: 4
@@ -1689,13 +1558,6 @@ machine_de_guerre:
     - presence
     - tir_puissant
     - encombrant
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 37.5
-      :can_attack: 75
   mobile:
     :cost: 0.5
     :amount: 1
@@ -1712,6 +1574,10 @@ machine_de_guerre:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: '2'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -1727,13 +1593,6 @@ machine_de_guerre:
     - desarme
     - presence
     - armes_a_feu
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 37.5
-      :can_attack: 75
   volante_vol:
     :cost: 0.5
     :amount: 1
@@ -1750,6 +1609,10 @@ machine_de_guerre:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: '4'
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -1766,13 +1629,6 @@ machine_de_guerre:
     - presence
     - souffle
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 28.125
-      :can_attack: 75
 necromant:
   "-":
     :cost: 1.0
@@ -1790,6 +1646,10 @@ necromant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -1806,13 +1666,6 @@ necromant:
     - presence
     - gardes_du_corps
     :resistance: 1
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 50.0
-      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 1
@@ -1829,6 +1682,10 @@ necromant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 3
@@ -1845,13 +1702,6 @@ necromant:
     - presence
     - gardes_du_corps
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 37.5
-      :can_attack: 75
   monture_bete:
     :cost: 1.0
     :amount: 1
@@ -1868,6 +1718,10 @@ necromant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -1883,13 +1737,6 @@ necromant:
     - presence
     - imposant
     :resistance: 2
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 75
   monture_bete_vol:
     :cost: 1.0
     :amount: 1
@@ -1906,6 +1753,10 @@ necromant:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 3
@@ -1922,13 +1773,6 @@ necromant:
     - imposant
     - vol
     :resistance: 2
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 75
 paladin:
   "-":
     :cost: 0.5
@@ -1946,6 +1790,10 @@ paladin:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 5
@@ -1961,13 +1809,6 @@ paladin:
     - presence
     - determination
     - heroique
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
   arme_lourde:
     :cost: 0.5
     :amount: 1
@@ -1984,6 +1825,10 @@ paladin:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 5
@@ -1999,13 +1844,6 @@ paladin:
     - presence
     - determination
     - heroique
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 75
   monture_animal:
     :cost: 0.5
     :amount: 1
@@ -2022,6 +1860,10 @@ paladin:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -2037,13 +1879,6 @@ paladin:
     - presence
     - determination
     - heroique
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 56.25
-      :can_attack: 75
   monture_ailee_vol:
     :cost: 0.5
     :amount: 1
@@ -2060,6 +1895,10 @@ paladin:
       denominator: 1
       numerator: 2
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -2076,13 +1915,6 @@ paladin:
     - determination
     - heroique
     - vol
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 56.25
-      :can_attack: 75
 nuee:
   "-":
     :cost: 1.0
@@ -2100,6 +1932,10 @@ nuee:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 3
@@ -2113,13 +1949,6 @@ nuee:
     :options:
     - primitif_insignifiant
     - minuscule
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 150.0
-      :can_attack: 37
 decerebres:
   "-":
     :cost: 1.0
@@ -2137,6 +1966,10 @@ decerebres:
       denominator: 3
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -2151,13 +1984,6 @@ decerebres:
     - decerebre
     - lent
     - horde
-    :fight_info:
-      :rapide: false
-      :lent: true
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 28
 char_de_guerre:
   "-":
     :cost: 1.0
@@ -2175,6 +2001,10 @@ char_de_guerre:
       denominator: 1
       numerator: 4
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 5
@@ -2191,13 +2021,6 @@ char_de_guerre:
     - javelots
     - monture_animal
     - charge_devastatrice
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 3
-      :being_targeted: 75.0
-      :can_attack: 37
 traqueurs:
   "-":
     :cost: 1.0
@@ -2215,6 +2038,10 @@ traqueurs:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 3
       :ranged: 3
@@ -2229,13 +2056,6 @@ traqueurs:
     - primitif
     - ne_peut_pas_serrer_les_rangs
     - traque
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 100.0
-      :can_attack: 50
 equipe_de_destrucion:
   "-":
     :cost: 0.25
@@ -2253,6 +2073,10 @@ equipe_de_destrucion:
       denominator: 1
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 3
       :ranged: 4
@@ -2267,13 +2091,6 @@ equipe_de_destrucion:
     :options:
     - arme_a_feu
     - instable_et_dangereux
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 3
-      :being_targeted: 100.0
-      :can_attack: 50
 le_conclave:
   "-":
     :cost: 3.0
@@ -2291,6 +2108,10 @@ le_conclave:
       denominator: 1
       numerator: 3
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 4
       :ranged: 4
@@ -2309,13 +2130,6 @@ le_conclave:
     - desarmes
     - projectiles_magiques
     :resistance: 2
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 6
-      :being_targeted: 37.5
-      :can_attack: 75
 la_machine_incroyable_et_extraordinaire:
   "-":
     :cost: 2.0
@@ -2333,6 +2147,10 @@ la_machine_incroyable_et_extraordinaire:
       denominator: 1
       numerator: 8
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 6
@@ -2351,13 +2169,6 @@ la_machine_incroyable_et_extraordinaire:
     - plateforme_de_tir
     - boum_
     :resistance: 2
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: true
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 75
 fanatiques_devoues:
   "-":
     :cost: 1.0
@@ -2375,6 +2186,10 @@ fanatiques_devoues:
       denominator: 2
       numerator: 1
     :legendary: false
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 3
       :ranged: 3
@@ -2388,13 +2203,6 @@ fanatiques_devoues:
     :options:
     - primitif
     - determination_fanatique
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 100.0
-      :can_attack: 50
 le_monstre_de_guerre:
   "-":
     :cost: 3.0
@@ -2412,6 +2220,10 @@ le_monstre_de_guerre:
       denominator: 1
       numerator: 12
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 6
       :ranged: 5
@@ -2428,13 +2240,6 @@ le_monstre_de_guerre:
     - imposant
     - terrifiante_presence
     - plateforme_de_tir
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 12
-      :being_targeted: 150.0
-      :can_attack: 75
 les_bersekers:
   "-":
     :cost: 1.0
@@ -2452,6 +2257,10 @@ les_bersekers:
       denominator: 1
       numerator: 1
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 3
       :ranged: 3
@@ -2465,13 +2274,6 @@ les_bersekers:
     :options:
     - determination
     - destines_a_mourir
-    :fight_info:
-      :rapide: false
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 150.0
-      :can_attack: 75
 l'archidemon:
   "-":
     :cost: 2.0
@@ -2489,6 +2291,10 @@ l'archidemon:
       denominator: 1
       numerator: 4
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 5
       :ranged: 4
@@ -2508,13 +2314,6 @@ l'archidemon:
     - nous_sommes_a_vos_ordres
     - magie
     :resistance: 1
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 4
-      :being_targeted: 28.125
-      :can_attack: 75
 les_spectres:
   "-":
     :cost: 1.0
@@ -2532,6 +2331,10 @@ les_spectres:
       denominator: 1
       numerator: 1
     :legendary: true
+    :active: false
+    :movement: ''
+    :attack_range: ''
+    :initiative: "-1"
     :armor:
       :cac: 0
       :ranged: 0
@@ -2547,10 +2350,3 @@ les_spectres:
     - apparitions
     - intangibles
     - presence_spectrale
-    :fight_info:
-      :rapide: true
-      :lent: false
-      :distance: false
-      :protection_points: 0
-      :being_targeted: 37.5
-      :can_attack: 75
