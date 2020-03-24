@@ -41,6 +41,9 @@ def options( unite, arme, opt_array, activation_chance, being_hit_chance )
   options.uniq!
   
   being_targeted = being_hit_chance
+
+  being_targeted = 10 if unite == 'seigneur'
+
   options.each do |o|
      being_targeted *= 0.75 if [ :rapide, :lent, :distance, :magie ].include?( o )
   end

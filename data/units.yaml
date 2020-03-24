@@ -38,7 +38,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 50.0
+      :being_targeted: 10
       :can_attack: 75
   arme_lourde:
     :cost: 0.0
@@ -78,7 +78,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 50.0
+      :being_targeted: 10
       :can_attack: 75
   arc:
     :cost: 0.0
@@ -118,7 +118,7 @@ seigneur:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 37.5
+      :being_targeted: 7.5
       :can_attack: 75
   monture_animal:
     :cost: 0.0
@@ -158,7 +158,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 37.5
+      :being_targeted: 7.5
       :can_attack: 75
   volant:
     :cost: 0.0
@@ -199,7 +199,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 37.5
+      :being_targeted: 7.5
       :can_attack: 75
   monture_ailee:
     :cost: 0.0
@@ -240,7 +240,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 3
-      :being_targeted: 37.5
+      :being_targeted: 7.5
       :can_attack: 75
   monture_animal_arc_composite:
     :cost: 0.0
@@ -280,7 +280,7 @@ seigneur:
       :lent: false
       :distance: true
       :protection_points: 3
-      :being_targeted: 28.125
+      :being_targeted: 5.625
       :can_attack: 75
   monture_bete:
     :cost: 0.0
@@ -319,7 +319,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 112.5
+      :being_targeted: 7.5
       :can_attack: 75
   monture_bete_vol:
     :cost: 0.0
@@ -359,7 +359,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 112.5
+      :being_targeted: 7.5
       :can_attack: 75
 lieutenant:
   "-":
