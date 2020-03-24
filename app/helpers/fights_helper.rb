@@ -12,8 +12,12 @@ module FightsHelper
 
   # Losses details
   def losses_unit_name( log )
-    u = Unit.find( log.unit_id )
-    u.extended_translated_name
+    if Unit.where( id: log.unit_id ).exists?
+      u = Unit.find( log.unit_id )
+      u.extended_translated_name
+    else
+      'Unité supprimée'
+    end
   end
 
   # For fight log detail
