@@ -118,7 +118,6 @@ module GameRules
     def will_attack?( unit )
       ca = unit.can_attack_trigger
 
-
       dice = Hazard.d100
 
       @single_attack_log[ :can_attack ] = {

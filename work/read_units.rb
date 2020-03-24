@@ -2,6 +2,7 @@ require 'pp'
 require 'yaml'
 
 require_relative 'libs/google_spreadsheet'
+require_relative 'libs/weapons_analysis'
 
 data = {}
 allowance = {}
@@ -69,7 +70,7 @@ gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
   data[unit_key] ||= {}
   data[unit_key][weapon_key] ||= {}
 
-  p active
+  # p active
 
   if active
     [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
@@ -148,3 +149,5 @@ end
 File.open('../config/locales/fr/units.yaml', 'w') do |f|
   f.write(fr_translation.to_yaml)
 end
+
+WeaponsAnalysis.new.do

@@ -64,16 +64,16 @@ module GameRules
     # @return [Array] the units of the defender.
     def assign_hits( defender_units, defender, hits )
       if defender.get_protection > 0
-        @hits_log[ defender.full_name ] = { type: :protection, prot_before: defender.get_protection }
+        @hits_log[ defender.long_name ] = { type: :protection, prot_before: defender.get_protection }
         defender.decrease_protection!( hits )
-        @hits_log[ defender.full_name ][ :prot_after ] = defender.get_protection
+        @hits_log[ defender.long_name ][ :prot_after ] = defender.get_protection
       else
-        @hits_log[ defender.full_name ] = { type: :loss, amount_before: defender.amount }
+        @hits_log[ defender.long_name ] = { type: :loss, amount_before: defender.amount }
 
         units_to_loose = [ hits, defender.amount ].min
 
         defender.amount -= units_to_loose
-        @hits_log[ defender.full_name ][ :amount_after ] = defender.amount
+        @hits_log[ defender.long_name ][ :amount_after ] = defender.amount
 
         if units_to_loose > 0
           @body_count[ defender.id ] ||= OpenStruct.new( unit: defender, deads: 0 )
@@ -81,10 +81,10 @@ module GameRules
         end
       end
 
-      @hits_log[ defender.full_name ][ :hits ] = hits
+      @hits_log[ defender.long_name ][ :hits ] = hits
 
       if defender.amount <= 0
-        @hits_log[ defender.full_name ][ :unit_destroyed ] = true
+        @hits_log[ defender.long_name ][ :unit_destroyed ] = true
         defender_units.delete( defender )
         @body_count[ defender.id ].destroyed = true
       end

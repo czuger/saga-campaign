@@ -65,7 +65,7 @@ module GameRules
         if @body_count.has_key?( unit.id )
           bc = OpenStruct.new( @body_count[ unit.id ] )
 
-          loss_list << OpenStruct.new( unit_id: unit.id, deads: bc.deads, destroyed: bc.destroyed )
+          loss_list << OpenStruct.new( unit_name: unit.long_name, deads: bc.deads, destroyed: bc.destroyed )
         end
       end
       loss_list

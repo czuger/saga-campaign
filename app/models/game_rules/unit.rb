@@ -15,16 +15,18 @@ module GameRules
     end
 
     def name_from_string_key( string_key )
-      libe, weapon = string_key.gsub( /[\[\]]/, '' ).split( ', ' )
+      # libe, weapon = string_key.gsub( /[\[\]]/, '' ).split( ', ' )
 
-      result = "#{I18n.t( "units.#{libe}" ) }"
+      # result = "#{I18n.t( "units.#{libe}" ) }"
+      #
+      # weapon.strip!
+      # if weapon != '-'
+      #   result += " #{I18n.t( "weapon.#{weapon}" ) }"
+      # end
+      #
+      # result
 
-      weapon.strip!
-      if weapon != '-'
-        result += " #{I18n.t( "weapon.#{weapon}" ) }"
-      end
-
-      result
+      string_key
     end
 
   end

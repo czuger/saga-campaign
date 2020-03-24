@@ -8,6 +8,6 @@
   %tbody
     - bc&.each do |log|
       %tr
-        %td= losses_unit_name(log)
+        %td= log.unit_name.upcase_first
         %td= log.deads
         %td= 'X' if log.destroyed

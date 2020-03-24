@@ -11,14 +11,6 @@ module FightsHelper
   end
 
   # Losses details
-  def losses_unit_name( log )
-    if Unit.where( id: log.unit_id ).exists?
-      u = Unit.find( log.unit_id )
-      u.extended_translated_name
-    else
-      'Unité supprimée'
-    end
-  end
 
   # For fight log detail
   def pass_detail( log )
@@ -34,11 +26,11 @@ module FightsHelper
     c = OpenStruct.new( combat_info[:combat_result] )
 
     attacker_name = @game_rules_units.name_from_string_key( c.attacker.name )
-    attacker_name = attacker_name + "##{c.attacker.gang_id}" + "##{c.attacker.id}"
-    attacker_name = attacker_name + " (#{c.attacker.amount})"
+    # attacker_name = attacker_name + "##{c.attacker.gang_id}" + "##{c.attacker.id}"
+    attacker_name = attacker_name + "(#{c.attacker.amount})" if c.attacker.amount > 1
     defender_name = @game_rules_units.name_from_string_key( c.defender.name )
-    defender_name = defender_name + "##{c.defender.gang_id}"+ "##{c.defender.id}"
-    defender_name = defender_name + " (#{c.defender.amount})"
+    # defender_name = defender_name + "##{c.defender.gang_id}"+ "##{c.defender.id}"
+    defender_name = defender_name + "(#{c.defender.amount})" if c.defender.amount > 1
 
     attack = OpenStruct.new( c[attack_or_retaliation] )
     attack_type = OpenStruct.new( attack.attack_type )
@@ -48,10 +40,12 @@ module FightsHelper
     attack_name = 'riposte contre' if attack_or_retaliation == :retaliation
 
     if attack_or_retaliation == :retaliation
-      detail_string( defender_name, attacker_name, attack_name, attack_type, attack_result )
+      ds = detail_string( defender_name, attacker_name, attack_name, attack_type, attack_result )
     else
-      detail_string( attacker_name, defender_name, attack_name, attack_type, attack_result )
+      ds = detail_string( attacker_name, defender_name, attack_name, attack_type, attack_result )
     end
+
+    ds.upcase_first
   end
 
   def hits_detail( log )
@@ -71,7 +65,7 @@ module FightsHelper
       end
     end
 
-    r.join( ' ' )
+    r.join( ' ' ).upcase_first
   end
 
 

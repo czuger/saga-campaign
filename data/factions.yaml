@@ -3,6 +3,8 @@ nature:
   seigneur:
   - "-"
   - arc
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   - titan
@@ -19,6 +21,8 @@ horde:
   seigneur:
   - "-"
   - arme_lourde
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   - titan
@@ -35,6 +39,8 @@ horde:
 morts:
   seigneur:
   - "-"
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   - titan
@@ -50,6 +56,8 @@ souterrains:
   seigneur:
   - "-"
   - arme_lourde
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   - titan
@@ -70,6 +78,8 @@ royaumes:
   seigneur:
   - "-"
   - arme_lourde
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   - titan
@@ -88,6 +98,8 @@ outremonde:
   seigneur:
   - "-"
   - arme_lourde
+  sorcier:
+  - "-"
   monstre:
   - behemoth
   creatures:

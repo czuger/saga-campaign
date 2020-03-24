@@ -6,6 +6,7 @@
       %th Nombre
       %th Unité
       %th Type
+      %th Nom
       %th Points
       -#%th
       -#%th
@@ -17,6 +18,7 @@
         %td= unit.amount
         %td= I18n.t( "units.#{unit.libe}" )
         %td= I18n.t( "weapon.#{unit.weapon}" )
+        %td= unit.long_name
         %td= unit.points
         -#%td= link_to 'Show', unit
         %td= link_to 'Modifier', edit_unit_path(unit), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

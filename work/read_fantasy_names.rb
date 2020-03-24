@@ -6,7 +6,7 @@ require 'yaml'
 
 result = []
 
-File.open( 'names.txt', 'r' ) do |f|
+File.open( 'libs/names.txt', 'r' ) do |f|
   f.readlines.each do |line|
     s = line.strip.split( "\t" )
     next if s.count < 3
@@ -15,6 +15,6 @@ File.open( 'names.txt', 'r' ) do |f|
 end
 
 result.flatten!
-result.map{ |e| e.downcase! }
+# result.map{ |e| e.downcase! }
 
 File.open( '../data/fantasy_names.yaml', 'w' ) { |file| file.write( result.to_yaml ) }
