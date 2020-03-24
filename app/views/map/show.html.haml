@@ -4,4 +4,14 @@
   - @gangs.each do |gang|
     = image_tag( 'gangs_icons/' + gang.icon, class: 'on_map_gang_icon', style: @map.position_style( gang.location ) + 'fill:orange' )
 
+    - if gang.player.user_id == 1
+      .horde_marker{ style: @map.marker_position_style( gang.location ) }
+        X
+    - else
+      .empire_marker{ style: @map.marker_position_style( gang.location ) }
+        X
+
+
+
+
 

@@ -36,5 +36,16 @@ module GameRules
       end
     end
 
+    def marker_position_style( location )
+      p = OpenStruct.new( @positions[ location ] )
+
+      if p.x
+        "left:#{p.x-162+5}px;top:#{p.y-58-30}px;"
+      else
+        ''
+      end
+    end
+
+
   end
 end
