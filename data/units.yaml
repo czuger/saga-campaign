@@ -39,7 +39,7 @@ seigneur:
       :distance: false
       :protection_points: 3
       :being_targeted: 50.0
-      :can_attack: 100
+      :can_attack: 75
   arme_lourde:
     :cost: 0.0
     :amount: 1
@@ -79,7 +79,7 @@ seigneur:
       :distance: false
       :protection_points: 3
       :being_targeted: 50.0
-      :can_attack: 100
+      :can_attack: 75
   arc:
     :cost: 0.0
     :amount: 1
@@ -119,7 +119,7 @@ seigneur:
       :distance: true
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 0.0
     :amount: 1
@@ -159,7 +159,7 @@ seigneur:
       :distance: false
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   volant:
     :cost: 0.0
     :amount: 1
@@ -200,7 +200,7 @@ seigneur:
       :distance: false
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_ailee:
     :cost: 0.0
     :amount: 1
@@ -241,7 +241,7 @@ seigneur:
       :distance: false
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_animal_arc_composite:
     :cost: 0.0
     :amount: 1
@@ -281,7 +281,7 @@ seigneur:
       :distance: true
       :protection_points: 3
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
   monture_bete:
     :cost: 0.0
     :amount: 1
@@ -320,7 +320,7 @@ seigneur:
       :distance: false
       :protection_points: 8
       :being_targeted: 112.5
-      :can_attack: 100
+      :can_attack: 75
   monture_bete_vol:
     :cost: 0.0
     :amount: 1
@@ -360,7 +360,7 @@ seigneur:
       :distance: false
       :protection_points: 8
       :being_targeted: 112.5
-      :can_attack: 100
+      :can_attack: 75
 lieutenant:
   "-":
     :cost: 0.5
@@ -399,7 +399,7 @@ lieutenant:
       :distance: false
       :protection_points: 3
       :being_targeted: 100.0
-      :can_attack: 100
+      :can_attack: 75
   arme_lourde:
     :cost: 0.5
     :amount: 1
@@ -437,7 +437,7 @@ lieutenant:
       :distance: false
       :protection_points: 3
       :being_targeted: 100.0
-      :can_attack: 100
+      :can_attack: 75
   arc:
     :cost: 0.5
     :amount: 1
@@ -475,7 +475,7 @@ lieutenant:
       :distance: true
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 0.5
     :amount: 1
@@ -513,7 +513,7 @@ lieutenant:
       :distance: false
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   monture_ailee:
     :cost: 0.5
     :amount: 1
@@ -552,7 +552,7 @@ lieutenant:
       :distance: false
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   volant:
     :cost: 0.5
     :amount: 1
@@ -591,7 +591,7 @@ lieutenant:
       :distance: false
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
 sorcier:
   "-":
     :cost: 1.0
@@ -632,7 +632,7 @@ sorcier:
       :distance: false
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 1
@@ -672,7 +672,7 @@ sorcier:
       :distance: false
       :protection_points: 3
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
   volant:
     :cost: 1.0
     :amount: 1
@@ -713,7 +713,7 @@ sorcier:
       :distance: false
       :protection_points: 3
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
   monture_ailee:
     :cost: 1.0
     :amount: 1
@@ -754,7 +754,7 @@ sorcier:
       :distance: false
       :protection_points: 3
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
 monstre:
   behemoth:
     :cost: 1.0
@@ -793,7 +793,7 @@ monstre:
       :distance: false
       :protection_points: 8
       :being_targeted: 50.0
-      :can_attack: 50
+      :can_attack: 37
   titan:
     :cost: 1.0
     :amount: 1
@@ -832,7 +832,7 @@ monstre:
       :distance: false
       :protection_points: 8
       :being_targeted: 37.5
-      :can_attack: 37
+      :can_attack: 28
   fleau_vol:
     :cost: 1.0
     :amount: 1
@@ -872,7 +872,7 @@ monstre:
       :distance: false
       :protection_points: 8
       :being_targeted: 37.5
-      :can_attack: 50
+      :can_attack: 37
 creatures:
   bipedes:
     :cost: 1.0
@@ -910,7 +910,7 @@ creatures:
       :distance: false
       :protection_points: 4
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   quadrupedes:
     :cost: 1.0
     :amount: 2
@@ -948,7 +948,7 @@ creatures:
       :distance: false
       :protection_points: 4
       :being_targeted: 56.25
-      :can_attack: 66
+      :can_attack: 50
   volants_vol:
     :cost: 1.0
     :amount: 2
@@ -986,7 +986,7 @@ creatures:
       :distance: false
       :protection_points: 4
       :being_targeted: 56.25
-      :can_attack: 66
+      :can_attack: 50
 gardes:
   "-":
     :cost: 1.0
@@ -1020,7 +1020,7 @@ gardes:
       :distance: false
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   arc:
     :cost: 1.0
     :amount: 4
@@ -1053,7 +1053,7 @@ gardes:
       :distance: true
       :protection_points: 0
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
   arme_lourde:
     :cost: 1.0
     :amount: 4
@@ -1086,7 +1086,7 @@ gardes:
       :distance: false
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 4
@@ -1119,7 +1119,7 @@ gardes:
       :distance: false
       :protection_points: 0
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
   volant:
     :cost: 1.0
     :amount: 4
@@ -1154,7 +1154,7 @@ gardes:
       :distance: false
       :protection_points: 0
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
   monture_ailee:
     :cost: 1.0
     :amount: 4
@@ -1189,7 +1189,7 @@ gardes:
       :distance: false
       :protection_points: 0
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
   monture_animal_arc_composite:
     :cost: 1.0
     :amount: 4
@@ -1222,7 +1222,7 @@ gardes:
       :distance: true
       :protection_points: 0
       :being_targeted: 42.1875
-      :can_attack: 100
+      :can_attack: 75
 guerriers:
   "-":
     :cost: 1.0
@@ -1256,7 +1256,7 @@ guerriers:
       :distance: false
       :protection_points: 0
       :being_targeted: 100.0
-      :can_attack: 66
+      :can_attack: 50
   arme_lourde:
     :cost: 1.0
     :amount: 8
@@ -1289,7 +1289,7 @@ guerriers:
       :distance: false
       :protection_points: 0
       :being_targeted: 100.0
-      :can_attack: 66
+      :can_attack: 50
   arc:
     :cost: 1.0
     :amount: 8
@@ -1322,7 +1322,7 @@ guerriers:
       :distance: true
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   arbalete:
     :cost: 1.0
     :amount: 8
@@ -1355,7 +1355,7 @@ guerriers:
       :distance: true
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   arme_a_feu:
     :cost: 1.0
     :amount: 8
@@ -1388,7 +1388,7 @@ guerriers:
       :distance: true
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   volant:
     :cost: 1.0
     :amount: 8
@@ -1423,7 +1423,7 @@ guerriers:
       :distance: false
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   monture_animal:
     :cost: 1.0
     :amount: 8
@@ -1456,7 +1456,7 @@ guerriers:
       :distance: false
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 66
+      :can_attack: 50
   monture_animal_arc_composite:
     :cost: 1.0
     :amount: 8
@@ -1489,7 +1489,7 @@ guerriers:
       :distance: true
       :protection_points: 0
       :being_targeted: 56.25
-      :can_attack: 66
+      :can_attack: 50
 levees:
   "-":
     :cost: 1.0
@@ -1523,7 +1523,7 @@ levees:
       :distance: false
       :protection_points: 0
       :being_targeted: 150.0
-      :can_attack: 50
+      :can_attack: 37
   javelots:
     :cost: 1.0
     :amount: 12
@@ -1556,7 +1556,7 @@ levees:
       :distance: true
       :protection_points: 0
       :being_targeted: 112.5
-      :can_attack: 50
+      :can_attack: 37
   arc_ou_fronde:
     :cost: 1.0
     :amount: 12
@@ -1589,7 +1589,7 @@ levees:
       :distance: true
       :protection_points: 0
       :being_targeted: 112.5
-      :can_attack: 50
+      :can_attack: 37
   arbalete:
     :cost: 1.0
     :amount: 12
@@ -1622,7 +1622,7 @@ levees:
       :distance: true
       :protection_points: 0
       :being_targeted: 112.5
-      :can_attack: 50
+      :can_attack: 37
   arme_a_feu:
     :cost: 1.0
     :amount: 12
@@ -1655,7 +1655,7 @@ levees:
       :distance: true
       :protection_points: 0
       :being_targeted: 112.5
-      :can_attack: 50
+      :can_attack: 37
 machine_de_guerre:
   statique:
     :cost: 0.5
@@ -1695,7 +1695,7 @@ machine_de_guerre:
       :distance: true
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   mobile:
     :cost: 0.5
     :amount: 1
@@ -1733,7 +1733,7 @@ machine_de_guerre:
       :distance: true
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   volante_vol:
     :cost: 0.5
     :amount: 1
@@ -1772,7 +1772,7 @@ machine_de_guerre:
       :distance: true
       :protection_points: 3
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
 necromant:
   "-":
     :cost: 1.0
@@ -1812,7 +1812,7 @@ necromant:
       :distance: false
       :protection_points: 3
       :being_targeted: 50.0
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 1.0
     :amount: 1
@@ -1851,7 +1851,7 @@ necromant:
       :distance: false
       :protection_points: 3
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_bete:
     :cost: 1.0
     :amount: 1
@@ -1889,7 +1889,7 @@ necromant:
       :distance: false
       :protection_points: 8
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
   monture_bete_vol:
     :cost: 1.0
     :amount: 1
@@ -1928,7 +1928,7 @@ necromant:
       :distance: false
       :protection_points: 8
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
 paladin:
   "-":
     :cost: 0.5
@@ -1967,7 +1967,7 @@ paladin:
       :distance: false
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   arme_lourde:
     :cost: 0.5
     :amount: 1
@@ -2005,7 +2005,7 @@ paladin:
       :distance: false
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 100
+      :can_attack: 75
   monture_animal:
     :cost: 0.5
     :amount: 1
@@ -2043,7 +2043,7 @@ paladin:
       :distance: false
       :protection_points: 3
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
   monture_ailee_vol:
     :cost: 0.5
     :amount: 1
@@ -2082,7 +2082,7 @@ paladin:
       :distance: false
       :protection_points: 3
       :being_targeted: 56.25
-      :can_attack: 100
+      :can_attack: 75
 nuee:
   "-":
     :cost: 1.0
@@ -2119,7 +2119,7 @@ nuee:
       :distance: false
       :protection_points: 0
       :being_targeted: 150.0
-      :can_attack: 50
+      :can_attack: 37
 decerebres:
   "-":
     :cost: 1.0
@@ -2157,7 +2157,7 @@ decerebres:
       :distance: false
       :protection_points: 0
       :being_targeted: 75.0
-      :can_attack: 37
+      :can_attack: 28
 char_de_guerre:
   "-":
     :cost: 1.0
@@ -2197,7 +2197,7 @@ char_de_guerre:
       :distance: true
       :protection_points: 3
       :being_targeted: 75.0
-      :can_attack: 50
+      :can_attack: 37
 traqueurs:
   "-":
     :cost: 1.0
@@ -2235,7 +2235,7 @@ traqueurs:
       :distance: false
       :protection_points: 0
       :being_targeted: 100.0
-      :can_attack: 66
+      :can_attack: 50
 equipe_de_destrucion:
   "-":
     :cost: 0.25
@@ -2273,7 +2273,7 @@ equipe_de_destrucion:
       :distance: false
       :protection_points: 3
       :being_targeted: 100.0
-      :can_attack: 66
+      :can_attack: 50
 le_conclave:
   "-":
     :cost: 3.0
@@ -2315,7 +2315,7 @@ le_conclave:
       :distance: false
       :protection_points: 6
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
 la_machine_incroyable_et_extraordinaire:
   "-":
     :cost: 2.0
@@ -2357,7 +2357,7 @@ la_machine_incroyable_et_extraordinaire:
       :distance: true
       :protection_points: 8
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75
 fanatiques_devoues:
   "-":
     :cost: 1.0
@@ -2394,7 +2394,7 @@ fanatiques_devoues:
       :distance: false
       :protection_points: 0
       :being_targeted: 100.0
-      :can_attack: 66
+      :can_attack: 50
 le_monstre_de_guerre:
   "-":
     :cost: 3.0
@@ -2434,7 +2434,7 @@ le_monstre_de_guerre:
       :distance: false
       :protection_points: 12
       :being_targeted: 150.0
-      :can_attack: 100
+      :can_attack: 75
 les_bersekers:
   "-":
     :cost: 1.0
@@ -2471,7 +2471,7 @@ les_bersekers:
       :distance: false
       :protection_points: 0
       :being_targeted: 150.0
-      :can_attack: 100
+      :can_attack: 75
 l'archidemon:
   "-":
     :cost: 2.0
@@ -2514,7 +2514,7 @@ l'archidemon:
       :distance: false
       :protection_points: 4
       :being_targeted: 28.125
-      :can_attack: 100
+      :can_attack: 75
 les_spectres:
   "-":
     :cost: 1.0
@@ -2553,4 +2553,4 @@ les_spectres:
       :distance: false
       :protection_points: 0
       :being_targeted: 37.5
-      :can_attack: 100
+      :can_attack: 75

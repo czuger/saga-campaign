@@ -45,7 +45,8 @@ def options( unite, arme, opt_array, activation_chance, being_hit_chance )
      being_targeted *= 0.75 if [ :rapide, :lent, :distance, :magie ].include?( o )
   end
 
-  can_attack = 100 * activation_chance
+  # Reducing the attack chance to prevent those big massacres.
+  can_attack = 75 * activation_chance
   options.each do |o|
     can_attack *= 0.75 if [ :lent ].include?( o )
   end
