@@ -1,6 +1,6 @@
 %h1 Liste des points controlés
 
-- @campaign.players.each do |player|
+- @campaign.players.includes( :user ).each do |player|
 
   %table.table
     %thead
@@ -22,7 +22,7 @@
         %td
           %b= total
 
-      - maintenance = compute_maintenance( player )
+      - maintenance = compute_maintenance( total )
       %tr
         %td
           %b Maintenance
