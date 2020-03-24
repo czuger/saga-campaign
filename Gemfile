@@ -43,6 +43,8 @@ group :development do
   gem 'bcrypt_pbkdf', '~> 1.0'
 
   gem 'bullet'
+
+  gem 'google-api-client'
 end
 
 group :test do

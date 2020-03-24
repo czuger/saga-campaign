@@ -41,3 +41,6 @@ yarn-debug.log*
 coverage
 
 *.sqlite3.old
+
+google_credentials.json
+google_spreadsheet_id.txt

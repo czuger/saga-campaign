@@ -1,6 +1,8 @@
 require 'pp'
 require 'yaml'
 
+require_relative 'google_spreadsheet'
+
 data = {}
 allowance = {}
 fr_translation = {}
