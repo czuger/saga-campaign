@@ -1,4 +1,4 @@
-Type	Type	Type	Type	Type	Type	Cout	Nombre de figurines	Dés SAGA	Min pour dé SAGA	Min fig per unit	Max fig per unit	Increment step	Points massacres	Activation chance	Hit chance	Légendaire	Unité	Arme	Defense	Agressivité	Options
+Type	Type	Type	Type	Type	Type	Cout	Nombre de figurines	Dés SAGA	Min pour dé SAGA	Min fig per unit	Max fig per unit	Increment step	Points massacres	Chance d'activation	Chance d'être touché	Légendaire	Unité	Arme	Defense	Agressivité	Options
 Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	50	Non	Seigneur	-	5 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
 	Horde		Souterrains	Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Arme lourde	4 (5)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
 Nature						0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Arc	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
@@ -6,8 +6,8 @@ Nature	Horde	Morts		Royaumes		0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Monture (Animal)
 					Outremonde	0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Volant	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
 				Royaumes		0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Monture ailée	5 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
 Nature				Royaumes		0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Monture (Animal), Arc composite	4 (4)	8 (4)	Détermination, Résistance (1), Nous sommes à vos ordres, Présence, Gardes du corps, Fierté.
-Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Monture (Bête)	5 (5)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
-Nature		Morts		Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	50	Non	Seigneur	Monture (Bête) (Vol)	5 (4)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
+Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	150	Non	Seigneur	Monture (Bête)	5 (5)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
+Nature		Morts		Royaumes	Outremonde	0	1	1	1	1	1	1	4	1	150	Non	Seigneur	Monture (Bête) (Vol)	5 (4)	10 (4)	Détermination, Résistance (2), Présence, Imposant, Fierté.
 Nature	Horde	Morts	Souterrains	Royaumes	Outremonde	0,5	1	0	0	1	1	1	4	1	100	Non	Lieutenant	-	5 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
 	Horde			Royaumes		0,5	1	0	0	1	1	1	4	1	100	Non	Lieutenant	Arme lourde	4 (5)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
 Nature						0,5	1	0	0	1	1	1	4	1	100	Non	Lieutenant	Arc	4 (4)	4 (2)	Détermination, Résistance (1), Présence, Règle spéciale de faction.
@@ -63,7 +63,7 @@ Nature				Royaumes		1	12	1	6	6	12	6	1/3	3/6	150	Non	Nuée	-	4 (3)	1/2 (0)	Primit
 				Royaumes		3	4	1	1	4	4	4	3	1	50	Oui	Le conclave	-	4 (4)	1/2 (1)	Détermination, Résistance (2), Magie, Prodiges, Maîtrise, Désarmés, Projectiles Magiques.
 				Royaumes		2	1	1	1	1	1	1	8	1	50	Oui	La machine incroyable et extraordinaire	-	5 (6)	1 (*)	Détermination, Résistance (2), Présence, Imposant, Elle bouge !, Plateforme de tir, Boum !
 				Royaumes		1	8	1	4	4	12	4	1/2	4/6	100	Non	Fanatiques dévoués	-	3 (3)	2 (0)	Primitif, Détermination fanatique.
-	Horde					3	1	2	1	1	1	1	12	1	75	Oui	Le monstre de guerre	-	6 (5)	16 (4)	Résistance (3), Primitif, Imposant, Terrifiante présence, Plateforme de tir.
+	Horde					3	1	2	1	1	1	1	12	1	150	Oui	Le monstre de guerre	-	6 (5)	16 (4)	Résistance (3), Primitif, Imposant, Terrifiante présence, Plateforme de tir.
 	Horde					1	4	0	1	1	12	1	1	1	150	Oui	Les bersekers	-	3 (3)	4 (0)	Détermination, Destinés à mourir.
 					Outremonde	2	1	1	1	1	1	1	4	1	50	Oui	L'archidémon	-	5 (4)	10 (0)	Détermination, Résistance (1), Présence, Vol, Imposant, Souffle, Nous sommes à vos ordres, Magie.
 		Morts				1	4	0	4	4	4	4	1	1	50	Oui	Les spectres	-	- (-)	- (-)	Vol, Apparitions, Intangibles, Présence spectrale.

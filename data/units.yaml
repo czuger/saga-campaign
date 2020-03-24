@@ -293,7 +293,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
-    :being_targeted_chance: 50.0
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -319,7 +319,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 37.5
+      :being_targeted: 112.5
       :can_attack: 100
   monture_bete_vol:
     :cost: 0.0
@@ -332,7 +332,7 @@ seigneur:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
-    :being_targeted_chance: 50.0
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 4
@@ -359,7 +359,7 @@ seigneur:
       :lent: false
       :distance: false
       :protection_points: 8
-      :being_targeted: 37.5
+      :being_targeted: 112.5
       :can_attack: 100
 lieutenant:
   "-":
@@ -2407,7 +2407,7 @@ le_monstre_de_guerre:
     :activation_chance: !ruby/object:Rational
       denominator: 1
       numerator: 1
-    :being_targeted_chance: 75.0
+    :being_targeted_chance: 150.0
     :massacre_points: !ruby/object:Rational
       denominator: 1
       numerator: 12
@@ -2433,7 +2433,7 @@ le_monstre_de_guerre:
       :lent: false
       :distance: false
       :protection_points: 12
-      :being_targeted: 75.0
+      :being_targeted: 150.0
       :can_attack: 100
 les_bersekers:
   "-":
