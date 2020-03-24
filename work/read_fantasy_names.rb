@@ -15,5 +15,6 @@ File.open( 'names.txt', 'r' ) do |f|
 end
 
 result.flatten!
+result.map{ |e| e.downcase! }
 
 File.open( '../data/fantasy_names.yaml', 'w' ) { |file| file.write( result.to_yaml ) }

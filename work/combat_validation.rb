@@ -1,6 +1,7 @@
 require 'active_record'
 require 'hazard'
 require 'pp'
+require 'i18n'
 
 require_relative '../app/models/application_record'
 require_relative '../app/models/gang'
@@ -19,6 +20,11 @@ db['pool'] = 5
 
 ActiveRecord::Base.establish_connection(db )
 
+I18n.config.load_path += Dir['config/locales/**/*.{rb,yml,yaml}']
+
+I18n.config.available_locales = [ :fr, :en ]
+I18n.default_locale = :fr
+
 def stats
   results = {}
   f = GameRules::Fight.new( 8, 'O1', 2, 1, save_result: false )
@@ -34,7 +40,7 @@ end
 
 
 def one_shot
-  c = GameRules::Fight.new( 1, 'O1', 8, 9 )
+  c = GameRules::Fight.new( 1, 'O1', 11, 10 )
   c.go
 # pp c.combat_log
 # pp c.body_count
@@ -42,8 +48,8 @@ def one_shot
 # pp c.result.winner_code
 end
 
-stats
-# one_shot
+# stats
+one_shot
 
 
 

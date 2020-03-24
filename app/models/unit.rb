@@ -31,8 +31,8 @@ class Unit < ApplicationRecord
     I18n.t( 'unit_name_long.' + unit_name_code, name: name )
   end
 
-  def long_name
-    I18n.t( 'unit_name_long.' + unit_name_code, name: name )
+  def short_name
+    I18n.t( 'unit_name_short.' + unit_name_code, name: name )
   end
 
   def full_name
@@ -89,7 +89,7 @@ class Unit < ApplicationRecord
   end
 
   def unit_name_code
-    if libe == 'monster'
+    if libe == 'monstre'
       weapon
     else
       libe

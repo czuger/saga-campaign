@@ -46,9 +46,9 @@ module GameRules
     # @return [Hash] Log details
     def get_log_data
       { attack: @attack.get_log_data(), retaliation: @retaliation&.get_log_data(), hits_assignment: @hits_log,
-        attacker: OpenStruct.new( name: @attacker.full_name, amount: @attacker.amount, id: @attacker.id,
+        attacker: OpenStruct.new( name: @attacker.long_name, amount: @attacker.amount, id: @attacker.id,
         gang_id: @attacker.gang.id ),
-        defender: OpenStruct.new( name: @defender.full_name, amount: @defender.amount, id: @defender.id,
+        defender: OpenStruct.new( name: @defender.long_name, amount: @defender.amount, id: @defender.id,
         gang_id: @defender.gang.id )
       }
     end
