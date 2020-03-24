@@ -2,7 +2,7 @@ module CampaignsHelper
 
   MAINTENANCE = { 6 => 1, 12 => 2, 18 => 3, 24 => 5, 30 => 7, 36 => 10, 42 => 20, 48 => 30 }
 
-  def compute_maintenance( points )
+  def compute_maintenance( player )
     # m = MAINTENANCE.keys.sort.dup
     #
     # return MAINTENANCE[ m.last ] if points > m.last
@@ -14,6 +14,6 @@ module CampaignsHelper
     #
     # 0
 
-    ( points * 0.5 ).ceil
+    ( player.gangs.sum( :points ) * 0.5 ).ceil
   end
 end
