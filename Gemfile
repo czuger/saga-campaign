@@ -45,6 +45,8 @@ group :development do
   gem 'bullet'
 
   gem 'google-api-client'
+
+  gem 'nokogiri'
 end
 
 group :test do
