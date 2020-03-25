@@ -94,7 +94,7 @@ module Fight
       log = OpenStruct.new(
         type: type,
         before: amount,
-        after: amount - real_hits, damages: real_hits, unit: defender.log_data )
+        after: amount - real_hits, damages: real_hits, hits: hits, unit: defender.log_data )
 
       log = yield( real_hits, log )
       log

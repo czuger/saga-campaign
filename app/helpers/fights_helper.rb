@@ -46,20 +46,17 @@ module FightsHelper
     end
   end
 
-  def hits_detail( log )
-    h = OpenStruct.new( log[:combat_result][:hits_assignment] )
+  def hits_detail( hit_detail )
     r = []
 
-    h.to_h.each do |k, v|
-      name = k.to_s
+    hit_detail.each do |hit|
+      name = Unit.long_name_from_log_data( hit.unit )
 
-      v = OpenStruct.new( v )
-
-      if v.type == :protection
-        r << "L'unité #{name} a une protection. Elle prend #{v.hits} touches et sa protection tombe à #{v.prot_after}."
+      if hit.type == :protection
+        r << "#{name} a une protection. Elle prend #{hit.hits} touches et sa protection tombe à #{hit.after}."
       else
-        r << "L'unité #{name} prend #{v.hits} touches, perds #{v.hits} figurines et se retrouve à #{v.amount_after}."
-        r << "L'unité #{name} est détruite." if v.unit_destroyed
+        r << "#{name} prend #{hit.hits} touches, perds #{hit.damages} figurines et se retrouve à #{hit.after}."
+        r << "#{name} est détruite." if hit.unit_destroyed
       end
     end
 
