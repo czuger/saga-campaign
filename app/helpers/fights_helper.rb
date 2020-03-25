@@ -50,13 +50,13 @@ module FightsHelper
     r = []
 
     hit_detail.each do |hit|
-      name = Unit.long_name_from_log_data( hit.unit )
+      name = Unit.short_name_from_log_data( hit.unit )
 
       if hit.type == :protection
-        r << "#{name} a une protection. Elle prend #{hit.hits} touches et sa protection tombe à #{hit.after}."
+        r << "L'unité #{name} a une protection. Elle prend #{hit.hits} touches et sa protection tombe à #{hit.after}."
       else
-        r << "#{name} prend #{hit.hits} touches, perds #{hit.damages} figurines et se retrouve à #{hit.after}."
-        r << "#{name} est détruite." if hit.unit_destroyed
+        r << "L'unité #{name} prend #{hit.hits} touches, perds #{hit.damages} figurines et se retrouve à #{hit.after}."
+        r << "L'unité #{name} est détruite." if hit.unit_destroyed
       end
     end
 

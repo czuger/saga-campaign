@@ -47,8 +47,11 @@ class Unit < ApplicationRecord
   end
 
   def self.long_name_from_log_data( log_data )
-    I18n.t( 'unit_name_long.' + unit_name_code( log_data.libe, log_data.weapon ),
-            name: log_data.name )
+    name_from_log_data( log_data, 'unit_name_long.' )
+  end
+
+  def self.short_name_from_log_data( log_data )
+    name_from_log_data( log_data, 'unit_name_short.' )
   end
 
   # Specific methods that override GameRules::Unit access
@@ -107,6 +110,12 @@ class Unit < ApplicationRecord
       libe
     end
   end
+
+  def self.name_from_log_data( log_data, name_type )
+    I18n.t( name_type + unit_name_code( log_data.libe, log_data.weapon ),
+            name: log_data.name )
+  end
+
 
 
 end
