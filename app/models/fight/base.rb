@@ -11,9 +11,10 @@ module Fight
       @player_1 = Gang.find( @attacking_gang_id )
       @player_2 = Gang.find( @defender_gang_id )
 
-      @combat_log = OpenStruct.new(
-        attacker_name: @player_1.player.user.name,
-        defender_name: @player_2.player.user.name, log: [] )
+      @combat_log = []
+
+      @attacker_name = @player_1.player.user.name
+      @defender_name = @player_2.player.user.name
 
       @campaign_id = campaign_id
       @location = location
@@ -29,14 +30,15 @@ module Fight
       1.upto(6).each do |i|
         round_log_shell = OpenStruct.new(
           round: i,
-          turn_phases: OpenStruct.new( attacker: nil, defender: nil ) )
+          turn_phases: OpenStruct.new( attacker: nil, defender: nil ),
+          attacker_name: @attacker_name, defender_name: @defender_name )
 
         attack_count = ( i == 1 ? 3 : 8 )
 
         round_log_shell.attacker = tour(@player_1_units, @player_2_units, attack_count )
         round_log_shell.defender = tour(@player_2_units, @player_1_units, attack_count )
 
-        @combat_log.log << round_log_shell
+        @combat_log << round_log_shell
 
         break if @player_1_units.empty? || @player_2_units.empty?
       end

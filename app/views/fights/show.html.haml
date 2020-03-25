@@ -34,12 +34,12 @@
 %hr
 %hr
 
-- @fight.fight_log.log.each do |fl|
+- @fight.fight_log.each do |fl|
 
   %h2= "Tour #{ fl.round }"
 
-  %h3= "Tour de #{ @fight.fight_log.attacker }"
+  %h3= "Tour de #{ fl.attacker_name }"
   = render partial: 'opponent_turn_detail', locals: { tl: fl.attacker }
 
-  %h3= "Tour de #{ @fight.fight_log.defender }"
+  %h3= "Tour de #{ fl.defender_name }"
   = render partial: 'opponent_turn_detail', locals: { tl: fl.defender }
