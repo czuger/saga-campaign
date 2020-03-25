@@ -69,7 +69,7 @@ gem 'haml-rails', '~> 2.0'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 
-gem 'hazard'
+gem 'hazard', '~> 1.3', '>= 1.3.4'
 gem 'openhash'
 
 gem 'will_paginate', '~> 3.1.0'

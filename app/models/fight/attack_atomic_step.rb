@@ -32,10 +32,12 @@ module Fight
       @roll_result = Hazard.from_string "s#{@dice_pool}d6"
       @hits = @roll_result.rolls.select{ |d| d >= @opponent_armor }
 
-      @opponent_saves_result = Hazard.from_string "s#{@hits.count}d6"
-      @opponent_saves = @opponent_saves_result.rolls.select{ |d| d >= @opponent_save }
+      if @hits.count > 0
+        @opponent_saves_result = Hazard.from_string "s#{@hits.count}d6"
+        @opponent_saves = @opponent_saves_result.rolls.select{ |d| d >= @opponent_save }
+      end
 
-      @final_hits = [@hits.count - @opponent_saves.count, 0].max
+      @final_hits = [@hits.count - (@opponent_saves&.count || 0), 0].max
     end
 
     # Get subdata for fight detail logging
@@ -43,8 +45,8 @@ module Fight
     # @return [Hash] Log details
     def get_log_data
       OpenStruct.new(
-        hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
-        saves_rolls: @opponent_saves_result.rolls, damages: @final_hits, attack_type: @attack_type,
+        hits: @hits.count, hits_rolls: @roll_result.rolls, saves: (@opponent_saves&.count || 0),
+        saves_rolls: (@opponent_saves_result&.rolls || []), damages: @final_hits, attack_type: @attack_type,
         dice_pool: @dice_pool, opponent_armor: @opponent_armor, opponent_save: @opponent_save,
         attacker: @attacker_before_attack.log_data, defender: @defender_before_attack.log_data, attack_phase: @attack_phase
       )
