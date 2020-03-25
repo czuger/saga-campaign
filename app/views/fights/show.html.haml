@@ -34,28 +34,12 @@
 %hr
 %hr
 
-- @fight.fight_log.each do |fl|
+- @fight.fight_log.log.each do |fl|
 
-  %h2= "Tour #{ fl[ :round ] }"
+  %h2= "Tour #{ fl.round }"
 
-  - fl[:turns_log].each do |tl|
+  %h3= "Tour de #{ @fight.fight_log.attacker }"
+  = render partial: 'opponent_turn_detail', locals: { tl: fl.attacker }
 
-    %h3= "Tour de #{ tl[ :turn_of ] }"
-
-    - tl[ :turn_log ].each do |log_detail|
-
-      -#%p
-      -#  = log
-
-      - unless log_detail.can_attack.can_attack
-        %p= pass_detail( log_detail )
-
-      - else
-        %p= fight_detail( log_detail, :attack )
-
-        - if log_detail.combat_result.retaliation
-          %p= fight_detail( log_detail, :retaliation )
-
-        %p= hits_detail( log_detail )
-
-      %hr
+  %h3= "Tour de #{ @fight.fight_log.defender }"
+  = render partial: 'opponent_turn_detail', locals: { tl: fl.defender }

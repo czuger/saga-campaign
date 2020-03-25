@@ -74,8 +74,9 @@ module Fight
 
           log = f.get_log_data
         else
-          log = {
-            can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data }
+          log = OpenStruct.new(
+            can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data
+          )
         end
 
         units_actions_log << log

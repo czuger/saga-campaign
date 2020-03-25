@@ -12,19 +12,20 @@ module Fight
     attr_reader :attack_type, :final_hits
 
     def initialize( attacker, defender, attack_phase )
+      @attacker_before_attack = attacker.dup
+      @defender_before_attack = defender.dup
+
       @attacker = attacker
       @defender = defender
+
       @attack_phase = attack_phase
     end
 
     # Roll the dice for the attack
     #
-    # @param attacker [Unit] the attacker.
-    # @param defender [Unit] the defender.
-    #
     # @return nil
-    def roll_attack( attacker, defender )
-      set_attack_info(attacker, defender )
+    def roll_attack
+      set_attack_info
 
       @dice_pool = [@dice_pool, 16].min
 
@@ -43,8 +44,9 @@ module Fight
     def get_log_data
       OpenStruct.new(
         hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
-        saves_rolls: @opponent_saves_result.rolls, damages: @final_hits, type: @attack_type,
-        dice_pool: @dice_pool, opponent_armor: @opponent_armor, opponent_save: @opponent_save
+        saves_rolls: @opponent_saves_result.rolls, damages: @final_hits, attack_type: @attack_type,
+        dice_pool: @dice_pool, opponent_armor: @opponent_armor, opponent_save: @opponent_save,
+        attacker: @attacker_before_attack.log_data, defender: @defender_before_attack.log_data, attack_phase: @attack_phase
       )
     end
 
@@ -68,28 +70,25 @@ module Fight
 
     # Compute the the attacking and defending values required for the fight.
     #
-    # @param attacker [Unit] the attacker.
-    # @param defender [Unit] the defender.
-    #
     # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
-    def set_attack_info(attacker, defender )
+    def set_attack_info
 
-      @attack_type = get_attack_type( attacker )
+      @attack_type = get_attack_type( @attacker )
 
       case @attack_type
         when :magic
           @dice_pool = 6
-          @opponent_armor = 3
+          @opponent_armor = 2
           @opponent_save = 6
         when :distance
-          @dice_pool = (attacker.amount * attacker.damage_ranged).to_i
-          @opponent_armor = defender.armor_ranged
+          @dice_pool = (@attacker.amount * @attacker.damage_ranged).to_i
+          @opponent_armor = @defender.armor_ranged
           @opponent_save = 5
         when :cac
           @last_attack_cac = true
 
-          @dice_pool = (attacker.amount * attacker.damage_cac).to_i
-          @opponent_armor = defender.armor_cac
+          @dice_pool = (@attacker.amount * @attacker.damage_cac).to_i
+          @opponent_armor = @defender.armor_cac
           @opponent_save = 4
         else
           raise "Attack type unknown : #{@attack_type}"

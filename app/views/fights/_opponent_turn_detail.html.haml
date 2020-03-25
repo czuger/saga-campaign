@@ -1,0 +1,15 @@
+- tl.each do |log_detail|
+
+  -#%p
+    -#= log_detail
+
+  - unless log_detail.can_attack
+    %p= pass_detail( log_detail )
+
+  - else
+    %p= fight_detail( log_detail.attack )
+    %p= fight_detail( log_detail&.retaliation )
+
+    -#%p= hits_detail( log_detail )
+
+  %hr

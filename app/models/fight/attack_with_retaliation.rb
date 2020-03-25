@@ -25,12 +25,12 @@ module Fight
 
       # First the regular attack
       @attack = AttackAtomicStep.new(attacker, defender, :attack )
-      attack_hits = @attack.roll_attack( attacker, defender )
+      attack_hits = @attack.roll_attack
 
       if @attack.attack_type == :cac
         # If attack was cac then we perform the retail
-        @retaliation = AttackAtomicStep.new(attacker, defender, :retaliation )
-        retail_hits = @retaliation.roll_attack(defender, attacker )
+        @retaliation = AttackAtomicStep.new(defender, attacker, :retaliation )
+        retail_hits = @retaliation.roll_attack
 
         # We assign the retailing hits must be assigned after.
         attacker_units = assign_hits( attacker_units, attacker, retail_hits )
@@ -48,7 +48,6 @@ module Fight
       OpenStruct.new(
         {
           can_attack: true,
-          retailation: @retaliation != nil,
           attack: @attack.get_log_data(),
           retaliation: @retaliation&.get_log_data(),
           hits_assignment: @hits_log,

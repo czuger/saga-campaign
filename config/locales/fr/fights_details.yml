@@ -1,7 +1,7 @@
 ---
 fr:
   fights:
-    show:
+    opponent_turn_detail:
       attack_detail_string:
         one: "%{attacker_name} attaque %{defender_name} %{attack_type_name} %{dice_pool_part},
           touche sur %{opponent_armor}+ et fait %{hits_rolls} %{hits_part}"

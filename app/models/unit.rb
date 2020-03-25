@@ -28,11 +28,13 @@ class Unit < ApplicationRecord
   end
 
   def long_name
-    I18n.t( 'unit_name_long.' + unit_name_code, name: name )
+    I18n.t( 'unit_name_long.' + Unit.unit_name_code( libe, weapon ),
+            name: log_data.name )
   end
 
   def short_name
-    I18n.t( 'unit_name_short.' + unit_name_code, name: name )
+    I18n.t( 'unit_name_short.' + Unit.unit_name_code( libe, weapon ),
+            name: log_data.name )
   end
 
   def full_name
@@ -42,6 +44,11 @@ class Unit < ApplicationRecord
   # Used to store unit data for logging (to remember info when the unit will be destroyed)
   def log_data
     OpenStruct.new( libe: libe, weapon: weapon, name: name, amount: amount, id: id )
+  end
+
+  def self.long_name_from_log_data( log_data )
+    I18n.t( 'unit_name_long.' + unit_name_code( log_data.libe, log_data.weapon ),
+            name: log_data.name )
   end
 
   # Specific methods that override GameRules::Unit access
@@ -93,7 +100,7 @@ class Unit < ApplicationRecord
     @unit_data ||= OpenHash.new( @@units_data.data[libe][weapon] )
   end
 
-  def unit_name_code
+  def self.unit_name_code( libe, weapon )
     if libe == 'monstre'
       weapon
     else
