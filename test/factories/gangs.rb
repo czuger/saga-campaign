@@ -3,6 +3,7 @@ FactoryBot.define do
     campaign { nil }
     player { nil }
     icon { 'royaumes/caesar.svg' }
+    name { 'The strongs' }
 
     sequence :number do |n|
       n

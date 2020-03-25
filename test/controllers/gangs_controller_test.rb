@@ -17,7 +17,10 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create gang' do
     assert_difference('Gang.count') do
-      post campaign_gangs_url( @campaign ), params: { gang: { icon: 'test', faction: 'nature', number: 4, location: 'L1' } }
+      post campaign_gangs_url( @campaign ),
+           params: {
+             gang: {
+               icon: 'test', faction: 'nature', number: 4, location: 'L1', name: 'The strongs' } }
     end
 
     # assert_redirected_to campaign_player_url( @campaign, @player )
@@ -43,6 +46,6 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
       delete gang_url( @gang )
     end
 
-    assert_redirected_to campaign_player_url( @campaign, @player )
+    assert_redirected_to campaign_gangs_url( @campaign )
   end
 end

@@ -26,3 +26,13 @@ fr:
       defend_detail_string:
         one: "%{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit %{saves} sauvegardes. Au final %{damages} touches."
         other: "%{defender_name}(%{count}) sauvegardent sur %{opponent_save}+ et lancent %{saves_rolls} soit %{saves} sauvegardes. Au final %{damages} touches."
+
+      hit_protection_string:
+        one: "#{name} a une protection et prend #{hits} touches. Sa protection tombe à #{prot_after}."
+        other: "#{name} ont une protection et prenent #{hits} touches. Leur protection tombe à #{prot_after}."
+
+      hit_loss_string:
+        one: "#{name} prend #{hits} touches, perds #{hits} figurines et se retrouve à #{amount_after}."
+        other: "#{name} prenent #{hits} touches, perdent #{hits} figurines et se retrouvent à #{amount_after}."
+
+      hit_destroyed_string: "#{name} est détruite."

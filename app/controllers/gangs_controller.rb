@@ -45,12 +45,12 @@ class GangsController < ApplicationController
     @gang.faction = :nature
     @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number ) + 1
 
-    set_gang_details
+    set_gang_additional_information
   end
 
   # GET /gangs/1/edit
   def edit
-    set_gang_details
+    set_gang_additional_information
   end
 
   # POST /gangs
@@ -68,7 +68,10 @@ class GangsController < ApplicationController
           format.html { redirect_to gang_units_path( @gang ), notice: 'La bande a bien été créée.' }
 
         else
-          format.html { render :new }
+          format.html {
+            set_gang_additional_information
+            render :new
+          }
 
         end
       end
@@ -108,7 +111,7 @@ class GangsController < ApplicationController
       params.require( :gang ).permit( :icon, :faction, :number, :location, :name )
     end
 
-    def set_gang_details
+    def set_gang_additional_information
       @icons = {}
       Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
         @icons_set = File.basename(icons_path)

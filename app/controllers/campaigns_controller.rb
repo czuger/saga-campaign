@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_campaign, except: [ :index ]
+  before_action :set_campaign, except: [ :index, :new, :create ]
   before_action :set_player, only: [ :show ]
 
   def controlled_points
