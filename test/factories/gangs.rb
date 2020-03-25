@@ -12,5 +12,11 @@ FactoryBot.define do
     location {'L1'}
     faction {'nature'}
 
+    factory :horde_gang do
+      icon { 'horde/brute.svg' }
+      name { 'The savages' }
+      faction {'horde'}
+    end
+
   end
 end

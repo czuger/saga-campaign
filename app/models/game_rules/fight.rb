@@ -93,8 +93,6 @@ module GameRules
     # @return nil
     def save_result( result )
 
-      p @player_1
-
       fight_data = {
         attacker: @player_1.player.user.name,
         defender: @player_2.player.user.name,
