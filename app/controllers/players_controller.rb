@@ -68,7 +68,7 @@ class PlayersController < ApplicationController
   def schedule_movements_edit
     @player = Player.find( params[:player_id] )
 
-    @loc = GameRules::Map.new.localisations
+    @loc = Fight::Map.new.localisations
   end
 
   def schedule_movements_save

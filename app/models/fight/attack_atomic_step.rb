@@ -1,4 +1,4 @@
-module GameRules
+module Fight
 
   # Represent a very single attack step. Can be the attack or the retailation
   #
@@ -7,7 +7,7 @@ module GameRules
   # @param attack_type [Symbol] Can be :attack or :retail depending if you are performing the true attack or the retail.
   #
   # @return nil
-  class FightAttackAtomicStep
+  class AttackAtomicStep
 
     attr_reader :attack_type, :final_hits
 

@@ -1,9 +1,9 @@
 require 'ostruct'
 
-module GameRules
+module Fight
 
   # Represent a full attack step. Including a retaliation in case of cac attack and hits assignment.
-  class FightAttackWithRetaliation
+  class AttackWithRetaliation
 
     def initialize( body_count )
       @hits_log = {}
@@ -24,12 +24,12 @@ module GameRules
       @defender = defender
 
       # First the regular attack
-      @attack = FightAttackAtomicStep.new( attacker, defender, :attack )
+      @attack = AttackAtomicStep.new(attacker, defender, :attack )
       attack_hits = @attack.roll_attack( attacker, defender )
 
       if @attack.attack_type == :cac
         # If attack was cac then we perform the retail
-        @retaliation = FightAttackAtomicStep.new(attacker, defender, :retaliation )
+        @retaliation = AttackAtomicStep.new(attacker, defender, :retaliation )
         retail_hits = @retaliation.roll_attack(defender, attacker )
 
         # We assign the retailing hits must be assigned after.

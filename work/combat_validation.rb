@@ -10,10 +10,10 @@ require_relative '../app/models/user'
 require_relative '../app/models/unit'
 require_relative '../app/models/fight_result'
 require_relative '../app/models/game_rules/unit'
-require_relative '../app/models/game_rules/fight'
-require_relative '../app/models/game_rules/fight_attack_atomic_step'
-require_relative '../app/models/game_rules/fight_attack_with_retaliation'
-require_relative '../app/models/game_rules/fight_attack_count_points'
+require_relative '../app/models/game_rules/'
+require_relative '../app/models/game_rules/_attack_atomic_step'
+require_relative '../app/models/game_rules/_attack_with_retaliation'
+require_relative '../app/models/game_rules/_attack_count_points'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5
@@ -27,7 +27,7 @@ I18n.default_locale = :fr
 
 def stats
   results = {}
-  f = GameRules::Fight.new( 8, 'O1', 2, 1, save_result: false )
+  f = Fight::Base.new(8, 'O1', 2, 1, save_result: false )
 
   1.upto(500) do |i|
     p i if i % 100 == 0
@@ -40,7 +40,7 @@ end
 
 
 def one_shot
-  c = GameRules::Fight.new( 1, 'O1', 11, 10 )
+  c = Fight::Base.new(1, 'O1', 11, 10 )
   c.go
 # pp c.combat_log
 # pp c.body_count

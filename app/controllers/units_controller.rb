@@ -99,7 +99,7 @@ class UnitsController < ApplicationController
     def add_gang_to_unit
       @h_params = unit_params.to_h
       @h_params[ :gang_id ] = @gang.id
-      @h_params[ :name ] = GameRules::UnitNameGenerator.generate_unique_unit_name( @campaign )
+      @h_params[ :name ] = GameRules::UnitNameGenerator.generate_unique_unit_name(@campaign )
 
       @unit = Unit.new( @h_params )
     end

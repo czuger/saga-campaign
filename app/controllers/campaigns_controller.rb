@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   before_action :set_player, only: [ :show ]
 
   def controlled_points
-    @map = GameRules::Map.new
+    @map = Fight::Map.new
   end
 
   # GET /campaigns

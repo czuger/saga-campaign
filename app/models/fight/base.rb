@@ -1,6 +1,6 @@
-module GameRules
+module Fight
 
-  class Fight
+  class Base
 
     attr_reader :combat_log, :body_count, :result
 
@@ -39,7 +39,7 @@ module GameRules
         break if @player_1_units.empty? || @player_2_units.empty?
       end
 
-      @result = FightAttackCountPoints.new( @player_1, @player_2, @body_count ).do
+      @result = AttackCountPoints.new(@player_1, @player_2, @body_count ).do
       save_result( @result ) if @save_result
 
       self
@@ -64,7 +64,7 @@ module GameRules
         @step_attack_log = {}
 
         if will_attack?(attacker )
-          f = FightAttackWithRetaliation.new( @body_count )
+          f = AttackWithRetaliation.new(@body_count )
           attacks_performed += 1
 
           defender = get_target( defender_units )

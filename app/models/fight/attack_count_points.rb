@@ -1,11 +1,11 @@
-module GameRules
+module Fight
 
   # This class is used only to count points and give a result at the end of the game
   #
   # @param attacker_gang [Gang] the gang of the attacker.
   # @param defender_gang [Gang] the gang of the defender.
   # @param body_count [Hash] the list of the losses of the fight.
-  class FightAttackCountPoints
+  class AttackCountPoints
 
     attr_reader :attacker_points_list, :attacker_points_total, :defender_points_list, :defender_points_total
     attr_reader :winner, :winner_code, :attacker_name, :defender_name
