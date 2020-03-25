@@ -2,11 +2,14 @@
 fr:
   fights:
     opponent_turn_detail:
-      attack_detail_string:
-        one: "%{attacker_name} attaque %{defender_name} %{attack_type_name} %{dice_pool_part},
-          touche sur %{opponent_armor}+ et fait %{hits_rolls} soit %{hits_part}."
-        other: "%{attacker_name}(%{count}) attaquent %{defender_name} %{attack_type_name} %{dice_pool_part},
-          touchent sur %{opponent_armor}+ et font %{hits_rolls} soit %{hits_part}."
+
+      attack_detail_string: "L'unité %{attacker_name}(%{attacker_count}) %{attack_phase} l'unité %{defender_name}(%{defender_count})
+        %{attack_type_name} %{dice_pool_part},
+        touche sur %{opponent_armor}+ et fait %{hits_rolls} soit %{hits_part}."
+
+      attack_phase:
+        attack: "attaque"
+        retaliation: "riposte contre"
 
       attack_detail_string_dice_pool_part:
         one: "avec 1 dé"
@@ -17,24 +20,22 @@ fr:
         one: "une touche"
         other: "%{count} touches"
 
-      retailation_detail_string:
-        one: "%{attacker_name} riposte contre %{defender_name} %{attack_type_name}
-          %{dice_pool_part}, touche sur %{opponent_armor}+ et fait %{hits_rolls} soit %{hits_part}."
-        other: "%{attacker_name}(%{count}) ripostent contre %{defender_name} %{attack_type_name}
-          %{dice_pool_part}, touchent sur %{opponent_armor}+ et font %{hits_rolls} soit %{hits_part}."
+      defend_detail_string_saves_part:
+        zero: "aucune sauvegarde"
+        one: "une sauvegarde"
+        other: "%{count} sauvegardes"
 
-      defend_detail_string:
-        one: "%{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit %{saves} sauvegardes.
-          Au final %{hits_part}."
-        other: "%{defender_name}(%{count}) sauvegardent sur %{opponent_save}+ et lancent %{saves_rolls} soit %{saves} sauvegardes.
-          Au final %{hits_part}."
+      defend_detail_string_casualties_part:
+        one: "une figurine"
+        other: "%{count} figurines"
 
-      hit_protection_string:
-        one: "#{name} a une protection et prend #{hits} touches. Sa protection tombe à #{prot_after}."
-        other: "#{name} ont une protection et prenent #{hits} touches. Leur protection tombe à #{prot_after}."
+      defend_detail_string: "L'unité %{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit
+        %{saves_string}. Au final %{hits_part}."
 
-      hit_loss_string:
-        one: "#{name} prend #{hits} touches, perds #{hits} figurines et se retrouve à #{amount_after}."
-        other: "#{name} prenent #{hits} touches, perdent #{hits} figurines et se retrouvent à #{amount_after}."
+      hit_protection_string: "L'unité %{name} a une protection et prend %{hits_part}. Sa protection passe de %{before} à %{after}."
 
-      hit_destroyed_string: "#{name} est détruite."
+      hit_loss_string: "L'unité %{name} prend %{hits_part}, perd %{casualties_part} et passe de %{before} à %{after}."
+
+      hit_destroyed_string: "L'unité %{name} est détruite."
+
+      pass_details_string: "L'unité %{name} n'attaquera pas ce tour (%{attack_trigger}% de chances d'attaquer)."
