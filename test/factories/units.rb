@@ -1,10 +1,11 @@
 FactoryBot.define do
   factory :unit do
     gang { nil }
-    libe { "MyString" }
+    libe { 'seigneur' }
     amount { 1 }
     points { 1.5 }
     weapon { '-' }
+    name { 'Default lord name' }
 
     factory :unit_lord_horde do
       libe { 'seigneur' }

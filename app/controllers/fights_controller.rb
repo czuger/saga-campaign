@@ -6,7 +6,7 @@ class FightsController < ApplicationController
   def show
     @fight = FightResult.find( params[:id] )
 
-    @game_rules_units = Fight::Unit.new
+    @game_rules_units = GameRules::Unit.new
 
     @result = @fight.fight_data[:result]
   end

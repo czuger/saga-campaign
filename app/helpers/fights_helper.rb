@@ -70,9 +70,7 @@ module FightsHelper
     #   "Au final #{attack_result.damages} touches."
 
     attack_detail_string_dice_pool_part = t( '.attack_detail_string_dice_pool_part', count: attack_type.dice_pool )
-    p attack_detail_string_dice_pool_part
     attack_detail_string_hits_part = t( '.attack_detail_string_hits_part', count: attack_result.hits )
-    p attack_detail_string_hits_part
 
     attack_translation = attack_or_retaliation == :attack ? '.attack_detail_string' : '.retailation_detail_string'
 
