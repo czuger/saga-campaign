@@ -5,10 +5,19 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
     create_full_campaign
   end
 
-  # test 'should get index' do
-  #   get campaign_gang_units( @campaign )
-  #   assert_response :success
-  # end
+  test 'should change location' do
+    second_user = create( :user )
+    second_player = create( :player, campaign: @campaign, user: second_user, controls_points: [ 'O8' ] )
+
+    post gang_change_location_url( @gang, params: { location: 'O8' } )
+    assert_equal 'O8', @gang.reload.location
+    assert_empty second_player.reload.controls_points
+  end
+
+  test 'should get index' do
+    get campaign_gangs_url( @campaign )
+    assert_response :success
+  end
 
   test 'should get new' do
     get new_campaign_gang_url( @campaign )
@@ -23,23 +32,18 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
                icon: 'test', faction: 'nature', number: 4, location: 'L1', name: 'The strongs' } }
     end
 
-    # assert_redirected_to campaign_player_url( @campaign, @player )
+    # assert_redirected_to gang_units_url(@campaign)
   end
 
-  # test 'should show gang' do
-  #   get gang_url(@gang)
-  #   assert_response :success
-  # end
-  # 
-  # test 'should get edit' do
-  #   get edit_gang_url(@gang)
-  #   assert_response :success
-  # end
-  # 
-  # test 'should update gang' do
-  #   patch gang_url(@gang), params: { gang: { campaign_id: @gang.campaign_id, icon: @gang.icon, player_id: @gang.player_id } }
-  #   assert_redirected_to gang_url(@gang)
-  # end
+  test 'should get edit' do
+    get edit_campaign_gang_url(@campaign, @gang)
+    assert_response :success
+  end
+
+  test 'should update gang' do
+    patch campaign_gang_url(@campaign, @gang), params: { gang: { name: 'The weak' } }
+    assert_redirected_to campaign_gangs_url(@campaign)
+  end
 
   test 'should destroy gang' do
     assert_difference('Gang.count', -1) do
