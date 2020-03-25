@@ -5,9 +5,7 @@ class PlayersController < ApplicationController
 
   # GET /players
   # GET /players.json
-  def index
-    @players = User.all
-  end
+
 
   # GET /players/1
   # GET /players/1.json

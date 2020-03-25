@@ -5,11 +5,6 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     create_full_campaign
   end
 
-  # test 'should get index' do
-  #   get campaign_players_url( @campaign )
-  #   assert_response :success
-  # end
-
   test 'should get new' do
     get new_campaign_player_url( @campaign )
     assert_response :success
@@ -25,6 +20,11 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show player' do
     get campaign_player_url( @campaign , @player )
+    assert_response :success
+  end
+
+  test 'should modify pp' do
+    patch player_modify_pp_url( @player, params: { player: { pp: 50 } } )
     assert_response :success
   end
 
