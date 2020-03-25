@@ -67,21 +67,23 @@ module Fight
     #
     # @return [Array] the units of the defender.
     def assign_hits( defender_units, defender, hits )
-      if defender.get_protection > 0
-        @hits_log << sub_assign_hits( defender, defender.get_protection, hits, :protection ) do |real_hits, log|
-          defender.decrease_protection!( real_hits )
-          log
-        end
-      else
-        @hits_log << sub_assign_hits( defender, defender.amount, hits, :casualties ) do |real_hits, log|
-          defender.amount -= real_hits
-
-          if defender.amount <= 0
-            log.unit_destroyed = true
-            defender_units.delete( defender )
+      if hits > 0
+        if defender.get_protection > 0
+          @hits_log << sub_assign_hits( defender, defender.get_protection, hits, :protection ) do |real_hits, log|
+            defender.decrease_protection!( real_hits )
+            log
           end
+        else
+          @hits_log << sub_assign_hits( defender, defender.amount, hits, :casualties ) do |real_hits, log|
+            defender.amount -= real_hits
 
-          log
+            if defender.amount <= 0
+              log.unit_destroyed = true
+              defender_units.delete( defender )
+            end
+
+            log
+          end
         end
       end
 

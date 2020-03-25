@@ -14,7 +14,7 @@ module FightsHelper
 
   # For fight log detail
   def pass_detail( pass_detail )
-    attacker_name = Unit.long_name_from_log_data( pass_detail.attacker )
+    attacker_name = Unit.short_name_from_log_data( pass_detail.attacker )
 
     "L'unité #{attacker_name} n'attaquera pas ce tour (#{pass_detail.attack_trigger}% de chances d'attaquer)."
   end
@@ -38,8 +38,10 @@ module FightsHelper
                   count: fight_detail.attacker.amount,
                   hits_rolls: fight_detail.hits_rolls)
 
+      defend_detail_string_hits_part = t( '.attack_detail_string_hits_part', count: fight_detail.damages )
       defense = t( '.defend_detail_string', defender_name: defender_name, opponent_save: fight_detail.opponent_save,
-                   saves_rolls: fight_detail.saves_rolls, saves: fight_detail.saves, damages: fight_detail.damages,
+                   saves_rolls: fight_detail.saves_rolls, saves: fight_detail.saves,
+                   hits_part: defend_detail_string_hits_part,
                    count: fight_detail.defender.amount )
 
       attack.upcase_first + ' ' + defense.upcase_first
@@ -53,9 +55,9 @@ module FightsHelper
       name = Unit.short_name_from_log_data( hit.unit )
 
       if hit.type == :protection
-        r << "L'unité #{name} a une protection. Elle prend #{hit.hits} touches et sa protection tombe à #{hit.after}."
+        r << "L'unité #{name} a une protection. Elle prend #{hit.hits} touches et sa protection passe de #{hit.before} à #{hit.after}."
       else
-        r << "L'unité #{name} prend #{hit.hits} touches, perds #{hit.damages} figurines et se retrouve à #{hit.after}."
+        r << "L'unité #{name} prend #{hit.hits} touches, perds #{hit.damages} figurines et passe de #{hit.before} à #{hit.after}."
         r << "L'unité #{name} est détruite." if hit.unit_destroyed
       end
     end

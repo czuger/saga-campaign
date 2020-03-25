@@ -4,28 +4,30 @@ fr:
     opponent_turn_detail:
       attack_detail_string:
         one: "%{attacker_name} attaque %{defender_name} %{attack_type_name} %{dice_pool_part},
-          touche sur %{opponent_armor}+ et fait %{hits_rolls} %{hits_part}"
+          touche sur %{opponent_armor}+ et fait %{hits_rolls} soit %{hits_part}."
         other: "%{attacker_name}(%{count}) attaquent %{defender_name} %{attack_type_name} %{dice_pool_part},
-          touchent sur %{opponent_armor}+ et font %{hits_rolls} %{hits_part}"
+          touchent sur %{opponent_armor}+ et font %{hits_rolls} soit %{hits_part}."
 
       attack_detail_string_dice_pool_part:
         one: "avec 1 dé"
         other: " avec %{count} dés"
 
       attack_detail_string_hits_part:
-        zero: "soit aucune touche."
-        one: "soit une touche."
-        other: "soit %{count} touches."
+        zero: "aucune touche"
+        one: "une touche"
+        other: "%{count} touches"
 
       retailation_detail_string:
         one: "%{attacker_name} riposte contre %{defender_name} %{attack_type_name}
-          %{dice_pool_part}, touche sur %{opponent_armor}+ et fait %{hits_rolls} %{hits_part}"
+          %{dice_pool_part}, touche sur %{opponent_armor}+ et fait %{hits_rolls} soit %{hits_part}."
         other: "%{attacker_name}(%{count}) ripostent contre %{defender_name} %{attack_type_name}
-          %{dice_pool_part}, touchent sur %{opponent_armor}+ et font %{hits_rolls} %{hits_part}"
+          %{dice_pool_part}, touchent sur %{opponent_armor}+ et font %{hits_rolls} soit %{hits_part}."
 
       defend_detail_string:
-        one: "%{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit %{saves} sauvegardes. Au final %{damages} touches."
-        other: "%{defender_name}(%{count}) sauvegardent sur %{opponent_save}+ et lancent %{saves_rolls} soit %{saves} sauvegardes. Au final %{damages} touches."
+        one: "%{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit %{saves} sauvegardes.
+          Au final %{hits_part}."
+        other: "%{defender_name}(%{count}) sauvegardent sur %{opponent_save}+ et lancent %{saves_rolls} soit %{saves} sauvegardes.
+          Au final %{hits_part}."
 
       hit_protection_string:
         one: "#{name} a une protection et prend #{hits} touches. Sa protection tombe à #{prot_after}."
