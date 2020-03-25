@@ -10,10 +10,10 @@ require_relative '../app/models/user'
 require_relative '../app/models/unit'
 require_relative '../app/models/fight_result'
 require_relative '../app/models/game_rules/unit'
-require_relative '../app/models/game_rules/'
-require_relative '../app/models/game_rules/_attack_atomic_step'
-require_relative '../app/models/game_rules/_attack_with_retaliation'
-require_relative '../app/models/game_rules/_attack_count_points'
+require_relative '../app/models/fight/base'
+require_relative '../app/models/fight/attack_atomic_step'
+require_relative '../app/models/fight/attack_with_retaliation'
+require_relative '../app/models/fight/attack_count_points'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5
@@ -42,7 +42,7 @@ end
 def one_shot
   c = Fight::Base.new(1, 'O1', 11, 10 )
   c.go
-# pp c.combat_log
+  puts c.combat_log.to_yaml
 # pp c.body_count
 # pp c.result.attacker_points_list
 # pp c.result.winner_code

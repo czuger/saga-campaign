@@ -20,8 +20,13 @@
       %tr
         %td= f.location
 
-        %td= participant_libe( f.fight_data[:attacker], f.fight_data[:attacker_gang_no] )
-        %td= participant_libe( f.fight_data[:defender], f.fight_data[:defender_gang_no] )
+        -# Required while first test campaign still running
+        - if Object.const_defined?( 'GameRules::FightAttackCountPoints' )
+          %td= participant_libe( f.fight_data[:attacker], f.fight_data[:attacker_gang_no] )
+          %td= participant_libe( f.fight_data[:defender], f.fight_data[:defender_gang_no] )
+        -else
+          %td Données non disponibles
+          %td Données non disponibles
 
         %td= link_to( l( f.updated_at.localtime, format: :long ).capitalize, campaign_fight_path( @campaign, f ),
           class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true' )

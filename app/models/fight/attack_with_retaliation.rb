@@ -6,7 +6,7 @@ module Fight
   class AttackWithRetaliation
 
     def initialize( body_count )
-      @hits_log = {}
+      @hits_log = []
 
       @body_count = body_count
     end
@@ -43,14 +43,19 @@ module Fight
 
     # Get subdata for fight detail logging
     #
-    # @return [Hash] Log details
+    # @return [OpenStruct] Log details
     def get_log_data
-      { attack: @attack.get_log_data(), retaliation: @retaliation&.get_log_data(), hits_assignment: @hits_log,
-        attacker: OpenStruct.new( name: @attacker.long_name, amount: @attacker.amount, id: @attacker.id,
-        gang_id: @attacker.gang.id ),
-        defender: OpenStruct.new( name: @defender.long_name, amount: @defender.amount, id: @defender.id,
-        gang_id: @defender.gang.id )
-      }
+      OpenStruct.new(
+        {
+          can_attack: true,
+          retailation: respond_to?( :retaliation ),
+          attack: @attack.get_log_data(),
+          retaliation: @retaliation&.get_log_data(),
+          hits_assignment: @hits_log,
+          attacker: @attacker.log_data,
+          defender: @defender.log_data
+        }
+      )
     end
 
     private
@@ -76,7 +81,7 @@ module Fight
         @hits_log[ defender.long_name ][ :amount_after ] = defender.amount
 
         if units_to_loose > 0
-          @body_count[ defender.id ] ||= OpenStruct.new( unit: defender, deads: 0 )
+          @body_count[ defender.id ] ||= OpenStruct.new( unit: defender.log_data, deads: 0 )
           @body_count[ defender.id ].deads += units_to_loose
         end
       end

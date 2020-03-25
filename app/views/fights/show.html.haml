@@ -42,20 +42,20 @@
 
     %h3= "Tour de #{ tl[ :turn_of ] }"
 
-    - tl[ :turn_log ].each do |log|
+    - tl[ :turn_log ].each do |log_detail|
 
       -#%p
       -#  = log
 
-      - unless log[:can_attack][:can_attack]
-        %p= pass_detail( log )
+      - unless log_detail.can_attack.can_attack
+        %p= pass_detail( log_detail )
 
       - else
-        %p= fight_detail( log, :attack )
+        %p= fight_detail( log_detail, :attack )
 
-        - if log[:combat_result][:retaliation]
-          %p= fight_detail( log, :retaliation )
+        - if log_detail.combat_result.retaliation
+          %p= fight_detail( log_detail, :retaliation )
 
-        %p= hits_detail( log )
+        %p= hits_detail( log_detail )
 
       %hr

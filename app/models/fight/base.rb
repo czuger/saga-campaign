@@ -5,13 +5,18 @@ module Fight
     attr_reader :combat_log, :body_count, :result
 
     def initialize( campaign_id, location, attacking_gang_id, defender_gang_id, save_result: true )
-      @combat_log = []
+      @attacking_gang_id = attacking_gang_id
+      @defender_gang_id = defender_gang_id
+
+      @player_1 = Gang.find( @attacking_gang_id )
+      @player_2 = Gang.find( @defender_gang_id )
+
+      @combat_log = OpenStruct.new(
+        attacker_name: @player_1.player.user.name,
+        defender_name: @player_2.player.user.name, log: [] )
 
       @campaign_id = campaign_id
       @location = location
-
-      @attacking_gang_id = attacking_gang_id
-      @defender_gang_id = defender_gang_id
 
       @body_count = {}
 
@@ -22,19 +27,16 @@ module Fight
       load
 
       1.upto(6).each do |i|
-        @round_log_shell = { round: i, turns_log: [] }
+        round_log_shell = OpenStruct.new(
+          round: i,
+          turn_phases: OpenStruct.new( attacker: nil, defender: nil ) )
 
         attack_count = ( i == 1 ? 3 : 8 )
 
-        @round_log = []
-        tour(@player_1_units, @player_2_units, attack_count )
-        @round_log_shell[:turns_log] << { turn_of: @player_1.player.user.name, turn_log: @round_log }
+        round_log_shell.attacker = tour(@player_1_units, @player_2_units, attack_count )
+        round_log_shell.defender = tour(@player_2_units, @player_1_units, attack_count )
 
-        @round_log = []
-        tour(@player_2_units, @player_1_units, Float::INFINITY )
-        @round_log_shell[:turns_log] << { turn_of: @player_2.player.user.name, turn_log: @round_log }
-
-        @combat_log << @round_log_shell
+        @combat_log.log << round_log_shell
 
         break if @player_1_units.empty? || @player_2_units.empty?
       end
@@ -55,13 +57,11 @@ module Fight
       # p attacker_units.map{ |e| e.id }
 
       attacks_performed = 0
+      units_actions_log = []
 
       attacker_units.each do |attacker|
 
         break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
-
-        @single_attack_log = {}
-        @step_attack_log = {}
 
         if will_attack?(attacker )
           f = AttackWithRetaliation.new(@body_count )
@@ -72,18 +72,19 @@ module Fight
           attacker_units, defender_units, attacker, defender =
             f.perform_attack( attacker_units, defender_units, attacker, defender )
 
-          @single_attack_log[ :combat_result ] = f.get_log_data
+          log = f.get_log_data
+        else
+          log = {
+            can_attack: false, min_to_attack: @ca, roll: @dice, attacker: attacker.log_data }
         end
 
-        @round_log << @single_attack_log
-
+        units_actions_log << log
       end
+
+      units_actions_log
     end
 
     def load
-      @player_1 = Gang.find( @attacking_gang_id )
-      @player_2 = Gang.find( @defender_gang_id )
-
       @player_1_units = @player_1.units.to_a
       @player_2_units = @player_2.units.to_a
     end
@@ -114,14 +115,10 @@ module Fight
     end
 
     def will_attack?( unit )
-      ca = unit.can_attack_trigger
+      @can_attack = unit.can_attack_trigger
+      @dice = Hazard.d100
 
-      dice = Hazard.d100
-
-      @single_attack_log[ :can_attack ] = {
-        can_attack: dice <= ca, min_to_attack: ca, roll: dice, attacker: unit.full_name }
-
-      dice <= ca
+      @dice <= @can_attack
     end
 
     def get_target( defender_units )

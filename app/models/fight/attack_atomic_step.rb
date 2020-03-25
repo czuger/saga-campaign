@@ -39,14 +39,16 @@ module Fight
     #
     # @return [Hash] Log details
     def get_log_data
-      {
+      OpenStruct.new(
         attack_result:
-          { hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
-            saves_rolls: @opponent_saves_result.rolls, damages: @final_hits },
-
-        attack_type: { type: @attack_type, dice_pool: @dice_pool, opponent_armor: @opponent_armor,
-                       opponent_save: @opponent_save },
-      }
+          OpenStruct.new(
+            hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
+            saves_rolls: @opponent_saves_result.rolls, damages: @final_hits
+          ),
+          attack_type: OpenStruct.new(
+            type: @attack_type, dice_pool: @dice_pool, opponent_armor: @opponent_armor,
+            opponent_save: @opponent_save )
+      )
     end
 
     private

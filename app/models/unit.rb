@@ -39,6 +39,11 @@ class Unit < ApplicationRecord
     "[#{libe}, #{weapon}]"
   end
 
+  # Used to store unit data for logging (to remember info when the unit will be destroyed)
+  def log_data
+    OpenStruct.new( libe: libe, weapon: weapon, name: name, amount: amount, id: id )
+  end
+
   # Specific methods that override GameRules::Unit access
   def can_attack_trigger
     unit_data_open_hash.fight_info.can_attack

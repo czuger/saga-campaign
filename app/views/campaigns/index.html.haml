@@ -10,7 +10,7 @@
       %th
 
   %tbody
-    - @campaigns.each do |campaign|
+    - @campaigns.includes([:user]).each do |campaign|
       %tr
         %td= campaign.user.name
         %td= campaign.name
