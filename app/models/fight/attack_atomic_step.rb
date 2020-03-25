@@ -26,6 +26,8 @@ module Fight
     def roll_attack( attacker, defender )
       set_attack_info(attacker, defender )
 
+      @dice_pool = [@dice_pool, 16].min
+
       @roll_result = Hazard.from_string "s#{@dice_pool}d6"
       @hits = @roll_result.rolls.select{ |d| d >= @opponent_armor }
 
@@ -40,14 +42,9 @@ module Fight
     # @return [Hash] Log details
     def get_log_data
       OpenStruct.new(
-        attack_result:
-          OpenStruct.new(
-            hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
-            saves_rolls: @opponent_saves_result.rolls, damages: @final_hits
-          ),
-          attack_type: OpenStruct.new(
-            type: @attack_type, dice_pool: @dice_pool, opponent_armor: @opponent_armor,
-            opponent_save: @opponent_save )
+        hits: @hits.count, hits_rolls: @roll_result.rolls, saves: @opponent_saves.count,
+        saves_rolls: @opponent_saves_result.rolls, damages: @final_hits, type: @attack_type,
+        dice_pool: @dice_pool, opponent_armor: @opponent_armor, opponent_save: @opponent_save
       )
     end
 

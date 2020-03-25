@@ -48,7 +48,7 @@ module Fight
       OpenStruct.new(
         {
           can_attack: true,
-          retailation: respond_to?( :retaliation ),
+          retailation: @retaliation != nil,
           attack: @attack.get_log_data(),
           retaliation: @retaliation&.get_log_data(),
           hits_assignment: @hits_log,
@@ -69,35 +69,36 @@ module Fight
     # @return [Array] the units of the defender.
     def assign_hits( defender_units, defender, hits )
       if defender.get_protection > 0
-        @hits_log[ defender.long_name ] = { type: :protection, prot_before: defender.get_protection }
-        defender.decrease_protection!( hits )
-        @hits_log[ defender.long_name ][ :prot_after ] = defender.get_protection
-      else
-        @hits_log[ defender.long_name ] = { type: :loss, amount_before: defender.amount }
-
-        units_to_loose = [ hits, defender.amount ].min
-
-        defender.amount -= units_to_loose
-        @hits_log[ defender.long_name ][ :amount_after ] = defender.amount
-
-        if units_to_loose > 0
-          @body_count[ defender.id ] ||= OpenStruct.new( unit: defender.log_data, deads: 0 )
-          @body_count[ defender.id ].deads += units_to_loose
+        @hits_log << sub_assign_hits( defender, defender.get_protection, hits, :protection ) do |real_hits, log|
+          defender.decrease_protection!( real_hits )
+          log
         end
-      end
+      else
+        @hits_log << sub_assign_hits( defender, defender.amount, hits, :casualties ) do |real_hits, log|
+          defender.amount -= real_hits
 
-      @hits_log[ defender.long_name ][ :hits ] = hits
+          if defender.amount <= 0
+            log.unit_destroyed = true
+            defender_units.delete( defender )
+          end
 
-      if defender.amount <= 0
-        @hits_log[ defender.long_name ][ :unit_destroyed ] = true
-        defender_units.delete( defender )
-        @body_count[ defender.id ].destroyed = true
+          log
+        end
       end
 
       defender_units
     end
 
+    def sub_assign_hits( defender, amount, hits, type )
+      real_hits = [ amount, hits ].min
 
+      log = OpenStruct.new(
+        type: type,
+        before: amount,
+        after: amount - real_hits, damages: real_hits, unit: defender.log_data )
+
+      log = yield( real_hits, log )
+      log
+    end
   end
-
 end

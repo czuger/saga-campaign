@@ -75,7 +75,7 @@ module Fight
           log = f.get_log_data
         else
           log = {
-            can_attack: false, min_to_attack: @ca, roll: @dice, attacker: attacker.log_data }
+            can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data }
         end
 
         units_actions_log << log
@@ -115,10 +115,10 @@ module Fight
     end
 
     def will_attack?( unit )
-      @can_attack = unit.can_attack_trigger
+      @attack_trigger = unit.can_attack_trigger
       @dice = Hazard.d100
 
-      @dice <= @can_attack
+      @dice <= @attack_trigger
     end
 
     def get_target( defender_units )
