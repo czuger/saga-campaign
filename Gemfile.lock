@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.3)
+    aasm (5.0.8)
+      concurrent-ruby (~> 1.0)
     actioncable (6.0.2.2)
       actionpack (= 6.0.2.2)
       nio4r (~> 2.0)
@@ -307,6 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   bcrypt_pbkdf (~> 1.0)
   bootstrap (~> 4.4.1)
   bullet

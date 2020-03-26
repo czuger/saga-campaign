@@ -1,10 +1,10 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_campaign, except: [ :index, :new, :create ]
-  before_action :set_player, only: [ :show ]
+  # before_action :set_player, only: [ :show ]
 
   def controlled_points
-    @map = Fight::Map.new
+    @map = GameRules::Map.new
   end
 
   # GET /campaigns
@@ -44,7 +44,7 @@ class CampaignsController < ApplicationController
           Player.create!( user_id: current_user.id, campaign_id: @campaign.id )
           @campaign.logs.create!( data: "Joueur #{current_user.name} ajouté à la campagne.")
 
-          format.html { redirect_to @campaign, notice: t( 'creation_success.f', item: 'La campagne' ) }
+          format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( 'creation_success.f', item: 'La campagne' ) }
         else
           format.html { render :new }
         end

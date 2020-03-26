@@ -74,3 +74,5 @@ gem 'openhash'
 
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
+
+gem 'aasm'

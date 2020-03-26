@@ -9,3 +9,8 @@ fr:
     edit:
       title: Edition d'une campagne
 
+    index:
+      status:
+        waiting_for_players: En attente de joueurs
+
+

@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_player
-    set_campaign
+    @player = Player.find( params[:player_id] )
 
-    @player = Player.find_by_campaign_id_and_user_id( @campaign, current_user )
-    raise "Player (player_id: #{current_user.id} not found for campaign_id: #{@campaign.id}" unless @player
+    raise "Player (player_id: #{params[:player_id] || params[:id]} not found" unless @player
+    raise "User mismatch : current_user.id != @players.user_id (#{current_user.id} != #{@player.user_id})" unless current_user.id == @player.user_id
 
-    raise "User mismatch : current_user.id != @players.user.id (#{current_user.id} != #{@player.user.id})" unless current_user.id == @player.user.id
+    @campaign = @player.campaign
   end
 
   # Mean set gang for modification. For read only, use find directly

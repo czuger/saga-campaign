@@ -16,7 +16,9 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
-    @players = User.all
+
+    # All players but not those already in campaign.
+    @players = User.where.not( id: @campaign.players.map{ |p| p.user_id } )
   end
 
   # POST /players
@@ -66,7 +68,7 @@ class PlayersController < ApplicationController
   def schedule_movements_edit
     @player = Player.find( params[:player_id] )
 
-    @loc = Fight::Map.new.localisations
+    @loc = GameRules::Map.new.localisations
   end
 
   def schedule_movements_save
