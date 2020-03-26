@@ -15,7 +15,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
       post campaign_players_url( @campaign ), params: { players: [ @player.id ] }
     end
 
-    assert_redirected_to campaign_url( @campaign )
+    assert_redirected_to campaigns_url
   end
 
   test 'should show player' do

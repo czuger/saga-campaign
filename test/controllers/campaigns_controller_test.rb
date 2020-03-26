@@ -35,7 +35,7 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal @user.id, Player.last.user_id
 
-    assert_redirected_to campaign_url(Campaign.last)
+    assert_redirected_to new_campaign_player_url(Campaign.last)
   end
 
   # Create a new campaign and assert that current user is added as a player
@@ -53,6 +53,12 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
     get campaign_url(@campaign)
     assert_response :success
   end
+
+  test 'should get players_choose_faction_new' do
+    get campaign_players_choose_faction_new_url(@campaign)
+    assert_response :success
+  end
+
 
   test 'should get edit' do
     get edit_campaign_url(@campaign)

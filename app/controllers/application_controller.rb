@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_player
-    @player = Player.find( params[:player_id] )
+    @player = Player.find( params[:player_id] || params[:id] )
 
     raise "Player (player_id: #{params[:player_id] || params[:id]} not found" unless @player
     raise "User mismatch : current_user.id != @players.user_id (#{current_user.id} != #{@player.user_id})" unless current_user.id == @player.user_id

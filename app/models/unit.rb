@@ -100,6 +100,9 @@ class Unit < ApplicationRecord
   def unit_data_open_hash
     @@units_data ||= GameRules::Unit.new
 
+    raise "#{libe} not found in @@units_data.data" unless @@units_data.data[libe]
+    raise "#{weapon} not found in @@units_data.data" unless @@units_data.data[libe][weapon]
+
     @unit_data ||= OpenHash.new( @@units_data.data[libe][weapon] )
   end
 

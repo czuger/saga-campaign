@@ -83,13 +83,13 @@ module Fight
           @opponent_armor = 2
           @opponent_save = 6
         when :distance
-          @dice_pool = (@attacker.amount * @attacker.damage_ranged).to_i
+          @dice_pool = (@attacker.amount * @attacker.damage_ranged).ceil.to_i
           @opponent_armor = @defender.armor_ranged
           @opponent_save = 5
         when :cac
           @last_attack_cac = true
 
-          @dice_pool = (@attacker.amount * @attacker.damage_cac).to_i
+          @dice_pool = (@attacker.amount * @attacker.damage_cac).ceil.to_i
           @opponent_armor = @defender.armor_cac
           @opponent_save = 4
         else
