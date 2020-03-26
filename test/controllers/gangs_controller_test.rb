@@ -15,18 +15,18 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get campaign_gangs_url( @campaign )
+    get player_gangs_url( @player )
     assert_response :success
   end
 
   test 'should get new' do
-    get new_campaign_gang_url( @campaign )
+    get new_player_gang_url( @player )
     assert_response :success
   end
 
   test 'should create gang' do
     assert_difference('Gang.count') do
-      post campaign_gangs_url( @campaign ),
+      post player_gangs_url( @player ),
            params: {
              gang: {
                icon: 'test', faction: 'nature', number: 4, location: 'L1', name: 'The strongs' } }
@@ -36,13 +36,13 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    get edit_campaign_gang_url(@campaign, @gang)
+    get edit_gang_url(@gang)
     assert_response :success
   end
 
   test 'should update gang' do
-    patch campaign_gang_url(@campaign, @gang), params: { gang: { name: 'The weak' } }
-    assert_redirected_to campaign_gangs_url(@campaign)
+    patch gang_url(@gang), params: { gang: { name: 'The weak' } }
+    assert_redirected_to player_gangs_url( @player )
   end
 
   test 'should destroy gang' do
@@ -50,6 +50,6 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
       delete gang_url( @gang )
     end
 
-    assert_redirected_to campaign_gangs_url( @campaign )
+    assert_redirected_to player_gangs_url( @player )
   end
 end

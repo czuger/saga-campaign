@@ -15,9 +15,6 @@
             = link_to 'Campagne actuelle', campaign_path( @campaign ), class: 'nav-link'
 
           %li.nav-item
-            = link_to 'Bandes', campaign_gangs_path( @campaign ), class: 'nav-link'
-
-          %li.nav-item
             = link_to 'Carte', campaign_map_show_path( @campaign ), class: 'nav-link'
 
           %li.nav-item
@@ -27,6 +24,9 @@
             = link_to 'Combats', campaign_fights_path( @campaign ), class: 'nav-link'
 
           - if @player&.id
+            %li.nav-item
+              = link_to 'Bandes', player_gangs_path( @player ), class: 'nav-link'
+
             %li.nav-item
               = link_to 'Joueur', campaign_player_path( @campaign, @player ), class: 'nav-link'
 

@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :campaigns do
-    resources :players, except: [ :edit, :update, :index, :destroy ] do
-      put :modify_pp
-    end
-
-    resources :gangs, only: [ :index, :new, :create, :edit, :update ]
+    resources :players, except: [ :edit, :update, :index, :destroy ]
 
     resources :fights, only: [ :index, :new, :create, :show ]
 
@@ -21,22 +17,22 @@ Rails.application.routes.draw do
     get :players_choose_faction_new
   end
 
-  resources :gangs, only: [ :destroy ] do
-
-    resources :units, only: [ :new, :create, :update, :index ]
-    post 'change_location', to: 'gangs#change_location'
-
-  end
-
   resources :units, only: [ :edit, :destroy ]
 
   resources :players, only: [] do
+    resources :gangs, only: [ :index, :new, :create ]
+
     patch :modify_pp
 
     get :schedule_movements_edit
     post :schedule_movements_save
 
     post :choose_faction_save
+  end
+
+  resources :gangs, only: [ :destroy, :edit, :update ] do
+    resources :units, only: [ :new, :create, :update, :index ]
+    post 'change_location', to: 'gangs#change_location'
   end
 
   # Used to set icons position on map

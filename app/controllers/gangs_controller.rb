@@ -79,7 +79,7 @@ class GangsController < ApplicationController
   def update
     respond_to do |format|
       if @gang.update(gang_params)
-        format.html { redirect_to campaign_gangs_path( @campaign ), notice: 'Gang was successfully updated.' }
+        format.html { redirect_to player_gangs_path( @player ), notice: 'Gang was successfully updated.' }
 
       else
         format.html { render :edit }
@@ -93,7 +93,7 @@ class GangsController < ApplicationController
   def destroy
     @gang.destroy
     respond_to do |format|
-      format.html { redirect_to campaign_gangs_path( @campaign ), notice: 'La bande a été correctement supprimée.' }
+      format.html { redirect_to player_gangs_path( @player ), notice: 'La bande a été correctement supprimée.' }
 
     end
   end

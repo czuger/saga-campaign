@@ -1,6 +1,6 @@
 %p#notice= notice
 
-= link_to 'Ajouter une bande', new_campaign_gang_path( @campaign ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
+= link_to 'Ajouter une bande', new_player_gang_path( @player ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
 
 -# Vue-js test.
 -##app-vue-1
@@ -34,6 +34,6 @@
 
         %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
-        %td= link_to 'Renommer la bande', edit_campaign_gang_path( @campaign, gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Renommer la bande', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
         %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
