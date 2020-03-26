@@ -11,8 +11,8 @@ module GameRules
     end
 
     # This is used to show the factions.
-    def faction_select_options
-      @data.keys.map{ |e| [ I18n.t( "faction.#{e}" ), e ] }
+    def faction_select_options( already_selected_factions )
+      (@data.keys - already_selected_factions).map{ |e| [ I18n.t( "faction.#{e}" ), e ] }
     end
 
     # This is used to show the unit option (Seigneur, Gardes, etc ...)

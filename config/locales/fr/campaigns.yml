@@ -12,5 +12,7 @@ fr:
     index:
       status:
         waiting_for_players: En attente de joueurs
+        waiting_for_players_to_choose_their_faction: Les joueurs doivent choisir leurs factions
+        hiring_and_movement_schedule: Les joueurs recrutent et planifient leurs mouvements
 
 

@@ -116,7 +116,6 @@ class GangsController < ApplicationController
 
       # p @icons
 
-      @select_factions_options = GameRules::Factions.new.faction_select_options
       @select_localisations_options = GameRules::Map.new.localisations
     end
 end

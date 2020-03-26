@@ -16,3 +16,11 @@ fr:
   deletion_success:
     m: "%{item} a été supprimé avec succès."
     f: "%{item} a été supprimée avec succès."
+
+  faction:
+      nature: Les seigneur de la nature
+      royaumes: Les grands royaumes
+      morts: Les morts vivants
+      souterrains: Les peuples souterrains
+      outremonde: L'outremonde
+      horde: La horde

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     get :initiative_edit
     post :initiative_save
+
+    get :players_choose_faction_new
   end
 
   resources :gangs, only: [ :destroy ] do
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
 
     get :schedule_movements_edit
     post :schedule_movements_save
+
+    post :choose_faction_save
   end
 
   # Used to set icons position on map

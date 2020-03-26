@@ -48,13 +48,6 @@ fr:
     mobile: Mobile
     volante_vol: Volante
     monture_ailee_vol: Monture ailée
-  faction:
-    nature: Nature
-    horde: Horde
-    morts: Morts
-    souterrains: Souterrains
-    royaumes: Royaumes
-    outremonde: Outremonde
   option:
     determination: Détermination
     resistance: Résistance

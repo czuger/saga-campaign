@@ -91,6 +91,15 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def players_choose_faction_new
+    already_selected_factions = @campaign.players.pluck( :faction ).compact
+
+    @select_factions_options = GameRules::Factions.new.faction_select_options( already_selected_factions)
+
+     # Check if we have a player involved in this campaign
+    @involved_player = @campaign.players.where( user_id: current_user.id ).take
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params

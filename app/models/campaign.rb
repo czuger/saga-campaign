@@ -16,11 +16,16 @@ class Campaign < ApplicationRecord
 
   aasm do
     state :waiting_for_players, initial: true
-    state :waiting_for_players_to_choose_their_faction
+    state :waiting_for_players_to_choose_their_faction, :hiring_and_movement_schedule
 
     event :players_choose_faction do
-      transitions [:waiting_for_players] => :waiting_for_players_to_choose_their_faction
+      transitions from: [:waiting_for_players], to: :waiting_for_players_to_choose_their_faction
     end
+
+    event :players_hire_and_move do
+      transitions from: [:waiting_for_players_to_choose_their_faction], to: :hiring_and_movement_schedule
+    end
+
   end
 
 end

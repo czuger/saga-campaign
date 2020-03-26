@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, except: [:new, :create]
   before_action :set_campaign, only: [:new, :create]
 
   # GET /players
@@ -31,11 +31,15 @@ class PlayersController < ApplicationController
         user = User.find( player )
         new_players_creation_result &= Player.create( user_id: player, campaign_id: @campaign.id )
         @campaign.logs.create!( data: "Joueur #{user.name} ajouté à la campagne.")
+
+        if @campaign.players.count >= @campaign.max_players
+          @campaign.players_choose_faction!
+        end
       end
 
       respond_to do |format|
         if new_players_creation_result
-          format.html { redirect_to @campaign, notice: 'Player was successfully created.' }
+          format.html { redirect_to campaigns_path, notice: 'Joueur correctement ajouté.' }
 
         else
           format.html { render :new }
@@ -72,6 +76,28 @@ class PlayersController < ApplicationController
   end
 
   def schedule_movements_save
+  end
+
+  def choose_faction_save
+    @player.faction = params[:faction]
+
+    Player.transaction do
+      @player.save!
+
+      # If all players has a faction
+      if @campaign.players.where( faction: nil ).count == 0
+
+        # Choose a random initiative order for players and save it
+        @campaign.player_ids.shuffle.each_with_index do |player_id, i|
+          p = Player.find( player_id )
+          p.initiative = i
+          p.save!
+        end
+        @campaign.players_hire_and_move!
+      end
+    end
+
+    redirect_to campaigns_path
   end
 
   private
