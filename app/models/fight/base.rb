@@ -4,17 +4,11 @@ module Fight
 
     attr_reader :combat_log, :body_count, :result
 
-    def initialize( campaign_id, location, attacking_gang_id, defender_gang_id, save_result: true )
-      @attacking_gang_id = attacking_gang_id
-      @defender_gang_id = defender_gang_id
-
-      @player_1 = Gang.find( @attacking_gang_id )
-      @player_2 = Gang.find( @defender_gang_id )
+    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, save_result: true )
+      @attacker_gang = TmpGang.new( attacking_gang_id )
+      @defender_gang = TmpGang.new( defending_gang_id )
 
       @combat_log = []
-
-      @attacker_name = @player_1.player.user.name
-      @defender_name = @player_2.player.user.name
 
       @campaign_id = campaign_id
       @location = location
@@ -25,8 +19,6 @@ module Fight
     end
 
     def go
-      load
-
       1.upto(6).each do |i|
         round_log_shell = OpenStruct.new(
           round: i,
@@ -35,8 +27,8 @@ module Fight
 
         attack_count = ( i == 1 ? 3 : 8 )
 
-        round_log_shell.attacker = tour(@player_1_units, @player_2_units, attack_count )
-        round_log_shell.defender = tour(@player_2_units, @player_1_units, attack_count )
+        round_log_shell.attacker = tour(@attacker_gang, @defender_gang, attack_count )
+        round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
 
         @combat_log << round_log_shell
 
@@ -55,11 +47,11 @@ module Fight
     # @param defender_units [Array] all defender units.
     #
     # @return nil
-    def tour(attacker_units, defender_units, max_attack_count )
-      # p attacker_units.map{ |e| e.id }
-
-      attacks_performed = 0
+    def tour(attacker_gang, defender_gang, max_attack_count )
       units_actions_log = []
+
+      dice = ActionDicePool.new( attacker_gang )
+      p dice.to_s
 
       attacker_units.each do |attacker|
 
@@ -85,11 +77,6 @@ module Fight
       end
 
       units_actions_log
-    end
-
-    def load
-      @player_1_units = @player_1.units.to_a
-      @player_2_units = @player_2.units.to_a
     end
 
     # Save results in the database.

@@ -14,6 +14,9 @@ require_relative '../app/models/fight/base'
 require_relative '../app/models/fight/attack_atomic_step'
 require_relative '../app/models/fight/attack_with_retaliation'
 require_relative '../app/models/fight/attack_count_points'
+require_relative '../app/models/fight/tmp_gang'
+require_relative '../app/models/fight/tmp_unit'
+require_relative '../app/models/fight/action_dice_pool'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5
@@ -27,7 +30,7 @@ I18n.default_locale = :fr
 
 def stats
   results = {}
-  f = Fight::Base.new(8, 'O1', 2, 1, save_result: false )
+  f = Fight::Base.new(2, 'O1', 2, 1, save_result: false )
 
   1.upto(500) do |i|
     p i if i % 100 == 0
@@ -40,7 +43,7 @@ end
 
 
 def one_shot
-  c = Fight::Base.new(1, 'O1', 11, 10 )
+  c = Fight::Base.new(2, 'O1', 2, 1 )
   c.go
   puts c.combat_log.to_yaml
 # pp c.body_count
