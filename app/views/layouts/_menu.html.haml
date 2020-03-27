@@ -11,14 +11,18 @@
 
         - if @campaign&.id
 
-          %li.nav-item
-            = link_to 'Campagne actuelle', campaign_path( @campaign ), class: 'nav-link'
+          %li.nav-item.dropdown
+            = link_to 'Campagne actuelle', campaign_path( @campaign ), { id: 'current_campaign', class: 'nav-link dropdown-toggle', 'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', :role => 'button'}
+
+            .dropdown-menu{ 'aria-labelledby' => 'navbarDropdown' }
+              .dropdown-item
+                = link_to 'Lieux controllés', campaign_controlled_points_path( @campaign ), class: 'nav-link'
+
+              .dropdown-item
+                = link_to 'Initiative', campaign_initiative_edit_path( @campaign ), class: 'nav-link'
 
           %li.nav-item
             = link_to 'Carte', campaign_map_show_path( @campaign ), class: 'nav-link'
-
-          %li.nav-item
-            = link_to 'Lieux controllés', campaign_controlled_points_path( @campaign ), class: 'nav-link'
 
           %li.nav-item
             = link_to 'Combats', campaign_fights_path( @campaign ), class: 'nav-link'
@@ -29,9 +33,6 @@
 
             %li.nav-item
               = link_to 'Joueur', campaign_player_path( @campaign, @player ), class: 'nav-link'
-
-          %li.nav-item
-            = link_to 'Initiative', campaign_initiative_edit_path( @campaign ), class: 'nav-link'
 
         %li.nav-item
           = link_to 'Règles', '/rules.pdf', class: 'nav-link'
