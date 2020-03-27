@@ -3,11 +3,13 @@ module Fight
 
     attr_reader :units
 
-    def initialize( gang_id )
+    def initialize( gang_id, attacker_or_defender )
       gang = Gang.find( gang_id )
       @attacker_name = gang.player.user.name
 
-      @units = gang.units.map{ |u| TmpUnit.new( u ) }
+      @attacker_or_defender = attacker_or_defender
+
+      @units = gang.units.map{ |u| TmpUnit.new( u, attacker_or_defender ) }
     end
 
     def get_next_unit_to_activate( action_dice_pool )

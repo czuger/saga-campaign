@@ -5,8 +5,8 @@ module Fight
     attr_reader :combat_log, :body_count, :result
 
     def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, save_result: true )
-      @attacker_gang = TmpGang.new( attacking_gang_id )
-      @defender_gang = TmpGang.new( defending_gang_id )
+      @attacker_gang = TmpGang.new( attacking_gang_id, :attacker )
+      @defender_gang = TmpGang.new( defending_gang_id, :defender )
 
       @combat_log = []
 
@@ -28,7 +28,9 @@ module Fight
         attack_count = ( i == 1 ? 3 : 8 )
 
         round_log_shell.attacker = tour(@attacker_gang, @defender_gang, attack_count )
-        # round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
+        puts
+        puts
+        round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
 
         @combat_log << round_log_shell
 
@@ -43,8 +45,8 @@ module Fight
 
     # Play a full tour where player1 and player 2 fights
     #
-    # @param attacker_units [Array] all attacker units.
-    # @param defender_units [Array] all defender units.
+    # @param attacker_gang [TmpGang] the attacker gang.
+    # @param defender_gang [Array] the defender gang.
     #
     # @return nil
     def tour(attacker_gang, defender_gang, max_attack_count )
@@ -65,8 +67,16 @@ module Fight
           next_attacking_unit = next_attacking_unit[1]
 
           dice.consume_die!( used_die )
+
+          next_attacking_unit.advance
+
           next_attacking_unit.already_activate_this_turn = true
         end
+
+        # Ajouter les distances
+        # Ajouter les mouvements
+        # Avancer jusqu'a ce qu'on soit bloqué
+        # Tester les ranges et faire une attaque vide
 
         # break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
         #

@@ -37,12 +37,12 @@ fr_translation['fr'] = {}
 
 gs = GoogleSpreadsheet.new
 
-gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
+gs.range( 'Sheet2!A1:AZ100' ).values.each_with_index do |line, index|
   next if index == 0
 
   unit_name, weapon_name, nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice,
     min_units_for_saga_dice, min, max, increment_step, massacre_points, activation_chance, being_targeted_chance,
-    legendary, active, movement, attack_range, initiative, armor, damage, activation_dice, options = line
+    legendary, active, movement, attack_range, initiative, armor, damage, activation_dice, initial_position, options = line
 
   options ||= ''
   options = options.chomp.gsub('.', '')
@@ -92,10 +92,11 @@ gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
   data[unit_key][weapon_key][:legendary] = legendary == 'Oui'
 
   data[unit_key][weapon_key][:active] = active
-  data[unit_key][weapon_key][:movement] = movement.to_i
+  data[unit_key][weapon_key][:movement] = movement.to_i * 2
   data[unit_key][weapon_key][:attack_range] = attack_range.to_i
   data[unit_key][weapon_key][:initiative] = initiative.to_i
   data[unit_key][weapon_key][:activation_dice] = activation_dice&.split( ', ' )&.map{ |e| e.strip }
+  data[unit_key][weapon_key][:initial_position] = initial_position.to_i
 
   data[unit_key][weapon_key][:armor] ||= {}
   armor_cac, armor_ranged = armor.scan( /\d+/ )
