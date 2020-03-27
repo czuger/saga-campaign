@@ -1,15 +1,5 @@
 // This part is for the gang creation and the gang icon selection
 // Faction part
-const on_faction_selection = function() {
-    var selected_faction = $( "#gang_faction" ).val();
-    $('.factions_icons').hide();
-    $("." + selected_faction).show();
-    select_random_gang_icon();
-};
-
-const set_faction_selection = function() {
-    $('#gang_faction').change(on_faction_selection);
-};
 
 // Gang part
 const set_gang_icon_selection = function() {
@@ -20,6 +10,8 @@ const set_gang_icon_selection = function() {
 };
 
 const select_random_gang_icon = function() {
+    console.log( $('.gang_icon:visible') );
+
     var selected_icon = _.sample($('.gang_icon:visible'));
     select_gang_icon($(selected_icon))
 };
@@ -47,10 +39,9 @@ const change_gang_location = function() {
 
 // Initialisation
 $(function() {
-    if (window.location.pathname.match( /campaigns\/\d+\/gangs\/new/ )) {
-        on_faction_selection();
-        set_faction_selection();
+    if (window.location.pathname.match( /players\/\d+\/gangs\/new/ )) {
         set_gang_icon_selection();
+        select_random_gang_icon();
     }
 
     console.log( window.location.pathname );

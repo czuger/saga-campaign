@@ -18,11 +18,8 @@
   = f.text_field :name, class: 'form-control'
 
   .mt-2.ml-2
-    - @icons.each do |icons_group_key, icons|
-      .row{ class: "factions_icons #{icons_group_key}" }
-        - icons.each do |icon|
-          - next unless icon
-          = image_tag( icon, class: 'gang_icon', gang_icon_name: icon.gsub('gangs_icons/', '' ) )
+    - @icons.each do |icon|
+      = image_tag( icon, class: 'gang_icon', gang_icon_name: icon.gsub('gangs_icons/', '' ) )
 
   .actions.mt-2
     = f.submit 'Enregistrer', class: 'btn btn-secondary'

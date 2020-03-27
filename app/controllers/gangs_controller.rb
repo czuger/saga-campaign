@@ -37,8 +37,9 @@ class GangsController < ApplicationController
   # GET /gangs/new
   def new
     @gang = Gang.new
-    @gang.faction = :nature
+    @gang.faction = @player.faction
     @gang.number = @player.gangs.empty? ? 1 : @player.gangs.maximum( :number ) + 1
+    @gang.name = GameRules::UnitNameGenerator.generate_unique_unit_name( @campaign )
 
     set_gang_additional_information
   end
@@ -107,15 +108,7 @@ class GangsController < ApplicationController
     end
 
     def set_gang_additional_information
-      @icons = {}
-      Dir['app/assets/images/gangs_icons/*'].each do |icons_path|
-        @icons_set = File.basename(icons_path)
-        # p icons_set
-        @icons[@icons_set] = Dir["#{icons_path}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) } # .in_groups_of( 7 )
-      end
-
-      # p @icons
-
+      @icons = Dir["app/assets/images/gangs_icons/#{@player.faction}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) }
       @select_localisations_options = GameRules::Map.new.localisations
     end
 end
