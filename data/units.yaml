@@ -17,9 +17,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '10'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 5
@@ -30,18 +34,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 10
       :can_attack: 75
   arme_lourde:
@@ -61,9 +58,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '10'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 5
@@ -74,18 +75,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 10
       :can_attack: 75
   arc:
@@ -105,9 +99,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '10'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -118,18 +116,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
   monture_animal:
@@ -149,9 +140,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -162,18 +157,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
   volant:
@@ -193,9 +181,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -207,18 +199,12 @@ seigneur:
         denominator: 1
         numerator: 4
     :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
   monture_ailee:
@@ -238,9 +224,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -252,18 +242,12 @@ seigneur:
         denominator: 1
         numerator: 4
     :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
   monture_animal_arc_composite:
@@ -283,9 +267,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -296,18 +284,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    - fierte
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 5.625
       :can_attack: 75
   monture_bete:
@@ -327,9 +308,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 5
@@ -340,17 +325,11 @@ seigneur:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :options:
-    - determination
-    - presence
-    - imposant
-    - fierte
-    :resistance: 2
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
   monture_bete_vol:
@@ -370,9 +349,13 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '10'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 10
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -384,17 +367,12 @@ seigneur:
         denominator: 1
         numerator: 4
     :options:
-    - determination
-    - presence
-    - imposant
-    - fierte
     - vol
-    :resistance: 2
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 7.5
       :can_attack: 75
 lieutenant:
@@ -415,9 +393,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 2
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 5
@@ -428,16 +410,11 @@ lieutenant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 2
-    :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 100.0
       :can_attack: 75
   arme_lourde:
@@ -457,9 +434,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 2
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 5
@@ -470,16 +451,11 @@ lieutenant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 2
-    :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 100.0
       :can_attack: 75
   arc:
@@ -499,9 +475,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 2
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -512,16 +492,11 @@ lieutenant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 2
-    :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
   monture_animal:
@@ -541,9 +516,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 4
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -554,16 +533,11 @@ lieutenant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 2
-    :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
   monture_ailee:
@@ -583,9 +557,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 4
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -597,16 +575,12 @@ lieutenant:
         denominator: 1
         numerator: 2
     :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
   volant:
@@ -626,9 +600,13 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 4
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -640,16 +618,12 @@ lieutenant:
         denominator: 1
         numerator: 2
     :options:
-    - determination
-    - presence
-    - regle_speciale_de_faction
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
 sorcier:
@@ -670,9 +644,13 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: ''
-    :initiative: '20'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 20
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 3
       :ranged: 4
@@ -683,19 +661,12 @@ sorcier:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - presence
-    - gardes_du_corps
-    - desarme
-    - magie
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
-      :being_targeted: 37.5
+      :protection_points: 0
+      :being_targeted: 50.0
       :can_attack: 75
   monture_animal:
     :cost: 1.0
@@ -714,9 +685,13 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '20'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 20
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 3
       :ranged: 3
@@ -727,19 +702,12 @@ sorcier:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - presence
-    - gardes_du_corps
-    - desarme
-    - magie
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
+      :protection_points: 0
+      :being_targeted: 37.5
       :can_attack: 75
   volant:
     :cost: 1.0
@@ -758,9 +726,13 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '20'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 20
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 3
       :ranged: 3
@@ -772,19 +744,13 @@ sorcier:
         denominator: 1
         numerator: 0
     :options:
-    - determination
-    - presence
-    - gardes_du_corps
-    - desarme
-    - magie
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
+      :protection_points: 0
+      :being_targeted: 37.5
       :can_attack: 75
   monture_ailee:
     :cost: 1.0
@@ -803,9 +769,13 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '20'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 20
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 3
       :ranged: 3
@@ -817,19 +787,13 @@ sorcier:
         denominator: 1
         numerator: 0
     :options:
-    - determination
-    - presence
-    - gardes_du_corps
-    - desarme
-    - magie
     - vol
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
-      :being_targeted: 28.125
+      :protection_points: 0
+      :being_targeted: 37.5
       :can_attack: 75
 monstre:
   behemoth:
@@ -849,9 +813,12 @@ monstre:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '30'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 30
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -862,16 +829,11 @@ monstre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 2
-    :options:
-    - presence
-    - imposant
-    - primitif
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 50.0
       :can_attack: 37
   titan:
@@ -891,9 +853,12 @@ monstre:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: '1'
-    :attack_range: '0'
-    :initiative: '30'
+    :movement: 1
+    :attack_range: 0
+    :initiative: 30
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 5
       :ranged: 5
@@ -904,19 +869,13 @@ monstre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 2
-    :options:
-    - presence
-    - imposant
-    - primitif
-    - lent
     :fight_info:
       :rapide: false
-      :lent: true
+      :lent: false
       :distance: false
-      :protection_points: 8
-      :being_targeted: 37.5
-      :can_attack: 28
+      :protection_points: 0
+      :being_targeted: 50.0
+      :can_attack: 37
   fleau_vol:
     :cost: 1.0
     :amount: 1
@@ -934,9 +893,12 @@ monstre:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '30'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 30
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -947,18 +909,13 @@ monstre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :resistance: 2
     :options:
-    - presence
-    - imposant
-    - primitif
-    - souffle
     - vol
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 37
 creatures:
@@ -979,9 +936,12 @@ creatures:
       numerator: 2
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '40'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 40
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 4
@@ -992,15 +952,11 @@ creatures:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :resistance: 1
-    :options:
-    - presence
-    - imposant
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 4
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 50
   quadrupedes:
@@ -1020,9 +976,12 @@ creatures:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '40'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 40
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 3
@@ -1033,16 +992,11 @@ creatures:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :resistance: 1
-    :options:
-    - presence
-    - imposant
-    - rapide
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 4
+      :protection_points: 0
       :being_targeted: 56.25
       :can_attack: 50
   volants_vol:
@@ -1062,9 +1016,12 @@ creatures:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '40'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 40
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 3
@@ -1075,16 +1032,13 @@ creatures:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :resistance: 1
     :options:
-    - presence
-    - imposant
     - vol
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 4
+      :protection_points: 0
       :being_targeted: 56.25
       :can_attack: 50
 gardes:
@@ -1105,9 +1059,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '50'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 5
@@ -1142,9 +1100,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '50'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -1179,9 +1141,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '50'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 5
@@ -1216,9 +1182,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '50'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -1253,9 +1223,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '50'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -1292,9 +1266,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '50'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 5
       :ranged: 4
@@ -1331,9 +1309,13 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '50'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 50
+    :activation_dice:
+    - phoenix
+    - hammer
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -1369,9 +1351,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '80'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 4
@@ -1406,9 +1391,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '80'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 3
       :ranged: 4
@@ -1443,9 +1431,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '80'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 3
       :ranged: 3
@@ -1480,9 +1471,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '80'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 3
       :ranged: 3
@@ -1517,9 +1511,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '80'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 3
       :ranged: 3
@@ -1554,9 +1551,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '80'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 3
@@ -1593,9 +1593,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '80'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 4
       :ranged: 3
@@ -1630,9 +1633,12 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: '80'
+    :movement: 4
+    :attack_range: 0
+    :initiative: 80
+    :activation_dice:
+    - phoenix
+    - hammer
     :armor:
       :cac: 3
       :ranged: 3
@@ -1668,9 +1674,12 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '0'
-    :initiative: '100'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 100
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 4
       :ranged: 4
@@ -1705,9 +1714,12 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: ''
-    :initiative: '100'
+    :movement: 2
+    :attack_range: 0
+    :initiative: 100
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 3
       :ranged: 4
@@ -1742,9 +1754,12 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '100'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 100
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 3
       :ranged: 4
@@ -1779,9 +1794,12 @@ levees:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '100'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 100
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 3
       :ranged: 3
@@ -1816,9 +1834,12 @@ levees:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '100'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 100
+    :activation_dice:
+    - phoenix
+    - tree
     :armor:
       :cac: 3
       :ranged: 3
@@ -1854,9 +1875,10 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: '0'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 3
       :ranged: 4
@@ -1867,17 +1889,11 @@ machine_de_guerre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :resistance: 1
-    :options:
-    - desarme
-    - presence
-    - tir_puissant
-    - encombrant
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
   mobile:
@@ -1897,9 +1913,10 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: '2'
-    :attack_range: '4'
-    :initiative: '50'
+    :movement: 2
+    :attack_range: 4
+    :initiative: 50
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -1910,16 +1927,11 @@ machine_de_guerre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :resistance: 1
-    :options:
-    - desarme
-    - presence
-    - armes_a_feu
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
   volante_vol:
@@ -1939,9 +1951,10 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: '4'
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 4
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -1952,17 +1965,13 @@ machine_de_guerre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :resistance: 1
     :options:
-    - desarme
-    - presence
-    - souffle
     - vol
     :fight_info:
       :rapide: true
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 28.125
       :can_attack: 75
 necromant:
@@ -1983,9 +1992,10 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -1996,17 +2006,11 @@ necromant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    :resistance: 1
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 50.0
       :can_attack: 75
   monture_animal:
@@ -2026,9 +2030,10 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 3
@@ -2039,17 +2044,11 @@ necromant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - nous_sommes_a_vos_ordres
-    - presence
-    - gardes_du_corps
-    :resistance: 1
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
   monture_bete:
@@ -2069,9 +2068,10 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -2082,16 +2082,11 @@ necromant:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - presence
-    - imposant
-    :resistance: 2
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
   monture_bete_vol:
@@ -2111,9 +2106,10 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 3
@@ -2125,16 +2121,12 @@ necromant:
         denominator: 1
         numerator: 0
     :options:
-    - determination
-    - presence
-    - imposant
     - vol
-    :resistance: 2
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
 paladin:
@@ -2155,9 +2147,10 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 5
@@ -2168,16 +2161,11 @@ paladin:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 1
-    :options:
-    - presence
-    - determination
-    - heroique
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
   arme_lourde:
@@ -2197,9 +2185,10 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 5
@@ -2210,16 +2199,11 @@ paladin:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 1
-    :options:
-    - presence
-    - determination
-    - heroique
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 75
   monture_animal:
@@ -2239,9 +2223,10 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 4
@@ -2252,16 +2237,11 @@ paladin:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 1
-    :options:
-    - presence
-    - determination
-    - heroique
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 56.25
       :can_attack: 75
   monture_ailee_vol:
@@ -2281,9 +2261,10 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 4
@@ -2294,17 +2275,13 @@ paladin:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :resistance: 1
     :options:
-    - presence
-    - determination
-    - heroique
     - vol
     :fight_info:
       :rapide: true
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 56.25
       :can_attack: 75
 nuee:
@@ -2325,9 +2302,10 @@ nuee:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 3
@@ -2338,9 +2316,6 @@ nuee:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - primitif_insignifiant
-    - minuscule
     :fight_info:
       :rapide: false
       :lent: false
@@ -2366,9 +2341,10 @@ decerebres:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -2379,17 +2355,13 @@ decerebres:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - decerebre
-    - lent
-    - horde
     :fight_info:
       :rapide: false
-      :lent: true
+      :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 75.0
-      :can_attack: 28
+      :being_targeted: 100.0
+      :can_attack: 37
 char_de_guerre:
   "-":
     :cost: 1.0
@@ -2408,9 +2380,10 @@ char_de_guerre:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 5
@@ -2421,17 +2394,11 @@ char_de_guerre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 2
-    :resistance: 1
-    :options:
-    - presence
-    - javelots
-    - monture_animal
-    - charge_devastatrice
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 75.0
       :can_attack: 37
 traqueurs:
@@ -2452,9 +2419,10 @@ traqueurs:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 3
       :ranged: 3
@@ -2465,10 +2433,6 @@ traqueurs:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - primitif
-    - ne_peut_pas_serrer_les_rangs
-    - traque
     :fight_info:
       :rapide: false
       :lent: false
@@ -2494,9 +2458,10 @@ equipe_de_destrucion:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 3
       :ranged: 4
@@ -2507,15 +2472,11 @@ equipe_de_destrucion:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 3
-    :resistance: 1
-    :options:
-    - arme_a_feu
-    - instable_et_dangereux
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 3
+      :protection_points: 0
       :being_targeted: 100.0
       :can_attack: 50
 le_conclave:
@@ -2536,9 +2497,10 @@ le_conclave:
       numerator: 3
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 4
       :ranged: 4
@@ -2549,20 +2511,12 @@ le_conclave:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 1
-    :options:
-    - determination
-    - magie
-    - prodiges
-    - maitrise
-    - desarmes
-    - projectiles_magiques
-    :resistance: 2
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 6
-      :being_targeted: 37.5
+      :protection_points: 0
+      :being_targeted: 50.0
       :can_attack: 75
 la_machine_incroyable_et_extraordinaire:
   "-":
@@ -2582,9 +2536,10 @@ la_machine_incroyable_et_extraordinaire:
       numerator: 8
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 6
@@ -2595,19 +2550,11 @@ la_machine_incroyable_et_extraordinaire:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - presence
-    - imposant
-    - elle_bouge_
-    - plateforme_de_tir
-    - boum_
-    :resistance: 2
     :fight_info:
       :rapide: false
       :lent: false
       :distance: true
-      :protection_points: 8
+      :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
 fanatiques_devoues:
@@ -2628,9 +2575,10 @@ fanatiques_devoues:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 3
       :ranged: 3
@@ -2641,9 +2589,6 @@ fanatiques_devoues:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - primitif
-    - determination_fanatique
     :fight_info:
       :rapide: false
       :lent: false
@@ -2669,9 +2614,10 @@ le_monstre_de_guerre:
       numerator: 12
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 6
       :ranged: 5
@@ -2682,17 +2628,11 @@ le_monstre_de_guerre:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 4
-    :resistance: 3
-    :options:
-    - primitif
-    - imposant
-    - terrifiante_presence
-    - plateforme_de_tir
     :fight_info:
       :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 12
+      :protection_points: 0
       :being_targeted: 150.0
       :can_attack: 75
 les_bersekers:
@@ -2713,9 +2653,10 @@ les_bersekers:
       numerator: 1
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 3
       :ranged: 3
@@ -2726,9 +2667,6 @@ les_bersekers:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - destines_a_mourir
     :fight_info:
       :rapide: false
       :lent: false
@@ -2754,9 +2692,10 @@ l'archidemon:
       numerator: 4
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 5
       :ranged: 4
@@ -2767,21 +2706,12 @@ l'archidemon:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - determination
-    - presence
-    - vol
-    - imposant
-    - souffle
-    - nous_sommes_a_vos_ordres
-    - magie
-    :resistance: 1
     :fight_info:
-      :rapide: true
+      :rapide: false
       :lent: false
       :distance: false
-      :protection_points: 4
-      :being_targeted: 28.125
+      :protection_points: 0
+      :being_targeted: 50.0
       :can_attack: 75
 les_spectres:
   "-":
@@ -2801,9 +2731,10 @@ les_spectres:
       numerator: 1
     :legendary: true
     :active: false
-    :movement: ''
-    :attack_range: ''
-    :initiative: "-1"
+    :movement: 0
+    :attack_range: 0
+    :initiative: -1
+    :activation_dice: 
     :armor:
       :cac: 0
       :ranged: 0
@@ -2814,15 +2745,10 @@ les_spectres:
       :ranged: !ruby/object:Rational
         denominator: 1
         numerator: 0
-    :options:
-    - vol
-    - apparitions
-    - intangibles
-    - presence_spectrale
     :fight_info:
-      :rapide: true
+      :rapide: false
       :lent: false
       :distance: false
       :protection_points: 0
-      :being_targeted: 37.5
+      :being_targeted: 50.0
       :can_attack: 75

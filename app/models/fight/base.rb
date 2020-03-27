@@ -19,7 +19,7 @@ module Fight
     end
 
     def go
-      1.upto(6).each do |i|
+      1.upto(1).each do |i|
         round_log_shell = OpenStruct.new(
           round: i,
           turn_phases: OpenStruct.new( attacker: nil, defender: nil ),
@@ -28,15 +28,15 @@ module Fight
         attack_count = ( i == 1 ? 3 : 8 )
 
         round_log_shell.attacker = tour(@attacker_gang, @defender_gang, attack_count )
-        round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
+        # round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
 
         @combat_log << round_log_shell
 
-        break if @player_1_units.empty? || @player_2_units.empty?
+        # break if @player_1_units.empty? || @player_2_units.empty?
       end
 
-      @result = AttackCountPoints.new(@player_1, @player_2, @body_count ).do
-      save_result( @result ) if @save_result
+      # @result = AttackCountPoints.new(@player_1, @player_2, @body_count ).do
+      # save_result( @result ) if @save_result
 
       self
     end
@@ -53,27 +53,40 @@ module Fight
       dice = ActionDicePool.new( attacker_gang )
       p dice.to_s
 
-      attacker_units.each do |attacker|
+      while dice.remaining_action_dice?
+        # p dice.to_s
 
-        break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
+        next_attacking_unit, used_die = attacker_gang.get_next_unit_to_activate( dice )
+        p "next_attacking_unit = #{next_attacking_unit}"
+        p "used_die = #{used_die}"
+        p
 
-        if will_attack?(attacker )
-          f = AttackWithRetaliation.new(@body_count )
-          attacks_performed += 1
+        if next_attacking_unit
+          next_attacking_unit = next_attacking_unit[1]
 
-          defender = get_target( defender_units )
-
-          attacker_units, defender_units, attacker, defender =
-            f.perform_attack( attacker_units, defender_units, attacker, defender )
-
-          log = f.get_log_data
-        else
-          log = OpenStruct.new(
-            can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data
-          )
+          dice.consume_die!( used_die )
+          next_attacking_unit.already_activate_this_turn = true
         end
 
-        units_actions_log << log
+        # break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
+        #
+        # if will_attack?(attacker )
+        #   f = AttackWithRetaliation.new(@body_count )
+        #   attacks_performed += 1
+        #
+        #   defender = get_target( defender_units )
+        #
+        #   attacker_units, defender_units, attacker, defender =
+        #     f.perform_attack( attacker_units, defender_units, attacker, defender )
+        #
+        #   log = f.get_log_data
+        # else
+        #   log = OpenStruct.new(
+        #     can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data
+        #   )
+        # end
+
+        # units_actions_log << log
       end
 
       units_actions_log

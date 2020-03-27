@@ -95,16 +95,16 @@ class Unit < ApplicationRecord
     unit_data_open_hash.legendary == true
   end
 
-  private
-
   def unit_data_open_hash
-    @@units_data ||= GameRules::Unit.new
+    @@units_data ||= YAML.load_file( 'data/units.yaml' )
 
-    raise "#{libe} not found in @@units_data.data" unless @@units_data.data[libe]
-    raise "#{weapon} not found in @@units_data.data" unless @@units_data.data[libe][weapon]
+    raise "#{libe} not found in @@units_data.data" unless @@units_data[libe]
+    raise "#{weapon} not found in @@units_data.data" unless @@units_data[libe][weapon]
 
-    @unit_data ||= OpenHash.new( @@units_data.data[libe][weapon] )
+    @unit_data ||= OpenHash.new( @@units_data[libe][weapon] )
   end
+
+  private
 
   def self.unit_name_code( libe, weapon )
     if libe == 'monstre'

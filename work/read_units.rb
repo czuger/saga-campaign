@@ -42,7 +42,7 @@ gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
 
   unit_name, weapon_name, nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice,
     min_units_for_saga_dice, min, max, increment_step, massacre_points, activation_chance, being_targeted_chance,
-    legendary, active, movement, attack_range, initiative, armor, damage, options = line
+    legendary, active, movement, attack_range, initiative, armor, damage, activation_dice, options = line
 
   options ||= ''
   options = options.chomp.gsub('.', '')
@@ -92,9 +92,10 @@ gs.range( 'Sheet2!A1:Z100' ).values.each_with_index do |line, index|
   data[unit_key][weapon_key][:legendary] = legendary == 'Oui'
 
   data[unit_key][weapon_key][:active] = active
-  data[unit_key][weapon_key][:movement] = movement
-  data[unit_key][weapon_key][:attack_range] = attack_range
-  data[unit_key][weapon_key][:initiative] = initiative
+  data[unit_key][weapon_key][:movement] = movement.to_i
+  data[unit_key][weapon_key][:attack_range] = attack_range.to_i
+  data[unit_key][weapon_key][:initiative] = initiative.to_i
+  data[unit_key][weapon_key][:activation_dice] = activation_dice&.split( ', ' )&.map{ |e| e.strip }
 
   data[unit_key][weapon_key][:armor] ||= {}
   armor_cac, armor_ranged = armor.scan( /\d+/ )

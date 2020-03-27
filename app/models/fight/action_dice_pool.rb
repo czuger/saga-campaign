@@ -4,10 +4,14 @@ module Fight
 
     attr_reader :band_exhausted
 
+    TREE = 'tree'.freeze
+    HAMMER = 'hammer'.freeze
+    PHOENIX = 'phoenix'.freeze
+
+    ACTIVATION_ORDER = [ TREE, HAMMER, PHOENIX ].freeze
+
     def initialize( tmp_gang )
-      @phoenix = 0
-      @hammer = 0
-      @tree = 0
+      @rolled_dice = { TREE => 0, HAMMER => 0, PHOENIX => 0 }
 
       ad_count = count_actions_dice( tmp_gang )
 
@@ -19,7 +23,11 @@ module Fight
     end
 
     def to_s
-      { phoenix: @phoenix, hammer: @hammer, tree: @tree}
+      @rolled_dice
+    end
+
+    def remaining_action_dice?
+      @rolled_dice.values.inject( &:+ ) > 0
     end
 
     def count_actions_dice( tmp_gang )
@@ -27,17 +35,29 @@ module Fight
     end
 
     def roll_and_dispatch_dice( actions_dice_amout )
-      p actions_dice_amout
+      # p actions_dice_amout
       Hazard.from_string( "s#{actions_dice_amout}d6" ).rolls.each do |roll|
         case roll
           when 6
-            @phoenix += 1
+            @rolled_dice[ PHOENIX ] += 1
           when 4, 5
-            @hammer += 1
+            @rolled_dice[ HAMMER ] += 1
           else
-            @tree += 1
+            @rolled_dice[ TREE ] += 1
         end
       end
+    end
+
+    def can_activate_unit?( tmp_unit )
+      ACTIVATION_ORDER.each do |die|
+        return die if @rolled_dice[ die ] > 0 && tmp_unit.activation_dice.include?( die )
+      end
+
+      false
+    end
+
+    def consume_die!( die )
+      @rolled_dice[ die ] -= 1
     end
   end
 
