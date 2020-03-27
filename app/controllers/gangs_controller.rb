@@ -55,6 +55,7 @@ class GangsController < ApplicationController
     @gang = Gang.new(gang_params)
     @gang.campaign = @campaign
     @gang.player = @player
+    @gang.faction = @player.faction
 
     Gang.transaction do
       respond_to do |format|
@@ -104,11 +105,11 @@ class GangsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gang_params
-      params.require( :gang ).permit( :icon, :faction, :number, :location, :name )
+      params.require( :gang ).permit( :icon, :number, :location, :name )
     end
 
     def set_gang_additional_information
       @icons = Dir["app/assets/images/gangs_icons/#{@player.faction}/*.svg"].map{ |e| e.gsub( 'app/assets/images/', '' ) }
-      @select_localisations_options = GameRules::Map.new.localisations
+      @select_localisations_options = GameRules::Map.starting_positions
     end
 end
