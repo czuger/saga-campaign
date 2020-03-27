@@ -146,8 +146,4 @@ File.open('../data/factions.yaml', 'w') do |f|
   f.write(allowance.to_yaml)
 end
 
-File.open('../config/locales/fr/units.yaml', 'w') do |f|
-  f.write(fr_translation.to_yaml)
-end
-
 WeaponsAnalysis.new.do

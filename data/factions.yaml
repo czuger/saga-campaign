@@ -3,8 +3,6 @@ nature:
   seigneur:
   - "-"
   - arc
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   - titan
@@ -17,12 +15,12 @@ nature:
   guerriers:
   - "-"
   - arc
+  levees:
+  - javelots
 horde:
   seigneur:
   - "-"
   - arme_lourde
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   - titan
@@ -39,8 +37,6 @@ horde:
 morts:
   seigneur:
   - "-"
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   - titan
@@ -56,8 +52,6 @@ souterrains:
   seigneur:
   - "-"
   - arme_lourde
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   - titan
@@ -78,8 +72,6 @@ royaumes:
   seigneur:
   - "-"
   - arme_lourde
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   - titan
@@ -92,14 +84,10 @@ royaumes:
   - "-"
   levees:
   - arc_ou_fronde
-  - arbalete
-  - arme_a_feu
 outremonde:
   seigneur:
   - "-"
   - arme_lourde
-  sorcier:
-  - "-"
   monstre:
   - behemoth
   creatures:

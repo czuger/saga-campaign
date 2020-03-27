@@ -669,7 +669,7 @@ sorcier:
       denominator: 1
       numerator: 4
     :legendary: false
-    :active: true
+    :active: false
     :movement: '2'
     :attack_range: ''
     :initiative: '20'
@@ -1704,7 +1704,7 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
-    :active: false
+    :active: true
     :movement: '2'
     :attack_range: ''
     :initiative: '100'
@@ -1778,7 +1778,7 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
-    :active: true
+    :active: false
     :movement: '2'
     :attack_range: '4'
     :initiative: '100'
@@ -1815,7 +1815,7 @@ levees:
       denominator: 3
       numerator: 1
     :legendary: false
-    :active: true
+    :active: false
     :movement: '2'
     :attack_range: '4'
     :initiative: '100'
@@ -1898,8 +1898,8 @@ machine_de_guerre:
     :legendary: false
     :active: false
     :movement: '2'
-    :attack_range: ''
-    :initiative: "-1"
+    :attack_range: '4'
+    :initiative: '50'
     :armor:
       :cac: 4
       :ranged: 4
