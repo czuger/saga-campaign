@@ -3,7 +3,7 @@ module Fight
   # This class is used to work on another class then the Unit class during the fight.
   class TmpUnit
 
-    attr_reader :activation_dice
+    attr_reader :activation_dice, :attack_range, :current_position
     attr_accessor :already_activate_this_turn
 
     def initialize( unit, attacker_or_defender )
@@ -26,6 +26,8 @@ module Fight
       @current_position = @initial_position
       @movement = unit_data.movement
 
+      @attack_range = unit_data.attack_range
+
       @min_units_for_saga_dice = unit_data.min_units_for_saga_dice
       @initiative = unit_data.initiative
       @activation_dice = unit_data.activation_dice
@@ -47,12 +49,14 @@ module Fight
       base * @initiative
     end
 
-    # Action methods
-    def advance
+    # Advance from the required advance movement. Don't cross enemy positions.
+    #
+    # @param nearest_enemy_position [Integer] the position we do not have to cross.
+    def advance( nearest_enemy_position )
       if @attacker_or_defender == :attacker
-        @current_position += @movement
+        @current_position = [@current_position + @movement, nearest_enemy_position].min
       else
-        @current_position -= @movement
+        @current_position = [@current_position - @movement, nearest_enemy_position].max
       end
 
       puts name + " avance en position #{@current_position}"
@@ -65,6 +69,10 @@ module Fight
 
     def name
       Unit.long_name_from_log_data( log_data )
+    end
+
+    def distance( unit )
+      [ @current_position - unit.current_position, unit.current_position - @current_position ].max
     end
 
   end

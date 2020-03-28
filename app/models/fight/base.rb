@@ -19,7 +19,7 @@ module Fight
     end
 
     def go
-      1.upto(1).each do |i|
+      1.upto(3).each do |i|
         round_log_shell = OpenStruct.new(
           round: i,
           turn_phases: OpenStruct.new( attacker: nil, defender: nil ),
@@ -59,24 +59,29 @@ module Fight
         # p dice.to_s
 
         next_attacking_unit, used_die = attacker_gang.get_next_unit_to_activate( dice )
-        p "next_attacking_unit = #{next_attacking_unit}"
-        p "used_die = #{used_die}"
-        p
+        p "priority = #{next_attacking_unit[0]}, name = #{next_attacking_unit[1].name}, used_die = #{used_die}"
 
         if next_attacking_unit
           next_attacking_unit = next_attacking_unit[1]
 
           dice.consume_die!( used_die )
 
-          next_attacking_unit.advance
+          defender_gang.units_in_range( next_attacking_unit )
+
+          nearest_unit_position = defender_gang.nearest_enemy_position( next_attacking_unit )
+          next_attacking_unit.advance( nearest_unit_position )
 
           next_attacking_unit.already_activate_this_turn = true
+
+          puts
         end
 
         # Ajouter les distances
         # Ajouter les mouvements
         # Avancer jusqu'a ce qu'on soit bloqué
         # Tester les ranges et faire une attaque vide
+
+        # teste des range Unit -> Gang
 
         # break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
         #

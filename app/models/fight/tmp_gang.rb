@@ -22,6 +22,37 @@ module Fight
       return false, false
     end
 
+    def units_in_range( unit )
+      puts "#{unit.name} tire à #{unit.attack_range}"
+
+      units = @units.select{ |u| u.distance( unit ) <= unit.attack_range }
+
+      puts units.map{ |u| "#{u.name} - #{u.current_position}" }.join( ', ' )
+
+      units
+    end
+
+    # Compute the position of the nearest enemy. This will be the melee spot
+    #
+    # @param unit [TmpUnit] the unit from which we will check the distance.
+    #
+    # @return Integer the position of the nearest unit.
+    def nearest_enemy_position( unit )
+      distance_min = Float::INFINITY
+      nearest_unit = nil
+
+      @units.each do |u|
+        d = u.distance( unit )
+        if d < distance_min
+          d = distance_min
+          nearest_unit = u
+        end
+      end
+
+      nearest_unit.current_position
+    end
+
+
   end
 end
 
