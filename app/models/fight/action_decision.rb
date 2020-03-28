@@ -31,6 +31,14 @@ module Fight
         @attacking_unit.fall_back
         @attacking_unit.end_action
 
+      elsif @attacking_unit.wounded?
+        # If a ranged attacking unit is too close than another unit it will fall back.
+
+        puts "#{@attacking_unit.unit_name} prends la fuite"
+
+        @attacking_unit.fall_back
+        @attacking_unit.end_action
+
       elsif @attacking_unit.attack_range > 0 && @attacking_unit.attack_range >= @attacking_unit.distance( nearest_enemy_unit )
         # If a ranged attacking unit is close enough to attack at range.
         ranged_attack

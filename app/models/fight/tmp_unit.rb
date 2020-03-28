@@ -62,6 +62,10 @@ module Fight
       @fatigue >= @max_fatigue
     end
 
+    def wounded?
+      @current_amount < @initial_amount / 2 || @resistance && @fatigue >= @max_fatigue / 2
+    end
+
     def end_action
       if @already_activate_this_turn
         @fatigue += 1
