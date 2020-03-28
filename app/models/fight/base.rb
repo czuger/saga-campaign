@@ -60,14 +60,14 @@ module Fight
         # p dice.to_s
 
         next_attacking_unit, used_die = attacking_gang.get_next_unit_to_activate( dice )
-        p "priority = #{next_attacking_unit[0]}, #{next_attacking_unit[1].to_s}"
+        # p "priority = #{next_attacking_unit[0]}, #{next_attacking_unit[1].to_s}"
 
         if next_attacking_unit
           next_attacking_unit = next_attacking_unit[1]
 
           dice.consume_die!( used_die )
 
-          ActionDecision.do_something( attacking_gang, defending_gang, next_attacking_unit )
+          units_actions_log << ActionDecision.do_something( attacking_gang, defending_gang, next_attacking_unit )
 
           next_attacking_unit.already_activate_this_turn = true
 

@@ -76,9 +76,4 @@ module FightsHelper
 
   private
 
-  def attack_type_name( attack_type )
-    return 'par sortilège' if attack_type == :magic
-    return 'à distance' if attack_type == :distance
-    'au corps à corps'
-  end
 end

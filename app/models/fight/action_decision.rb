@@ -8,6 +8,7 @@ module Fight
     def self.do_something( attacking_gang, defending_gang, attacking_unit )
 
       uir = defending_gang.units_in_range( attacking_unit )
+      log = nil
 
       unless uir.empty?
         defending_unit = uir.sample
@@ -22,6 +23,7 @@ module Fight
           ar.perform_ranged_attack!
           attacking_unit.end_action
 
+          log = ar.get_log_data
         end
       else
         # If no units are in range, then we advance
@@ -31,6 +33,7 @@ module Fight
 
       end
 
+      log
     end
   end
 end

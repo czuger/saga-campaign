@@ -30,7 +30,9 @@ fr:
         other: "%{count} figurines"
 
       defend_detail_string: "L'unité %{defender_name} sauvegarde sur %{opponent_save}+ et lance %{saves_rolls} soit
-        %{saves_string}. Au final %{hits_part}."
+        %{saves_string}."
+
+      final_hits_string: "Au final %{hits_part}."
 
       hit_protection_string: "L'unité %{name} a une protection et prend %{hits_part}. Sa protection passe de %{before} à %{after}."
 

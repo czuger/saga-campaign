@@ -25,8 +25,10 @@ module Fight
     # Represent a ranged attack
     def perform_ranged_attack!
       # First the regular attack
-        @attack = AttackAtomicStep.new(@attacking_unit, @defending_unit, :ranged )
+      @attack = AttackAtomicStep.new(@attacking_unit, @defending_unit, :ranged )
       attack_hits = @attack.roll_attack
+
+      puts @attack.to_s if @verbose
 
       # And the defending hits
       assign_hits!( attack_hits )
@@ -69,12 +71,13 @@ module Fight
     def get_log_data
       OpenStruct.new(
         {
+          log_level: self.class.to_s,
           can_attack: true,
           attack: @attack.get_log_data(),
           retaliation: @retaliation&.get_log_data(),
           hits_assignment: @hits_log,
-          attacker: @attacker.log_data,
-          defender: @defender.log_data
+          attacker: @attacking_unit.log_data,
+          defender: @defending_unit.log_data
         }
       )
     end
