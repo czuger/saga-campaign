@@ -11,16 +11,19 @@ module Fight
   # @param defending_gang [TmpGang] the units of the defender.
   # @param attacking_unit [TmpUnit] the attacker.
   # @param defending_unit [TmpUnit] the defender.
-  def initialize( attacking_gang, defending_gang, attacking_unit, defending_unit, body_count )
-      @attacking_gang = attacking_gang
-      @defending_gang = defending_gang
-      @attacking_unit = attacking_unit
-      @defending_unit = defending_unit
+  def initialize( attacking_gang, defending_gang, attacking_unit, defending_unit, body_count, verbose: false )
+    @attacking_gang = attacking_gang
+    @defending_gang = defending_gang
+    @attacking_unit = attacking_unit
+    @defending_unit = defending_unit
 
-      @hits_log = []
+    @hits_log = []
 
-      @body_count = body_count
-    end
+    @body_count = body_count
+
+    @hits_history = OpenStruct.new( attacking_unit: nil, defending_unit: nil )
+    @verbose = verbose
+  end
 
     # Represent a ranged attack
     def perform_ranged_attack!
@@ -31,7 +34,9 @@ module Fight
       puts @attack.to_s if @verbose
 
       # And the defending hits
-      assign_hits!( attack_hits )
+      @hits_history.attaking_unit = HitsAssignment.new(
+        @defending_gang, @defending_unit, verbose: @verbose )
+      @hits_history.attaking_unit.assign_hits!( attack_hits )
     end
 
 
@@ -83,20 +88,6 @@ module Fight
     end
 
     private
-
-    # Assigns the hits and destroy the unit if it has no more minis
-    #
-    # @param hits [Integer] the amount of hits to take.
-    #
-    # @return [Array] the units of the defender.
-    def assign_hits!( hits )
-      @defending_unit.assign_hits!( hits )
-
-      # if @defending_unit.amount <= 0
-      #   # log.unit_destroyed = true
-      #   # @defending_gang.destroy( @defending_unit )
-      # end
-    end
 
   end
 end

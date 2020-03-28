@@ -76,12 +76,11 @@ module Fight
                   attacker_count: @attacker.current_amount, defender_count: @defender.current_amount,
                   hits_rolls: @hits_rolls, attack_phase: attack_phase )
 
-      defend_detail_string_hits_part = I18n.t( 'fights.opponent_turn_detail.attack_detail_string_hits_part', count: @damages )
+
       defend_detail_string_saves_part = I18n.t( 'fights.opponent_turn_detail.defend_detail_string_saves_part', count: @opponent_saves )
 
       defense = I18n.t( 'fights.opponent_turn_detail.defend_detail_string', defender_name: defender_name, opponent_save: @opponent_save,
-                   saves_rolls: @saves_rolls, saves_string: defend_detail_string_saves_part,
-                   hits_part: defend_detail_string_hits_part )
+                   saves_rolls: @saves_rolls, saves_string: defend_detail_string_saves_part )
 
       attack.upcase_first + ' ' + defense.upcase_first
     end

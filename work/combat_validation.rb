@@ -18,6 +18,7 @@ require_relative '../app/models/fight/tmp_gang'
 require_relative '../app/models/fight/tmp_unit'
 require_relative '../app/models/fight/action_dice_pool'
 require_relative '../app/models/fight/action_decision'
+require_relative '../app/models/fight/hits_assignment'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5

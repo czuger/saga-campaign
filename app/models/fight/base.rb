@@ -67,7 +67,8 @@ module Fight
 
           dice.consume_die!( used_die )
 
-          units_actions_log << ActionDecision.do_something( attacking_gang, defending_gang, next_attacking_unit )
+          units_actions_log << ActionDecision.do_something(
+            attacking_gang, defending_gang,next_attacking_unit, verbose: @verbose )
 
           next_attacking_unit.already_activate_this_turn = true
 

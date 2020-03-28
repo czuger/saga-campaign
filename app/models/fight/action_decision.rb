@@ -5,7 +5,7 @@ module Fight
   #
   class ActionDecision
 
-    def self.do_something( attacking_gang, defending_gang, attacking_unit )
+    def self.do_something( attacking_gang, defending_gang, attacking_unit, verbose: false )
 
       uir = defending_gang.units_in_range( attacking_unit )
       log = nil
@@ -19,7 +19,8 @@ module Fight
 
         else
           puts "#{attacking_unit.name} attaque #{defending_unit.name} à distance."
-          ar = AttackWithRetaliation.new( attacking_gang, defending_gang, attacking_unit, defending_unit, { } )
+          ar = AttackWithRetaliation.new( attacking_gang, defending_gang, attacking_unit, defending_unit, {},
+                                          verbose: verbose )
           ar.perform_ranged_attack!
           attacking_unit.end_action
 
