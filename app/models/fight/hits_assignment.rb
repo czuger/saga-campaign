@@ -22,10 +22,10 @@ module Fight
         puts I18n.t( 'fights.opponent_turn_detail.final_hits_string', hits_part: defend_detail_string_hits_part )
       end
 
-      # if @defending_unit.amount <= 0
-      #   # log.unit_destroyed = true
-      #   # @defending_gang.destroy( @defending_unit )
-      # end
+      if @defending_unit.current_amount <= 0
+        # log.unit_destroyed = true
+        @defending_gang.remove_unit!( @defending_unit )
+      end
     end
 
 

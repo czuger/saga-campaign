@@ -107,14 +107,17 @@ module Fight
       puts name + " recule en position #{@current_position}" if @verbose
     end
 
-
     # Used to store unit data for logging (to remember info when the unit will be destroyed)
     def log_data
       OpenStruct.new( libe: @libe, weapon: @weapon, name: @name, amount: @current_amount )
     end
 
     def name
-      Unit.long_name_from_log_data( log_data )
+      Unit.short_name_from_log_data( log_data )
+    end
+
+    def unit_name
+      "L'unité " + Unit.short_name_from_log_data( log_data )
     end
 
     def distance( unit )

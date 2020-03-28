@@ -35,7 +35,7 @@ module Fight
         # If a ranged attacking unit is close enough to attack at range.
         ranged_attack
 
-      elsif @attacking_unit.attack_range == 0 && @attacking_unit.distance( nearest_enemy_unit ) == 0
+      elsif @attacking_unit.attack_range == 0 && nearest_enemy_unit && @attacking_unit.distance( nearest_enemy_unit ) == 0
         # If a cac attacking unit and has somebody to knock
         melee_attack
 

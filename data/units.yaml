@@ -25,7 +25,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 5
@@ -75,7 +75,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 4
       :ranged: 5
@@ -125,7 +125,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 4
       :ranged: 4
@@ -175,7 +175,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -225,7 +225,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -276,7 +276,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -327,7 +327,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 4
       :ranged: 4
@@ -377,7 +377,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 5
@@ -426,7 +426,7 @@ seigneur:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -477,7 +477,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 5
@@ -525,7 +525,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 4
       :ranged: 5
@@ -573,7 +573,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 4
       :ranged: 4
@@ -621,7 +621,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -669,7 +669,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -718,7 +718,7 @@ lieutenant:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 5
     :armor:
       :cac: 5
       :ranged: 4
@@ -768,7 +768,7 @@ sorcier:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 7
     :armor:
       :cac: 3
       :ranged: 4
@@ -818,7 +818,7 @@ sorcier:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 7
     :armor:
       :cac: 3
       :ranged: 3
@@ -868,7 +868,7 @@ sorcier:
     - phoenix
     - hammer
     - tree
-    :initial_position: 8
+    :initial_position: 7
     :armor:
       :cac: 3
       :ranged: 3
@@ -919,7 +919,7 @@ sorcier:
     - phoenix
     - hammer
     - tree
-    :initial_position: 9
+    :initial_position: 7
     :armor:
       :cac: 3
       :ranged: 3
@@ -970,7 +970,7 @@ monstre:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 12
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 4
@@ -1017,7 +1017,7 @@ monstre:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 12
+    :initial_position: 7
     :armor:
       :cac: 5
       :ranged: 5
@@ -1065,7 +1065,7 @@ monstre:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 0
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 4
@@ -1115,7 +1115,7 @@ creatures:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 12
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 4
@@ -1161,7 +1161,7 @@ creatures:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 0
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 3
@@ -1208,7 +1208,7 @@ creatures:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 0
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 3
@@ -1257,7 +1257,7 @@ gardes:
     - phoenix
     - hammer
     - tree
-    :initial_position: 12
+    :initial_position: 7
     :armor:
       :cac: 5
       :ranged: 5
@@ -1300,7 +1300,7 @@ gardes:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 7
     :armor:
       :cac: 4
       :ranged: 4
@@ -1343,7 +1343,7 @@ gardes:
     - phoenix
     - hammer
     - tree
-    :initial_position: 12
+    :initial_position: 9
     :armor:
       :cac: 4
       :ranged: 5
@@ -1562,7 +1562,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 11
     :armor:
       :cac: 4
       :ranged: 4
@@ -1604,7 +1604,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 11
     :armor:
       :cac: 3
       :ranged: 4
@@ -1646,7 +1646,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 10
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 3
@@ -1688,7 +1688,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 10
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 3
@@ -1730,7 +1730,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 10
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 3
@@ -1858,7 +1858,7 @@ guerriers:
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 11
     :armor:
       :cac: 3
       :ranged: 3
@@ -1901,7 +1901,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 13
+    :initial_position: 11
     :armor:
       :cac: 4
       :ranged: 4
@@ -1943,7 +1943,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 13
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 4
@@ -1985,7 +1985,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 13
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 4
@@ -2027,7 +2027,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 13
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 3
@@ -2069,7 +2069,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 13
+    :initial_position: 9
     :armor:
       :cac: 3
       :ranged: 3

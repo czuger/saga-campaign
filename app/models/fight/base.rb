@@ -75,33 +75,6 @@ module Fight
 
           puts
         end
-
-        # Ajouter les distances
-        # Ajouter les mouvements
-        # Avancer jusqu'a ce qu'on soit bloqué
-        # Tester les ranges et faire une attaque vide
-
-        # teste des range Unit -> Gang
-
-        # break if attacks_performed >= max_attack_count || attacker_units.empty? || defender_units.empty?
-        #
-        # if will_attack?(attacker )
-        #   f = AttackWithRetaliation.new(@body_count )
-        #   attacks_performed += 1
-        #
-        #   defender = get_target( defender_units )
-        #
-        #   attacker_units, defender_units, attacker, defender =
-        #     f.perform_attack( attacker_units, defender_units, attacker, defender )
-        #
-        #   log = f.get_log_data
-        # else
-        #   log = OpenStruct.new(
-        #     can_attack: false, attack_trigger: @attack_trigger, roll: @dice, attacker: attacker.log_data
-        #   )
-        # end
-
-        # units_actions_log << log
       end
 
       units_actions_log

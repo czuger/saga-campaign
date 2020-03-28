@@ -32,6 +32,14 @@ module Fight
       units
     end
 
+    # Remove an unit from the gang
+    #
+    # @param unit [TmpUnit] the unit to remove
+    def remove_unit!( unit )
+      puts "#{unit.unit_name} est détruite." if @verbose
+      @units.delete( unit )
+    end
+
     # Compute the position of the nearest enemy. This will be the melee spot
     #
     # @param unit [TmpUnit] the unit from which we will check the distance.
