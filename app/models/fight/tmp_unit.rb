@@ -4,6 +4,7 @@ module Fight
   class TmpUnit
 
     attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged, :resistance, :current_amount
+    attr_reader :movement
     attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender, verbose: false )

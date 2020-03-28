@@ -25,12 +25,6 @@ module Fight
 
         puts "L'unité #{@attacking_unit.name} est fatiguée et se repose."
 
-      elsif @attacking_unit.attack_range > 0 && @attacking_unit.distance( nearest_enemy_unit ) <= 2
-        # If a ranged attacking unit is too close than another unit it will fall back.
-
-        @attacking_unit.fall_back
-        @attacking_unit.end_action
-
       elsif @attacking_unit.wounded?
         # If a ranged attacking unit is too close than another unit it will fall back.
 
@@ -39,9 +33,21 @@ module Fight
         @attacking_unit.fall_back
         @attacking_unit.end_action
 
+      elsif @attacking_unit.attack_range > 0 && @attacking_unit.distance( nearest_enemy_unit ) <= 2
+        # If a ranged attacking unit is too close than another unit it will fall back.
+
+        @attacking_unit.fall_back
+        @attacking_unit.end_action
+
       elsif @attacking_unit.attack_range > 0 && @attacking_unit.attack_range >= @attacking_unit.distance( nearest_enemy_unit )
         # If a ranged attacking unit is close enough to attack at range.
         ranged_attack
+
+      elsif @attacking_unit.attack_range == 0 && nearest_enemy_unit && @attacking_unit.distance( nearest_enemy_unit ) <= @attacking_unit.movement
+        puts "#{@attacking_unit.unit_name} charge"
+
+        @attacking_unit.advance( nearest_enemy_unit.current_position )
+        melee_attack
 
       elsif @attacking_unit.attack_range == 0 && nearest_enemy_unit && @attacking_unit.distance( nearest_enemy_unit ) == 0
         # If a cac attacking unit and has somebody to knock
@@ -68,6 +74,8 @@ module Fight
     end
 
     def melee_attack
+      # We recompute units in range because charge can change the list.
+      @units_in_range = @defending_gang.units_in_range( @attacking_unit )
       defending_unit = @units_in_range.sample
 
       puts "#{@attacking_unit.name} attaque #{defending_unit.name} au CAC."
