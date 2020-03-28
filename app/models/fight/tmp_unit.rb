@@ -82,10 +82,15 @@ module Fight
     #
     # @param nearest_enemy_position [Integer] the position we do not have to cross.
     def advance( nearest_enemy_position )
+      tmp_movement = @movement
+
+      # Units that try to keep distances only advance half distance
+      tmp_movement /= 2 if keeping_distance_unit?
+
       if @attacker_or_defender == :attacker
-        @current_position = [@current_position + @movement, nearest_enemy_position].min
+        @current_position = [@current_position + tmp_movement, nearest_enemy_position].min
       else
-        @current_position = [@current_position - @movement, nearest_enemy_position].max
+        @current_position = [@current_position - tmp_movement, nearest_enemy_position].max
       end
 
       puts name + " avance en position #{@current_position}" if @verbose
@@ -151,6 +156,10 @@ module Fight
     def assign_hits_without_resistance!( hits )
       real_hits = [ hits, @current_amount ].min
       @current_amount -= real_hits
+    end
+
+    def keeping_distance_unit?
+      @attack_range > 0 || @libe == 'seigneur'.freeze
     end
 
   end
