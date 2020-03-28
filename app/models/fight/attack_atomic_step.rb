@@ -61,7 +61,7 @@ module Fight
 
     def to_s
       attack_detail_string_dice_pool_part = I18n.t( 'fights.opponent_turn_detail.attack_detail_string_dice_pool_part', count: @dice_pool )
-      attack_detail_string_hits_part = I18n.t( 'fights.opponent_turn_detail.attack_detail_string_hits_part', count: @hits )
+      attack_detail_string_hits_part = I18n.t( 'fights.opponent_turn_detail.attack_detail_string_hits_part', count: @hits.count )
 
       attack_phase = I18n.t( 'fights.opponent_turn_detail.attack_phase.' + @attack_phase.to_s.freeze )
 
@@ -74,7 +74,7 @@ module Fight
                   opponent_armor: @opponent_armor,
                   hits_part: attack_detail_string_hits_part,
                   attacker_count: @attacker.current_amount, defender_count: @defender.current_amount,
-                  hits_rolls: @hits_rolls, attack_phase: attack_phase )
+                  hits_rolls: @roll_result.rolls, attack_phase: attack_phase )
 
 
       defend_detail_string_saves_part = I18n.t( 'fights.opponent_turn_detail.defend_detail_string_saves_part', count: @opponent_saves )
@@ -88,9 +88,16 @@ module Fight
     private
 
     def attack_type_name( attack_type )
-      return 'par sortilège' if attack_type == :magic
-      return 'à distance' if attack_type == :distance
-      'au corps à corps'
+      case attack_type
+        when :magick
+          'par sortilège'.freeze
+        when :ranged
+          'à distance'.freeze
+        when :melee
+          'au corps à corps'.freeze
+        else
+          raise "Unknown type #{attack_type}"
+      end
     end
 
     # Compute the the attacking and defending values required for the fight.
@@ -106,7 +113,7 @@ module Fight
           @dice_pool = @attacker.ranged_dice_pool
           @opponent_armor = @defender.armor_ranged
           @opponent_save = 5
-        when :cac
+        when :melee
           @last_attack_cac = true
 
           @dice_pool = @attacker.melee_dice_pool

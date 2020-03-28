@@ -21,7 +21,7 @@ module Fight
 
     @body_count = body_count
 
-    @hits_history = OpenStruct.new( attacking_unit: nil, defending_unit: nil )
+    @hits_history = OpenStruct.new( attacking_unit: nil, retailing_unit: nil )
     @verbose = verbose
   end
 
@@ -35,39 +35,33 @@ module Fight
 
       # And the defending hits
       @hits_history.attaking_unit = HitsAssignment.new(
-        @defending_gang, @defending_unit, verbose: @verbose )
-      @hits_history.attaking_unit.assign_hits!( attack_hits )
+        @defending_gang, @defending_unit, verbose: @verbose ).assign_hits!( attack_hits )
     end
 
 
-    # Represent a full attack including retaliation. This method is mutative for all parameters.
-    #
-    # @param attacker_units [Array] the units of the attacker.
-    # @param defender_units [Array] the units of the defender.
-    # @param attacker [Unit] the attacker.
-    # @param defender [Unit] the defender.
-    #
-    # @return [all input parameters].
-    def perform_attack( attacker_units, defender_units, attacker, defender )
-      @attacker = attacker
-      @defender = defender
-
+    # Represent a full melee ttack including retaliation.
+    def perform_melee_attack!
       # First the regular attack
-      @attack = AttackAtomicStep.new(attacker, defender, :attack )
+      @attack = AttackAtomicStep.new( @attacking_unit, @defending_unit, :melee, :attack )
       attack_hits = @attack.roll_attack
+
+      puts @attack.to_s if @verbose
 
       if @attack.attack_type == :cac
         # If attack was cac then we perform the retail
-        @retaliation = AttackAtomicStep.new(defender, attacker, :retaliation )
+        @retaliation = AttackAtomicStep.new(@defending_unit, @attacking_unit, :melee, :retaliation )
         retail_hits = @retaliation.roll_attack
 
-        # We assign the retailing hits must be assigned after.
-        attacker_units = assign_hits( attacker_units, attacker, retail_hits )
+        puts @retaliation.to_s if @verbose
+
+        # Hits must be assigned after the fight.
+        @hits_history.retailing_unit = HitsAssignment.new(
+          @attacking_gang, @attacking_unit, verbose: @verbose ).assign_hits!( retail_hits )
       end
 
-      # And the defending hits
-      defender_units = assign_hits( defender_units, defender, attack_hits )
-      [attacker_units, defender_units, attacker, defender ]
+      # And the attacking hits
+      @hits_history.attacking_unit = HitsAssignment.new(
+        @defending_gang, @defending_unit, verbose: @verbose ).assign_hits!( attack_hits )
     end
 
     # Get subdata for fight detail logging

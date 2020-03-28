@@ -1943,7 +1943,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 10
+    :initial_position: 13
     :armor:
       :cac: 3
       :ranged: 4
@@ -1985,7 +1985,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 10
+    :initial_position: 13
     :armor:
       :cac: 3
       :ranged: 4
@@ -2027,7 +2027,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 10
+    :initial_position: 13
     :armor:
       :cac: 3
       :ranged: 3
@@ -2069,7 +2069,7 @@ levees:
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 10
+    :initial_position: 13
     :armor:
       :cac: 3
       :ranged: 3
