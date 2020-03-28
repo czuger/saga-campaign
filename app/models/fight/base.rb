@@ -66,10 +66,7 @@ module Fight
 
           dice.consume_die!( used_die )
 
-          defender_gang.units_in_range( next_attacking_unit )
-
-          nearest_unit_position = defender_gang.nearest_enemy_position( next_attacking_unit )
-          next_attacking_unit.advance( nearest_unit_position )
+          ActionDecision.do_something( next_attacking_unit, defender_gang )
 
           next_attacking_unit.already_activate_this_turn = true
 

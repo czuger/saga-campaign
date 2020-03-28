@@ -25,6 +25,7 @@ module Fight
       @initial_position = 36 - @initial_position if attacker_or_defender == :defender
       @current_position = @initial_position
       @movement = unit_data.movement
+      @algo_advance = unit_data.algo_advance
 
       @attack_range = unit_data.attack_range
 
@@ -37,11 +38,6 @@ module Fight
 
     def action_dice?
       @current_amount >= @min_units_for_saga_dice
-    end
-
-    def activation_weight
-      base = @already_activate_this_turn ? 1 : 1000
-      base * @initiative
     end
 
     def activation_weight

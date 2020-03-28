@@ -17,14 +17,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 5
@@ -66,14 +67,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 4
       :ranged: 5
@@ -115,14 +117,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 4
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 4
       :ranged: 4
@@ -164,14 +167,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -213,14 +217,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -263,14 +268,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -313,14 +319,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 4
       :ranged: 4
@@ -362,14 +369,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 5
@@ -410,14 +418,15 @@ seigneur:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 10
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -460,14 +469,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 5
@@ -507,14 +517,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 4
       :ranged: 5
@@ -554,14 +565,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 4
       :ranged: 4
@@ -601,14 +613,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -648,14 +661,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -696,14 +710,15 @@ lieutenant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: -1
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 5
       :ranged: 4
@@ -745,14 +760,15 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 20
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 3
       :ranged: 4
@@ -794,14 +810,15 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 20
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 3
       :ranged: 3
@@ -843,14 +860,15 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 20
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 3
       :ranged: 3
@@ -893,14 +911,15 @@ sorcier:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 2.0
     :attack_range: 0
     :initiative: 20
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 10
+    :initial_position: 8
     :armor:
       :cac: 3
       :ranged: 3
@@ -944,13 +963,14 @@ monstre:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 30
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 11
+    :initial_position: 12
     :armor:
       :cac: 4
       :ranged: 4
@@ -990,13 +1010,14 @@ monstre:
       numerator: 4
     :legendary: false
     :active: true
-    :movement: 2
+    :movement: 3.0
+    :algo_advance: 3.0
     :attack_range: 0
     :initiative: 30
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 11
+    :initial_position: 12
     :armor:
       :cac: 5
       :ranged: 5
@@ -1037,13 +1058,14 @@ monstre:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 30
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -1086,13 +1108,14 @@ creatures:
       numerator: 2
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 40
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 11
+    :initial_position: 12
     :armor:
       :cac: 4
       :ranged: 4
@@ -1131,13 +1154,14 @@ creatures:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 40
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 3
@@ -1177,13 +1201,14 @@ creatures:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 40
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 3
@@ -1224,14 +1249,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 12
     :armor:
       :cac: 5
       :ranged: 5
@@ -1266,14 +1292,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 10
     :armor:
       :cac: 4
       :ranged: 4
@@ -1308,14 +1335,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 12
     :armor:
       :cac: 4
       :ranged: 5
@@ -1350,14 +1378,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -1392,14 +1421,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -1436,14 +1466,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 5
       :ranged: 4
@@ -1480,14 +1511,15 @@ gardes:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 50
     :activation_dice:
     - phoenix
     - hammer
     - tree
-    :initial_position: 11
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 4
@@ -1523,7 +1555,8 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 80
     :activation_dice:
@@ -1564,7 +1597,8 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 80
     :activation_dice:
@@ -1605,13 +1639,14 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 80
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 3
@@ -1646,13 +1681,14 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 80
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 3
@@ -1687,13 +1723,14 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 80
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 3
@@ -1728,13 +1765,14 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 80
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 3
@@ -1771,13 +1809,14 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 80
     :activation_dice:
     - phoenix
     - hammer
-    :initial_position: 13
+    :initial_position: 0
     :armor:
       :cac: 4
       :ranged: 3
@@ -1812,7 +1851,8 @@ guerriers:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 12.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: 80
     :activation_dice:
@@ -1854,13 +1894,14 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 6.0
     :attack_range: 0
     :initiative: 100
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 15
+    :initial_position: 13
     :armor:
       :cac: 4
       :ranged: 4
@@ -1895,13 +1936,14 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 0
     :initiative: 100
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 15
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 4
@@ -1936,13 +1978,14 @@ levees:
       numerator: 1
     :legendary: false
     :active: true
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 100
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 15
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 4
@@ -1977,13 +2020,14 @@ levees:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 100
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 15
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 3
@@ -2018,13 +2062,14 @@ levees:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 6.0
+    :algo_advance: 3.0
     :attack_range: 4
     :initiative: 100
     :activation_dice:
     - phoenix
     - tree
-    :initial_position: 15
+    :initial_position: 10
     :armor:
       :cac: 3
       :ranged: 3
@@ -2060,7 +2105,8 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2105,7 +2151,8 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 4
+    :movement: 2.0
+    :algo_advance: 0.0
     :attack_range: 4
     :initiative: 50
     :activation_dice: []
@@ -2149,7 +2196,8 @@ machine_de_guerre:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 8
+    :movement: 4.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2195,7 +2243,8 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2240,7 +2289,8 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2285,7 +2335,8 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2329,7 +2380,8 @@ necromant:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2375,7 +2427,8 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2419,7 +2472,8 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2463,7 +2517,8 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2507,7 +2562,8 @@ paladin:
       numerator: 2
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2553,7 +2609,8 @@ nuee:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2596,7 +2653,8 @@ decerebres:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2640,7 +2698,8 @@ char_de_guerre:
       numerator: 4
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2686,7 +2745,8 @@ traqueurs:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2730,7 +2790,8 @@ equipe_de_destrucion:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2774,7 +2835,8 @@ le_conclave:
       numerator: 3
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2822,7 +2884,8 @@ la_machine_incroyable_et_extraordinaire:
       numerator: 8
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2870,7 +2933,8 @@ fanatiques_devoues:
       numerator: 1
     :legendary: false
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2913,7 +2977,8 @@ le_monstre_de_guerre:
       numerator: 12
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -2959,7 +3024,8 @@ les_bersekers:
       numerator: 1
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -3002,7 +3068,8 @@ l'archidemon:
       numerator: 4
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
@@ -3051,7 +3118,8 @@ les_spectres:
       numerator: 1
     :legendary: true
     :active: false
-    :movement: 0
+    :movement: 0.0
+    :algo_advance: 0.0
     :attack_range: 0
     :initiative: -1
     :activation_dice: []
