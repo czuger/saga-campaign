@@ -4,14 +4,15 @@ module Fight
   #
   # @param attacker [Unit] the attacker.
   # @param defender [Unit] the defender.
-  # @param attack_type [Symbol] Can be :attack or :retail depending if you are performing the true attack or the retail.
+  # @param attack_type [Symbol] The type of the attack : :ranged, :cac, :magic, etc ...
+  # @param attack_phase [Symbol] Can be :attack or :retail depending if you are performing the true attack or the retail.
   #
   # @return nil
   class AttackAtomicStep
 
     attr_reader :attack_type, :final_hits
 
-    def initialize( attacker, defender, attack_phase )
+    def initialize( attacker, defender, attack_type, attack_phase= nil )
       @attacker_before_attack = attacker.dup
       @defender_before_attack = defender.dup
 
@@ -19,6 +20,7 @@ module Fight
       @defender = defender
 
       @attack_phase = attack_phase
+      @attack_type = attack_type
     end
 
     # Roll the dice for the attack
@@ -54,42 +56,23 @@ module Fight
 
     private
 
-    # Get the type of the attack
-    #
-    # @param attacker [Unit] the attacker.
-    #
-    # @return [Symbol] the type of the attack that will be performed.
-    def get_attack_type( attacker )
-      attack_type = :cac
-
-      if @attack_phase == :attack
-        attack_type = :magic if attacker.has_magick?
-        attack_type = :distance if attacker.distance_attacking_unit?
-      end
-
-      attack_type
-    end
-
     # Compute the the attacking and defending values required for the fight.
     #
     # @return [Array] [Attacker dice pool size, Target armor value, Target save value]
     def set_attack_info
-
-      @attack_type = get_attack_type( @attacker )
-
       case @attack_type
         when :magic
           @dice_pool = 6
           @opponent_armor = 2
           @opponent_save = 6
-        when :distance
-          @dice_pool = (@attacker.amount * @attacker.damage_ranged).ceil.to_i
+        when :ranged
+          @dice_pool = @attacker.ranged_dice_pool
           @opponent_armor = @defender.armor_ranged
           @opponent_save = 5
         when :cac
           @last_attack_cac = true
 
-          @dice_pool = (@attacker.amount * @attacker.damage_cac).ceil.to_i
+          @dice_pool = @attacker.melee_dice_pool
           @opponent_armor = @defender.armor_cac
           @opponent_save = 4
         else

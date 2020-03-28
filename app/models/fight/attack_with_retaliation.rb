@@ -5,11 +5,33 @@ module Fight
   # Represent a full attack step. Including a retaliation in case of cac attack and hits assignment.
   class AttackWithRetaliation
 
-    def initialize( body_count )
+  # A class to handle the full attack process (with eventual retaliation).
+  #
+  # @param attacking_gang [TmpGang] the units of the attacker.
+  # @param defending_gang [TmpGang] the units of the defender.
+  # @param attacking_unit [TmpUnit] the attacker.
+  # @param defending_unit [TmpUnit] the defender.
+  def initialize( attacking_gang, defending_gang, attacking_unit, defending_unit, body_count )
+      @attacking_gang = attacking_gang
+      @defending_gang = defending_gang
+      @attacking_unit = attacking_unit
+      @defending_unit = defending_unit
+
       @hits_log = []
 
       @body_count = body_count
     end
+
+    # Represent a ranged attack
+    def perform_ranged_attack!
+      # First the regular attack
+        @attack = AttackAtomicStep.new(@attacking_unit, @defending_unit, :ranged )
+      attack_hits = @attack.roll_attack
+
+      # And the defending hits
+      assign_hits!( attack_hits )
+    end
+
 
     # Represent a full attack including retaliation. This method is mutative for all parameters.
     #
@@ -61,45 +83,17 @@ module Fight
 
     # Assigns the hits and destroy the unit if it has no more minis
     #
-    # @param defender_units [Array] the units of the defender.
-    # @param defender [Unit] the defender.
     # @param hits [Integer] the amount of hits to take.
     #
     # @return [Array] the units of the defender.
-    def assign_hits( defender_units, defender, hits )
-      if hits > 0
-        if defender.get_protection > 0
-          @hits_log << sub_assign_hits( defender, defender.get_protection, hits, :protection ) do |real_hits, log|
-            defender.decrease_protection!( real_hits )
-            log
-          end
-        else
-          @hits_log << sub_assign_hits( defender, defender.amount, hits, :casualties ) do |real_hits, log|
-            defender.amount -= real_hits
+    def assign_hits!( hits )
+      @defending_unit.assign_hits!( hits )
 
-            if defender.amount <= 0
-              log.unit_destroyed = true
-              defender_units.delete( defender )
-            end
-
-            log
-          end
-        end
-      end
-
-      defender_units
+      # if @defending_unit.amount <= 0
+      #   # log.unit_destroyed = true
+      #   # @defending_gang.destroy( @defending_unit )
+      # end
     end
 
-    def sub_assign_hits( defender, amount, hits, type )
-      real_hits = [ amount, hits ].min
-
-      log = OpenStruct.new(
-        type: type,
-        before: amount,
-        after: amount - real_hits, damages: real_hits, hits: hits, unit: defender.log_data )
-
-      log = yield( real_hits, log )
-      log
-    end
   end
 end

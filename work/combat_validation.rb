@@ -44,7 +44,7 @@ end
 
 
 def one_shot
-  c = Fight::Base.new(2, 'O1', 2, 1 )
+  c = Fight::Base.new(2, 'O1', 2, 1, verbose: true )
   c.go
   # puts c.combat_log.to_yaml
 # pp c.body_count

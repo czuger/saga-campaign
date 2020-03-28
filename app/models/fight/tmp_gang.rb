@@ -3,13 +3,15 @@ module Fight
 
     attr_reader :units
 
-    def initialize( gang_id, attacker_or_defender )
+    def initialize( gang_id, attacker_or_defender, verbose: false )
       gang = Gang.find( gang_id )
       @attacker_name = gang.player.user.name
 
       @attacker_or_defender = attacker_or_defender
 
-      @units = gang.units.map{ |u| TmpUnit.new( u, attacker_or_defender ) }
+      @units = gang.units.map{ |u| TmpUnit.new( u, attacker_or_defender, verbose: verbose ) }
+
+      @verbose = verbose
     end
 
     def get_next_unit_to_activate( action_dice_pool )
@@ -23,11 +25,9 @@ module Fight
     end
 
     def units_in_range( unit )
-      puts "#{unit.name} tire à #{unit.attack_range}"
-
       units = @units.select{ |u| u.distance( unit ) <= unit.attack_range }
 
-      puts units.map{ |u| "#{u.name} - #{u.current_position}" }.join( ', ' )
+      puts "Units in range = #{units.map{ |u| "<#{u.name} - #{u.current_position}>" }.join( ', ' )}" if @verbose
 
       units
     end

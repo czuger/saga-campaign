@@ -4,9 +4,9 @@ module Fight
 
     attr_reader :combat_log, :body_count, :result
 
-    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, save_result: true )
-      @attacker_gang = TmpGang.new( attacking_gang_id, :attacker )
-      @defender_gang = TmpGang.new( defending_gang_id, :defender )
+    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, save_result: true, verbose: false )
+      @attacking_gang = TmpGang.new( attacking_gang_id, :attacker, verbose: verbose )
+      @defending_gang = TmpGang.new( defending_gang_id, :defender, verbose: verbose )
 
       @combat_log = []
 
@@ -16,6 +16,7 @@ module Fight
       @body_count = {}
 
       @save_result = save_result
+      @verbose = verbose
     end
 
     def go
@@ -27,10 +28,10 @@ module Fight
 
         attack_count = ( i == 1 ? 3 : 8 )
 
-        round_log_shell.attacker = tour(@attacker_gang, @defender_gang, attack_count )
+        round_log_shell.attacker = tour(@attacking_gang, @defending_gang, attack_count )
         puts
         puts
-        round_log_shell.defender = tour(@defender_gang, @attacker_gang, attack_count )
+        round_log_shell.defender = tour(@defending_gang, @attacking_gang, attack_count )
 
         @combat_log << round_log_shell
 
@@ -45,20 +46,20 @@ module Fight
 
     # Play a full tour where player1 and player 2 fights
     #
-    # @param attacker_gang [TmpGang] the attacker gang.
-    # @param defender_gang [Array] the defender gang.
+    # @param attacking_gang [TmpGang] the attacker gang.
+    # @param defending_gang [Array] the defender gang.
     #
     # @return nil
-    def tour(attacker_gang, defender_gang, max_attack_count )
+    def tour(attacking_gang, defending_gang, max_attack_count )
       units_actions_log = []
 
-      dice = ActionDicePool.new( attacker_gang )
+      dice = ActionDicePool.new( attacking_gang )
       p dice.to_s
 
       while dice.remaining_action_dice?
         # p dice.to_s
 
-        next_attacking_unit, used_die = attacker_gang.get_next_unit_to_activate( dice )
+        next_attacking_unit, used_die = attacking_gang.get_next_unit_to_activate( dice )
         p "priority = #{next_attacking_unit[0]}, #{next_attacking_unit[1].to_s}"
 
         if next_attacking_unit
@@ -66,7 +67,7 @@ module Fight
 
           dice.consume_die!( used_die )
 
-          ActionDecision.do_something( next_attacking_unit, defender_gang )
+          ActionDecision.do_something( attacking_gang, defending_gang, next_attacking_unit )
 
           next_attacking_unit.already_activate_this_turn = true
 
@@ -112,8 +113,8 @@ module Fight
       fight_data = {
         attacker: @player_1.player.user.name,
         defender: @player_2.player.user.name,
-        attacker_gang_no: @player_1.id,
-        defender_gang_no: @player_2.id,
+        attacking_gang_no: @player_1.id,
+        defending_gang_no: @player_2.id,
         result: result
         }
 
