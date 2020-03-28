@@ -37,7 +37,7 @@ module Fight
     # @param unit [TmpUnit] the unit from which we will check the distance.
     #
     # @return Integer the position of the nearest unit.
-    def nearest_enemy_position( unit )
+    def nearest_enemy_unit( unit )
       distance_min = Float::INFINITY
       nearest_unit = nil
 
@@ -49,7 +49,7 @@ module Fight
         end
       end
 
-      nearest_unit.current_position
+      nearest_unit
     end
 
 

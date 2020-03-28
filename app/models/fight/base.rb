@@ -20,7 +20,7 @@ module Fight
     end
 
     def go
-      1.upto(3).each do |i|
+      1.upto(6).each do |i|
         round_log_shell = OpenStruct.new(
           round: i,
           turn_phases: OpenStruct.new( attacker: nil, defender: nil ),
@@ -67,8 +67,9 @@ module Fight
 
           dice.consume_die!( used_die )
 
-          units_actions_log << ActionDecision.do_something(
+          ad = ActionDecision.new(
             attacking_gang, defending_gang,next_attacking_unit, verbose: @verbose )
+          units_actions_log << ad.do_something
 
           next_attacking_unit.already_activate_this_turn = true
 

@@ -54,8 +54,12 @@ module Fight
       base * @initiative
     end
 
+    def rest!
+      @fatigue -= 1
+    end
+
     def exhausted?
-      @fatigue >= 3
+      @fatigue >= @max_fatigue
     end
 
     def end_action
@@ -86,6 +90,18 @@ module Fight
 
       puts name + " avance en position #{@current_position}" if @verbose
     end
+
+    # Fall back
+    def fall_back
+      if @attacker_or_defender == :attacker
+        @current_position -= @movement
+      else
+        @current_position += @movement
+      end
+
+      puts name + " recule en position #{@current_position}" if @verbose
+    end
+
 
     # Used to store unit data for logging (to remember info when the unit will be destroyed)
     def log_data
