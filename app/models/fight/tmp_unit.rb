@@ -4,7 +4,7 @@ module Fight
   class TmpUnit
 
     attr_reader :activation_dice, :attack_range, :current_position
-    attr_accessor :already_activate_this_turn
+    attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender )
       # p unit
@@ -41,8 +41,21 @@ module Fight
     end
 
     def activation_weight
-      base = @already_activate_this_turn ? 1 : 1000
+      base = (@already_activate_this_turn ? 100 : 1000) + (@fatigue * -200) - (exhausted? ? Float::INFINITY : 0)
+      # p "#{to_s} : base=#{base} * @initiative=#{@initiative} = #{base * @initiative}"
       base * @initiative
+    end
+
+    def exhausted?
+      @fatigue >= 3
+    end
+
+    def end_action
+      if @already_activate_this_turn
+        @fatigue += 1
+      else
+        @already_activate_this_turn = true
+      end
     end
 
     # Advance from the required advance movement. Don't cross enemy positions.
@@ -69,6 +82,10 @@ module Fight
 
     def distance( unit )
       [ @current_position - unit.current_position, unit.current_position - @current_position ].max
+    end
+
+    def to_s
+      [ "name=#{@name}", "fatigue=#{@fatigue}", "current_position=#{@current_position}" ].join( ', ' )
     end
 
   end

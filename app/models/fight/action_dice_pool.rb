@@ -48,6 +48,11 @@ module Fight
       end
     end
 
+    # Check if we have a die in the dice pool to activate the unit.
+    #
+    # @param tmp_unit [TmpUnit] the unit for which we check the die.
+    #
+    # @return [Symbol] return the code of the die or false if no die is available.
     def can_activate_unit?( tmp_unit )
       ACTIVATION_ORDER.each do |die|
         return die if @rolled_dice[ die ] > 0 && tmp_unit.activation_dice.include?( die )

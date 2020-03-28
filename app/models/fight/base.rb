@@ -59,7 +59,7 @@ module Fight
         # p dice.to_s
 
         next_attacking_unit, used_die = attacker_gang.get_next_unit_to_activate( dice )
-        p "priority = #{next_attacking_unit[0]}, name = #{next_attacking_unit[1].name}, used_die = #{used_die}"
+        p "priority = #{next_attacking_unit[0]}, #{next_attacking_unit[1].to_s}"
 
         if next_attacking_unit
           next_attacking_unit = next_attacking_unit[1]
