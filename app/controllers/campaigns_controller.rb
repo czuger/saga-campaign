@@ -35,6 +35,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
+    @campaign.user = current_user
 
     Campaign.transaction do
       respond_to do |format|

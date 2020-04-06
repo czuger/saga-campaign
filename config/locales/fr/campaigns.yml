@@ -5,6 +5,9 @@ fr:
 
     new:
       title: Nouvelle campagne
+      name: Nom
+      choose_faction: Choisissez une faction
+      create: Créer
 
     edit:
       title: Edition d'une campagne

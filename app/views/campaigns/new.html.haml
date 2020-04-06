@@ -1,3 +1,49 @@
 %h1= t('.title')
 
-= render 'form'
+= form_for @campaign do |f|
+  - if @campaign.errors.any?
+    #error_explanation
+      %h2= t( 'error_explanation_message', count: @campaign.errors.count, subject: 'cette campagne' )
+      %ul
+        - @campaign.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :name, t( '.name' )
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :choose_faction, t( '.choose_faction' )
+
+    .btn-group-toggle{ 'data-toggle' => 'buttons' }
+      .row
+        .col-4
+          %label.btn.btn-secondary.btn-block.active
+            %input#option1{name: 'campaign[faction]', value: :royaumes, type: :radio, autocomplete: :off, checked: true }
+              = t( 'faction.royaumes' )
+        .col-4
+          %label.btn.btn-secondary.btn-block
+            %input#option2{name: 'campaign[faction]', value: :nature, type: :radio, autocomplete: :off }
+              = t( 'faction.nature' )
+        .col-4
+          %label.btn.btn-secondary.btn-block
+            %input#option3{name: 'campaign[faction]', value: :souterrains, type: :radio, autocomplete: :off }
+              = t( 'faction.souterrains' )
+
+      .row
+        .col-4
+          %label.btn.btn-secondary.btn-block
+            %input#option4{name: 'campaign[faction]', value: :morts, type: :radio, autocomplete: :off }
+              = t( 'faction.morts' )
+        .col-4
+          %label.btn.btn-secondary.btn-block
+            %input#option5{name: 'campaign[faction]', value: :outremonde, type: :radio, autocomplete: :off }
+              = t( 'faction.outremonde' )
+        .col-4
+          %label.btn.btn-secondary.btn-block
+            %input#option6{name: 'campaign[faction]', value: :horde, type: :radio, autocomplete: :off }
+              = t( 'faction.horde' )
+
+
+  .actions
+    = f.submit t('.create'), class: 'btn btn-primary'
