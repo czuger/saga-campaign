@@ -12,7 +12,7 @@ class Campaign < ApplicationRecord
 
   has_many :fight_results, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   aasm do
     state :waiting_for_players, initial: true
