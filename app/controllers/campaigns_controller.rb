@@ -37,19 +37,11 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
     @campaign.user = current_user
 
-    Campaign.transaction do
-      respond_to do |format|
-        if @campaign.save
-
-          @campaign.logs.create!( data: 'Campagne crée' )
-
-          Player.create!( user_id: current_user.id, campaign_id: @campaign.id )
-          @campaign.logs.create!( data: "Joueur #{current_user.name} ajouté à la campagne.")
-
-          format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( 'creation_success.f', item: 'La campagne' ) }
-        else
-          format.html { render :new }
-        end
+    respond_to do |format|
+      if create_new_campaign
+        format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( 'creation_success.f', item: 'La campagne' ) }
+      else
+        format.html { render :new }
       end
     end
 
@@ -94,17 +86,36 @@ class CampaignsController < ApplicationController
   end
 
   def players_choose_faction_new
+    current_player_already_registered = @campaign.players.where( user_id: current_user.id ).exists?
+    raise "User #{current_user.name} has already chosen a faction for the campaign #{@campaign.name}" if current_player_already_registered
+
+    # For now the mechanism is for two players only
     already_selected_factions = @campaign.players.pluck( :faction ).compact
+    selected_faction = already_selected_factions.first
 
-    @select_factions_options = GameRules::Factions.new.faction_select_options( already_selected_factions)
+    selected_bloc = GameRules::Factions::FACTIONS_TO_BLOCS[ selected_faction ]
 
-     # Check if we have a player involved in this campaign
+    @select_factions_options = GameRules::Factions.new.faction_select_options(
+      GameRules::Factions::FACTIONS_BLOCS[ selected_bloc ] )
+
+    # Check if we have been invited in this campaign
     @involved_player = @campaign.players.where( user_id: current_user.id ).take
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def campaign_params
-      params.require(:campaign).permit(:user_id, :name)
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def campaign_params
+    params.require(:campaign).permit(:user_id, :name, :faction)
+  end
+
+  def create_new_campaign
+    Campaign.transaction do
+      result = @campaign.save
+      result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
+      result &&= @campaign.players.create( user_id: current_user.id, faction: params[:faction] )
+      result && @campaign.logs.create( data: I18n.t( 'log.campaign.created', name: current_user.name ) )
     end
+  end
+
 end

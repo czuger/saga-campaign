@@ -1,0 +1,6 @@
+---
+fr:
+  log:
+    campaign:
+      created: Campagne crée
+      player_added: "Joueur %{name} ajouté à la campagne."

@@ -29,7 +29,7 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   test 'should create campaign' do
     assert_difference('Campaign.count') do
       assert_difference('Player.count') do
-        post campaigns_url, params: { campaign: { name: @campaign.name, user_id: @campaign.user_id } }
+        post campaigns_url, params: { campaign: { name: 'Campaign test name', user_id: @campaign.user_id }, faction: :royaumes }
       end
     end
 
@@ -55,10 +55,16 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get players_choose_faction_new' do
-    get campaign_players_choose_faction_new_url(@campaign)
-    assert_response :success
-  end
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    create( :player, user: @user, campaign: other_campaign )
 
+    get campaign_players_choose_faction_new_url( other_campaign )
+    assert_response :success
+
+    puts @response.body
+  end
 
   test 'should get edit' do
     get edit_campaign_url(@campaign)

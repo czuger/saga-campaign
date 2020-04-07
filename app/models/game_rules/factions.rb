@@ -4,6 +4,13 @@ require 'ostruct'
 module GameRules
   class Factions
 
+    FACTIONS_BLOCS = { chaos: %w( morts outremonde horde ).freeze, order: %w( royaumes nature souterrains ).freeze }.freeze
+
+    FACTIONS_TO_BLOCS = { 'mort'.freeze => :chaos, 'outremonde'.freeze => :chaos, 'horde'.freeze => :chaos,
+                          'royaumes'.freeze => :order, 'nature'.freeze => :order, 'souterrains'.freeze => :order }.freeze
+
+    FACTIONS_OPPOSITS = { chaos: :order, order: :chaos }.freeze
+
     def initialize
       unless @data
         @data = YAML.load_file( 'data/factions.yaml' )
