@@ -40,10 +40,10 @@ class UnitsController < ApplicationController
       respond_to do |format|
         if @unit.save
 
-          after_unit_update( "#{@user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}." )
+          after_unit_update( "#{@user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande #{@gang.name}." )
+          pay_unit( @unit.points )
 
           format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully created.' }
-
         else
           format.html { render :new }
 
@@ -58,16 +58,20 @@ class UnitsController < ApplicationController
   def update
     # add_gang_to_unit
 
-    respond_to do |format|
-      if @unit.update(unit_params)
+    Unit.transaction do
+      respond_to do |format|
 
-        after_unit_update( "#{@user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande n°#{@gang.number}." )
+        current_points = @unit.points
 
-        format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
+        if @unit.update(unit_params)
 
-      else
-        format.html { render :edit }
+          after_unit_update( "#{@user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande #{@gang.name}." )
+          pay_unit( @unit.points - current_points )
 
+          format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
   end
@@ -76,14 +80,17 @@ class UnitsController < ApplicationController
   # DELETE /units/1.json
   def destroy
     Unit.transaction do
+      current_points = @unit.points
+
       @unit.destroy
 
       set_gang_points
-
       @campaign.logs.create!(
         data:
-          "#{@player.user.name} a supprimé une unité de #{@unit.amount} #{@unit.libe} à la bande n°#{@gang.number}."
+          "#{@player.user.name} a supprimé une unité de #{@unit.amount} #{@unit.libe} à la bande #{@gang.name}."
       )
+
+      pay_unit( - current_points )
     end
 
     respond_to do |format|
@@ -105,14 +112,28 @@ class UnitsController < ApplicationController
     end
 
     def after_unit_update( log_string )
-      set_gang_points
-
       @campaign.logs.create!( data: log_string )
+
+      set_gang_points
     end
 
     def set_gang_points
       points_total = @gang.units.sum( :points )
-      @gang.update!( points: points_total )
+      @gang.points = points_total
+      @gang.save!
+    end
+
+    def pay_unit( amount )
+      @player.pp -= amount
+      @player.save!
+
+      # No log if we pay nothing
+      if amount > 0
+        @campaign.logs.create!( data: I18n.t( 'log.pp.decrease', name: @player.user.name, count: amount ) )
+      elsif amount < 0
+        @campaign.logs.create!( data: I18n.t( 'log.pp.increase', name: @player.user.name, count: -amount ) )
+      end
+
     end
 
     def set_units_rules_data

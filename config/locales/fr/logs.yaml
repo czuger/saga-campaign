@@ -4,3 +4,11 @@ fr:
     campaign:
       created: Campagne crée
       player_added: "Joueur %{name} ajouté à la campagne."
+
+    pp:
+      decrease:
+        one: "Le joueur %{name} a perdu un point de pouvoir."
+        other: "Le joueur %{name} a perdu %{count} points de pouvoir."
+      increase:
+        one: "Le joueur %{name} a gagné un point de pouvoir."
+        other: "Le joueur %{name} a gagné %{count} points de pouvoir."

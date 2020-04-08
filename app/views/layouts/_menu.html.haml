@@ -16,6 +16,9 @@
 
             .dropdown-menu{ 'aria-labelledby' => 'navbarDropdown' }
               .dropdown-item
+                = link_to 'Campagne actuelle', campaign_path( @campaign ), class: 'nav-link'
+
+              .dropdown-item
                 = link_to 'Lieux controllés', campaign_controlled_points_path( @campaign ), class: 'nav-link'
 
               .dropdown-item

@@ -14,6 +14,8 @@ module GameRules
     FACTIONS_STARTING_POSITIONS = { 'chaos' => %w( O9 O11 C6 ).freeze, 'order' => %w( O9 O11 C6 ).freeze }.freeze
     FACTIONS_RECRUITMENT_POSITIONS = {'chaos' => %w( C1 C2 ).freeze, 'order' => %w( O1 O2 ).freeze }.freeze
 
+    START_PP = 18
+
     def initialize
       unless @data
         @data = YAML.load_file( 'data/factions.yaml' )

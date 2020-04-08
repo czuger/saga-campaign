@@ -96,7 +96,7 @@ class CampaignsController < ApplicationController
     Campaign.transaction do
       result = @campaign.save
       result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
-      result &&= @campaign.players.create( user_id: current_user.id )
+      result &&= @campaign.players.create( user_id: current_user.id, pp: GameRules::Factions::START_PP )
       result && @campaign.logs.create( data: I18n.t( 'log.campaign.created', name: current_user.name ) )
     end
   end
