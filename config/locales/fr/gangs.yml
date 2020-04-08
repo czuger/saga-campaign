@@ -1,0 +1,7 @@
+fr:
+  gangs:
+
+    notice:
+      created: "La bande %{name} a bien été créée."
+      updated: "La bande %{name} a bien été modifiée."
+      destroyed: "La bande %{name} a bien été supprimée."

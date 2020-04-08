@@ -20,10 +20,15 @@ class GangsController < ApplicationController
       @player.controls_points.uniq!
       @player.save!
 
-      user_name = @player.user.name
+      player_name = @player.user.name
 
-      @campaign.logs.create!( data: "La bande #{@gang.number} de #{user_name} se déplace en #{@gang.location}." )
-      @campaign.logs.create!( data: "#{user_name} prend le contrôle de #{@gang.location}." )
+      @campaign.logs.create!(
+        data: I18n.t( 'log.gangs.movement', player_name: @player.user.name, gang_name: @gang.name, location: @gang.location )
+      )
+
+      @campaign.logs.create!(
+        data: I18n.t( 'log.gangs.take_control', gang_name: @gang.name, location: @gang.location )
+      )
     end
   end
 
@@ -60,9 +65,10 @@ class GangsController < ApplicationController
     Gang.transaction do
       respond_to do |format|
         if @gang.save
-          @campaign.logs.create!( data: "#{@player.user.name} a créé la bande n°#{@gang.number}." )
+          @campaign.logs.create!( data: I18n.t( 'log.gangs.created', player_name: @player.user.name, gang_name: @gang.name ) )
 
-          format.html { redirect_to gang_units_path( @gang ), notice: 'La bande a bien été créée.' }
+          format.html { redirect_to gang_units_path( @gang ),
+                                    notice: I18n.t( 'gangs.notice.created', name: @gang.name ) }
 
         else
           format.html {
@@ -81,7 +87,8 @@ class GangsController < ApplicationController
   def update
     respond_to do |format|
       if @gang.update(gang_params)
-        format.html { redirect_to player_gangs_path( @player ), notice: 'Gang was successfully updated.' }
+        format.html { redirect_to player_gangs_path( @player ),
+                                  notice: I18n.t( 'gangs.notice.updated', name: @gang.name ) }
 
       else
         format.html { render :edit }
@@ -93,9 +100,23 @@ class GangsController < ApplicationController
   # DELETE /gangs/1
   # DELETE /gangs/1.json
   def destroy
-    @gang.destroy
-    respond_to do |format|
-      format.html { redirect_to player_gangs_path( @player ), notice: 'La bande a été correctement supprimée.' }
+    Gang.transaction do
+      gang_cost = @gang.points
+
+      @player.pp -= gang_cost
+      @player.save!
+
+      @gang.destroy
+      respond_to do |format|
+        format.html { redirect_to player_gangs_path( @player ),
+                                  notice: I18n.t( 'gangs.notice.destroyed', name: @gang.name ) }
+
+        @campaign.logs.create!( data: I18n.t( 'log.gangs.destroyed', player_name: @player.user.name, gang_name: @gang.name ) )
+
+        if gang_cost > 0
+          @campaign.logs.create!( data: I18n.t( 'log.pp.increase', name: @player.user.name, count: gang_cost ) )
+        end
+      end
 
     end
   end
