@@ -21,7 +21,7 @@
           - if campaign.aasm_state == 'waiting_for_players'
             = link_to 'Détails', new_campaign_player_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
           - elsif campaign.aasm_state == 'waiting_for_players_to_choose_their_faction'
-            = link_to 'Détails', campaign_players_choose_faction_new_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
+            = link_to 'Détails', players_choose_faction_new_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
           - else
             = link_to 'Détails', campaign, class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
         -#%td= link_to 'Renommer', edit_campaign_path(campaign), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

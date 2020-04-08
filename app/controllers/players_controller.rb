@@ -1,7 +1,9 @@
 class PlayersController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_player, except: [:new, :create]
-  before_action :set_campaign, only: [:new, :create]
+  before_action :set_player, except: [:new, :create, :choose_faction_new, :choose_faction_new]
+
+  before_action :set_campaign, only: [:new, :create, :choose_faction_new, :choose_faction_new]
+  before_action :set_player_for_campaign, only: [:choose_faction_new, :choose_faction_new]
 
   # GET /players
   # GET /players.json
@@ -76,6 +78,22 @@ class PlayersController < ApplicationController
   end
 
   def schedule_movements_save
+  end
+
+  def choose_faction_new
+    # Check if we have been invited in this campaign
+    # @involved_player = @campaign.players.where( user_id: current_user.id ).take
+
+    unless @player.faction
+    # For now the mechanism is for two players only
+    already_selected_factions = @campaign.players.pluck( :faction ).compact
+    selected_faction = already_selected_factions.first
+
+    @selected_bloc = GameRules::Factions::FACTIONS_TO_BLOCS[ selected_faction ]
+
+    # @select_factions_options = GameRules::Factions.new.faction_select_options(
+    #   GameRules::Factions::FACTIONS_BLOCS[ selected_bloc ] )
+    end
   end
 
   def choose_faction_save

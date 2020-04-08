@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
     get :initiative_edit
     post :initiative_save
-
-    get :players_choose_faction_new
   end
+
+  get 'players/:campaign_id/choose_faction_new', to: 'players#choose_faction_new', as: 'players_choose_faction_new'
 
   resources :units, only: [ :edit, :destroy ]
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get :schedule_movements_edit
     post :schedule_movements_save
 
-    post :choose_faction_save
+    patch :choose_faction_save
   end
 
   resources :gangs, only: [ :destroy, :edit, :update ] do

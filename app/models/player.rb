@@ -4,7 +4,7 @@ class Player < ApplicationRecord
 
   has_many :gangs, dependent: :destroy
 
-  validates :faction, presence: true
+  # validates :faction, presence: true
 
   serialize :controls_points
 end

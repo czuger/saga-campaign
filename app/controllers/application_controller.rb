@@ -64,5 +64,5 @@ class ApplicationController < ActionController::Base
       "#{current_user} is not allowed to modify #{@unit}"
     end
   end
-
+  
 end

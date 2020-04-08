@@ -85,23 +85,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def players_choose_faction_new
-    current_player_already_registered = @campaign.players.where( user_id: current_user.id ).exists?
-    raise "User #{current_user.name} has already chosen a faction for the campaign #{@campaign.name}" if current_player_already_registered
-
-    # For now the mechanism is for two players only
-    already_selected_factions = @campaign.players.pluck( :faction ).compact
-    selected_faction = already_selected_factions.first
-
-    selected_bloc = GameRules::Factions::FACTIONS_TO_BLOCS[ selected_faction ]
-
-    @select_factions_options = GameRules::Factions.new.faction_select_options(
-      GameRules::Factions::FACTIONS_BLOCS[ selected_bloc ] )
-
-    # Check if we have been invited in this campaign
-    @involved_player = @campaign.players.where( user_id: current_user.id ).take
-  end
-
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -113,7 +96,7 @@ class CampaignsController < ApplicationController
     Campaign.transaction do
       result = @campaign.save
       result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
-      result &&= @campaign.players.create( user_id: current_user.id, faction: params[:faction] )
+      result &&= @campaign.players.create( user_id: current_user.id )
       result && @campaign.logs.create( data: I18n.t( 'log.campaign.created', name: current_user.name ) )
     end
   end
