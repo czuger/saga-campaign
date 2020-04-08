@@ -29,12 +29,12 @@ class Unit < ApplicationRecord
 
   def long_name
     I18n.t( 'unit_name_long.' + Unit.unit_name_code( libe, weapon ),
-            name: log_data.name )
+            name: name )
   end
 
   def short_name
     I18n.t( 'unit_name_short.' + Unit.unit_name_code( libe, weapon ),
-            name: log_data.name )
+            name: name )
   end
 
   def full_name
