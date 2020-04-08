@@ -123,6 +123,8 @@ class UnitsController < ApplicationController
         @gang.faction, @unit.libe )
 
       @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
+
+      @units = GameRules::Unit.new.data
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
