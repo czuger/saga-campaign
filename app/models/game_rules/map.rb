@@ -20,10 +20,6 @@ module GameRules
       @localisations = @positions.keys
     end
 
-    def self.starting_positions
-      %w( C1 C2 O1 O2 )
-    end
-
     def position_value( position )
       return 4 if HIGH_VALUES.include?( position )
       return 2 if LOW_VALUES.include?( position )

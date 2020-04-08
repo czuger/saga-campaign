@@ -6,12 +6,13 @@ module GameRules
 
     FACTIONS_BLOCS = { chaos: %w( morts outremonde horde ).freeze, order: %w( royaumes nature souterrains ).freeze }.freeze
 
-    FACTIONS_TO_BLOCS = { 'mort'.freeze => :chaos, 'outremonde'.freeze => :chaos, 'horde'.freeze => :chaos,
+    FACTIONS_TO_BLOCS = { 'morts'.freeze => :chaos, 'outremonde'.freeze => :chaos, 'horde'.freeze => :chaos,
                           'royaumes'.freeze => :order, 'nature'.freeze => :order, 'souterrains'.freeze => :order }.freeze
 
     FACTIONS_OPPOSITS = { chaos: :order, order: :chaos }.freeze
 
-    # FACTIONS_STARTING_POSITIONS = { chaos: %w( O9 O11 C6 ).freeze, chaos: %w( O9 O11 C6 ).freeze }.freeze
+    FACTIONS_STARTING_POSITIONS = { 'chaos' => %w( O9 O11 C6 ).freeze, 'order' => %w( O9 O11 C6 ).freeze }.freeze
+    FACTIONS_RECRUITMENT_POSITIONS = {'chaos' => %w( C1 C2 ).freeze, 'order' => %w( O1 O2 ).freeze }.freeze
 
     def initialize
       unless @data
@@ -50,6 +51,19 @@ module GameRules
       Hash[result]
     end
 
+    # Compute points given by each loss or destroyed units.
+    #
+    # @param faction [String] the faction of the player.
+    # @param campaign_aasm_state [String] the status of the campaign because starting position and recruitment positions differs.
+    #
+    # @return [Array] The position where the player can create gangs
+    def self.starting_positions( faction, campaign_aasm_state= nil )
+      # TODO : create a new step to make a difference between campaign start recruitment and campaign running recruitment
+      # TODO : user campaign_aasm_state to return either FACTIONS_STARTING_POSITIONS or FACTIONS_RECRUITMENT_POSITIONS
+
+      faction_block = FACTIONS_TO_BLOCS[faction].to_s.freeze
+      (FACTIONS_STARTING_POSITIONS[faction_block] + FACTIONS_RECRUITMENT_POSITIONS[faction_block]).sort
+    end
 
   end
 end
