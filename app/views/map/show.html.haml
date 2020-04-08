@@ -10,7 +10,7 @@
         .horde_marker{ style: @map.marker_position_style( l ) }
           X
     - else
-      - player.controls_points.each do |l|
+      - player.controls_points&.each do |l|
         .empire_marker{ style: @map.marker_position_style( l ) }
           X
 

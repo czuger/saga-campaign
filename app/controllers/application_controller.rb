@@ -28,11 +28,10 @@ class ApplicationController < ActionController::Base
 
   def set_player_for_campaign
     # A player can also be found from the current user and the current campaign
-    if @campaign and !@player
-      @player = @campaign.players.where( user_id: current_user.id ).first
-    end
+    set_campaign
+    @player ||= @campaign.players.where( user_id: current_user.id ).first
 
-    raise "No player could be found for campaign.id=#{campaign.id} and current_user.id=#{current_user.id}" unless @player
+    raise "No player could be found for campaign.id=#{@campaign.name} and current_user.id=#{current_user.name}" unless @player
   end
 
   # Mean set gang for modification. For read only, use find directly

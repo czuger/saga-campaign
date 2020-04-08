@@ -11,6 +11,8 @@ module GameRules
 
     FACTIONS_OPPOSITS = { chaos: :order, order: :chaos }.freeze
 
+    # FACTIONS_STARTING_POSITIONS = { chaos: %w( O9 O11 C6 ).freeze, chaos: %w( O9 O11 C6 ).freeze }.freeze
+
     def initialize
       unless @data
         @data = YAML.load_file( 'data/factions.yaml' )
