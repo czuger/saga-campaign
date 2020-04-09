@@ -4,25 +4,25 @@
     %ul.navbar-nav.mr-auto
 
       - if @current_user
-        = dropdown_menu_block( 'Campagne actuelle' ) do
-          = dropdown_sub_menu_link( 'Mes campagnes', campaigns_path )
+        = dropdown_menu_block( t('menu.campaigns') ) do
+          = dropdown_sub_menu_link( t('menu.my_campaigns'), campaigns_path )
 
           - if @campaign&.id
             .dropdown-divider
-            = dropdown_sub_menu_link( 'Campagne actuelle', campaign_path( @campaign ) )
-            = dropdown_sub_menu_link( 'Lieux controllés', campaign_controlled_points_path( @campaign ) )
-            = dropdown_sub_menu_link( 'Initiative', campaign_initiative_edit_path( @campaign ) )
+            = dropdown_sub_menu_link( t('menu.current_campaign'), campaign_path( @campaign ) )
+            = dropdown_sub_menu_link( t('menu.controlled_locations'), campaign_controlled_points_path( @campaign ) )
+            = dropdown_sub_menu_link( t('menu.initiative'), campaign_initiative_edit_path( @campaign ) )
 
         - if @campaign&.id && @player&.id
-          = dropdown_menu_block( 'Actions' ) do
-            = dropdown_sub_menu_link( 'Combats', campaign_fights_path( @campaign ) )
-            = dropdown_sub_menu_link( 'Bandes', player_gangs_path( @player ) )
-            = dropdown_sub_menu_link( 'Joueur', campaign_player_path( @campaign, @player ) )
+          = dropdown_menu_block( t('menu.actions') ) do
+            = dropdown_sub_menu_link( t('menu.combats'), campaign_fights_path( @campaign ) )
+            = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
+            = dropdown_sub_menu_link( t('menu.player'), campaign_player_path( @campaign, @player ) )
 
-          = simple_menu_link( 'Carte', campaign_map_show_path( @campaign ) )
+          = simple_menu_link( t('menu.map'), campaign_map_show_path( @campaign ) )
 
-          = simple_menu_link( 'Règles', '/rules.pdf' )
-          = simple_menu_link( 'Deconnection', '/auth/signout' )
+          = simple_menu_link( t('menu.rules'), '/rules.pdf' )
+          = simple_menu_link( t('menu.logout'), '/auth/signout' )
 
       - else
-        = simple_menu_link( 'Login', '/auth/discord' )
+        = simple_menu_link( t('menu.login'), '/auth/discord' )

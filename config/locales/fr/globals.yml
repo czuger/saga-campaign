@@ -18,9 +18,27 @@ fr:
     f: "%{item} a été supprimée avec succès."
 
   faction:
-      nature: Les seigneur de la nature
-      royaumes: Les grands royaumes
-      morts: Les morts vivants
-      souterrains: Les peuples souterrains
-      outremonde: L'outremonde
-      horde: La horde
+    nature: Les seigneur de la nature
+    royaumes: Les grands royaumes
+    morts: Les morts vivants
+    souterrains: Les peuples souterrains
+    outremonde: L'outremonde
+    horde: La horde
+
+  menu:
+    campaigns: Campagnes
+    my_campaigns: Mes campagnes
+    current_campaign: Campagne actuelle
+    controlled_locations: Lieux controllés
+    initiative: Initiative
+
+    actions: Actions
+    combats: Combats
+    gangs: Bandes
+    player: Joueur
+
+    map: Carte
+    rules: Règles
+
+    login: Connection
+    logout: Deconnection
