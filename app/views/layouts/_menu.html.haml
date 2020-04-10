@@ -15,6 +15,7 @@
 
         - if @campaign&.id && @player&.id
           = dropdown_menu_block( t('menu.actions') ) do
+            = dropdown_sub_menu_link( t('menu.movements'), campaign_fights_path( @campaign ) )
             = dropdown_sub_menu_link( t('menu.combats'), campaign_fights_path( @campaign ) )
             = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
             = dropdown_sub_menu_link( t('menu.player'), campaign_player_path( @campaign, @player ) )
