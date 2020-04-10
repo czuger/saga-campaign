@@ -77,7 +77,7 @@ class PlayersController < ApplicationController
     @player = Player.find( params[:player_id] )
     @gangs = @player.gangs.order( :movement_order )
 
-    @loc = GameRules::Map.new.localisations
+    # @loc = GameRules::Map.new.localisations
   end
 
   def schedule_movements_save
