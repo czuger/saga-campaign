@@ -50,20 +50,12 @@ module GameRules
 
     # Methods used for movement on the map.
     def self.available_movements( current_location )
-      @@movements_table ||=  YAML.load_file( 'data/map_connections.yaml' )
+      @@movements_table ||= YAML.load_file( 'data/map_connections.yaml' )
       @@movements_table[ current_location ]
     end
 
-    def self.prepared_movements_options_for_select( current_location )
-      @@movements_table ||=  YAML.load_file( 'data/map_connections.yaml' )
-
-      result = @@movements_table.keys.map{ |loc|
-        [
-          loc, ActionController::Base.helpers.options_for_select( [ '' ] + @@movements_table[loc] )
-        ]
-      }
-
-      Hash[result]
+    def self.prepared_movements_options_for_select
+      @@movements_table ||= YAML.load_file( 'data/map_connections.yaml' )
     end
 
   end
