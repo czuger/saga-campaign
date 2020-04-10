@@ -1,16 +1,24 @@
-const load = function() {
-    $('.location_selector').change(
+var prepared_movements_options_for_select = null;
+
+const linked_selects = function() {
+    $('.linked_select').change(
         function(){
 
-            console.log($(this));
+            var selected_id = $(this).attr( 'id' );
+            var selected_value = $(this).val();
 
-            var selected_loc = $(this).val();
-            var s = selected_loc.split('#');
+            // console.log( selected_id, selected_value );
 
-            var loc = s[0];
-            var gang_id = s[1];
+            var corresponding_value_options = prepared_movements_options_for_select[ selected_value ];
+            console.log( corresponding_value_options );
 
-            $.post( "/gangs/" + gang_id + "/change_location", { location: loc } );
+            var linked_select_id = selected_id.substring( 0, 14 ) + '2' + selected_id.substring( 15 );
+            var linked_select = $( '#' + linked_select_id );
+
+            // console.log( linked_select_id );
+            // console.log( linked_select );
+
+            linked_select.html( corresponding_value_options );
         }
     )
 };
@@ -20,18 +28,12 @@ const sort_gangs = function() {
     $( "#sortable_gangs_table" ).sortable(
         {
             stop: function(){
-                // console.log('stop');
-
                 var order = [];
                 $("#sortable_gangs_table").children().each(function(){
                     order.push( $(this).attr('gang_id') );
                 });
 
-                console.log( order );
-
                 $("#gangs_order" ).val( order );
-
-                // $.post( "/campaigns/" + campaign_id + "/initiative_save", { new_order: result } )
             }
         }
     );
@@ -40,6 +42,10 @@ const sort_gangs = function() {
 
 $(function() {
     if (window.location.pathname.match( /players\/\d+\/schedule_movements_edit/ )) {
+
+        prepared_movements_options_for_select = JSON.parse( $('#prepared_movements_options_for_select').val() );
+
+        linked_selects();
         return sort_gangs();
     }
 });
