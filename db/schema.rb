@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_184807) do
+ActiveRecord::Schema.define(version: 2020_04_10_183426) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 2020_03_26_184807) do
     t.string "location", null: false
     t.string "faction", null: false
     t.string "name"
+    t.integer "movement_order"
+    t.string "movement_1"
+    t.string "movement_2"
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end

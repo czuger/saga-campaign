@@ -1,18 +1,23 @@
 %h1 Planification des mouvements
 
-= form_tag player_schedule_movements_edit_path( @player ) do
+= form_tag player_schedule_movements_save_path( @player ) do
 
   %table.table
     %thead
       %tr
         %th Bande
+        %th Position actuelle
         %th Mouvement 1
         %th Mouvement 2
-    %tbody
-      - @player.gangs.each_with_index do |gang, i|
-        %tr
+    %tbody#sortable_gangs_table
+      - @gangs.each do |gang|
+        %tr{ gang_id: gang.id }
           %td= gang.name
-          %td= select_tag( "gang[#{gang.id}]", options_for_select( @loc ), { include_blank: true, class: 'form-control' } )
-          %td= select_tag( "gang[#{gang.id}]", options_for_select( @loc ), { include_blank: true, class: 'form-control'  } )
+          %td= gang.location
+          %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( @loc, gang.movement_1 ), { include_blank: true, class: 'form-control' } )
+          %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( @loc, gang.movement_2 ), { include_blank: true, class: 'form-control'  } )
 
-TODO : sauvegarder le vieux ordi OVH.
+  = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
+
+  .actions
+    = submit_tag 'Valider les mouvements' , class: 'btn btn-primary'

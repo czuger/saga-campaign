@@ -15,8 +15,31 @@ const load = function() {
     )
 };
 
+// Initialisation
+const sort_gangs = function() {
+    $( "#sortable_gangs_table" ).sortable(
+        {
+            stop: function(){
+                // console.log('stop');
+
+                var order = [];
+                $("#sortable_gangs_table").children().each(function(){
+                    order.push( $(this).attr('gang_id') );
+                });
+
+                console.log( order );
+
+                $("#gangs_order" ).val( order );
+
+                // $.post( "/campaigns/" + campaign_id + "/initiative_save", { new_order: result } )
+            }
+        }
+    );
+    $( "#sortable" ).disableSelection();
+}
+
 $(function() {
-    if (window.location.pathname.match( /campaigns\/\d+\/players/ )) {
-        return load();
+    if (window.location.pathname.match( /players\/\d+\/schedule_movements_edit/ )) {
+        return sort_gangs();
     }
 });

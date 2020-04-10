@@ -75,11 +75,28 @@ class PlayersController < ApplicationController
 
   def schedule_movements_edit
     @player = Player.find( params[:player_id] )
+    @gangs = @player.gangs.order( :movement_order )
 
     @loc = GameRules::Map.new.localisations
   end
 
   def schedule_movements_save
+    Gang.transaction do
+      params[:gangs_order].split( ',' ).each_with_index do |gang_id, index|
+
+        gang = Gang.find( gang_id )
+        raise "Player #{@player.inspect} is not allowed to modify gang #{gang.inspect}" unless gang.player_id == @player.id
+
+        gang.movement_order = index
+
+        gang.movement_1 = params[:gang_movement]['1'.freeze][gang_id]
+        gang.movement_2 = params[:gang_movement]['2'.freeze][gang_id]
+
+        gang.save!
+      end
+
+      redirect_to player_schedule_movements_edit_path( @player )
+    end
   end
 
   def choose_faction_new
