@@ -13,6 +13,7 @@ fr:
       movement_1: Mouvement 1
       movement_2: Mouvement 2
 
+      save: Enregistrer les mouvements
       validate: Valider les mouvements
 
     notices:

@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_183426) do
     t.string "controls_points"
     t.integer "initiative"
     t.string "faction"
+    t.boolean "movements_orders_finalized", default: false, null: false
     t.index ["campaign_id"], name: "index_players_on_campaign_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
