@@ -95,7 +95,7 @@ class PlayersController < ApplicationController
         gang.save!
       end
 
-      redirect_to player_schedule_movements_edit_path( @player )
+      redirect_to player_schedule_movements_edit_path( @player ), notice: 'Vos modifications ont été enregistrées.'
     end
   end
 

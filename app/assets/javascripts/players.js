@@ -58,6 +58,7 @@ $(function() {
         console.log( prepared_movements_options_for_select );
 
         linked_selects();
+
         return sort_gangs();
     }
 });
