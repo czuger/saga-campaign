@@ -4,3 +4,16 @@ fr:
     choose_faction_new:
       choose_faction: Choisissez une faction
       choose: Selectionner
+
+    schedule_movements_edit:
+      title: Planification des mouvements
+
+      gang: Bande
+      current_position: Position actuelle
+      movement_1: Mouvement 1
+      movement_2: Mouvement 2
+
+      validate: Valider les mouvements
+
+    notices:
+      modification_success: Vos modifications ont été enregistrées.

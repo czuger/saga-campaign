@@ -1,14 +1,14 @@
-%h1 Planification des mouvements
+%h1= t('.title')
 
 = form_tag player_schedule_movements_save_path( @player ) do
 
   %table.table
     %thead
       %tr
-        %th Bande
-        %th Position actuelle
-        %th Mouvement 1
-        %th Mouvement 2
+        %th= t('.gang')
+        %th= t('.current_position')
+        %th= t('.movement_1')
+        %th= t('.movement_2')
     %tbody#sortable_gangs_table
       - @gangs.each do |gang|
         %tr{ gang_id: gang.id }
@@ -20,6 +20,6 @@
   = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
 
   .actions
-    = submit_tag 'Valider les mouvements' , class: 'btn btn-primary'
+    = submit_tag t('.validate') , class: 'btn btn-primary'
 
 = hidden_field_tag :prepared_movements_options_for_select, GameRules::Map.prepared_movements_options_for_select.to_json
