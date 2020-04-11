@@ -11,7 +11,7 @@ module GameRules
 
     FACTIONS_OPPOSITS = { chaos: :order, order: :chaos }.freeze
 
-    FACTIONS_STARTING_POSITIONS = { 'chaos' => %w( O9 O11 C6 ).freeze, 'order' => %w( O9 O11 C6 ).freeze }.freeze
+    FACTIONS_STARTING_POSITIONS = { 'chaos' => %w( O9 C11 C6 ).freeze, 'order' => %w( O4 O11 C10 ).freeze }.freeze
     FACTIONS_RECRUITMENT_POSITIONS = {'chaos' => %w( C1 C2 ).freeze, 'order' => %w( O1 O2 ).freeze }.freeze
 
     START_PP = 18
@@ -59,12 +59,17 @@ module GameRules
     # @param campaign_aasm_state [String] the status of the campaign because starting position and recruitment positions differs.
     #
     # @return [Array] The position where the player can create gangs
-    def self.starting_positions( faction, campaign_aasm_state= nil )
+    def self.starting_positions( campaign, player )
       # TODO : create a new step to make a difference between campaign start recruitment and campaign running recruitment
       # TODO : user campaign_aasm_state to return either FACTIONS_STARTING_POSITIONS or FACTIONS_RECRUITMENT_POSITIONS
 
-      faction_block = FACTIONS_TO_BLOCS[faction].to_s.freeze
-      (FACTIONS_STARTING_POSITIONS[faction_block] + FACTIONS_RECRUITMENT_POSITIONS[faction_block]).sort
+      faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
+
+      if campaign.aasm_state == 'first_hiring_and_movement_schedule'
+        FACTIONS_STARTING_POSITIONS[faction_block].sort
+      else
+        FACTIONS_RECRUITMENT_POSITIONS[faction_block].sort
+      end
     end
 
   end

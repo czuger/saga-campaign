@@ -130,7 +130,7 @@ class PlayersController < ApplicationController
           p.initiative = i
           p.save!
         end
-        @campaign.players_hire_and_move!
+        @campaign.players_first_hire_and_move!
       end
     end
 
