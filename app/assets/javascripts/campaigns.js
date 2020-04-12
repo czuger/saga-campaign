@@ -8,7 +8,7 @@ $(function() {
 
                     var result = [];
                     $("#sortable").children().each(function( index ){
-                        result.push( [ $(this).attr('player_id'), index ] );
+                        result.push( [ $(this).attr('player_id'), index + 1 ] );
                     });
 
                     console.log( result );
