@@ -1,3 +1,29 @@
+%h2 Mouvements programmés
+
+%table.table
+  %thead
+    %tr
+      %th Joueur
+      %th Initiative
+      %th Bande
+      %th Ordre
+      %th Position
+      %th Premier mouvement
+      %th Second mouvement
+
+  %tbody
+    - @gangs.each do |gang|
+      %tr
+        %td= gang.player.user.name
+        %td= gang.player.initiative
+        %td= gang.name
+        %td= gang.movement_order
+        %td= gang.movements_backup.original_location
+        %td= gang.movements_backup.scheduled_movements[ 0 ]
+        %td= gang.movements_backup.scheduled_movements[ 1 ]
+
+%h2 Details des mouvements
+
 %table.table
   %thead
     %tr

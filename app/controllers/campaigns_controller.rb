@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_campaign, except: [ :index, :new, :create ]
-  before_action :set_player_for_campaign, only: [ :show ]
+  before_action :set_player_for_campaign, only: [ :show, :show_movements ]
 
   def controlled_points
     @map = GameRules::Map.new
@@ -87,6 +87,7 @@ class CampaignsController < ApplicationController
 
   def show_movements
     @movements = @campaign.movements_results.includes( :gang, { player: :user } ).order( :id )
+    @gangs = @campaign.gangs.includes( { player: :user } ).order( :player_id, :movement_order )
   end
 
   private

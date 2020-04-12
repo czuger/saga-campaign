@@ -10,10 +10,7 @@ module GameRules
       Campaign.transaction do
         @campaign.movements_results.delete_all
 
-        @campaign.gangs.each do |gang|
-          gang.movements_backup = gang.movements.dup
-          gang.save!
-        end
+        backup_movements
 
         players = @campaign.players.order( :initative ).all
         @players_movements_hash = Hash[ players.map{ |p| [ p.id, get_movements_array( p ) ] } ]
@@ -35,6 +32,15 @@ module GameRules
     end
 
     private
+
+    def backup_movements
+      @campaign.gangs.each do |gang|
+        gang.movements_backup = OpenStruct.new(
+          scheduled_movements: gang.movements.dup, original_location: gang.location )
+        gang.save!
+      end
+
+    end
 
     def get_movements_array( player )
       result = []
