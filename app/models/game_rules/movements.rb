@@ -10,6 +10,11 @@ module GameRules
       Campaign.transaction do
         @campaign.movements_results.delete_all
 
+        @campaign.gangs.each do |gang|
+          gang.movements_backup = gang.movements.dup
+          gang.save!
+        end
+
         players = @campaign.players.order( :initative ).all
         @players_movements_hash = Hash[ players.map{ |p| [ p.id, get_movements_array( p ) ] } ]
 

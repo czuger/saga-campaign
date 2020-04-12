@@ -91,7 +91,7 @@ class PlayersController < ApplicationController
 
         gang.movement_order = index
         gang.movements = [params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id]]
-        gang.movements.reject!{ |e| e.empty? }
+        gang.movements.reject!{ |e| e&.empty? }
         gang.save!
       end
 

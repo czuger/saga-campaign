@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_065018) do
     t.string "name"
     t.integer "movement_order"
     t.string "movements"
+    t.string "movements_backup"
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end
