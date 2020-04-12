@@ -28,6 +28,49 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'Validate that movements parameters are correctly injected in gangs' do
+    @player.initiative = 1
+    @player.save!
+
+    @player2 = create( :player, user: @user, campaign: @campaign )
+    @gang2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C1' )
+
+    @player2.initiative = 1
+    @player2.save!
+
+    og1 = @gang
+    og1.location = 'C10'
+    og1.name = 'og1'
+    og1.save!
+    og2 = create( :gang, player: @player, campaign: @campaign, faction: :nature, location: 'O11', name: 'og2' )
+    og3 = create( :gang, player: @player, campaign: @campaign, faction: :nature, location: 'O4', name: 'og3' )
+
+    cg1 = @gang2
+    cg1.location = 'O9'
+    og1.name = 'cg1'
+    cg1.save!
+    cg2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C11', name: 'cg2' )
+    cg3 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C6', name: 'cg3' )
+
+    post player_schedule_movements_save_path(
+           @player, params: {
+           gang_movement: { '1' => { og1.id => 'O10', og2.id => 'O8', og3.id => 'O3' },
+                            '2' => { og1.id => 'P4', og2.id => '', og3.id => 'O1' } } }, gangs_order: "#{og1.id}, #{og2.id}, #{og3.id}" )
+
+    post player_schedule_movements_save_path(
+           @player2, params: {
+           gang_movement: { '1' => { cg1.id => 'C9', cg2.id => 'C8', cg3.id => 'C5' },
+                            '2' => { cg1.id => '', cg2.id => 'C5', cg3.id => '' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}" )
+
+    assert_equal %w( O10 P4 ), og1.reload.movements
+    assert_equal %w( O8 ), og2.reload.movements
+    assert_equal %w( O3 O1 ), og3.reload.movements
+    
+    assert_equal %w( C9 ), cg1.reload.movements
+    assert_equal %w( C8 C5 ), cg2.reload.movements
+    assert_equal %w( C5 ), cg3.reload.movements
+  end
+
   # test 'should get edit' do
   #   get campaign_edit_player_url(@player)
   #   assert_response :success

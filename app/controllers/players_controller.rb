@@ -84,11 +84,14 @@ class PlayersController < ApplicationController
     Gang.transaction do
       params[:gangs_order].split( ',' ).each_with_index do |gang_id, index|
 
+        gang_id = gang_id.strip
+
         gang = Gang.find( gang_id )
         raise "Player #{@player.inspect} is not allowed to modify gang #{gang.inspect}" unless gang.player_id == @player.id
 
         gang.movement_order = index
         gang.movements = [params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id]]
+        gang.movements.reject!{ |e| e.empty? }
         gang.save!
       end
 
