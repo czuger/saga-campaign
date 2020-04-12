@@ -17,11 +17,13 @@ module GameRules
           players.each do |player|
             gang, movement = @players_movements_hash[ player.id ].shift
 
-            @campaign.movements_results.create!(
-              campaign: @campaign, player: player, gang: gang, from: gang.reload.location, to: movement )
+            if gang
+              @campaign.movements_results.create!(
+                campaign: @campaign, player: player, gang: gang, from: gang.reload.location, to: movement )
 
-            gang.location = movement
-            gang.save!
+              gang.location = movement
+              gang.save!
+            end
           end
         end
       end
