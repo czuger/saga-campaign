@@ -6,8 +6,10 @@ namespace :fill_db do
     Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
       p.gangs.each_with_index do |g, i|
         g.movement_order = i
-        g.movement_1 = GameRules::Map.available_movements( g.location ).sample
-        g.movement_2 = GameRules::Map.available_movements( g.movement_1 ).sample
+
+        g.movements = []
+        g.movements << GameRules::Map.available_movements( g.location ).sample
+        g.movements << GameRules::Map.available_movements( g.movements[0] ).sample
         g.save!
 
         puts "Moving gang #{g.name}"

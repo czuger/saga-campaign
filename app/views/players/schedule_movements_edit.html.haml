@@ -14,8 +14,8 @@
         %tr{ gang_id: gang.id }
           %td= gang.name
           %td= gang.location
-          %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location ), gang.movement_1 ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
-          %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( gang.movement_1 ), gang.movement_2 ), { include_blank: true, class: 'form-control' } )
+          %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location ), get_movement( gang, 0 ) ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
+          %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( get_movement( gang, 0 ) ), get_movement( gang, 1 ) ), { include_blank: true, class: 'form-control' } )
 
   = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
 
