@@ -9,11 +9,11 @@ class Gang < ApplicationRecord
   def get_next_movement!
     movement = nil
 
-    if movement_1 && !movement_1.empty?
-      movement = movement_1
+    if self.movement_1 && !self.movement_1.empty?
+      movement = self.movement_1
       self.movement_1 = nil
-    elsif movement_2 && !movement_2.empty?
-      movement = movement_2
+    elsif self.movement_2 && !self.movement_2.empty?
+      movement = self.movement_2
       self.movement_2 = nil
     end
 

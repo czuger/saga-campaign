@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     get :initiative_edit
     post :initiative_save
+
+    get :show_movements
   end
 
   get 'players/:campaign_id/choose_faction_new', to: 'players#choose_faction_new', as: 'players_choose_faction_new'

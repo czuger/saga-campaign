@@ -1,5 +1,23 @@
 namespace :fill_db do
 
+  desc 'Opponents move gangs'
+  task opponent_move_gangs: :environment do
+
+    Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
+      p.gangs.each_with_index do |g, i|
+        g.movement_order = i
+        g.movement_1 = GameRules::Map.available_movements( g.location ).sample
+        g.movement_2 = GameRules::Map.available_movements( g.movement_1 ).sample
+        g.save!
+
+        puts "Moving gang #{g.name}"
+      end
+
+      p.movements_orders_finalized = true
+      p.save!
+    end
+  end
+
   desc 'Opponents create gangs'
   task opponent_create_gangs: :environment do
 

@@ -1,0 +1,19 @@
+%table.table
+  %thead
+    %tr
+      %th Joueur
+      %th Bande
+      %th Départ
+      %th Arrivée
+      %th Interception
+      %th Combats
+
+  %tbody
+    - @movements.each do |movement|
+      %tr
+        %td= movement.player.user.name
+        %td= movement.gang.name
+        %td= movement.from
+        %td= movement.to
+        %td= movement.interception
+        %td= movement.fight

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_183426) do
+ActiveRecord::Schema.define(version: 2020_04_12_065018) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -56,6 +56,21 @@ ActiveRecord::Schema.define(version: 2020_04_10_183426) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_logs_on_campaign_id"
+  end
+
+  create_table "movements_results", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.integer "player_id", null: false
+    t.integer "gang_id", null: false
+    t.string "from", null: false
+    t.string "to", null: false
+    t.boolean "interception", default: false, null: false
+    t.string "fight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_movements_results_on_campaign_id"
+    t.index ["gang_id"], name: "index_movements_results_on_gang_id"
+    t.index ["player_id"], name: "index_movements_results_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -109,6 +124,9 @@ ActiveRecord::Schema.define(version: 2020_04_10_183426) do
   add_foreign_key "gangs", "campaigns"
   add_foreign_key "gangs", "players"
   add_foreign_key "logs", "campaigns"
+  add_foreign_key "movements_results", "campaigns"
+  add_foreign_key "movements_results", "gangs"
+  add_foreign_key "movements_results", "players"
   add_foreign_key "players", "campaigns"
   add_foreign_key "players", "users"
   add_foreign_key "unit_old_libe_strings", "users"

@@ -85,6 +85,10 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def show_movements
+    @movements = @campaign.movements_results.includes( :gang, { player: :user } ).order( :id )
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.

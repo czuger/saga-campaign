@@ -11,6 +11,7 @@ class Campaign < ApplicationRecord
   has_many :units, through: :gangs
 
   has_many :fight_results, dependent: :destroy
+  has_many :movements_results, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

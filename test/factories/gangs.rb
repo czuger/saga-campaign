@@ -9,7 +9,7 @@ FactoryBot.define do
       n
     end
 
-    location {'L1'}
+    location {'O1'}
     faction {'nature'}
 
     factory :horde_gang do

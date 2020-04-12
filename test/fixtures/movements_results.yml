@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign: one
+  player: one
+  gang: one
+  from: MyString
+  to: MyString
+  interception: 
+  fight: MyString
+
+two:
+  campaign: two
+  player: two
+  gang: two
+  from: MyString
+  to: MyString
+  interception: 
+  fight: MyString

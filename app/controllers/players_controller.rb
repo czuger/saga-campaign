@@ -95,11 +95,17 @@ class PlayersController < ApplicationController
         gang.save!
       end
 
-      @player.movements_orders_finalized = true
-      @player.save!
+      validate_movements = params.has_key?( :validate )
+
+      if validate_movements
+        @player.movements_orders_finalized = true
+        @player.save!
+      end
 
       # We check if all players have validated their movements
-      if @campaign.players.where( movements_orders_finalized: false ).count == 0
+      if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1
+
+        GameRules::Movements.new( @campaign ).run!
 
         # TODO : run all movement with combats directly
         # TODO : reset movements_orders_finalized and movements orders
@@ -107,7 +113,7 @@ class PlayersController < ApplicationController
 
         # FOCUS ON CAMPAIGN MECHANISM FIRST. DO NOT INCLUDE COMBAT.
 
-        redirect_to campaign_initiative_edit_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
+        redirect_to campaign_show_movements_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
       else
         redirect_to player_schedule_movements_edit_path( @player ), notice: I18n.t( 'players.notices.modification_success' )
       end
