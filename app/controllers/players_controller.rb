@@ -88,10 +88,7 @@ class PlayersController < ApplicationController
         raise "Player #{@player.inspect} is not allowed to modify gang #{gang.inspect}" unless gang.player_id == @player.id
 
         gang.movement_order = index
-
-        gang.movement_1 = params[:gang_movement]['1'.freeze][gang_id]
-        gang.movement_2 = params[:gang_movement]['2'.freeze][gang_id]
-
+        gang.movements = [params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id]]
         gang.save!
       end
 

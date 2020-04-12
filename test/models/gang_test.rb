@@ -9,8 +9,7 @@ class GangTest < ActiveSupport::TestCase
     @gang = create( :gang, player: @player, campaign: @campaign )
 
     @gang.location = 'O1'
-    @gang.movement_1 = 'O3'
-    @gang.movement_2 = 'O4'
+    @gang.movements = %w( O3 O4 )
     @gang.save!
 
     assert_equal 'O3', @gang.get_next_movement!

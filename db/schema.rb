@@ -44,8 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_065018) do
     t.string "faction", null: false
     t.string "name"
     t.integer "movement_order"
-    t.string "movement_1"
-    t.string "movement_2"
+    t.string "movements"
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end

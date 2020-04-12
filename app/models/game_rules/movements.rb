@@ -18,7 +18,7 @@ module GameRules
             gang, movement = @players_movements_hash[ player.id ].shift
 
             @campaign.movements_results.create!(
-              campaign: @campaign, player: player, gang: gang, from: gang.location, to: movement )
+              campaign: @campaign, player: player, gang: gang, from: gang.reload.location, to: movement )
 
             gang.location = movement
             gang.save!
@@ -34,13 +34,12 @@ module GameRules
 
       # pp player.gangs
 
-      player.gangs.order( :movement_order ).each do |gang|
-        result << [ gang, gang.get_next_movement! ]
-      end
-
-      # We need to call it two time to get the second movement
-      player.gangs.order( :movement_order ).each do |gang|
-        result << [ gang, gang.get_next_movement! ]
+      next_movement = true
+      while next_movement
+        player.gangs.order( :movement_order ).each do |gang|
+          next_movement = gang.reload.get_next_movement!
+          result << [ gang, next_movement ] if next_movement
+        end
       end
 
       result
