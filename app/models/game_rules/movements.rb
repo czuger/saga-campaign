@@ -22,6 +22,8 @@ module GameRules
                 campaign: @campaign, player: p_struct.player, gang: gang, from: gang.location, to: movement )
 
               gang.location = movement
+
+              control_point!( movement, p_struct.player )
             end
           end
         end
@@ -85,6 +87,14 @@ module GameRules
 
     def all_movements_done?
       @players.map{ |e| e.movements_array.count }.flatten.inject(&:+ ) == 0
+    end
+
+    def control_point!( location, new_controller )
+      @players.each do |p_struct|
+        p_struct.player.controls_points.delete( location )
+      end
+
+      new_controller.controls_points << location
     end
 
   end

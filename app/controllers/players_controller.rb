@@ -32,7 +32,7 @@ class PlayersController < ApplicationController
       params['players'].each do |player|
         user = User.find( player )
         new_players_creation_result &= Player.create(
-          user_id: player, campaign_id: @campaign.id, pp: GameRules::Factions::START_PP )
+          user_id: player, campaign_id: @campaign.id, pp: GameRules::Factions::START_PP, controls_points: [] )
 
         @campaign.logs.create!( data: "Joueur #{user.name} ajouté à la campagne.")
 
