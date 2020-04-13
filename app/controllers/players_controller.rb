@@ -98,21 +98,7 @@ class PlayersController < ApplicationController
         @player.save!
       end
 
-      # We check if all players have validated their movements
-      if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1
-
-        GameRules::Movements.new( @campaign ).run!
-
-        # TODO : run all movement with combats directly
-        # TODO : reset movements_orders_finalized and movements orders
-        # TODO : switch campaign state
-
-        # FOCUS ON CAMPAIGN MECHANISM FIRST. DO NOT INCLUDE COMBAT.
-
-        redirect_to campaign_show_movements_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
-      else
-        redirect_to player_schedule_movements_edit_path( @player ), notice: I18n.t( 'players.notices.modification_success' )
-      end
+      redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
     end
   end
 

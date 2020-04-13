@@ -17,8 +17,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @players = @campaign.players.includes( :user ).all
-
     @logs = @campaign.logs.order( 'updated_at DESC' ).paginate( page: params[:page] )
+    @movements_finalized = @campaign.players.where( movements_orders_finalized: false ).count == 0
   end
 
   # GET /campaigns/new
@@ -83,6 +83,21 @@ class CampaignsController < ApplicationController
         player.save!
       end
     end
+  end
+
+  def resolve_movements
+    # We check if all players have validated their movements
+    # if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1
+
+    GameRules::Movements.new( @campaign ).run!
+
+    # TODO : run all movement with combats directly
+    # TODO : reset movements_orders_finalized and movements orders
+    # TODO : switch campaign state
+
+    # FOCUS ON CAMPAIGN MECHANISM FIRST. DO NOT INCLUDE COMBAT.
+
+    redirect_to campaign_show_movements_path( @campaign )
   end
 
   def show_movements

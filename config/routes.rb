@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get :initiative_edit
     post :initiative_save
 
+    get :resolve_movements
     get :show_movements
   end
 
