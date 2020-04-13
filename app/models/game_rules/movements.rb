@@ -51,13 +51,15 @@ module GameRules
     def get_movements_array( gangs )
       result = []
 
-      # pp player.gangs
+      next_movement_found = true
+      while next_movement_found
+        next_movement_found = false
 
-      next_movement = true
-      while next_movement
         gangs.each do |gang|
-          next_movement = gang.get_next_movement!
+          next_movement = gang.movements.shift
           result << [ gang, next_movement ] if next_movement
+
+          next_movement_found ||= next_movement
         end
       end
 

@@ -12,15 +12,6 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
   end
 
   test 'Set movements for gangs then validate them - first player move all, second player move only second gang' do
-    @player.initiative = 2
-    @player.save!
-    og1 = @gang
-    og1.location = 'C10'
-    og1.name = 'og1'
-    og1.save!
-    og2 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O11', name: 'og2' )
-    og3 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O4', name: 'og3' )
-
     @player2.initiative = 1
     @player2.save!
     cg1 = @gang2
@@ -31,15 +22,29 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     cg3 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C6', name: 'cg3' )
 
     post player_schedule_movements_save_path(
-           @player, params: {
-           gang_movement: { '1' => { og1.id => '', og2.id => 'O8', og3.id => '' },
-                            '2' => { og1.id => '', og2.id => 'O6', og3.id => '' } } }, gangs_order: "#{og1.id}, #{og2.id}, #{og3.id}" )
-
-    post player_schedule_movements_save_path(
            @player2, params: {
            gang_movement: { '1' => { cg1.id => 'C9', cg2.id => 'C8', cg3.id => 'C5' },
                             '2' => { cg1.id => 'C4', cg2.id => 'C5', cg3.id => 'C2' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}", validate: :validate )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
+    follow_redirect!
 
+    @player.initiative = 2
+    @player.save!
+    og1 = @gang
+    og1.location = 'C10'
+    og1.name = 'og1'
+    og1.save!
+    og2 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O11', name: 'og2' )
+    og3 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O4', name: 'og3' )
+
+    post player_schedule_movements_save_path(
+           @player, params: {
+           gang_movement: { '1' => { og1.id => '', og2.id => 'O8', og3.id => '' },
+                            '2' => { og1.id => '', og2.id => 'O6', og3.id => '' } } }, gangs_order: "#{og1.id}, #{og2.id}, #{og3.id}" )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
+    follow_redirect!
+
+    get campaign_resolve_movements_path( @campaign )
     assert_redirected_to campaign_show_movements_path( @campaign )
 
     movements = @campaign.movements_results.all.to_a

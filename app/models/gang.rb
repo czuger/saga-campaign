@@ -9,9 +9,4 @@ class Gang < ApplicationRecord
   serialize :movements
   serialize :movements_backup
 
-  def get_next_movement!
-    movement = self.movements.shift
-    movement
-  end
-
 end
