@@ -11,7 +11,6 @@ class Gang < ApplicationRecord
 
   def get_next_movement!
     movement = self.movements.shift
-    save!
     movement
   end
 
