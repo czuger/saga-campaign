@@ -69,5 +69,12 @@ module GameRules
       end
     end
 
+    def self.initial_control_points( campaign, player )
+      faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
+
+      FACTIONS_STARTING_POSITIONS[faction_block] + FACTIONS_RECRUITMENT_POSITIONS[faction_block]
+    end
+
+
   end
 end

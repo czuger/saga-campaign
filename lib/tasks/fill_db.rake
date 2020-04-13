@@ -16,6 +16,7 @@ namespace :fill_db do
       end
 
       p.movements_orders_finalized = true
+      p.initiative_bet = 2
       p.save!
     end
   end
@@ -49,6 +50,7 @@ namespace :fill_db do
     Player.where( user_id: 2, faction: nil ).each do |p|
       p p
       p.faction = 'royaumes'
+      p.controls_points = GameRules::Factions.initial_control_points( p.campaign, p )
       p.save!
     end
   end

@@ -5,6 +5,16 @@ fr:
       created: Campagne crée
       player_added: "Joueur %{name} ajouté à la campagne."
 
+    initiative:
+      bet:
+        zero: "Le joueur %{name} n'a rien misé pour l'initiative."
+        one: "Le joueur %{name} a misé 1 point de pouvoir pour l'initiative."
+        other: "Le joueur %{name} a misé %{count} pour l'initiative."
+
+      order:
+        one: "Le joueur %{name} a la faveur des dieux."
+        other: "Le joueur %{name} joue en %{count}e."
+
     pp:
       decrease:
         one: "Le joueur %{name} a perdu un point de pouvoir."

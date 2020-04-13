@@ -128,8 +128,10 @@ class PlayersController < ApplicationController
         @campaign.player_ids.shuffle.each_with_index do |player_id, i|
           p = Player.find( player_id )
           p.initiative = i
+          p.controls_points = GameRules::Factions.initial_control_points( @campaign, p )
           p.save!
         end
+
         @campaign.players_first_hire_and_move!
       end
     end
@@ -144,6 +146,8 @@ class PlayersController < ApplicationController
     Player.transaction do
       @player.initiative_bet = params[ :pp ].to_i
       @player.save!
+
+      set_initiative!
 
       redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
     end
@@ -160,4 +164,37 @@ class PlayersController < ApplicationController
     gang_id = gang_id.to_s.freeze
     [ params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id] ].reject{ |e| e&.empty? }
   end
+
+  def set_initiative!
+    # This will work for 2 players only
+    if @campaign.players.where( initiative_bet: nil ).count == 0
+
+      Campaign.transaction do
+        tmp_players = []
+        @campaign.players.includes( :user ).order( 'initiative_bet DESC' ).each do |player|
+          @campaign.logs.create!( data: I18n.t( 'log.initiative.bet', name: player.user.name, count: player.initiative_bet ) )
+          tmp_players << player
+        end
+        new_first_player, new_second_player = tmp_players
+
+        if new_first_player.initiative_bet == new_second_player.initiative_bet
+          new_first_player, new_second_player = @campaign.players.includes( :user ).order( :initiative ).to_a
+        end
+
+        new_first_player.initiative = 1
+        new_first_player.pp -= new_first_player.initiative_bet
+        new_first_player.initiative_bet = nil
+        new_first_player.save!
+        @campaign.logs.create!( data: I18n.t( 'log.initiative.order', name: new_first_player.user.name, count: new_first_player.initiative ) )
+
+        new_second_player.initiative = 2
+        new_second_player.pp -= new_second_player.initiative_bet
+        new_second_player.initiative_bet = nil
+        new_second_player.save!
+        @campaign.logs.create!( data: I18n.t( 'log.initiative.order', name: new_second_player.user.name, count: new_second_player.initiative ) )
+      end
+    end
+
+  end
+
 end
