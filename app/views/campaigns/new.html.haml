@@ -8,6 +8,14 @@
         - @campaign.errors.full_messages.each do |message|
           %li= message
 
+  - if @player&.errors&.any?
+    #error_explanation_player
+      %h2= t( 'error_explanation_message', count: @player.errors.count, subject: 'cette campagne' )
+      %ul
+        - @player.errors.full_messages.each do |message|
+          %li= "Player : #{message}"
+
+
   .form-group
     = f.label :name, t( '.name' )
     = f.text_field :name, class: 'form-control'

@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     get :schedule_movements_edit
     post :schedule_movements_save
 
+    get :initiative_bet_edit
+    post :initiative_bet_save
+
     patch :choose_faction_save
   end
 

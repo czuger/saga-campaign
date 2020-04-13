@@ -31,10 +31,7 @@ class PlayersController < ApplicationController
       new_players_creation_result = true
       params['players'].each do |player|
         user = User.find( player )
-        new_players_creation_result &= Player.create(
-          user_id: player, campaign_id: @campaign.id, pp: GameRules::Factions::START_PP, controls_points: [] )
-
-        @campaign.logs.create!( data: "Joueur #{user.name} ajouté à la campagne.")
+        new_players_creation_result &= Player.create_new_player( @campaign, user )
 
         if @campaign.players.count >= @campaign.max_players
           @campaign.players_choose_faction!
@@ -138,6 +135,12 @@ class PlayersController < ApplicationController
     end
 
     redirect_to campaigns_path
+  end
+
+  def initiative_bet_edit
+  end
+
+  def initiative_bet_save
   end
 
   private

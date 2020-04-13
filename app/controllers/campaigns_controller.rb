@@ -41,7 +41,7 @@ class CampaignsController < ApplicationController
       if create_new_campaign
         format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( 'creation_success.f', item: 'La campagne' ) }
       else
-        format.html { render :new }
+        format.html { render :new, error: 'Campaign creation failed' }
       end
     end
 
@@ -115,8 +115,8 @@ class CampaignsController < ApplicationController
     Campaign.transaction do
       result = @campaign.save
       result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
-      result &&= @campaign.players.create( user_id: current_user.id, pp: GameRules::Factions::START_PP, controls_points: [] )
-      result && @campaign.logs.create( data: I18n.t( 'log.campaign.created', name: current_user.name ) )
+      @player = Player.create_new_player( @campaign, current_user )
+      result && @player.errors.empty?
     end
   end
 

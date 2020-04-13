@@ -19,6 +19,7 @@
             = dropdown_sub_menu_link( t('menu.combats'), campaign_fights_path( @campaign ) )
             = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
             = dropdown_sub_menu_link( t('menu.player'), campaign_player_path( @campaign, @player ) )
+            = dropdown_sub_menu_link( t('menu.initiative_bet'), player_initiative_bet_edit_path( @player ) )
 
           = simple_menu_link( t('menu.map'), campaign_map_show_path( @campaign ), target: '_blank' )
 

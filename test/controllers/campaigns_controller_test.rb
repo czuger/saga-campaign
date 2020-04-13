@@ -33,9 +33,10 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    assert_equal @user.id, Player.last.user_id
-
     assert_redirected_to new_campaign_player_url(Campaign.last)
+
+    assert_equal @user.id, Player.last.user_id
+    assert_equal 1, @campaign.players.count
   end
 
   # Create a new campaign and assert that current user is added as a player

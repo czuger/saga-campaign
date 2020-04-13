@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_065018) do
+ActiveRecord::Schema.define(version: 2020_04_13_104748) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_065018) do
     t.integer "initiative"
     t.string "faction"
     t.boolean "movements_orders_finalized", default: false, null: false
+    t.integer "initiative_bet"
     t.index ["campaign_id"], name: "index_players_on_campaign_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end

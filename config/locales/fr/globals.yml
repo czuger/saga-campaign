@@ -37,6 +37,7 @@ fr:
     combats: Combats
     gangs: Bandes
     player: Joueur
+    initiative_bet: Miser pour l'initiative
 
     map: Carte
     rules: Règles

@@ -29,8 +29,9 @@ module GameRules
         end
 
         finalize_movements!
-
         gain_and_loose_pp!
+
+        @campaign.players_bet_for_initiative!
       end
     end
 
