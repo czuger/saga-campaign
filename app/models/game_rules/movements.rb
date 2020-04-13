@@ -4,6 +4,8 @@ module GameRules
 
     def initialize( campaign )
       @campaign = campaign
+      @intercepted_gang_ids = Set.new
+      @scheduled_fights = []
     end
 
     def run!
@@ -18,6 +20,8 @@ module GameRules
             gang, movement = p_struct.movements_array.shift
 
             if gang
+              next if @intercepted_gang_ids.include?( gang.id )
+
               original_location = gang.location
 
               gang.location = movement
@@ -127,7 +131,12 @@ module GameRules
 
       if intercepted_gang
         intercepted_gang.movements = []
+        @intercepted_gang_ids << intercepted_gang.id
+
         intercepting_gang.movements = []
+        @intercepted_gang_ids << intercepting_gang.id
+
+        @scheduled_fights << [ intercepting_gang, intercepted_gang ]
 
         I18n.t(
           'gangs.interception', intercepted_name: intercepted_gang.name, intercepting_name: intercepting_gang.name,
