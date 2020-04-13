@@ -82,16 +82,12 @@ class PlayersController < ApplicationController
 
   def schedule_movements_save
     Gang.transaction do
-      params[:gangs_order].split( ',' ).each_with_index do |gang_id, index|
 
-        gang_id = gang_id.strip
+      gang_order_hash = Hash[ params[:gangs_order].split( ',' ).each_with_index.map{ |e, i| [ e.strip.to_i, i ] } ]
 
-        gang = Gang.find( gang_id )
-        raise "Player #{@player.inspect} is not allowed to modify gang #{gang.inspect}" unless gang.player_id == @player.id
-
-        gang.movement_order = index + 1
-        gang.movements = [params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id]]
-        gang.movements.reject!{ |e| e&.empty? }
+      @player.gangs.each do |gang|
+        gang.movement_order = gang_order_hash[ gang.id ] + 1
+        gang.movements = gang_movements_array( gang.id )
         gang.save!
       end
 
@@ -160,8 +156,13 @@ class PlayersController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def player_params
-      params.permit(:campaign_id, :player )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def player_params
+    params.permit(:campaign_id, :player )
+  end
+
+  def gang_movements_array( gang_id )
+    gang_id = gang_id.to_s.freeze
+    [ params[:gang_movement]['1'.freeze][gang_id], params[:gang_movement]['2'.freeze][gang_id] ].reject{ |e| e&.empty? }
+  end
 end
