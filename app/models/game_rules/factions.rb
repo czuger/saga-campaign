@@ -60,9 +60,6 @@ module GameRules
     #
     # @return [Array] The position where the player can create gangs
     def self.starting_positions( campaign, player )
-      # TODO : create a new step to make a difference between campaign start recruitment and campaign running recruitment
-      # TODO : user campaign_aasm_state to return either FACTIONS_STARTING_POSITIONS or FACTIONS_RECRUITMENT_POSITIONS
-
       faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
 
       if campaign.aasm_state == 'first_hiring_and_movement_schedule'

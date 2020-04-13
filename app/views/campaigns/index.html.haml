@@ -1,11 +1,11 @@
-%h1 Liste des campagnes
+%h1= t( '.title' )
 
 %table.table
   %thead
     %tr
-      %th Créateur
-      %th Nom de la campagne
-      %th Status
+      %th= t( '.owner' )
+      %th= t( '.name' )
+      %th= t( '.status_title' )
       %th
       -#%th
       -#%th
@@ -18,15 +18,10 @@
         %td= t( '.status.' + campaign.aasm_state )
 
         %td
-          - if campaign.aasm_state == 'waiting_for_players'
-            = link_to 'Détails', new_campaign_player_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
-          - elsif campaign.aasm_state == 'waiting_for_players_to_choose_their_faction'
-            = link_to 'Détails', players_choose_faction_new_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
-          - else
-            = link_to 'Détails', campaign, class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
+          = link_to t( '.details' ), get_detail_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
         -#%td= link_to 'Renommer', edit_campaign_path(campaign), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
         -#%td= link_to 'Supprimer', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
-= link_to 'Nouvelle campagne', new_campaign_path, class: 'btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
+= link_to t( '.new' ), new_campaign_path, class: 'btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
 
 

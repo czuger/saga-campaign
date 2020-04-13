@@ -92,7 +92,6 @@ class CampaignsController < ApplicationController
     GameRules::Movements.new( @campaign ).run!
 
     # TODO : run all movement with combats directly
-    # TODO : reset movements_orders_finalized and movements orders
     # TODO : switch campaign state
 
     # FOCUS ON CAMPAIGN MECHANISM FIRST. DO NOT INCLUDE COMBAT.

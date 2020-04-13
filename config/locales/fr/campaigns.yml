@@ -13,9 +13,17 @@ fr:
       title: Edition d'une campagne
 
     index:
+      title: Mes campagnes
+      owner: Créateur
+      name: Nom de la campagne
+      status_title: Status
+      details: Details
+      new: Nouvelle campagne
+
       status:
         waiting_for_players: En attente de joueurs
         waiting_for_players_to_choose_their_faction: Les joueurs doivent choisir leurs factions
         hiring_and_movement_schedule: Les joueurs recrutent et planifient leurs mouvements
+        first_hiring_and_movement_schedule: Les joueurs recrutent et planifient leurs mouvements
 
 
