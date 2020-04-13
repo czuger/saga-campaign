@@ -29,6 +29,8 @@ module GameRules
         end
 
         finalize_movements!
+
+        gain_and_loose_pp!
       end
     end
 
@@ -97,5 +99,21 @@ module GameRules
       new_controller.controls_points << location
     end
 
+    # This will probably moved elsewhere
+    def gain_and_loose_pp!
+      map = GameRules::Map.new
+
+      @players.each do |p_struct|
+        player = p_struct.player
+
+        total_pp = player.controls_points.map{ |control| map.position_value( control ) }.inject( &:+ )
+        player.pp += total_pp
+        @campaign.logs.create!( data: I18n.t( 'log.pp.control_points_gain', name: player.user.name, count: total_pp ) )
+
+        maintenance = ( player.gangs.sum( :points ) * 0.5 ).ceil
+        player.pp -= maintenance
+        @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
+      end
+    end
   end
 end

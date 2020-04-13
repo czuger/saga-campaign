@@ -13,6 +13,14 @@ fr:
         one: "Le joueur %{name} a gagné un point de pouvoir."
         other: "Le joueur %{name} a gagné %{count} points de pouvoir."
 
+      control_points_gain:
+        one: "Le joueur %{name} a gagné un point de pouvoir grâce aux points qu'il contrôle."
+        other: "Le joueur %{name} a gagné %{count} points de pouvoir grâce aux points qu'il contrôle."
+
+      maintenance_loss:
+          one: "Le joueur %{name} a perdu un point de pouvoir à cause de la maintenance de ses troupes."
+          other: "Le joueur %{name} a perdu %{count} points de pouvoir à cause de la maintenance de ses troupes."
+
     gangs:
       created: "Le joueur %{player_name} a créé la bande %{gang_name}."
       destroyed: "Le joueur %{player_name} a supprimé la bande %{gang_name}."
