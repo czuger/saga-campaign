@@ -55,18 +55,6 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get players_choose_faction_new' do
-    other_user = create( :user )
-    other_campaign = create( :campaign, user: other_user )
-    create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
-    create( :player, user: @user, campaign: other_campaign )
-
-    get campaign_players_choose_faction_new_url( other_campaign )
-    assert_response :success
-
-    puts @response.body
-  end
-
   test 'should get edit' do
     get edit_campaign_url(@campaign)
     assert_response :success

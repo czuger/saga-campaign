@@ -4,6 +4,10 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
 
   def setup
     create_full_campaign
+
+    @campaign.players_choose_faction!
+    @campaign.players_first_hire_and_move!
+
     @player.initiative = 1
     @player.save!
 
@@ -45,7 +49,7 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     get campaign_resolve_movements_path( @campaign )
-    assert_redirected_to campaign_show_movements_path( @campaign )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
 
     movements = @campaign.movements_results.all.to_a
 
@@ -127,7 +131,8 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
            gang_movement: { '1' => { cg1.id => 'C9', cg2.id => 'C8', cg3.id => 'C5' },
                             '2' => { cg1.id => '', cg2.id => 'C5', cg3.id => '' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}", validate: :validate )
 
-    assert_redirected_to campaign_show_movements_path( @campaign )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
+    get campaign_resolve_movements_path( @campaign )
 
     movements = @campaign.movements_results.all.to_a
 
@@ -203,7 +208,8 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
            gang_movement: { '1' => { cg1.id => 'C9', cg2.id => 'C8', cg3.id => 'C5' },
                             '2' => { cg1.id => '', cg2.id => 'C5', cg3.id => '' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}", validate: :validate )
 
-    assert_redirected_to campaign_show_movements_path( @campaign )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
+    get campaign_resolve_movements_path( @campaign )
 
     movements = @campaign.movements_results.all.to_a
 
@@ -274,7 +280,8 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     post player_schedule_movements_save_path(
            @player2, params: { gang_movement: { '1' => { @gang2.id => 'C3' }, '2' => { @gang2.id => 'C4' } } }, gangs_order: "#{@gang2.id}", validate: :validate )
 
-    assert_redirected_to campaign_show_movements_path( @campaign )
+    # assert_redirected_to campaign_show_movements_path( @campaign )
+    get campaign_resolve_movements_path( @campaign )
 
     movements = @campaign.movements_results.all.to_a
 

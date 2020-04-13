@@ -71,6 +71,18 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_equal %w( C5 ), cg3.reload.movements
   end
 
+  test 'should get players_choose_faction_new' do
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    @player = create( :player, user: @user, campaign: other_campaign )
+
+    get players_choose_faction_new_url( @player )
+    assert_response :success
+
+    puts @response.body
+  end
+
   # test 'should get edit' do
   #   get campaign_edit_player_url(@player)
   #   assert_response :success

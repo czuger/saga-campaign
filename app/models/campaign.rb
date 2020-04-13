@@ -29,7 +29,7 @@ class Campaign < ApplicationRecord
     end
 
     event :players_hire_and_move do
-      transitions from: [:first_hiring_and_movement_schedule], to: :hiring_and_movement_schedule
+      transitions from: [:first_hiring_and_movement_schedule, :bet_for_initiative], to: :hiring_and_movement_schedule
     end
 
     event :players_bet_for_initiative do
