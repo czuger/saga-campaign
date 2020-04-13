@@ -14,12 +14,7 @@
             = dropdown_sub_menu_link( t('menu.initiative'), campaign_initiative_edit_path( @campaign ) )
 
         - if @campaign&.id && @player&.id
-          = dropdown_menu_block( t('menu.actions') ) do
-            = dropdown_sub_menu_link( t('menu.movements'), player_schedule_movements_edit_path( @player ) )
-            = dropdown_sub_menu_link( t('menu.combats'), campaign_fights_path( @campaign ) )
-            = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
-            = dropdown_sub_menu_link( t('menu.player'), campaign_player_path( @campaign, @player ) )
-            = dropdown_sub_menu_link( t('menu.initiative_bet'), player_initiative_bet_edit_path( @player ) )
+          = render partial: 'layouts/action_menu'
 
           = simple_menu_link( t('menu.map'), campaign_map_show_path( @campaign ), target: '_blank' )
 

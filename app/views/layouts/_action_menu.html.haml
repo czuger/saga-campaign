@@ -1,0 +1,7 @@
+- case @campaign.aasm_state
+  - when 'first_hiring_and_movement_schedule', 'hiring_and_movement_schedule'
+    = dropdown_menu_block( t('menu.actions') ) do
+      = dropdown_sub_menu_link( t('menu.movements'), player_schedule_movements_edit_path( @player ) )
+      = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
+  - when 'bet_for_initiative'
+    = simple_menu_link( t('menu.initiative_bet'), player_initiative_bet_edit_path( @player ) )

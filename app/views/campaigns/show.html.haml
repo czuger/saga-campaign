@@ -1,31 +1,41 @@
 .row.my-3
-  .col
+
+  .col-4
     %button.btn.btn-secondary.btn-block{ type: :button }
       Créateur
       %span.badge.badge-light
         = @campaign.user.name
 
-  .col
+  .col-4
     %button.btn.btn-secondary.btn-block{ type: :button }
       Nom de la campagne
       %span.badge.badge-light
         = @campaign.name
 
-  .col
+  .col-4
     %button.btn.btn-secondary.btn-block{ type: :button }
       Joueurs
       %span.badge.badge-light
         = @players.map{ |e| e.user.name }.join( ', ' )
+
+.row.my-3
+  .col-4
+    %button.btn.btn-secondary.btn-block{ type: :button }
+      Joueur
+      %span.badge.badge-light
+        = @player.user.name
+  .col-4
+    %button.btn.btn-secondary.btn-block{ type: :button }
+      PP
+      %span.badge.badge-light
+        = @player.pp
 
 - if @movements_finalized
   .row.my-3
     .col-4
       = link_to 'Bouger les bandes', campaign_resolve_movements_path( @campaign ), class: 'btn btn-danger btn-block', role: 'button', 'aria-disabled' => 'true'
 
--#.row.mb-3
--#  .col-4
--#    = link_to 'Planification des mouvements', player_schedule_movements_edit_path( @player ), class: ' btn btn-secondary btn-block', role: 'button', 'aria-disabled' => 'true'
-
+%hr
 
 %table.table
   %thead
