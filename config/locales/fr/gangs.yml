@@ -5,3 +5,5 @@ fr:
       created: "La bande %{name} a bien été créée."
       updated: "La bande %{name} a bien été modifiée."
       destroyed: "La bande %{name} a bien été supprimée."
+
+    interception: "La bande %{intercepted_name} a été interceptée par %{intercepting_name} en %{location}"

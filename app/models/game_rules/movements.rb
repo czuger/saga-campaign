@@ -18,18 +18,23 @@ module GameRules
             gang, movement = p_struct.movements_array.shift
 
             if gang
-              @campaign.movements_results.create!(
-                campaign: @campaign, player: p_struct.player, gang: gang, from: gang.location, to: movement )
+              original_location = gang.location
 
               gang.location = movement
+              interception_result = check_for_interception!( gang )
 
               control_point!( movement, p_struct.player )
+
+              @campaign.movements_results.create!(
+                campaign: @campaign, player: p_struct.player, gang: gang, from: original_location, to: movement,
+                interception: interception_result )
+
             end
           end
         end
 
+        gain_and_loose_pp!  # Need to be before because finalize movement save data
         finalize_movements!
-        gain_and_loose_pp!
 
         @campaign.players_bet_for_initiative!
       end
@@ -116,5 +121,19 @@ module GameRules
         @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
       end
     end
+
+    def check_for_interception!( intercepting_gang )
+      intercepted_gang = @gangs.reject{ |g| g.player_id == intercepting_gang.player_id }.select{ |g| g.location == intercepting_gang.location }.first
+
+      if intercepted_gang
+        intercepted_gang.movements = []
+        intercepting_gang.movements = []
+
+        I18n.t(
+          'gangs.interception', intercepted_name: intercepted_gang.name, intercepting_name: intercepting_gang.name,
+          location: intercepting_gang.location )
+      end
+    end
+
   end
 end

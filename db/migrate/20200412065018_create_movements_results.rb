@@ -6,7 +6,7 @@ class CreateMovementsResults < ActiveRecord::Migration[6.0]
       t.references :gang, null: false, foreign_key: true
       t.string :from, null: false
       t.string :to, null: false
-      t.boolean :interception, null: false, default: false
+      t.string :interception
       t.string :fight
 
       t.timestamps

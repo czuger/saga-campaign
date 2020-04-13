@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
     t.integer "gang_id", null: false
     t.string "from", null: false
     t.string "to", null: false
-    t.boolean "interception", default: false, null: false
+    t.string "interception"
     t.string "fight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
