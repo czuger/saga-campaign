@@ -141,6 +141,12 @@ class PlayersController < ApplicationController
   end
 
   def initiative_bet_save
+    Player.transaction do
+      @player.initiative_bet = params[ :pp ].to_i
+      @player.save!
+
+      redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
+    end
   end
 
   private

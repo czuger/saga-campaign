@@ -1,6 +1,6 @@
 %h1 Mises pour l'initiative
 
-= form_tag url: player_initiative_bet_save_path( @player ) do
+= form_tag player_initiative_bet_save_path( @player ) do
   .row
 
     .col-3
@@ -10,7 +10,7 @@
           = @player.pp
 
     .col-3
-      = number_field_tag :pp, 0, class: 'form-control', min: 0, max: @player.pp
+      = number_field_tag :pp, @player.initiative_bet, class: 'form-control', min: 0, max: @player.pp
 
     .col-3
       = submit_tag 'Enregistrer', class: 'btn btn-secondary btn-block'
