@@ -20,7 +20,7 @@ class FightAlgoTest < ActiveSupport::TestCase
     create( :unit_gardes_nature, gang: ng )
     create( :unit_guerriers_nature, gang: ng )
 
-    Fight::Base.new(@campaign.id, 'O1', hg.id, ng.id ).go
+    # Fight::Base.new(@campaign.id, 'O1', hg.id, ng.id ).go
   end
 
 end

@@ -3,35 +3,6 @@ class GangsController < ApplicationController
   before_action :set_gang, only: [:show, :edit, :update, :destroy, :change_location]
   before_action :set_player, only: [:create, :index, :new]
 
-  def change_location
-    Gang.transaction do
-      @gang.location = params[:location]
-      @gang.save!
-
-      @campaign.players.each do |player|
-        next if player.id == @player.id
-        player.controls_points ||= []
-        player.controls_points.delete( @gang.location )
-        player.save!
-      end
-
-      @player.controls_points ||= []
-      @player.controls_points << @gang.location
-      @player.controls_points.uniq!
-      @player.save!
-
-      player_name = @player.user.name
-
-      @campaign.logs.create!(
-        data: I18n.t( 'log.gangs.movement', player_name: @player.user.name, gang_name: @gang.name, location: @gang.location )
-      )
-
-      @campaign.logs.create!(
-        data: I18n.t( 'log.gangs.take_control', gang_name: @gang.name, location: @gang.location )
-      )
-    end
-  end
-
   # GET /gangs
   # GET /gangs.json
   def index

@@ -97,7 +97,7 @@ module GameRules
         p_struct.player.controls_points.delete( location )
       end
 
-      new_controller.controls_points << location
+      new_controller.controls_points << location unless new_controller.controls_points.include?( location )
     end
 
     # This will probably moved elsewhere

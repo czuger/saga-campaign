@@ -5,15 +5,6 @@ class GangsControllerTest < ActionDispatch::IntegrationTest
     create_full_campaign
   end
 
-  test 'should change location' do
-    second_user = create( :user )
-    second_player = create( :player, campaign: @campaign, user: second_user, controls_points: [ 'O8' ] )
-
-    post gang_change_location_url( @gang, params: { location: 'O8' } )
-    assert_equal 'O8', @gang.reload.location
-    assert_empty second_player.reload.controls_points
-  end
-
   test 'should get index' do
     get player_gangs_url( @player )
     assert_response :success

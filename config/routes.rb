@@ -38,7 +38,6 @@ Rails.application.routes.draw do
 
   resources :gangs, only: [ :destroy, :edit, :update ] do
     resources :units, only: [ :new, :create, :update, :index ]
-    post 'change_location', to: 'gangs#change_location'
   end
 
   # Used to set icons position on map

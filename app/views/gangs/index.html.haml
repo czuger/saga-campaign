@@ -28,9 +28,7 @@
         %td= gang.name
 
         %td= gang.points
-        %td
-          - l = @localisations.map{ |l| [l, "#{l}##{gang.id}"] }
-          = select_tag('select_location', options_for_select(l, "#{gang.location}##{gang.id}"), class: 'location_selector')
+        %td= gang.location
 
         %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 

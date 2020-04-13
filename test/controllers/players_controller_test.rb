@@ -77,10 +77,10 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
     @player = create( :player, user: @user, campaign: other_campaign )
 
-    get players_choose_faction_new_url( @player )
+    get players_choose_faction_new_url( @campaign )
     assert_response :success
 
-    puts @response.body
+    # puts @response.body
   end
 
   # test 'should get edit' do
