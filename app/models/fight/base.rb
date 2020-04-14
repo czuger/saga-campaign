@@ -39,7 +39,7 @@ module Fight
       end
 
       # @result = AttackCountPoints.new(@player_1, @player_2, @body_count ).do
-      # save_result( @result ) if @save_result
+      save_result( @result ) if @save_result
 
       self
     end
@@ -61,6 +61,7 @@ module Fight
 
         next_attacking_unit, used_die = attacking_gang.get_next_unit_to_activate( dice )
         # p "priority = #{next_attacking_unit[0]}, #{next_attacking_unit[1].to_s}"
+        # p next_attacking_unit
 
         if next_attacking_unit
           next_attacking_unit = next_attacking_unit[1]
@@ -74,6 +75,9 @@ module Fight
           next_attacking_unit.already_activate_this_turn = true
 
           puts
+        else
+          puts 'No more units could be activated'
+          break
         end
       end
 
@@ -83,15 +87,16 @@ module Fight
     # Save results in the database.
     #
     # @return nil
-    def save_result( result )
+    def save_result( result= nil )
 
-      fight_data = {
-        attacker: @player_1.player.user.name,
-        defender: @player_2.player.user.name,
-        attacking_gang_no: @player_1.id,
-        defending_gang_no: @player_2.id,
-        result: result
-        }
+      fight_data = OpenStruct.new(
+        # attacker: @player_1.player.user.name,
+        # defender: @player_2.player.user.name,
+        # attacking_gang_no: @player_1.id,
+        # defending_gang_no: @player_2.id,
+        result: result,
+        casualties: casualties
+      )
 
       FightResult.create!( campaign_id: @campaign_id, location: @location, fight_data: fight_data, fight_log: @combat_log )
 
@@ -119,6 +124,10 @@ module Fight
       wt.from_weighted_table( units)
 
       wt.sample
+    end
+
+    def casualties
+      OpenStruct.new(  attacker: @attacking_gang.casualties, defender: @defending_gang.casualties )
     end
   end
 

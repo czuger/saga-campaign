@@ -70,6 +70,7 @@ module Fight
         verbose: @verbose )
 
       ar.perform_ranged_attack!
+
       @attacking_unit.end_action
     end
 
@@ -85,6 +86,7 @@ module Fight
         verbose: @verbose )
 
       ar.perform_melee_attack!
+
       @attacking_unit.end_action
     end
 

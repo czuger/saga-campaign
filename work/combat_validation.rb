@@ -19,6 +19,7 @@ require_relative '../app/models/fight/tmp_unit'
 require_relative '../app/models/fight/action_dice_pool'
 require_relative '../app/models/fight/action_decision'
 require_relative '../app/models/fight/hits_assignment'
+require_relative '../app/models/fight/casualties_unit'
 
 db = YAML.load_file( 'config/database.yml' )['development']
 db['pool'] = 5
@@ -45,8 +46,9 @@ end
 
 
 def one_shot
-  c = Fight::Base.new(2, 'O1', 2, 1, verbose: true )
+  c = Fight::Base.new(1, 'O1', 2, 1, verbose: true )
   c.go
+
   # puts c.combat_log.to_yaml
 # pp c.body_count
 # pp c.result.attacker_points_list

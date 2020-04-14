@@ -60,6 +60,9 @@ module Fight
       nearest_unit
     end
 
+    def casualties
+      @units.map{ |u| u.casualties }
+    end
 
   end
 end

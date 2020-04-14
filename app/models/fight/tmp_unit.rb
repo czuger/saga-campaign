@@ -3,8 +3,8 @@ module Fight
   # This class is used to work on another class then the Unit class during the fight.
   class TmpUnit
 
-    attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged, :resistance, :current_amount
-    attr_reader :movement
+    attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged,
+                :resistance, :current_amount, :movement, :initial_amount, :current_amount, :name, :weapon, :libe
     attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender, verbose: false )
@@ -144,6 +144,10 @@ module Fight
           assign_hits_without_resistance!( hits )
         end
       end
+    end
+
+    def casualties
+      Fight::CasualtiesUnit.new( self )
     end
 
     private
