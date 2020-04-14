@@ -15,7 +15,7 @@ module Fight
 
       @body_count = {}
 
-      @should_save_result = save_result
+      @should_save_result = should_save_result
       @verbose = verbose
     end
 
@@ -29,8 +29,8 @@ module Fight
         attack_count = ( i == 1 ? 3 : 8 )
 
         round_log_shell.attacker = tour(@attacking_gang, @defending_gang, attack_count )
-        puts
-        puts
+        puts if @verbose
+        puts if @verbose
         round_log_shell.defender = tour(@defending_gang, @attacking_gang, attack_count )
 
         @combat_log << round_log_shell
@@ -39,7 +39,9 @@ module Fight
       end
 
       @result = AttackCountPoints.new(@attacking_gang, @defending_gang ).compute
-      save_result( @result ) if @save_result
+      puts @result.winner if @verbose
+
+      save_result( @result ) if @should_save_result
       self
     end
 
@@ -53,7 +55,7 @@ module Fight
       units_actions_log = []
 
       dice = ActionDicePool.new( attacking_gang )
-      p dice.to_s
+      p dice.to_s if @verbose
 
       while dice.remaining_action_dice? && defending_gang.has_units?
         # p dice.to_s
@@ -73,9 +75,9 @@ module Fight
 
           next_attacking_unit.already_activate_this_turn = true
 
-          puts
+          puts if @verbose
         else
-          puts 'No more units could be activated'
+          puts 'No more units could be activated' if @verbose
           break
         end
       end

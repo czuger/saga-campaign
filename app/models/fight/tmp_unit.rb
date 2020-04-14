@@ -4,7 +4,8 @@ module Fight
   class TmpUnit
 
     attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged,
-                :resistance, :current_amount, :movement, :initial_amount, :current_amount, :name, :weapon, :libe
+                :resistance, :current_amount, :movement, :initial_amount, :current_amount, :name, :weapon, :libe,
+                :legendary
     attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender, verbose: false )
@@ -21,6 +22,7 @@ module Fight
       @fatigue = 0
       @max_fatigue = unit_data.options.include?( 'imposant'.freeze ) ? 4 : 3
       @massacre_points = unit.massacre_points
+      @legendary = unit.legendary?
 
       @damage_cac = unit_data.damage.cac
       @damage_ranged = unit_data.damage.ranged

@@ -33,15 +33,32 @@ I18n.default_locale = :fr
 
 def stats
   results = {}
-  f = Fight::Base.new(2, 'O1', 2, 1, should_save_result: false )
+  lords_surviving_count = 0
 
-  1.upto(500) do |i|
+  runs = 1000
+
+  1.upto(runs) do |i|
     p i if i % 100 == 0
-    r = f.go.result.winner_code
+
+    f = Fight::Base.new(2, 'O1', 9, 10, should_save_result: false )
+    result = f.go.result
+
+    r = result.winner_code
     results[r] ||= 0
     results[r] += 1
+
+    lords_surviving_count += result.lords_surviving_count
   end
-  pp results
+
+  total = results[ :equality ] + results[ :defender ] + results[ :attacker ]
+  equality = ( results[ :equality ].to_f * 100 ) / total
+  defender = ( results[ :defender ].to_f * 100 ) / total
+  attacker = ( results[ :attacker ].to_f * 100 ) / total
+
+  puts "Attacker win : #{attacker}%, equality : #{equality}%, defender win : #{defender}%"
+
+  lsr = ( lords_surviving_count.to_f * 100 ) / (runs*2)
+  puts "Lords surviving ratio = #{lsr}%"
 end
 
 
@@ -55,8 +72,8 @@ def one_shot
 # pp c.result.winner_code
 end
 
-# stats
-one_shot
+stats
+# one_shot
 
 
 

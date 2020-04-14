@@ -9,7 +9,7 @@ module Fight
 
     attr_reader :attacker_points_list, :attacker_points_total, :defender_points_list, :defender_points_total
     attr_reader :winner, :winner_code, :attacker_name, :defender_name
-    attr_reader :attacker_body_count, :defender_body_count
+    attr_reader :attacker_body_count, :defender_body_count, :lords_surviving_count
 
     def initialize( attacking_gang, defending_gang )
 
@@ -27,14 +27,16 @@ module Fight
       # @attacker_body_count = create_readable_body_count @attacking_gang
       # @defender_body_count = create_readable_body_count @defending_gang
 
+      @lords_surviving_count = @defending_gang.lord_surviving_count + @attacking_gang.lord_surviving_count
+
       if @attacker_points_total >= 8 && @attacker_points_total > @defender_points_total + 3
 
-        @winner = @attacking_gang.player.user.name
+        @winner = @attacker_name
         @winner_code = :attacker
 
       elsif @defender_points_total >= 8 && @defender_points_total > @attacker_points_total + 3
 
-        @winner = @defending_gang.player.user.name
+        @winner = @defender_name
         @winner_code = :defender
 
       else
@@ -87,7 +89,7 @@ module Fight
         total += points
 
         if unit.destroyed?
-          if unit.legendary?
+          if unit.legendary
             points = 4
           else
             points = 1

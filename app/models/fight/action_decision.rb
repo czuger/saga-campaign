@@ -19,17 +19,17 @@ module Fight
       log = nil
       @units_in_range = @defending_gang.units_in_range( @attacking_unit )
       nearest_enemy_unit = @defending_gang.nearest_enemy_unit( @attacking_unit )
-      puts "nearest_enemy_unit = #{nearest_enemy_unit}"
+      puts "nearest_enemy_unit = #{nearest_enemy_unit}" if @verbose
 
       if @attacking_unit.exhausted?
         @attacking_unit.rest!
 
-        puts "L'unité #{@attacking_unit.name} est fatiguée et se repose."
+        puts "L'unité #{@attacking_unit.name} est fatiguée et se repose." if @verbose
 
       elsif @attacking_unit.wounded?
         # If a ranged attacking unit is too close than another unit it will fall back.
 
-        puts "#{@attacking_unit.unit_name} prends la fuite"
+        puts "#{@attacking_unit.unit_name} prends la fuite" if @verbose
 
         @attacking_unit.fall_back
         @attacking_unit.end_action
@@ -45,10 +45,15 @@ module Fight
         ranged_attack
 
       elsif @attacking_unit.melee_and_melee_range?(nearest_enemy_unit )
-        puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} charge #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
+        if @verbose
+          puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} charge #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
+        end
 
         @attacking_unit.advance( nearest_enemy_unit.current_position )
-        puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} vs #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
+
+        if @verbose
+          puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} vs #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
+        end
 
         melee_attack
 
@@ -66,7 +71,7 @@ module Fight
     def ranged_attack
       defending_unit = @units_in_range.sample
 
-      puts "#{@attacking_unit.name} attaque #{defending_unit.name} à distance."
+      puts "#{@attacking_unit.name} attaque #{defending_unit.name} à distance." if @verbose
 
       ar = AttackWithRetaliation.new(
         @attacking_gang, @defending_gang, @attacking_unit, defending_unit, {},
@@ -84,7 +89,7 @@ module Fight
 
       # pp @defending_gang unless defending_unit
 
-      puts "#{@attacking_unit.name} attaque #{defending_unit.name} au CAC."
+      puts "#{@attacking_unit.name} attaque #{defending_unit.name} au CAC." if @verbose
 
       ar = AttackWithRetaliation.new(
         @attacking_gang, @defending_gang, @attacking_unit, defending_unit, {},

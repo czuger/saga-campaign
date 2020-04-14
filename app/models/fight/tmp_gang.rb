@@ -37,7 +37,9 @@ module Fight
     # @param unit [TmpUnit] the unit to remove
     def remove_unit!( unit )
       puts "#{unit.unit_name} est détruite." if @verbose
-      @units.delete( unit )
+
+      # Unit is not really removed now, we check if it is destroyed.
+      # @units.delete( unit )
     end
 
     # Compute the position of the nearest enemy. This will be the melee spot
@@ -66,6 +68,10 @@ module Fight
 
     def has_units?
       @units.reject{ |u| u.destroyed? }.count != 0
+    end
+
+    def lord_surviving_count
+      @units.select{ |u| u.libe == 'seigneur' }.first.destroyed? ? 0 : 1
     end
 
   end
