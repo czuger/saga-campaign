@@ -74,17 +74,6 @@ class CampaignsController < ApplicationController
   def initiative_edit
   end
 
-  def initiative_save
-    new_order_hash = Hash[ params[ :new_order ].values ]
-
-    Player.transaction do
-      @campaign.players.includes(:user).each do |player|
-        player.initiative = new_order_hash[ player.id.to_s ].to_i
-        player.save!
-      end
-    end
-  end
-
   def resolve_movements
     # We check if all players have validated their movements
     # if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1

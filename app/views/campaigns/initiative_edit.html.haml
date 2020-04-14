@@ -1,4 +1,4 @@
-%h1 Ordonnez les joueurs en fonction de l'initiative
+%h1 Ordre de jeu des joueurs
 
 %ul#sortable.list-group.mt-3
   - @campaign.players.order( :initiative ).includes( :user ).each do |player|

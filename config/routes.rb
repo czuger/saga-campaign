@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get :controlled_points
 
     get :initiative_edit
-    post :initiative_save
+    # post :initiative_save
 
     get :resolve_movements
     get :show_movements
