@@ -27,6 +27,11 @@ namespace :fill_db do
     original_icons = %w( caesar.svg laurels.svg spartan.svg )
     original_locations = GameRules::Factions::FACTIONS_STARTING_POSITIONS['order']
 
+    units = [
+      ['seigneur', '-', 1], ['monstre', 'behemoth', 1], ['creatures', 'bipedes', 2], ['gardes', 'arme_lourde', 4],
+      ['guerriers', '-', 8], ['guerriers', '-', 8], ['levees', 'arc_ou_fronde', 12]
+    ]
+
     Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
       icons = original_icons.dup
       locations = original_locations.dup
@@ -36,8 +41,8 @@ namespace :fill_db do
                          number: gang_id, location: locations.shift, faction: 'royaumes',
                          name: GameRules::UnitNameGenerator.generate_unique_unit_name( p.campaign ) )
 
-        1.upto( 6 ).each do
-          Unit.create!( gang: g, libe: 'guerriers', weapon: '-', amount: 8, points: 1,
+        units.each do |unit_type|
+          Unit.create!( gang: g, libe: unit_type[0], weapon: unit_type[1], amount: unit_type[2], points: 1,
                         name: GameRules::UnitNameGenerator.generate_unique_unit_name( p.campaign ) )
         end
       end

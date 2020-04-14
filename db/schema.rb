@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
     t.string "fight_log", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "movements_result_id"
     t.index ["campaign_id"], name: "index_fight_results_on_campaign_id"
+    t.index ["movements_result_id"], name: "index_fight_results_on_movements_result_id", unique: true
   end
 
   create_table "gangs", force: :cascade do |t|
@@ -65,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
     t.string "from", null: false
     t.string "to", null: false
     t.string "interception"
-    t.string "fight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_movements_results_on_campaign_id"

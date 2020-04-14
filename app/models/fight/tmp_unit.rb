@@ -20,6 +20,7 @@ module Fight
       @resistance = unit.resistance if unit.respond_to?( :resistance )
       @fatigue = 0
       @max_fatigue = unit_data.options.include?( 'imposant'.freeze ) ? 4 : 3
+      @massacre_points = unit.massacre_points
 
       @damage_cac = unit_data.damage.cac
       @damage_ranged = unit_data.damage.ranged
@@ -67,6 +68,19 @@ module Fight
       @current_amount < @initial_amount / 2 || @resistance && @fatigue >= @max_fatigue / 2
     end
 
+    def losses
+      @initial_amount - @current_amount
+    end
+
+    # Compute the losses points do determine victory
+    def losses_points
+      losses * @massacre_points
+    end
+
+    def destroyed?
+      @current_amount == 0
+    end
+
     def end_action
       if @already_activate_this_turn
         @fatigue += 1
@@ -81,6 +95,13 @@ module Fight
 
     def melee_dice_pool
       [(@current_amount * @damage_cac).ceil.to_i, 16].min
+    end
+
+    # Check if unit is melee and has unit at charge range. Check before charge. Use @algo_advance instead of movement
+    #
+    # @param nearest_enemy_unit [TmpUnit] the nearest enemy unit.
+    def melee_and_melee_range?(nearest_enemy_unit )
+      nearest_enemy_unit && attack_range == 0 && distance( nearest_enemy_unit ) <= @algo_advance
     end
 
     # Advance from the required advance movement. Don't cross enemy positions.

@@ -1,11 +1,11 @@
 module Fight
   class TmpGang
 
-    attr_reader :units
+    attr_reader :units, :player_name
 
     def initialize( gang_id, attacker_or_defender, verbose: false )
       gang = Gang.find( gang_id )
-      @attacker_name = gang.player.user.name
+      @player_name = gang.player.user.name
 
       @attacker_or_defender = attacker_or_defender
 
@@ -16,7 +16,7 @@ module Fight
 
     def get_next_unit_to_activate( action_dice_pool )
       # The last element of the last tuple. The unit with the highest initiative.
-      @units.map{ |u| [ u.activation_weight, u ] }.sort{ |a, b| b[0] <=> a[0] }.each do |unit|
+      @units.reject{ |u| u.destroyed? }.map{ |u| [u.activation_weight, u ] }.sort{ |a, b| b[0] <=> a[0] }.each do |unit|
         die = action_dice_pool.can_activate_unit?( unit[1] )
         return unit, die if die
       end
@@ -27,7 +27,7 @@ module Fight
     def units_in_range( unit )
       units = @units.select{ |u| u.distance( unit ) <= unit.attack_range }
 
-      puts "Units in range = #{units.map{ |u| "<#{u.name} - #{u.current_position}>" }.join( ', ' )}" if @verbose
+      puts "Unités à portée = #{units.map{ |u| "<#{u.name} - #{u.current_position}>" }.join( ', ' )}" if @verbose
 
       units
     end
@@ -62,6 +62,10 @@ module Fight
 
     def casualties
       @units.map{ |u| u.casualties }
+    end
+
+    def has_units?
+      @units.reject{ |u| u.destroyed? }.count != 0
     end
 
   end

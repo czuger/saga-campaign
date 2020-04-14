@@ -19,6 +19,7 @@ module Fight
       log = nil
       @units_in_range = @defending_gang.units_in_range( @attacking_unit )
       nearest_enemy_unit = @defending_gang.nearest_enemy_unit( @attacking_unit )
+      puts "nearest_enemy_unit = #{nearest_enemy_unit}"
 
       if @attacking_unit.exhausted?
         @attacking_unit.rest!
@@ -43,10 +44,12 @@ module Fight
         # If a ranged attacking unit is close enough to attack at range.
         ranged_attack
 
-      elsif @attacking_unit.attack_range == 0 && nearest_enemy_unit && @attacking_unit.distance( nearest_enemy_unit ) <= @attacking_unit.movement
-        puts "#{@attacking_unit.unit_name} charge"
+      elsif @attacking_unit.melee_and_melee_range?(nearest_enemy_unit )
+        puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} charge #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
 
         @attacking_unit.advance( nearest_enemy_unit.current_position )
+        puts "#{@attacking_unit.unit_name} pos##{@attacking_unit.current_position} vs #{nearest_enemy_unit.name} pos##{nearest_enemy_unit.current_position}"
+
         melee_attack
 
       elsif @attacking_unit.attack_range == 0 && nearest_enemy_unit && @attacking_unit.distance( nearest_enemy_unit ) == 0
@@ -78,6 +81,8 @@ module Fight
       # We recompute units in range because charge can change the list.
       @units_in_range = @defending_gang.units_in_range( @attacking_unit )
       defending_unit = @units_in_range.sample
+
+      # pp @defending_gang unless defending_unit
 
       puts "#{@attacking_unit.name} attaque #{defending_unit.name} au CAC."
 

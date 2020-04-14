@@ -7,9 +7,10 @@ class CreateMovementsResults < ActiveRecord::Migration[6.0]
       t.string :from, null: false
       t.string :to, null: false
       t.string :interception
-      t.string :fight
 
       t.timestamps
     end
+
+    add_reference :fight_results, :movements_result, index: { unique: true }
   end
 end

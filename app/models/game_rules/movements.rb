@@ -27,6 +27,7 @@ module GameRules
               gang.location = movement
               interception_result = check_for_interception!( gang )
 
+
               control_point!( movement, p_struct.player )
 
               @campaign.movements_results.create!(

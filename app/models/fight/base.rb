@@ -4,7 +4,7 @@ module Fight
 
     attr_reader :combat_log, :body_count, :result
 
-    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, save_result: true, verbose: false )
+    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, should_save_result: true, verbose: false )
       @attacking_gang = TmpGang.new( attacking_gang_id, :attacker, verbose: verbose )
       @defending_gang = TmpGang.new( defending_gang_id, :defender, verbose: verbose )
 
@@ -15,7 +15,7 @@ module Fight
 
       @body_count = {}
 
-      @save_result = save_result
+      @should_save_result = save_result
       @verbose = verbose
     end
 
@@ -38,9 +38,8 @@ module Fight
         # break if @player_1_units.empty? || @player_2_units.empty?
       end
 
-      # @result = AttackCountPoints.new(@player_1, @player_2, @body_count ).do
+      @result = AttackCountPoints.new(@attacking_gang, @defending_gang ).compute
       save_result( @result ) if @save_result
-
       self
     end
 
@@ -56,7 +55,7 @@ module Fight
       dice = ActionDicePool.new( attacking_gang )
       p dice.to_s
 
-      while dice.remaining_action_dice?
+      while dice.remaining_action_dice? && defending_gang.has_units?
         # p dice.to_s
 
         next_attacking_unit, used_die = attacking_gang.get_next_unit_to_activate( dice )
@@ -103,13 +102,6 @@ module Fight
       result
     end
 
-    # Test if a combat should continue.
-    #
-    # @return [Boolean] true or false
-    def combat_continue?( attacker_units, defender_units )
-      attacker_units.empty? || defender_units.empty?
-    end
-
     def will_attack?( unit )
       @attack_trigger = unit.can_attack_trigger
       @dice = Hazard.d100
@@ -129,6 +121,7 @@ module Fight
     def casualties
       OpenStruct.new(  attacker: @attacking_gang.casualties, defender: @defending_gang.casualties )
     end
+
   end
 
 end
