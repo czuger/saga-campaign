@@ -74,6 +74,11 @@ module Fight
       @units.select{ |u| u.libe == 'seigneur' }.first.destroyed? ? 0 : 1
     end
 
+    def losses_stats
+      OpenStruct.new(initial_number_of_miniatures: @units.map{ |u| u.initial_amount }.inject( &:+ ),
+                     remaining_number_of_miniatures: @units.map{ |u| u.current_amount }.inject( &:+ ) )
+    end
+
   end
 end
 

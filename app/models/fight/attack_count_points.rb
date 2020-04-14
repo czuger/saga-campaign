@@ -9,7 +9,7 @@ module Fight
 
     attr_reader :attacker_points_list, :attacker_points_total, :defender_points_list, :defender_points_total
     attr_reader :winner, :winner_code, :attacker_name, :defender_name
-    attr_reader :attacker_body_count, :defender_body_count, :lords_surviving_count
+    attr_reader :attacker_body_count, :defender_body_count, :lords_surviving_count, :losses_stats
 
     def initialize( attacking_gang, defending_gang )
 
@@ -28,6 +28,8 @@ module Fight
       # @defender_body_count = create_readable_body_count @defending_gang
 
       @lords_surviving_count = @defending_gang.lord_surviving_count + @attacking_gang.lord_surviving_count
+      @losses_stats = [ @attacking_gang.losses_stats.initial_number_of_miniatures + @defending_gang.losses_stats.initial_number_of_miniatures,
+        @attacking_gang.losses_stats.remaining_number_of_miniatures + @defending_gang.losses_stats.remaining_number_of_miniatures ]
 
       if @attacker_points_total >= 8 && @attacker_points_total > @defender_points_total + 3
 

@@ -35,12 +35,15 @@ def stats
   results = {}
   lords_surviving_count = 0
 
+  total_amount_of_units = 0
+  total_remaining_units = 0
+
   runs = 1000
 
   1.upto(runs) do |i|
     p i if i % 100 == 0
 
-    f = Fight::Base.new(2, 'O1', 9, 10, should_save_result: false )
+    f = Fight::Base.new(2, 'O1', 9, 7, should_save_result: false )
     result = f.go.result
 
     r = result.winner_code
@@ -48,17 +51,22 @@ def stats
     results[r] += 1
 
     lords_surviving_count += result.lords_surviving_count
+    au, ru = result.losses_stats
+    total_amount_of_units += au
+    total_remaining_units += ru
   end
 
   total = results[ :equality ] + results[ :defender ] + results[ :attacker ]
   equality = ( results[ :equality ].to_f * 100 ) / total
   defender = ( results[ :defender ].to_f * 100 ) / total
   attacker = ( results[ :attacker ].to_f * 100 ) / total
-
   puts "Attacker win : #{attacker}%, equality : #{equality}%, defender win : #{defender}%"
 
+  survival_rate = ( total_remaining_units.to_f * 100 ) / total_amount_of_units
+  puts "All units survival rate : #{survival_rate}%"
+
   lsr = ( lords_surviving_count.to_f * 100 ) / (runs*2)
-  puts "Lords surviving ratio = #{lsr}%"
+  puts "Lords survival rate :#{lsr}%"
 end
 
 
