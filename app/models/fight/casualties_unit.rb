@@ -22,5 +22,15 @@ module Fight
       end
     end
 
+    def final_losses
+      return @units_lost if destroyed?
+
+      if @units_lost > 0
+        @remaining_units + @units_lost - recover_to
+      else
+        0
+      end
+    end
+
   end
 end

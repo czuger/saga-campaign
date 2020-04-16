@@ -12,8 +12,8 @@ module FightsHelper
     "#{gang.name} (#{gang.player.user.name})"
   end
 
-  def participant_libe( attacker_name, band_no )
-    "Bande n° #{band_no} de #{attacker_name}"
+  def participant_libe( attacker_name, band_name )
+    "Bande #{band_name} de #{attacker_name}"
   end
 
   # Losses details

@@ -1,11 +1,12 @@
 module Fight
   class TmpGang
 
-    attr_reader :units, :player_name
+    attr_reader :units, :player_name, :gang_name
 
     def initialize( gang_id, attacker_or_defender, verbose: false )
       gang = Gang.find( gang_id )
       @player_name = gang.player.user.name
+      @gang_name = gang.name
 
       @attacker_or_defender = attacker_or_defender
 

@@ -6,6 +6,7 @@
       %th Unité détruite
       %th Reste
       %th Remonte à
+      -#%th Pertes finales
 
   %tbody
     - bc&.each do |casualty|
@@ -15,4 +16,5 @@
         %td= casualty.destroyed? ? 'Oui' : 'Non'
         %td= casualty.remaining_units
         %td= casualty.recover_to
-
+        -#%td= casualty.final_losses
+          

@@ -8,6 +8,8 @@ namespace :fill_db do
       used_second_movements = []
 
       p.gangs.each_with_index do |g, i|
+        used_second_movements << g.location
+
         g.movement_order = i + 1
 
         g.movements = []

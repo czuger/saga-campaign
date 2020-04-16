@@ -32,6 +32,7 @@ fr:
     controlled_locations: Lieux controllés
     initiative: Initiative
     show_movements: Derniers mouvements
+    combat_list: Liste des combats
 
     actions: Actions
     movements: Mouvements

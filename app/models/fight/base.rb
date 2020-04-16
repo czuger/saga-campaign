@@ -94,10 +94,10 @@ module Fight
     def save_result( result= nil )
 
       fight_data = OpenStruct.new(
-        # attacker: @player_1.player.user.name,
-        # defender: @player_2.player.user.name,
-        # attacking_gang_no: @player_1.id,
-        # defending_gang_no: @player_2.id,
+        attacker: @attacking_gang.player_name,
+        defender: @defending_gang.player_name,
+        attacking_gang_name: @attacking_gang.gang_name,
+        defending_gang_name: @defending_gang.gang_name,
         result: result,
         casualties: casualties
       )
