@@ -5,7 +5,7 @@ module Fight
 
     attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged,
                 :resistance, :current_amount, :movement, :initial_amount, :current_amount, :name, :weapon, :libe,
-                :legendary
+                :legendary, :cost, :amount
     attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender, verbose: false )
@@ -22,6 +22,8 @@ module Fight
       @fatigue = 0
       @max_fatigue = unit_data.options.include?( 'imposant'.freeze ) ? 4 : 3
       @massacre_points = unit.massacre_points
+      @cost = unit_data.cost
+      @amount = unit_data.amount
       @legendary = unit.legendary?
 
       @damage_cac = unit_data.damage.cac

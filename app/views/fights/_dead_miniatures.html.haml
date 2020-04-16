@@ -4,10 +4,15 @@
       %th Unité
       %th Pertes
       %th Unité détruite
+      %th Reste
+      %th Remonte à
 
   %tbody
-    - bc&.each do |casualties|
-      %tr
-        %td= casualties.name.upcase_first
-        %td= casualties.units_lost
-        %td= casualties.destroyed? ? 'Oui' : 'Non'
+    - bc&.each do |casualty|
+      %tr{ class: fight_table_color( casualty ) }
+        %td= casualty.name.upcase_first
+        %td= casualty.units_lost
+        %td= casualty.destroyed? ? 'Oui' : 'Non'
+        %td= casualty.remaining_units
+        %td= casualty.recover_to
+

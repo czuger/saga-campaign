@@ -4,15 +4,22 @@ namespace :fill_db do
   task opponent_move_gangs: :environment do
 
     Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
+
+      used_second_movements = []
+
       p.gangs.each_with_index do |g, i|
         g.movement_order = i + 1
 
         g.movements = []
         g.movements << GameRules::Map.available_movements( g.location ).sample
-        g.movements << GameRules::Map.available_movements( g.movements[0] ).sample
+
+        available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements
+        second_movement = available_second_movements.sample
+        used_second_movements << second_movement
+        g.movements << second_movement
         g.save!
 
-        puts "Moving gang #{g.name}"
+        puts "Moving gang #{g.name} to #{g.movements}"
       end
 
       p.movements_orders_finalized = true
