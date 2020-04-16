@@ -5,7 +5,6 @@ module GameRules
     def initialize( campaign )
       @campaign = campaign
       @intercepted_gang_ids = Set.new
-      @scheduled_fights = []
     end
 
     def run!
@@ -25,15 +24,18 @@ module GameRules
               original_location = gang.location
 
               gang.location = movement
-              interception_result = check_for_interception!( gang )
+              intercepted_gang, interception_result = check_for_interception!( gang )
 
-
-              control_point!( movement, p_struct.player )
-
-              @campaign.movements_results.create!(
+              mr = @campaign.movements_results.create!(
                 campaign: @campaign, player: p_struct.player, gang: gang, from: original_location, to: movement,
                 interception: interception_result )
 
+              if intercepted_gang
+                Fight::Base.new( @campaign.id, movement, gang.id,
+                                         intercepted_gang.id, movement_result: mr ).go
+              end
+
+              control_point!( movement, p_struct.player )
             end
           end
         end
@@ -137,11 +139,12 @@ module GameRules
         intercepting_gang.movements = []
         @intercepted_gang_ids << intercepting_gang.id
 
-        @scheduled_fights << [ intercepting_gang, intercepted_gang ]
-
-        I18n.t(
-          'gangs.interception', intercepted_name: intercepted_gang.name, intercepting_name: intercepting_gang.name,
-          location: intercepting_gang.location )
+        [
+          intercepted_gang,
+          I18n.t(
+            'gangs.interception', intercepted_name: intercepted_gang.name, intercepting_name: intercepting_gang.name,
+            location: intercepting_gang.location )
+        ]
       end
     end
 

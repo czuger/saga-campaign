@@ -3,7 +3,7 @@ module Fight
 
     def initialize( tmp_unit )
       @name = tmp_unit.name
-      @weamon = tmp_unit.weapon
+      @weapon = tmp_unit.weapon
       @libe = tmp_unit.libe
       @units_lost = tmp_unit.initial_amount - tmp_unit.current_amount
       @remaining_units = tmp_unit.current_amount

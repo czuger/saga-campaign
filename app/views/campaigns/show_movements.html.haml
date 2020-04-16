@@ -35,11 +35,13 @@
       %th Combats
 
   %tbody
-    - @movements.each do |movement|
+    - @movements.includes( :fight_result ).each do |movement|
       %tr
         %td= movement.player.user.name
         %td= movement.gang.name
         %td= movement.from
         %td= movement.to
         %td= movement.interception
-        %td= movement.fight
+        %td
+          = link_to( 'Resultat', campaign_fight_path( @campaign, movement.fight_result ) ) if movement.fight_result
+        -#%td= movement.fight

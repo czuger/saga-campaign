@@ -80,8 +80,8 @@ def one_shot
 # pp c.result.winner_code
 end
 
-stats
-# one_shot
+# stats
+one_shot
 
 
 

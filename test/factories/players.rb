@@ -5,7 +5,7 @@ FactoryBot.define do
     god_favor { 1 }
     faction { :royaumes }
 
-    controls_points { [] }
+    controls_points { [ 'O1' ] }
     initiative_bet { 0 }
 
   end

@@ -35,7 +35,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     @player2 = create( :player, user: @user, campaign: @campaign )
     @gang2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C1' )
 
-    @player2.initiative = 1
+    @player2.initiative = 2
     @player2.save!
 
     og1 = @gang
@@ -47,7 +47,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
 
     cg1 = @gang2
     cg1.location = 'O9'
-    og1.name = 'cg1'
+    cg1.name = 'cg1'
     cg1.save!
     cg2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C11', name: 'cg2' )
     cg3 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C6', name: 'cg3' )
@@ -81,6 +81,45 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # puts @response.body
+  end
+
+  test 'Validate that movement provoke a fight' do
+    @campaign.players_choose_faction!
+    @campaign.players_first_hire_and_move!
+
+    @player.initiative = 2
+    @player.save!
+
+    @player2 = create( :player, user: @user, campaign: @campaign )
+    @gang2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C1' )
+
+    @player2.initiative = 1
+    @player2.save!
+
+    og1 = @gang
+    og1.location = 'O8'
+    og1.name = 'og1'
+    og1.save!
+
+    cg1 = @gang2
+    cg1.location = 'O9'
+    cg1.name = 'cg1'
+    cg1.save!
+
+    post player_schedule_movements_save_path(
+           @player, params: {
+           gang_movement: { '1' => { og1.id => '' }, '2' => { og1.id => '' } } }, gangs_order: "#{og1.id}," )
+
+    post player_schedule_movements_save_path(
+           @player2, params: {
+           gang_movement: { '1' => { cg1.id => 'O8' }, '2' => { cg1.id => '' } } }, gangs_order: "#{cg1.id}," )
+
+    follow_redirect!
+
+    get campaign_resolve_movements_path( @campaign )
+
+    pp @campaign.reload.movements_results
+    pp @campaign.reload.fight_results
   end
 
   # test 'should get edit' do

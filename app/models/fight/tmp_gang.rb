@@ -71,12 +71,12 @@ module Fight
     end
 
     def lord_surviving_count
-      @units.select{ |u| u.libe == 'seigneur' }.first.destroyed? ? 0 : 1
+      @units.select{ |u| u.libe == 'seigneur' }.first&.destroyed? ? 0 : 1
     end
 
     def losses_stats
-      OpenStruct.new(initial_number_of_miniatures: @units.map{ |u| u.initial_amount }.inject( &:+ ),
-                     remaining_number_of_miniatures: @units.map{ |u| u.current_amount }.inject( &:+ ) )
+      OpenStruct.new(initial_number_of_miniatures: @units.map{ |u| u.initial_amount }.inject( &:+ ) || 0,
+                     remaining_number_of_miniatures: @units.map{ |u| u.current_amount }.inject( &:+ ) || 0 )
     end
 
   end

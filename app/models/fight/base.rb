@@ -2,9 +2,10 @@ module Fight
 
   class Base
 
-    attr_reader :combat_log, :body_count, :result
+    attr_reader :combat_log, :body_count, :result, :fight_result
 
-    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id, should_save_result: true, verbose: false )
+    def initialize( campaign_id, location, attacking_gang_id, defending_gang_id,
+                    should_save_result: true, verbose: false, movement_result: nil )
       @attacking_gang = TmpGang.new( attacking_gang_id, :attacker, verbose: verbose )
       @defending_gang = TmpGang.new( defending_gang_id, :defender, verbose: verbose )
 
@@ -17,6 +18,8 @@ module Fight
 
       @should_save_result = should_save_result
       @verbose = verbose
+
+      @movement_result = movement_result
     end
 
     def go
@@ -99,7 +102,8 @@ module Fight
         casualties: casualties
       )
 
-      FightResult.create!( campaign_id: @campaign_id, location: @location, fight_data: fight_data, fight_log: @combat_log )
+      @fight_result = FightResult.create!( campaign_id: @campaign_id, location: @location, fight_data: fight_data,
+                                           fight_log: @combat_log, movements_result_id: @movement_result.id )
 
       result
     end
