@@ -1,6 +1,7 @@
 module Fight
   class CasualtiesUnit
 
+    attr_reader :name, :units_lost
     def initialize( tmp_unit )
       @name = tmp_unit.name
       @weapon = tmp_unit.weapon
@@ -9,7 +10,9 @@ module Fight
       @remaining_units = tmp_unit.current_amount
     end
 
-    def to_s
+    def destroyed?
+      @remaining_units == 0
     end
+
   end
 end

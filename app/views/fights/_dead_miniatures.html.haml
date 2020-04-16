@@ -6,8 +6,8 @@
       %th Unité détruite
 
   %tbody
-    - bc&.each do |log|
+    - bc&.each do |casualties|
       %tr
-        %td= log.unit_name.upcase_first
-        %td= log.deads
-        %td= 'X' if log.destroyed
+        %td= casualties.name.upcase_first
+        %td= casualties.units_lost
+        %td= casualties.destroyed? ? 'Oui' : 'Non'

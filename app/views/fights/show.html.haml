@@ -5,11 +5,11 @@
 %hr
 
 %h2= "Pertes de l'attaquant #{@result.attacker_name}"
-= render partial: 'dead_miniatures', locals: { bc: @result.attacker_body_count }
+= render partial: 'dead_miniatures', locals: { bc: @casualties.attacker }
 %hr
 
 %h2= "Pertes du défenseur #{@result.defender_name}"
-= render partial: 'dead_miniatures', locals: { bc: @result.defender_body_count }
+= render partial: 'dead_miniatures', locals: { bc: @casualties.defender }
 
 %hr
 
@@ -31,15 +31,15 @@
       %tr
         %td= libe
 
-%hr
-%hr
-
-- @fight.fight_log.each do |fl|
-
-  %h2= "Tour #{ fl.round }"
-
-  %h3= "Tour de #{ fl.attacker_name }"
-  = render partial: 'opponent_turn_detail', locals: { tl: fl.attacker }
-
-  %h3= "Tour de #{ fl.defender_name }"
-  = render partial: 'opponent_turn_detail', locals: { tl: fl.defender }
+-#%hr
+-#%hr
+-#
+-#- @fight.fight_log.each do |fl|
+-#
+-#  %h2= "Tour #{ fl.round }"
+-#
+-#  %h3= "Tour de #{ fl.attacker_name }"
+-#  = render partial: 'opponent_turn_detail', locals: { tl: fl.attacker }
+-#
+-#  %h3= "Tour de #{ fl.defender_name }"
+-#  = render partial: 'opponent_turn_detail', locals: { tl: fl.defender }

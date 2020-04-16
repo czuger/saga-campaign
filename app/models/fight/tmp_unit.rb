@@ -76,7 +76,7 @@ module Fight
 
     # Compute the losses points do determine victory
     def losses_points
-      losses * @massacre_points
+      ( losses * @massacre_points ).to_i
     end
 
     def destroyed?

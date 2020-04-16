@@ -9,6 +9,7 @@ class FightsController < ApplicationController
     @game_rules_units = GameRules::Unit.new
 
     @result = @fight.fight_data[:result]
+    @casualties = @fight.fight_data.casualties
   end
 
   def index
