@@ -84,7 +84,7 @@ module Fight
       total = 0
       points_list = []
 
-      opponent.units.each do |unit|
+      opponent.tmp_units.each do |unit|
         points = ( unit.losses_points )
 
         # points_list << "L'unité #{unit.full_name} a eu #{bc.deads} pertes ce qui donne #{points} points."

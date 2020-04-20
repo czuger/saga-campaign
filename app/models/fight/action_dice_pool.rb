@@ -31,7 +31,7 @@ module Fight
     end
 
     def count_actions_dice( tmp_gang )
-      [ tmp_gang.units.select{ |u| u.action_dice? }.count, 8 ].min
+      [ tmp_gang.tmp_units.select{ |u| u.action_dice? }.count, 8 ].min
     end
 
     def roll_and_dispatch_dice( actions_dice_amout )

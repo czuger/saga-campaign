@@ -93,14 +93,19 @@ module Fight
     # @return nil
     def save_result( result= nil )
 
+      tmp_casualties = casualties
+
       fight_data = OpenStruct.new(
         attacker: @attacking_gang.player_name,
         defender: @defending_gang.player_name,
         attacking_gang_name: @attacking_gang.gang_name,
         defending_gang_name: @defending_gang.gang_name,
         result: result,
-        casualties: casualties
+        casualties: tmp_casualties
       )
+
+      @attacking_gang.apply_casualties!
+      @defending_gang.apply_casualties!
 
       @fight_result = FightResult.create!( campaign_id: @campaign_id, location: @location, fight_data: fight_data,
                                            fight_log: @combat_log, movements_result_id: @movement_result.id )

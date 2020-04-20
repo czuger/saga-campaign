@@ -1,7 +1,8 @@
 module Fight
   class CasualtiesUnit
 
-    attr_reader :name, :units_lost, :remaining_units
+    attr_reader :name, :units_lost, :remaining_units, :original_unit_id
+
     def initialize( tmp_unit )
       @name = tmp_unit.name
       @weapon = tmp_unit.weapon
@@ -9,27 +10,10 @@ module Fight
       @units_lost = tmp_unit.initial_amount - tmp_unit.current_amount
       @remaining_units = tmp_unit.current_amount
       @amount = tmp_unit.amount
-    end
-
-    def destroyed?
-      @remaining_units == 0
-    end
-
-    def recover_to
-      if @units_lost > 0 && !destroyed?
-        half_amount = @amount / 2.0
-        ( ( @remaining_units / half_amount ).ceil * half_amount ).to_i
-      end
-    end
-
-    def final_losses
-      return @units_lost if destroyed?
-
-      if @units_lost > 0
-        @remaining_units + @units_lost - recover_to
-      else
-        0
-      end
+      @original_unit_id = tmp_unit.original_unit_id
+      @destroyed = tmp_unit.destroyed?
+      @recover_to = tmp_unit.recover_to
+      @final_losses = tmp_unit.final_losses
     end
 
   end

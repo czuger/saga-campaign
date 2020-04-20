@@ -5,11 +5,13 @@ module Fight
 
     attr_reader :activation_dice, :attack_range, :current_position, :armor_cac, :armor_ranged,
                 :resistance, :current_amount, :movement, :initial_amount, :current_amount, :name, :weapon, :libe,
-                :legendary, :cost, :amount
+                :legendary, :cost, :amount, :original_unit_id
     attr_accessor :already_activate_this_turn, :fatigue
 
     def initialize( unit, attacker_or_defender, verbose: false )
       unit_data = unit.unit_data_open_hash
+
+      @original_unit_id = unit.id
 
       @libe = unit.libe
       @weapon = unit.weapon
@@ -158,7 +160,7 @@ module Fight
       [ "name=#{@name}", "fatigue=#{@fatigue}", "current_position=#{@current_position}", "attack_range=#{@attack_range}" ].join( ', ' )
     end
 
-    # Assigns the hits
+    # Assigns the hits. This hits assignment is temporary. It is not saved in the DB for now.
     #
     # @param hits [Integer] the amount of hits to take.
     def assign_hits!( hits )
@@ -171,11 +173,53 @@ module Fight
       end
     end
 
+    # It is only now that we will save the casualties in the database.
+    def apply_casualties!
+      if destroyed?
+        Unit.destroy( @original_unit_id )
+      else
+        unit = Unit.find( @original_unit_id )
+        unit.amount = recover_to
+        unit.save!
+      end
+    end
+
     def casualties
       Fight::CasualtiesUnit.new( self )
     end
 
+    def destroyed?
+      @current_amount == 0
+    end
+
+    # This method compute the recover_to level. The rules implies that an unit recover up to half a point miniatures.
+    #
+    # @return [Integer] the new number of miniatures of the units.
+    def recover_to
+      if units_lost > 0 && !destroyed?
+        half_amount = @amount / 2.0
+        ( ( @current_amount / half_amount ).ceil * half_amount ).to_i
+      end
+    end
+
+    # This method compute the final losses (after units recovery). (this is for user information only).
+    #
+    # @return [Integer] the number of units finally lost.
+    def final_losses
+      return units_lost if destroyed?
+
+      if units_lost > 0
+        @current_amount + units_lost - recover_to
+      else
+        0
+      end
+    end
+
     private
+
+    def units_lost
+      @initial_amount - @current_amount
+    end
 
     def assign_hits_with_resistance!( hits )
       remaining_fatigue = @max_fatigue - @fatigue
