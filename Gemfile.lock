@@ -209,6 +209,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.3)
     puma (4.3.3)
@@ -284,7 +285,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -331,12 +331,12 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   openhash
   pdf-reader
+  pg
   puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
   sass-rails (>= 6)
   simplecov (= 0.17.1)
   spring
-  sqlite3 (~> 1.4)
   will_paginate (~> 3.1.0)
   will_paginate-bootstrap4
 

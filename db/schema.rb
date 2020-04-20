@@ -12,34 +12,37 @@
 
 ActiveRecord::Schema.define(version: 2020_04_13_104748) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "campaigns", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "aasm_state"
-    t.integer "max_players", limit: 1, default: 2, null: false
+    t.integer "max_players", limit: 2, default: 2, null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
   create_table "fight_results", force: :cascade do |t|
-    t.integer "campaign_id", null: false
+    t.bigint "campaign_id", null: false
     t.string "location", null: false
     t.string "fight_data", null: false
     t.string "fight_log", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "movements_result_id"
+    t.bigint "movements_result_id"
     t.index ["campaign_id"], name: "index_fight_results_on_campaign_id"
     t.index ["movements_result_id"], name: "index_fight_results_on_movements_result_id", unique: true
   end
 
   create_table "gangs", force: :cascade do |t|
-    t.integer "campaign_id", null: false
-    t.integer "player_id", null: false
+    t.bigint "campaign_id", null: false
+    t.bigint "player_id", null: false
     t.string "icon", null: false
     t.float "points", default: 0.0, null: false
-    t.integer "number", limit: 1, null: false
+    t.integer "number", limit: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "location", null: false
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.integer "campaign_id", null: false
+    t.bigint "campaign_id", null: false
     t.string "data", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -61,9 +64,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
   end
 
   create_table "movements_results", force: :cascade do |t|
-    t.integer "campaign_id", null: false
-    t.integer "player_id", null: false
-    t.integer "gang_id", null: false
+    t.bigint "campaign_id", null: false
+    t.bigint "player_id", null: false
+    t.bigint "gang_id", null: false
     t.string "from", null: false
     t.string "to", null: false
     t.string "interception"
@@ -75,8 +78,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.integer "campaign_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "campaign_id", null: false
+    t.bigint "user_id", null: false
     t.integer "pp", default: 0, null: false
     t.integer "god_favor"
     t.integer "god_favored"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
   end
 
   create_table "unit_old_libe_strings", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "libe", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,9 +103,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
   end
 
   create_table "units", force: :cascade do |t|
-    t.integer "gang_id", null: false
+    t.bigint "gang_id", null: false
     t.string "libe", null: false
-    t.integer "amount", limit: 1, null: false
+    t.integer "amount", limit: 2, null: false
     t.float "points", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
