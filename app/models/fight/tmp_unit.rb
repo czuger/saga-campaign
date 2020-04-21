@@ -180,6 +180,7 @@ module Fight
       else
         unit = Unit.find( @original_unit_id )
         unit.amount = recover_to
+        unit.points = ( unit.amount.to_f / @amount ) * @cost
         unit.save!
       end
     end

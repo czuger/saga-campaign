@@ -72,7 +72,7 @@ class PlayersController < ApplicationController
 
   def schedule_movements_edit
     @player = Player.find( params[:player_id] )
-    @gangs = @player.gangs.where.not( gang_destroyed: true ).order( :movement_order )
+    @gangs = @player.gangs.where.not( gang_destroyed: true ).where.not( retreating: true ).order( :movement_order )
 
     # @loc = GameRules::Map.new.localisations
   end

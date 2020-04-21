@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_074835) do
     t.string "movements"
     t.string "movements_backup"
     t.boolean "gang_destroyed", default: false, null: false
+    t.boolean "retreating", default: false, null: false
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end

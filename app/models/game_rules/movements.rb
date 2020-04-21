@@ -31,11 +31,13 @@ module GameRules
                 interception: interception_result )
 
               if intercepted_gang
-                Fight::Base.new( @campaign.id, movement, gang.id,
+                result = Fight::Base.new( @campaign.id, movement, gang.id,
                                          intercepted_gang.id, movement_result: mr ).go
               end
 
-              control_point!( movement, p_struct.player )
+              control_point!( movement, p_struct.player, result )
+              check_for_retreat!( gang )
+              check_for_retreat!( intercepted_gang )
             end
           end
         end
@@ -104,12 +106,18 @@ module GameRules
       @players.map{ |e| e.movements_array.count }.flatten.inject(&:+ ) == 0
     end
 
-    def control_point!( location, new_controller )
-      @players.each do |p_struct|
-        p_struct.player.controls_points.delete( location )
-      end
+    def control_point!( location, new_controller, result )
+      # The control change only if the winner is the attacker.
+      # In case the attack fail or in case of equality, the control remain unchanged.
+      if result.result.winner_code == :attacker
+        @players.each do |p_struct|
+          p_struct.player.controls_points.delete( location )
+        end
 
-      new_controller.controls_points << location unless new_controller.controls_points.include?( location )
+        @campaign.logs.create!( data: I18n.t( 'log.gangs.take_control', name: new_controller.name, location: location ) )
+
+        new_controller.controls_points << location unless new_controller.controls_points.include?( location )
+      end
     end
 
     # This will probably moved elsewhere
@@ -145,6 +153,15 @@ module GameRules
             'gangs.interception', intercepted_name: intercepted_gang.name, intercepting_name: intercepting_gang.name,
             location: intercepting_gang.location )
         ]
+      end
+    end
+
+    def check_for_retreat!( gang )
+      if gang.points < 4
+        @campaign.logs.create!( data: I18n.t( 'log.gangs.retreating', gang_name:  gang.name ) )
+
+        gang.retreating = true
+        gang.save!
       end
     end
 

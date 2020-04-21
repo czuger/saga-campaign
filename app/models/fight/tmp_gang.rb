@@ -84,10 +84,13 @@ module Fight
       @tmp_units.each do |unit|
         unit.apply_casualties!
       end
+
       if @gang.units.count == 0
         @gang.gang_destroyed = true
-        @gang.save!
       end
+
+      @gang.points = @gang.units.sum( :points )
+      @gang.save!
     end
 
   end

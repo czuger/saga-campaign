@@ -6,7 +6,7 @@ class GangsController < ApplicationController
   # GET /gangs
   # GET /gangs.json
   def index
-    @gangs = @player.gangs.where.not( gang_destroyed: true ).order( 'id DESC' )
+    @gangs = @player.gangs.where.not( gang_destroyed: true ).where.not( retreating: true ).order( 'id DESC' )
     @localisations = GameRules::Map.new.localisations
   end
 
