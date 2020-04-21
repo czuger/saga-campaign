@@ -4,11 +4,11 @@
 
 %hr
 
-%h2= "Pertes de l'attaquant #{@result.attacker_name}"
+%h2= "Pertes de l'attaquant : #{@fight_data.attacker} (#{@fight_data.attacking_gang_name})"
 = render partial: 'dead_miniatures', locals: { bc: @casualties.attacker }
 %hr
 
-%h2= "Pertes du défenseur #{@result.defender_name}"
+%h2= "Pertes du défenseur : #{@fight_data.defender} (#{@fight_data.defending_gang_name})"
 = render partial: 'dead_miniatures', locals: { bc: @casualties.defender }
 
 %hr

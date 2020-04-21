@@ -122,7 +122,7 @@ module GameRules
           p_struct.player.controls_points.delete( location )
         end
 
-        @campaign.logs.create!( data: I18n.t( 'log.gangs.take_control', name: new_controller.name, location: location ) )
+        @campaign.logs.create!( data: I18n.t( 'log.gangs.take_control', user_name: new_controller.user.name, location: location ) )
 
         new_controller.controls_points << location unless new_controller.controls_points.include?( location )
       end
