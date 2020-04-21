@@ -51,7 +51,7 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     get campaign_resolve_movements_path( @campaign )
     # assert_redirected_to campaign_show_movements_path( @campaign )
 
-    movements = @campaign.movements_results.all.to_a
+    movements = @campaign.movements_results.reload.all.to_a
 
     # pp movements
 

@@ -19,6 +19,7 @@ module GameRules
             gang, movement = p_struct.movements_array.shift
 
             if gang
+              next if gang.retreating
               next if @intercepted_gang_ids.include?( gang.id )
 
               original_location = gang.location
@@ -33,11 +34,18 @@ module GameRules
               if intercepted_gang
                 result = Fight::Base.new( @campaign.id, movement, gang.id,
                                          intercepted_gang.id, movement_result: mr ).go
+
+                if result.result.winner_code == :attacker
+                  intercepted_gang.retreat!( @campaign )
+                else
+                  gang.retreat!( @campaign )
+                end
+
+                check_for_retreat!( gang )
+                check_for_retreat!( intercepted_gang )
               end
 
               control_point!( movement, p_struct.player, result )
-              check_for_retreat!( gang )
-              check_for_retreat!( intercepted_gang )
             end
           end
         end
@@ -109,7 +117,7 @@ module GameRules
     def control_point!( location, new_controller, result )
       # The control change only if the winner is the attacker.
       # In case the attack fail or in case of equality, the control remain unchanged.
-      if result.result.winner_code == :attacker
+      if result&.result&.winner_code == :attacker
         @players.each do |p_struct|
           p_struct.player.controls_points.delete( location )
         end
@@ -158,10 +166,7 @@ module GameRules
 
     def check_for_retreat!( gang )
       if gang.points < 4
-        @campaign.logs.create!( data: I18n.t( 'log.gangs.retreating', gang_name:  gang.name ) )
-
-        gang.retreating = true
-        gang.save!
+        gang.retreat!( @campaign )
       end
     end
 

@@ -34,7 +34,7 @@ fr:
     gangs:
       created: "Le joueur %{player_name} a créé la bande %{gang_name}."
       destroyed: "Le joueur %{player_name} a supprimé la bande %{gang_name}."
-      retreating: "La bande %{gang_name} fait retraite."
+      retreating: "La bande %{gang_name} fait retraite en %{location}."
       
       movement: "La bande %{gang_name} de %{player_name} se déplace en %{location}."
       take_control: "%{user_name} prend le contrôle de %{location}."
