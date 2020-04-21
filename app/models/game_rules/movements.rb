@@ -65,7 +65,7 @@ module GameRules
 
       @campaign.players.includes( :gangs, :user ).order( :initiative ).each do |player|
         ps = OpenStruct.new( player: player, movements_array: nil, gangs:
-          player.gangs.order( :movement_order ).to_a )
+          player.gangs.where.not( gang_destroyed: true ).where.not( retreating: true ).order( :movement_order ).to_a )
         @players << ps
 
         @gangs += ps.gangs

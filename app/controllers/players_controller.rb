@@ -149,6 +149,8 @@ class PlayersController < ApplicationController
 
       set_initiative!
 
+      @campaign.gangs.update_all( retreating: false )
+
       @campaign.players_hire_and_move!
 
       redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
