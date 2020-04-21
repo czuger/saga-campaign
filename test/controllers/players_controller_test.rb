@@ -12,7 +12,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create player' do
     assert_difference('Player.count') do
-      post campaign_players_url( @campaign ), params: { players: [ @player.id ] }
+      post campaign_players_url( @campaign ), params: { players: [ @user.id ] }
     end
 
     assert_redirected_to campaigns_url
@@ -117,9 +117,8 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     get campaign_resolve_movements_path( @campaign )
-
-    pp @campaign.reload.movements_results
-    pp @campaign.reload.fight_results
+    # pp @campaign.reload.movements_results
+    # pp @campaign.reload.fight_results
   end
 
   # test 'should get edit' do

@@ -85,7 +85,8 @@ module Fight
         unit.apply_casualties!
       end
       if @gang.units.count == 0
-        @gang.destroy!
+        @gang.gang_destroyed = true
+        @gang.save!
       end
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_104748) do
+ActiveRecord::Schema.define(version: 2020_04_21_074835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_104748) do
     t.integer "movement_order"
     t.string "movements"
     t.string "movements_backup"
+    t.boolean "gang_destroyed", default: false, null: false
     t.index ["campaign_id"], name: "index_gangs_on_campaign_id"
     t.index ["player_id"], name: "index_gangs_on_player_id"
   end

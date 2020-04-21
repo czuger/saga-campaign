@@ -199,6 +199,8 @@ module Fight
       if units_lost > 0 && !destroyed?
         half_amount = @amount / 2.0
         ( ( @current_amount / half_amount ).ceil * half_amount ).to_i
+      else
+        @current_amount
       end
     end
 
