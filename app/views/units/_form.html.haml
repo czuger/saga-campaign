@@ -20,7 +20,7 @@
   -# In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
   .row
     .col-3
-      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines'
+      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines', min: @unit_data[:min], max: @unit_data[:max], step: @unit_data[:step]
 
     .col-2
       = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true

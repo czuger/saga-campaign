@@ -19,7 +19,11 @@
       = render partial: 'layouts/menu'
 
       - if notice
-        .mt-1.alert.alert-success{ role: :alert }
+        .mt-3.alert.alert-success{ role: :alert }
           = notice
+
+      - if alert
+        .mt-3.alert.alert-warning{ role: :alert }
+          = alert
 
       = yield

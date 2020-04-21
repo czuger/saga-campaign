@@ -1,6 +1,10 @@
 ---
 fr:
   units:
+
+    alert:
+      cant_pay: "Vous n'avez plus assez de PP pour ajouter cette unité."
+
     seigneur: Seigneur
     lieutenant: Lieutenant
     sorcier: Sorcier

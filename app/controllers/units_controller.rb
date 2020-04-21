@@ -38,15 +38,16 @@ class UnitsController < ApplicationController
 
     Unit.transaction do
       respond_to do |format|
-        if @unit.save
+        if @can_pay_unit && @unit.save
 
           after_unit_update( "#{@user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande #{@gang.name}." )
           pay_unit( @unit.points )
 
           format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully created.' }
         else
+          set_units_rules_data
+          flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
           format.html { render :new }
-
         end
       end
     end
@@ -58,18 +59,22 @@ class UnitsController < ApplicationController
   def update
     # add_gang_to_unit
 
+    @can_pay_unit = unit_params[ :points ].to_f <= @player.pp
+
     Unit.transaction do
       respond_to do |format|
 
         current_points = @unit.points
 
-        if @unit.update(unit_params)
+        if @can_pay_unit && @unit.update(unit_params)
 
           after_unit_update( "#{@user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande #{@gang.name}." )
           pay_unit( @unit.points - current_points )
 
           format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
         else
+          set_units_rules_data
+          flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
           format.html { render :edit }
         end
       end
@@ -146,6 +151,7 @@ class UnitsController < ApplicationController
       @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
 
       @units = GameRules::Unit.new.data
+      @unit_data = @units[@unit.libe][@unit.weapon]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
