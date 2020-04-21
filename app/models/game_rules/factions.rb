@@ -63,7 +63,7 @@ module GameRules
       faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
 
       if campaign.aasm_state == 'first_hiring_and_movement_schedule'
-        FACTIONS_STARTING_POSITIONS[faction_block].sort
+        FACTIONS_STARTING_POSITIONS[faction_block].sort - player.gangs.pluck( :location )
       else
         FACTIONS_RECRUITMENT_POSITIONS[faction_block].sort
       end

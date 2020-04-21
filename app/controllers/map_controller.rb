@@ -4,7 +4,7 @@ class MapController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:campaign_id] )
-    @gangs = @campaign.gangs
+    @gangs = @campaign.gangs.where.not( gang_destroyed: true )
     @map = GameRules::Map.new
   end
 

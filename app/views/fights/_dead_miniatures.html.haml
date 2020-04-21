@@ -13,7 +13,7 @@
       %tr{ class: fight_table_color( casualty ) }
         %td= casualty.name.upcase_first
         %td= casualty.units_lost
-        %td= casualty.destroyed? ? 'Oui' : 'Non'
+        %td= casualty.destroyed ? 'Oui' : 'Non'
         %td= casualty.remaining_units
         %td= casualty.recover_to
         -#%td= casualty.final_losses

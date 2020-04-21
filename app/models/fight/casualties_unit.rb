@@ -1,7 +1,7 @@
 module Fight
   class CasualtiesUnit
 
-    attr_reader :name, :units_lost, :remaining_units, :original_unit_id
+    attr_reader :name, :units_lost, :remaining_units, :original_unit_id, :destroyed, :recover_to
 
     def initialize( tmp_unit )
       @name = tmp_unit.name

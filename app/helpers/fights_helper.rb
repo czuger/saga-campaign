@@ -3,7 +3,7 @@ require 'ostruct'
 module FightsHelper
 
   def fight_table_color( casualty )
-    return 'table-danger'.freeze if casualty.destroyed?
+    return 'table-danger'.freeze if casualty.destroyed
     return 'table-warning'.freeze if casualty.units_lost > 0
     'table-success'.freeze
   end

@@ -3,7 +3,8 @@ namespace :fill_db do
   desc 'Opponents move gangs'
   task opponent_move_gangs: :environment do
 
-    Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
+    user = User.find_by_name( :foo )
+    Player.where( user_id: user.id ).where.not( faction: nil ).each do |p|
 
       used_second_movements = []
 
@@ -41,7 +42,8 @@ namespace :fill_db do
       ['guerriers', '-', 8], ['guerriers', '-', 8], ['levees', 'arc_ou_fronde', 12]
     ]
 
-    Player.where( user_id: 2 ).where.not( faction: nil ).each do |p|
+    user = User.find_by_name( :foo )
+    Player.where( user_id: user.id ).where.not( faction: nil ).each do |p|
       icons = original_icons.dup
       locations = original_locations.dup
 
@@ -61,12 +63,24 @@ namespace :fill_db do
   desc 'Opponents choose factions'
   task opponent_choose_faction: :environment do
 
-    Player.where( user_id: 2, faction: nil ).each do |p|
+    user = User.find_by_name( :foo )
+    Player.where( user_id: user.id, faction: nil ).each do |p|
       p p
       p.faction = 'royaumes'
       p.controls_points = GameRules::Factions.initial_control_points( p.campaign, p )
       p.save!
     end
   end
+
+  desc 'Opponents create player'
+  task opponent_create_player: :environment do
+    User.create!( name: :foo, provider: :test, uid: :bar, icon_url: :foobar )
+  end
+
+  desc 'Clear database'
+  task clear_db: :environment do
+    Campaign.destroy_all
+  end
+
 
 end
