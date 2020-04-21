@@ -28,6 +28,7 @@
       - else
         = simple_menu_link( t('menu.login'), '/auth/discord' )
 
-    %span{ class: 'navbar-text' }
-      PP
-      = @player.pp
+    - if @player&.id
+      %span{ class: 'navbar-text' }
+        PP
+        = @player.pp
