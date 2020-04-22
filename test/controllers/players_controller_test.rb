@@ -116,6 +116,122 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     # pp @campaign.reload.fight_results
   end
 
+  test 'when one player bet for initiative, we should wait for the others' do
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    player = create( :player, user: @user, campaign: other_campaign )
+
+    other_campaign.players_choose_faction!
+    other_campaign.players_first_hire_and_move!
+    other_campaign.players_bet_for_initiative!
+
+    post player_initiative_bet_save_url( player, params: { pp: 3 } )
+    assert_redirected_to campaign_url( other_campaign )
+    assert_equal 'bet_for_initiative', other_campaign.aasm_state
+
+    # puts @response.body
+  end
+
+  test 'when all player bet for initiative, go for next turn' do
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    other_player = create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    player = create( :player, user: @user, campaign: other_campaign )
+
+    other_campaign.players_choose_faction!
+    other_campaign.players_first_hire_and_move!
+    other_campaign.players_bet_for_initiative!
+
+    post player_initiative_bet_save_url( player, params: { pp: 3 } )
+    assert_redirected_to campaign_url( other_campaign )
+    assert_equal 'bet_for_initiative', other_campaign.aasm_state
+
+    @discord_auth_hash[ :uid ] = other_user.uid
+    OmniAuth.config.mock_auth[:discord] = OmniAuth::AuthHash.new    @discord_auth_hash
+    post '/auth/discord'
+    follow_redirect!
+
+    post player_initiative_bet_save_url( other_player, params: { pp: 4 } )
+    assert_redirected_to campaign_url( other_campaign )
+    assert_equal 'hiring_and_movement_schedule', other_campaign.reload.aasm_state
+
+    assert_equal 1, other_player.reload.initiative
+    assert_equal 2, player.reload.initiative
+
+    # puts @response.body
+  end
+
+  test 'when all player bet for initiative and turn 6 the game should end. The winner should be decided by initiative.' do
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    other_player = create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    player = create( :player, user: @user, campaign: other_campaign )
+
+    other_campaign.players_choose_faction!
+    other_campaign.players_first_hire_and_move!
+    other_campaign.players_bet_for_initiative!
+
+    other_campaign.turn = 6
+    other_campaign.save!
+
+    post player_initiative_bet_save_url( player, params: { pp: 3 } )
+    assert_redirected_to campaign_url( other_campaign )
+    assert_equal 'bet_for_initiative', other_campaign.aasm_state
+
+    @discord_auth_hash[ :uid ] = other_user.uid
+    OmniAuth.config.mock_auth[:discord] = OmniAuth::AuthHash.new    @discord_auth_hash
+    post '/auth/discord'
+    follow_redirect!
+
+    post player_initiative_bet_save_url( other_player, params: { pp: 4 } )
+    assert_redirected_to campaigns_url
+    assert_equal 'campaign_finished', other_campaign.reload.aasm_state
+
+    assert_equal 1, other_player.reload.initiative
+    assert_equal 2, player.reload.initiative
+
+    assert_equal other_player, other_campaign.winner
+
+    # puts @response.body
+  end
+
+  test 'when all player bet for initiative and turn 6 the game should end. The winner should be the one who has the most points.' do
+    other_user = create( :user )
+    other_campaign = create( :campaign, user: other_user )
+    other_player = create( :player, user: other_user, campaign: other_campaign, faction: :royaumes )
+    player = create( :player, user: @user, campaign: other_campaign )
+
+    other_campaign.players_choose_faction!
+    other_campaign.players_first_hire_and_move!
+    other_campaign.players_bet_for_initiative!
+
+    other_campaign.turn = 6
+    other_campaign.save!
+
+    create( :victory_points_history, player: player )
+
+    post player_initiative_bet_save_url( player, params: { pp: 3 } )
+    assert_redirected_to campaign_url( other_campaign )
+    assert_equal 'bet_for_initiative', other_campaign.aasm_state
+
+    @discord_auth_hash[ :uid ] = other_user.uid
+    OmniAuth.config.mock_auth[:discord] = OmniAuth::AuthHash.new    @discord_auth_hash
+    post '/auth/discord'
+    follow_redirect!
+
+    post player_initiative_bet_save_url( other_player, params: { pp: 4 } )
+    assert_redirected_to campaigns_url
+    assert_equal 'campaign_finished', other_campaign.reload.aasm_state
+
+    assert_equal 1, other_player.reload.initiative
+    assert_equal 2, player.reload.initiative
+
+    assert_equal player, other_campaign.winner
+
+    # puts @response.body
+  end
+
   # test 'should get edit' do
   #   get campaign_edit_player_url(@player)
   #   assert_response :success

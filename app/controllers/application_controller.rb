@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
 
   def current_user
+    # In test environment we need to be sure to reload this variable as we change connection during a test.
+    @current_user = nil if Rails.env.test?
+
     begin
       @current_user ||= ( (s=session['current_user_id']) && User.find( s ) )
     rescue

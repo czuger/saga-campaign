@@ -6,7 +6,9 @@ FactoryBot.define do
     faction { :royaumes }
 
     controls_points { [ 'O1' ] }
-    initiative_bet { 0 }
+
+    # Initiative bet should not be set by default
+    # initiative_bet { 0 }
 
   end
 end

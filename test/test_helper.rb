@@ -25,7 +25,7 @@ class ActiveSupport::TestCase
 
     OmniAuth.config.test_mode = true
 
-    discord_auth_hash =
+    @discord_auth_hash =
       {
         :provider => 'discord',
         :uid => @user.uid,
@@ -34,7 +34,7 @@ class ActiveSupport::TestCase
         }
       }
 
-    OmniAuth.config.mock_auth[:discord] = OmniAuth::AuthHash.new    discord_auth_hash
+    OmniAuth.config.mock_auth[:discord] = OmniAuth::AuthHash.new    @discord_auth_hash
     post '/auth/discord'
     follow_redirect!
   end
