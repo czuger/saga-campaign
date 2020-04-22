@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_074835) do
+ActiveRecord::Schema.define(version: 2020_04_22_090110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_074835) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "aasm_state"
     t.integer "max_players", limit: 2, default: 2, null: false
+    t.integer "turn", limit: 2, default: 1, null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
@@ -126,6 +127,16 @@ ActiveRecord::Schema.define(version: 2020_04_21_074835) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  create_table "victory_points_histories", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.integer "turn", limit: 2, null: false
+    t.integer "points_total", limit: 2, null: false
+    t.string "controlled_locations", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_victory_points_histories_on_player_id"
+  end
+
   add_foreign_key "campaigns", "users"
   add_foreign_key "fight_results", "campaigns"
   add_foreign_key "gangs", "campaigns"
@@ -138,4 +149,5 @@ ActiveRecord::Schema.define(version: 2020_04_21_074835) do
   add_foreign_key "players", "users"
   add_foreign_key "unit_old_libe_strings", "users"
   add_foreign_key "units", "gangs"
+  add_foreign_key "victory_points_histories", "players"
 end

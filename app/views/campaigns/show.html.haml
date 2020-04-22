@@ -24,11 +24,18 @@
       Joueur
       %span.badge.badge-light
         = @player.user.name
+
   .col-4
     %button.btn.btn-secondary.btn-block{ type: :button }
-      PP
+      Tour
       %span.badge.badge-light
-        = @player.pp
+        = @campaign.turn
+
+  -#.col-4
+  -#  %button.btn.btn-secondary.btn-block{ type: :button }
+  -#    PP
+  -#    %span.badge.badge-light
+  -#      = @player.pp
 
 - if @movements_finalized
   .row.my-3

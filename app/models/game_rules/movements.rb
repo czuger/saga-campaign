@@ -36,9 +36,9 @@ module GameRules
                                          intercepted_gang.id, movement_result: mr ).go
 
                 if result.result.winner_code == :attacker
-                  intercepted_gang.retreat!( @campaign )
+                  intercepted_gang.retreat!
                 else
-                  gang.retreat!( @campaign )
+                  gang.retreat!
                 end
 
                 check_for_retreat!( gang )
@@ -117,7 +117,8 @@ module GameRules
     def control_point!( location, new_controller, result )
       # The control change only if the winner is the attacker.
       # In case the attack fail or in case of equality, the control remain unchanged.
-      if result&.result&.winner_code == :attacker
+      # of course it changes if there was no combat (!result)
+      if !result || result.result&.winner_code == :attacker
         @players.each do |p_struct|
           p_struct.player.controls_points.delete( location )
         end
@@ -166,7 +167,7 @@ module GameRules
 
     def check_for_retreat!( gang )
       if gang.points < 4
-        gang.retreat!( @campaign )
+        gang.retreat!
       end
     end
 

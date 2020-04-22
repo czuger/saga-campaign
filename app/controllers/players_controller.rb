@@ -139,9 +139,7 @@ class PlayersController < ApplicationController
 
       set_initiative!
 
-      @campaign.gangs.update_all( retreating: false )
-
-      @campaign.players_hire_and_move!
+      next_turn!
 
       redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
     end
@@ -189,6 +187,27 @@ class PlayersController < ApplicationController
       end
     end
 
+  end
+
+  # The following methods should be moved elsewhere
+  def next_turn!
+    @campaign.gangs.update_all( retreating: false )
+
+    compute_points_for_players!
+
+    @campaign.turn += 1
+    @campaign.players_hire_and_move!
+
+    @campaign.save!
+  end
+
+  def compute_points_for_players!
+    @campaign.players.each do |player|
+      _controlled_locations = player.controls_points.select{ |p| p =~ /P./ }
+      VictoryPointsHistory.create!(
+        player: player, turn: @campaign.turn, controlled_locations: _controlled_locations,
+        points_total: _controlled_locations.count )
+    end
   end
 
 end

@@ -9,9 +9,9 @@ class Gang < ApplicationRecord
   serialize :movements
   serialize :movements_backup
 
-  def retreat!( campaign )
+  def retreat!
     unless self.retreating
-      retreating_location = GameRules::Factions.starting_positions( campaign, player ).sample
+      retreating_location = GameRules::Factions.retreating_positions( player ).sample
       campaign.logs.create!( data: I18n.t( 'log.gangs.retreating', gang_name: name, location: retreating_location ) )
       self.location = retreating_location
 
