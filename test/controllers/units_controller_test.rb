@@ -23,6 +23,17 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to gang_units_url( @gang )
   end
 
+  test 'test that we always pay the right price when buying an unit' do
+    [ 0.5, 1.5, 2.27 ].each do |cost|
+      assert_difference('Unit.count') do
+        assert_difference '@player.reload.pp', -cost do
+          post gang_units_url( @gang ), params: { unit: { libe: 'gardes', amount: 6, points: cost, weapon: '-' } }
+        end
+      end
+    end
+    assert_redirected_to gang_units_url( @gang )
+  end
+
   # test 'should show unit' do
   #   get campaign_gang_unit_url( @campaign, @gang, @unit )
   #   assert_response :success
@@ -39,8 +50,13 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   test 'should destroy unit' do
+    @unit.points = 2.27
+    @unit.save!
+
     assert_difference('Unit.count', -1) do
-      delete unit_url( @unit )
+      assert_difference '@player.reload.pp', 2.27 do
+        delete unit_url( @unit )
+      end
     end
 
     assert_redirected_to gang_units_url( @gang )
