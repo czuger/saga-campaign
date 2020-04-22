@@ -5,6 +5,19 @@ fr:
     alert:
       cant_pay: "Vous n'avez plus assez de PP pour ajouter cette unité."
 
+    create:
+      success: L'unité a bien été ajoutée.
+      log: "%{user_name} a ajouté une unité de %{amount} %{unit_libe} à la bande %{gang_name}."
+
+    update:
+      success: L'unité a bien été modifiée.
+      log: "%{user_name} a modifié une unité de %{amount} %{unit_libe} de la bande %{gang_name}."
+
+    destroy:
+      success: L'unité a bien été supprimée.
+      log: "%{user_name} a supprimé une unité de %{amount} %{unit_libe} de la bande %{gang_name}."
+
+
     seigneur: Seigneur
     lieutenant: Lieutenant
     sorcier: Sorcier

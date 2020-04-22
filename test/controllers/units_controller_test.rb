@@ -17,7 +17,7 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create unit' do
     assert_difference('Unit.count') do
-      post gang_units_url( @gang ), params: { unit: { libe: 'guards', amount: 4, points: 1, weapon: '-' } }
+      post gang_units_url( @gang ), params: { unit: { libe: 'gardes', amount: 4, points: 1, weapon: '-' } }
     end
 
     assert_redirected_to gang_units_url( @gang )

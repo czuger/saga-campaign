@@ -1,5 +1,16 @@
 fr:
   campaigns:
+
+    create:
+      success: La campagne a été crée avec succès.
+      failure: La création de la campagne a échouée.
+
+    update:
+      success: La campagne a été mise à jour avec succès.
+
+    destroy:
+      success: La campagne a été supprimée avec succès.
+
     form:
       name: Nom
 

@@ -23,11 +23,6 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should modify pp' do
-    patch player_modify_pp_url( @player, params: { player: { pp: 50 } } )
-    assert_response :success
-  end
-
   test 'Validate that movements parameters are correctly injected in gangs' do
     @player.initiative = 1
     @player.save!

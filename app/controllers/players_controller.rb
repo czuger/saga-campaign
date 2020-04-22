@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @localisations = GameRules::Map.new.localisations
+    # For future use
   end
 
   # GET /players/new
@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
 
       respond_to do |format|
         if new_players_creation_result
-          format.html { redirect_to campaigns_path, notice: 'Joueur correctement ajouté.' }
+          format.html { redirect_to campaigns_path, notice: t( '.success' ) }
 
         else
           format.html { render :new }
@@ -55,19 +55,9 @@ class PlayersController < ApplicationController
   def destroy
     @player.destroy
     respond_to do |format|
-      format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
+      format.html { redirect_to players_url, notice: t( '.success' ) }
 
     end
-  end
-
-  def modify_pp
-    # TODO : use set_player once it is fixed.
-
-    player = Player.find( params[:player_id] )
-    player.pp = params[:player][:pp]
-    player.save!
-
-    player.campaign.logs.create!( data: "#{player.user.name} a modifié son nombre de pp : #{player.pp}." )
   end
 
   def schedule_movements_edit

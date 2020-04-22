@@ -1,6 +1,12 @@
 fr:
   players:
 
+    create:
+      success: Les joueurs ont correctement été ajoutés.
+
+    destroy:
+      success: Le joueur a correctement été supprimé.
+
     choose_faction_new:
       choose_faction: Choisissez une faction
       choose: Selectionner

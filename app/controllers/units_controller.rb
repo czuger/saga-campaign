@@ -36,14 +36,16 @@ class UnitsController < ApplicationController
   def create
     add_gang_to_unit
 
+    @can_pay_unit = @unit.points <= @player.pp
+
     Unit.transaction do
       respond_to do |format|
         if @can_pay_unit && @unit.save
 
-          after_unit_update( "#{@user.name} a ajouté une unité de #{@unit.amount} #{@unit.libe} à la bande #{@gang.name}." )
+          after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name ) )
           pay_unit( @unit.points )
 
-          format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully created.' }
+          format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
         else
           set_units_rules_data
           flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
@@ -68,10 +70,10 @@ class UnitsController < ApplicationController
 
         if @can_pay_unit && @unit.update(unit_params)
 
-          after_unit_update( "#{@user.name} a modifie une unité en #{@unit.amount} #{@unit.libe} dans la bande #{@gang.name}." )
+          after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name ) )
           pay_unit( @unit.points - current_points )
 
-          format.html { redirect_to gang_units_path( @gang ), notice: 'Unit was successfully updated.' }
+          format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
         else
           set_units_rules_data
           flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
@@ -92,14 +94,14 @@ class UnitsController < ApplicationController
       set_gang_points
       @campaign.logs.create!(
         data:
-          "#{@player.user.name} a supprimé une unité de #{@unit.amount} #{@unit.libe} à la bande #{@gang.name}."
+          after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name ) )
       )
 
       pay_unit( - current_points )
     end
 
     respond_to do |format|
-      format.html { redirect_to gang_units_path( @gang ), notice: "L'unité a bien été supprimée." }
+      format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
 
     end
 

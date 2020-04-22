@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :player do
     user { nil }
-    pp { 1 }
+    pp { 10 }
     god_favor { 1 }
     faction { :royaumes }
 

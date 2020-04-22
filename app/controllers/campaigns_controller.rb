@@ -39,9 +39,9 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if create_new_campaign
-        format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( 'creation_success.f', item: 'La campagne' ) }
+        format.html { redirect_to new_campaign_player_path( @campaign ), notice: t( '.success' ) }
       else
-        format.html { render :new, error: 'Campaign creation failed' }
+        format.html { render :new, error: t( '.failure' ) }
       end
     end
 
@@ -52,7 +52,7 @@ class CampaignsController < ApplicationController
   def update
     respond_to do |format|
       if @campaign.update(campaign_params)
-        format.html { redirect_to @campaign, notice: t( 'update_success.f', item: 'La campagne' ) }
+        format.html { redirect_to @campaign, notice: t( '.success' ) }
         
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class CampaignsController < ApplicationController
   def destroy
     @campaign.destroy
     respond_to do |format|
-      format.html { redirect_to campaigns_url, notice: t( 'deletion_success.f', item: 'La campagne' ) }
+      format.html { redirect_to campaigns_url, notice: t( '.success' ) }
       
     end
   end

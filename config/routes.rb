@@ -25,8 +25,6 @@ Rails.application.routes.draw do
   resources :players, only: [] do
     resources :gangs, only: [ :index, :new, :create ]
 
-    patch :modify_pp
-
     get :schedule_movements_edit
     post :schedule_movements_save
 
