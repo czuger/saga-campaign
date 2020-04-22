@@ -108,6 +108,13 @@ class CampaignsController < ApplicationController
   def create_new_campaign
     Campaign.transaction do
       result = @campaign.save
+
+      # p result
+      # p @campaign
+      # p @campaign.errors
+
+      raise @campaign.errors.inspect unless result
+
       result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
       @player = Player.create_new_player( @campaign, current_user )
       result && @player.errors.empty?
