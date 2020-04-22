@@ -1,0 +1,33 @@
+%h1 Points de victoire
+
+%h2 Totaux
+
+%table.table
+  %thead
+    %tr
+      %th Joueur
+      %th Total
+
+  %tbody
+    - @vp_sums.each do |player, total|
+      %tr
+        %td= player
+        %td= total
+
+%h2 Détails
+
+%table.table
+  %thead
+    %tr
+      %th Tour
+      %th Joueur
+      %th Points
+      %th Contrôles
+
+  %tbody
+    - @vp_status.each do |status|
+      %tr
+        %td= status.turn
+        %td= status.player.user.name
+        %td= status.points_total
+        %td= status.controlled_locations.join( ', ' )

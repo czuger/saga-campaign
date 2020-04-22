@@ -3,6 +3,7 @@ class Player < ApplicationRecord
   belongs_to :campaign
 
   has_many :gangs, dependent: :destroy
+  has_many :victory_points_histories, dependent: :destroy
 
   # validates :faction, presence: true
   validates :pp, presence: true

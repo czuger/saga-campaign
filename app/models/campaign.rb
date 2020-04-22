@@ -9,6 +9,7 @@ class Campaign < ApplicationRecord
 
   has_many :players, dependent: :destroy
   has_many :users, through: :players
+  has_many :victory_points_histories, through: :players
 
   has_many :gangs, dependent: :destroy
   has_many :units, through: :gangs

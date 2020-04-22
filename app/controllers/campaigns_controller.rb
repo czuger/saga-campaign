@@ -93,6 +93,11 @@ class CampaignsController < ApplicationController
     @gangs = @campaign.gangs.joins( :player ).includes( { player: :user } ).order( 'players.initiative', :movement_order )
   end
 
+  def show_victory_status
+    @vp_status = @campaign.victory_points_histories.includes( { player: :user } ).order( 'turn DESC, player_id' )
+    @vp_sums = @campaign.victory_points_histories.joins( { player: :user } ).group( 'users.name' ).sum( :points_total )
+  end
+
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
