@@ -204,6 +204,7 @@ class PlayersController < ApplicationController
     end
   end
 
+
   def compute_points_for_players!
     @campaign.players.each do |player|
       _controlled_locations = player.controls_points.select{ |p| p =~ /P./ }

@@ -78,14 +78,12 @@ class CampaignsController < ApplicationController
     # We check if all players have validated their movements
     # if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1
 
-    GameRules::Movements.new( @campaign ).run!
+    Campaign.transaction do
+      GameRules::Movements.new( @campaign ).run!
+      GameRules::ControlPoints.new( @campaign ).set_control_of_locations!
 
-    # TODO : run all movement with combats directly
-    # TODO : switch campaign state
-
-    # FOCUS ON CAMPAIGN MECHANISM FIRST. DO NOT INCLUDE COMBAT.
-
-    redirect_to campaign_show_movements_path( @campaign )
+      redirect_to campaign_show_movements_path( @campaign )
+    end
   end
 
   def show_movements

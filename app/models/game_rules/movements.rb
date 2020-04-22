@@ -44,13 +44,10 @@ module GameRules
                 check_for_retreat!( gang )
                 check_for_retreat!( intercepted_gang )
               end
-
-              control_point!( movement, p_struct.player, result )
             end
           end
         end
 
-        gain_and_loose_pp!  # Need to be before because finalize movement save data
         finalize_movements!
 
         @campaign.players_bet_for_initiative!
@@ -112,38 +109,6 @@ module GameRules
 
     def all_movements_done?
       @players.map{ |e| e.movements_array.count }.flatten.inject(&:+ ) == 0
-    end
-
-    def control_point!( location, new_controller, result )
-      # The control change only if the winner is the attacker.
-      # In case the attack fail or in case of equality, the control remain unchanged.
-      # of course it changes if there was no combat (!result)
-      if !result || result.result&.winner_code == :attacker
-        @players.each do |p_struct|
-          p_struct.player.controls_points.delete( location )
-        end
-
-        @campaign.logs.create!( data: I18n.t( 'log.gangs.take_control', user_name: new_controller.user.name, location: location ) )
-
-        new_controller.controls_points << location unless new_controller.controls_points.include?( location )
-      end
-    end
-
-    # This will probably moved elsewhere
-    def gain_and_loose_pp!
-      map = GameRules::Map.new
-
-      @players.each do |p_struct|
-        player = p_struct.player
-
-        total_pp = player.controls_points.map{ |control| map.position_value( control ) }.inject( &:+ )
-        player.pp += total_pp
-        @campaign.logs.create!( data: I18n.t( 'log.pp.control_points_gain', name: player.user.name, count: total_pp ) )
-
-        maintenance = ( player.gangs.sum( :points ) * 0.5 ).ceil
-        player.pp -= maintenance
-        @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
-      end
     end
 
     def check_for_interception!( intercepting_gang )

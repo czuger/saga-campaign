@@ -5,6 +5,7 @@ namespace :fill_db do
 
     user = User.find_by_name( :foo )
     Player.where( user_id: user.id ).where.not( faction: nil ).each do |p|
+      next if p.campaign.aasm_state == 'campaign_finished'
 
       used_second_movements = []
 
