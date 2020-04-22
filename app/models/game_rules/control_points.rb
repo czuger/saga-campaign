@@ -47,6 +47,8 @@ module GameRules
         maintenance = ( player.gangs.sum( :points ) * 0.5 ).ceil
         player.pp -= maintenance
         @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
+
+        player.save!
       end
     end
 
