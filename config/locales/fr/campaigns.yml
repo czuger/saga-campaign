@@ -11,6 +11,11 @@ fr:
     destroy:
       success: La campagne a été supprimée avec succès.
 
+    show:
+      move_bands: Bouger les bandes
+      previous_login: Log précédent
+      next_login: Log suivant
+
     form:
       name: Nom
 
