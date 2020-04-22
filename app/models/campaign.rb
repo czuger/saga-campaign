@@ -14,7 +14,8 @@ class Campaign < ApplicationRecord
   has_many :gangs, dependent: :destroy
   has_many :units, through: :gangs
 
-  has_one :winner, class_name: 'Player'
+  # has_one :winner, class_name: 'Player', :foreign_key => 'winner_id'
+  belongs_to :winner, class_name: 'Player'
 
   validates :name, presence: true, uniqueness: true
 

@@ -72,7 +72,7 @@ class PlayersController < ApplicationController
 
       gang_order_hash = Hash[ params[:gangs_order].split( ',' ).each_with_index.map{ |e, i| [ e.strip.to_i, i ] } ]
 
-      @player.gangs.each do |gang|
+      @player.gangs.where( id: gang_order_hash.keys ).each do |gang|
         gang.movement_order = gang_order_hash[ gang.id ] + 1
         gang.movements = gang_movements_array( gang.id )
         gang.save!
@@ -142,7 +142,7 @@ class PlayersController < ApplicationController
       next_turn!
 
       if @campaign.aasm_state == 'campaign_finished'
-        redirect_to campaigns
+        redirect_to campaigns_path
       else
         redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
       end
@@ -199,12 +199,12 @@ class PlayersController < ApplicationController
     @campaign.gangs.update_all( retreating: false )
 
     compute_points_for_players!
-    check_for_victory!
+    unless check_for_victory!
+      @campaign.turn += 1
+      @campaign.players_hire_and_move!
 
-    @campaign.turn += 1
-    @campaign.players_hire_and_move!
-
-    @campaign.save!
+      @campaign.save!
+    end
   end
 
   def compute_points_for_players!
@@ -218,10 +218,16 @@ class PlayersController < ApplicationController
 
   def check_for_victory!
     if @campaign.turn == 6
-      winner_max_points = @campaign.victory_points_histories.max( :points_total )
-      winners = @campaign.victory_points_histories.where( points_total: winner_max_points )
-      if winners.count == 1
-        @campaign.winner = winners.take.player
+      winner_max_points = @campaign.victory_points_histories.maximum( :points_total )
+
+      players_sums = @campaign.victory_points_histories.group( :player_id ).sum( :points_total )
+      max_sum = players_sums.values.max
+      potential_winners = players_sums.select{ |_, v| v == max_sum }
+
+      potential_winners = potential_winners.keys
+
+      if potential_winners.count == 1
+        @campaign.winner = Player.find( potential_winners.first )
       else
         winner = Player.where( id: winners.pluck( :player_id ) ).order( :initiative ).first
         @campaign.winner = winner
@@ -229,7 +235,10 @@ class PlayersController < ApplicationController
 
       @campaign.terminate_campaign!
       @campaign.save!
+
+      return true
     end
+    false
   end
 
 end

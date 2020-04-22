@@ -71,7 +71,7 @@ module GameRules
 
     def self.retreating_positions( player )
       faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
-      FACTIONS_RECRUITMENT_POSITIONS[faction_block].sort  - player.gangs.pluck( :location )
+      FACTIONS_RECRUITMENT_POSITIONS[faction_block]
     end
 
     def self.initial_control_points( campaign, player )
