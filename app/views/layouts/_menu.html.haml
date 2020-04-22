@@ -14,7 +14,7 @@
             = dropdown_sub_menu_link( t('menu.initiative'), campaign_initiative_edit_path( @campaign ) )
             = dropdown_sub_menu_link( t('menu.show_movements'), campaign_show_movements_path( @campaign ) )
             = dropdown_sub_menu_link( t('menu.combat_list'), campaign_fights_path( @campaign ) )
-            = dropdown_sub_menu_link( "Points de victoire", campaign_show_victory_status_path( @campaign ) )
+            = dropdown_sub_menu_link( t('menu.vp_detail'), campaign_show_victory_status_path( @campaign ) )
 
         - if @campaign&.id && @player&.id
           = render partial: 'layouts/action_menu'

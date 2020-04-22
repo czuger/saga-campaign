@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_090110) do
     t.string "aasm_state"
     t.integer "max_players", limit: 2, default: 2, null: false
     t.integer "turn", limit: 2, default: 1, null: false
+    t.bigint "winner_id"
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_090110) do
     t.index ["player_id"], name: "index_victory_points_histories_on_player_id"
   end
 
+  add_foreign_key "campaigns", "players", column: "winner_id"
   add_foreign_key "campaigns", "users"
   add_foreign_key "fight_results", "campaigns"
   add_foreign_key "gangs", "campaigns"

@@ -141,7 +141,12 @@ class PlayersController < ApplicationController
 
       next_turn!
 
-      redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
+      if @campaign.aasm_state == 'campaign_finished'
+        redirect_to campaigns
+      else
+        redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
+      end
+
     end
   end
 
@@ -194,6 +199,7 @@ class PlayersController < ApplicationController
     @campaign.gangs.update_all( retreating: false )
 
     compute_points_for_players!
+    check_for_victory!
 
     @campaign.turn += 1
     @campaign.players_hire_and_move!
@@ -207,6 +213,22 @@ class PlayersController < ApplicationController
       VictoryPointsHistory.create!(
         player: player, turn: @campaign.turn, controlled_locations: _controlled_locations,
         points_total: _controlled_locations.count )
+    end
+  end
+
+  def check_for_victory!
+    if @campaign.turn == 6
+      winner_max_points = @campaign.victory_points_histories.max( :points_total )
+      winners = @campaign.victory_points_histories.where( points_total: winner_max_points )
+      if winners.count == 1
+        @campaign.winner = winners.take.player
+      else
+        winner = Player.where( id: winners.pluck( :player_id ) ).order( :initiative ).first
+        @campaign.winner = winner
+      end
+
+      @campaign.terminate_campaign!
+      @campaign.save!
     end
   end
 

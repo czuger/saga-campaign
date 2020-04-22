@@ -14,12 +14,15 @@ class Campaign < ApplicationRecord
   has_many :gangs, dependent: :destroy
   has_many :units, through: :gangs
 
+  has_one :winner, class_name: 'Player'
+
   validates :name, presence: true, uniqueness: true
 
   aasm do
     state :waiting_for_players, initial: true
     state :waiting_for_players_to_choose_their_faction
     state :first_hiring_and_movement_schedule, :hiring_and_movement_schedule, :bet_for_initiative
+    state :campaign_finished
 
     event :players_choose_faction do
       transitions from: [:waiting_for_players], to: :waiting_for_players_to_choose_their_faction
@@ -37,6 +40,9 @@ class Campaign < ApplicationRecord
       transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :bet_for_initiative
     end
 
+    event :terminate_campaign do
+      transitions from: [:bet_for_initiative], to: :campaign_finished
+    end
   end
 
 end

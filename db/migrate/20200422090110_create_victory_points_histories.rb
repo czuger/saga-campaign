@@ -10,5 +10,6 @@ class CreateVictoryPointsHistories < ActiveRecord::Migration[6.0]
     end
 
     add_column :campaigns, :turn, :integer, limit: 1, null: false, default: 1
+    add_reference :campaigns, :winner, foreign_key: { to_table: :players }, index: false
   end
 end
