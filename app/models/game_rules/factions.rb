@@ -69,6 +69,10 @@ module GameRules
       end
     end
 
+    def self.recruitment_positions( player )
+      retreating_positions( player )
+    end
+
     def self.retreating_positions( player )
       faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
       FACTIONS_RECRUITMENT_POSITIONS[faction_block]

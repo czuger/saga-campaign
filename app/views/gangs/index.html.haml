@@ -18,7 +18,7 @@
       %th Position
       %th
       %th
-        %th
+      %th
 
   %tbody
     - @gangs.each do |gang|
@@ -30,7 +30,8 @@
         %td= gang.points
         %td= gang.location
 
-        %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        - if can_modify_gang?( gang )
+          %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
         %td= link_to 'Renommer la bande', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 

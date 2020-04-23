@@ -8,8 +8,8 @@
       %th Type
       %th Nom
       %th Points
-      -#%th
-      -#%th
+      %th
+      %th
       %th
 
   %tbody
@@ -20,7 +20,6 @@
         %td= I18n.t( "weapon.#{unit.weapon}" )
         %td= unit.long_name.upcase_first
         %td= unit.points
-        -#%td= link_to 'Show', unit
         %td= link_to 'Modifier', edit_unit_path(unit), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
         %td= link_to 'Dupliquer', duplicate_link(unit), method: :post, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
         %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
@@ -31,7 +30,6 @@
       %td
       %td
       %td= @gang.points
-      -#%td= link_to 'Show', unit
       %td
       %td
 
