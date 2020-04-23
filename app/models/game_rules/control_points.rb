@@ -40,7 +40,7 @@ module GameRules
       map = Map.new
 
       @campaign.players.each do |player|
-        total_pp = player.controls_points.map{ |control| map.position_value( control ) }.inject( &:+ )
+        total_pp = player.controls_points.map{ |control| map.position_value( control ) }.inject( &:+ ) || 0
         player.pp += total_pp
         @campaign.logs.create!( data: I18n.t( 'log.pp.control_points_gain', name: player.user.name, count: total_pp ) )
 

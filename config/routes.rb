@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :campaigns do
     resources :players, except: [ :edit, :update, :index, :destroy ]
 
-    resources :fights, only: [ :index, :new, :create, :show ]
+    resources :fights, only: [ :index, :show ]
 
     get 'log/show', to: 'log#show'
     get 'map/show', to: 'map#show'
