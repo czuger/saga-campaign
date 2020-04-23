@@ -33,3 +33,9 @@
       %span{ class: 'navbar-text' }
         PP
         = @player.pp
+        |
+
+    - if @current_user
+      %span{ class: 'navbar-text' }
+        Bonjour
+        = @current_user&.name
