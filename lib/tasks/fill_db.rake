@@ -17,7 +17,7 @@ namespace :fill_db do
         forbidden_movements = GameRules::Factions.opponent_recruitment_positions( p )
 
         g.movements = []
-        g.movements << GameRules::Map.available_movements( g.location ).sample - forbidden_movements
+        g.movements << ( GameRules::Map.available_movements( g.location ) - forbidden_movements ).sample
 
         available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements - forbidden_movements
         second_movement = available_second_movements.sample

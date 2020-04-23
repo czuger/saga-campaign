@@ -2,6 +2,8 @@ module GameRules
 
   class ControlPoints
 
+    @@golden_ratio = nil
+
     def initialize( campaign )
       @campaign = campaign
     end
@@ -34,6 +36,13 @@ module GameRules
       end
     end
 
+    def self.maintenance_cost( player )
+      # ( player.gangs.sum( :points ) * 0.5 ).ceil
+      @@golden_ratio ||= ( 1 + Math.sqrt( 5 ) ) / 2
+
+      ( ( @@golden_ratio * 0.1 + 1 - 0.1 ) ** ( player.gangs.sum( :points ) * @@golden_ratio ) ).ceil
+    end
+
     private
 
     def gain_and_loose_pp!
@@ -44,7 +53,7 @@ module GameRules
         player.pp += total_pp
         @campaign.logs.create!( data: I18n.t( 'log.pp.control_points_gain', name: player.user.name, count: total_pp ) )
 
-        maintenance = ( player.gangs.sum( :points ) * 0.5 ).ceil
+        maintenance = ControlPoints.maintenance_cost( player )
         player.pp -= maintenance
         @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
 

@@ -22,7 +22,7 @@
         %td
           %b= total
 
-      - maintenance = compute_maintenance( player )
+      - maintenance = GameRules::ControlPoints.maintenance_cost( player )
       %tr
         %td
           %b Maintenance
