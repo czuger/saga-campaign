@@ -51,8 +51,6 @@ module GameRules
         player.save!
       end
     end
-
-
   end
 
 end
