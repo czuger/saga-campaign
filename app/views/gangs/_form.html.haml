@@ -19,7 +19,7 @@
 
   .mt-2.ml-2
     - @icons.each do |icon|
-      = image_tag( icon, class: 'gang_icon', gang_icon_name: icon.gsub('gangs_icons/', '' ) )
+      = image_tag( 'gangs_icons/' + icon, class: 'gang_icon', gang_icon_name: icon )
 
   .actions.mt-2
     = f.submit 'Enregistrer', class: 'btn btn-secondary'
