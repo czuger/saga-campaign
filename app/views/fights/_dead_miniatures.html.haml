@@ -6,7 +6,7 @@
       %th Unité détruite
       %th Reste
       %th Remonte à
-      -#%th Pertes finales
+      %th Score
 
   %tbody
     - bc&.each do |casualty|
@@ -16,5 +16,10 @@
         %td= casualty.destroyed ? 'Oui' : 'Non'
         %td= casualty.remaining_units
         %td= casualty.recover_to
-        -#%td= casualty.final_losses
-          
+        %td= casualty.losses_points
+
+    %tr{ class: 'table-info'}
+      %td{ colspan: 5 }
+        %b= total_name
+      %td
+        %b= total_score

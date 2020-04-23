@@ -80,7 +80,13 @@ module Fight
 
     # Compute the losses points do determine victory
     def losses_points
-      ( losses * @massacre_points ).to_i
+      pts = ( losses * @massacre_points ).to_i
+
+      if destroyed?
+        pts += legendary ? 4 : 1
+      end
+
+      pts
     end
 
     def destroyed?

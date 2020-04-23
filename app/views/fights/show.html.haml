@@ -5,31 +5,32 @@
 %hr
 
 %h2= "Pertes de l'attaquant : #{@fight_data.attacker} (#{@fight_data.attacking_gang_name})"
-= render partial: 'dead_miniatures', locals: { bc: @casualties.attacker }
+= render partial: 'dead_miniatures', locals: { bc: @casualties.attacker, total_score: @result.defender_points_total, total_name: 'Score du defenseur' }
 %hr
 
 %h2= "Pertes du défenseur : #{@fight_data.defender} (#{@fight_data.defending_gang_name})"
-= render partial: 'dead_miniatures', locals: { bc: @casualties.defender }
+= render partial: 'dead_miniatures', locals: { bc: @casualties.defender, total_score: @result.attacker_points_total, total_name: "Score de l'attaquant" }
 
-%hr
-
-%h2= "Score de l'attaquant #{@result.attacker_name} : #{@result.attacker_points_total} points"
-
-%table.table
-  %tbody
-    - @result.attacker_points_list.each do |libe|
-      %tr
-        %td= libe
-
-%hr
-
-%h2= "Score du défenseur #{@result.defender_name} : #{@result.defender_points_total} points"
-
-%table.table
-  %tbody
-    - @result.defender_points_list.each do |libe|
-      %tr
-        %td= libe
+-#
+-#%hr
+-#
+-#%h2= "Score de l'attaquant #{@result.attacker_name} : #{@result.attacker_points_total} points"
+-#
+-#%table.table
+-#  %tbody
+-#    - @result.attacker_points_list.each do |libe|
+-#      %tr
+-#        %td= libe
+-#
+-#%hr
+-#
+-#%h2= "Score du défenseur #{@result.defender_name} : #{@result.defender_points_total} points"
+-#
+-#%table.table
+-#  %tbody
+-#    - @result.defender_points_list.each do |libe|
+-#      %tr
+-#        %td= libe
 
 -#%hr
 -#%hr

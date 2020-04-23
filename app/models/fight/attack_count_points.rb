@@ -85,21 +85,10 @@ module Fight
       points_list = []
 
       opponent.tmp_units.each do |unit|
-        points = ( unit.losses_points )
+        points = unit.losses_points
 
         # points_list << "L'unité #{unit.full_name} a eu #{bc.deads} pertes ce qui donne #{points} points."
         total += points
-
-        if unit.destroyed?
-          if unit.legendary
-            points = 4
-          else
-            points = 1
-          end
-
-          # points_list << "La destruction de l'unité #{unit.full_name} donne #{points} points supplémentaire."
-          total += points
-        end
       end
 
       return points_list, total
