@@ -9,10 +9,10 @@ module GameRules
     FACTIONS_TO_BLOCS = { 'morts'.freeze => :chaos, 'outremonde'.freeze => :chaos, 'horde'.freeze => :chaos,
                           'royaumes'.freeze => :order, 'nature'.freeze => :order, 'souterrains'.freeze => :order }.freeze
 
-    FACTIONS_OPPOSITS = { chaos: :order, order: :chaos }.freeze
+    OPPOSED_FACTION = { chaos: :order, order: :chaos }.freeze
 
-    FACTIONS_STARTING_POSITIONS = { 'chaos' => %w( O9 C11 C6 ).freeze, 'order' => %w( O4 O11 C10 ).freeze }.freeze
-    FACTIONS_RECRUITMENT_POSITIONS = {'chaos' => %w( C1 C2 ).freeze, 'order' => %w( O1 O2 ).freeze }.freeze
+    FACTIONS_STARTING_POSITIONS = { chaos: %w( O9 C11 C6 ).freeze, order: %w( O4 O11 C10 ).freeze }.freeze
+    FACTIONS_RECRUITMENT_POSITIONS = { chaos: %w( C1 C2 ).freeze, order: %w( O1 O2 ).freeze }.freeze
 
     START_PP = 18
 
@@ -60,7 +60,7 @@ module GameRules
     #
     # @return [Array] The position where the player can create gangs
     def self.starting_positions( campaign, player )
-      faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
+      faction_block = FACTIONS_TO_BLOCS[player.faction]
 
       if campaign.aasm_state == 'first_hiring_and_movement_schedule'
         FACTIONS_STARTING_POSITIONS[faction_block].sort - player.gangs.pluck( :location )
@@ -69,18 +69,22 @@ module GameRules
       end
     end
 
+    def self.opponent_recruitment_positions( player )
+      faction_block = OPPOSED_FACTION[ FACTIONS_TO_BLOCS[player.faction] ]
+      FACTIONS_RECRUITMENT_POSITIONS[faction_block]
+    end
+
     def self.recruitment_positions( player )
       retreating_positions( player )
     end
 
     def self.retreating_positions( player )
-      faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
+      faction_block = FACTIONS_TO_BLOCS[player.faction]
       FACTIONS_RECRUITMENT_POSITIONS[faction_block]
     end
 
     def self.initial_control_points( campaign, player )
-      faction_block = FACTIONS_TO_BLOCS[player.faction].to_s.freeze
-
+      faction_block = FACTIONS_TO_BLOCS[player.faction]
       FACTIONS_STARTING_POSITIONS[faction_block] + FACTIONS_RECRUITMENT_POSITIONS[faction_block]
     end
 

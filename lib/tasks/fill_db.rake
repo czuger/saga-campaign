@@ -14,10 +14,12 @@ namespace :fill_db do
 
         g.movement_order = i + 1
 
-        g.movements = []
-        g.movements << GameRules::Map.available_movements( g.location ).sample
+        forbidden_movements = GameRules::Factions.opponent_recruitment_positions( p )
 
-        available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements
+        g.movements = []
+        g.movements << GameRules::Map.available_movements( g.location ).sample - forbidden_movements
+
+        available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements - forbidden_movements
         second_movement = available_second_movements.sample
         used_second_movements << second_movement
         g.movements << second_movement
@@ -36,7 +38,7 @@ namespace :fill_db do
   task opponent_create_gangs: :environment do
 
     original_icons = %w( caesar.svg laurels.svg spartan.svg )
-    original_locations = GameRules::Factions::FACTIONS_STARTING_POSITIONS['order']
+    original_locations = GameRules::Factions::FACTIONS_STARTING_POSITIONS[:order]
 
     units = [
       ['seigneur', '-', 1], ['monstre', 'behemoth', 1], ['creatures', 'bipedes', 2], ['gardes', 'arme_lourde', 4],
@@ -45,6 +47,8 @@ namespace :fill_db do
 
     user = User.find_by_name( :foo )
     Player.where( user_id: user.id ).where.not( faction: nil ).each do |p|
+      next if p.campaign.aasm_state == 'campaign_finished'
+
       icons = original_icons.dup
       locations = original_locations.dup
 

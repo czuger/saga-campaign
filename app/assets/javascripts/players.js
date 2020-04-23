@@ -1,8 +1,15 @@
 var prepared_movements_options_for_select = null;
+var forbidden_movements = null;
 
 const location_array_to_select_options = function( location, original_location ) {
     var empty_array = [ '<option value=""></option>' ];
     var options_array = prepared_movements_options_for_select[location];
+
+    // console.log( options_array, forbidden_movements );
+    // We can't move to opponent city
+    options_array = _.difference( options_array, forbidden_movements )
+    // console.log( options_array );
+
     options_array = options_array.filter( x => x != original_location ).map( x => '<option value="' + x + '">' + x + '</option>' );
 
     var final_array = empty_array.concat( options_array );
@@ -17,7 +24,7 @@ const linked_selects = function() {
             var original_location = $(this).attr( 'original_location' );
             var selected_value = $(this).val();
 
-            console.log( selected_id, selected_value, location_array_to_select_options( selected_value ) );
+            // console.log( selected_id, selected_value, location_array_to_select_options( selected_value ) );
 
             // var corresponding_value_options = prepared_movements_options_for_select[ selected_value ];
             // console.log( corresponding_value_options );
@@ -55,7 +62,9 @@ $(function() {
     if (window.location.pathname.match( /players\/\d+\/schedule_movements_edit/ )) {
 
         prepared_movements_options_for_select = JSON.parse( $('#prepared_movements_options_for_select').val() );
-        console.log( prepared_movements_options_for_select );
+        forbidden_movements = JSON.parse( $('#forbidden_movements').val() );
+
+        // console.log( prepared_movements_options_for_select );
 
         linked_selects();
 

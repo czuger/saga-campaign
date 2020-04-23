@@ -34,6 +34,18 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to gang_units_url( @gang )
   end
 
+  test 'test that we always pay the right price when modify and buy and unit' do
+    assert_no_difference('Unit.count') do
+      assert_difference '@player.reload.pp', -0.5 do
+        patch gang_unit_url( @gang, @unit ), params: { unit: {
+          libe: @unit.libe, amount: 8, points: @unit.points + 0.5, weapon: @unit.weapon } }
+      end
+    end
+
+    assert_redirected_to gang_units_url( @gang )
+  end
+
+
   # test 'should show unit' do
   #   get campaign_gang_unit_url( @campaign, @gang, @unit )
   #   assert_response :success
