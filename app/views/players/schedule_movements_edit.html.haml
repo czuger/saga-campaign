@@ -17,8 +17,11 @@
           %td= gang.name
           %td= image_tag( 'gangs_icons/' + gang.icon, class: 'small_gang_icon' )
           %td= gang.location
-          %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location, @player ), get_movement( gang, 0 ) ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
-          %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( get_movement( gang, 0 ), @player ), get_movement( gang, 1 ) ), { include_blank: true, class: 'form-control' } )
+          - unless gang_cant_move?( gang )
+            %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location, @player ), get_movement( gang, 0 ) ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
+            %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( get_movement( gang, 0 ), @player ), get_movement( gang, 1 ) ), { include_blank: true, class: 'form-control' } )
+          - else
+            %td{ colspan: 2 } La bande est trop faible pour bouger. Rajoutez des unités.
 
   = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
 
