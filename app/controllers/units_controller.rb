@@ -29,6 +29,7 @@ class UnitsController < ApplicationController
   # GET /units/1/edit
   def edit
     set_units_rules_data
+    @edition = true
   end
 
   # POST /units

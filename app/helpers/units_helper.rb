@@ -16,4 +16,8 @@ module UnitsHelper
     </option>"
   end
 
+  def readonly_select?
+
+  end
+
 end

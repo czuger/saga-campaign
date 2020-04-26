@@ -1,25 +1,34 @@
 // Unit type part
-
-var weapon_select_options_prepared_strings = null;
-var units_data = null;
-var edition;
-
-// TODO : switch to vue-js
-// see : https://codepen.io/adnanshussain/pen/KqVxXL?editors=1010
-
-const set_vue = function(){
+const set_units_vue = function(){
     var v = new Vue({
         el: "#unit_edit_form",
         data: {
             selected_libe: null,
             selected_weapon: null,
+            update_number_field: null,
             libe_select_options: '',
             weapon_select_options: '',
         },
         watch: {
-            selected_libe: function( event ) {
-                v.weapon_select_options = weapon_select_data[ event ];
-                v.selected_weapon = v.weapon_select_options[ 0 ].id
+            selected_libe: function (event) {
+                v.weapon_select_options = weapon_select_data[event];
+                v.selected_weapon = v.weapon_select_options[0].id;
+
+                var unit_data = units_data[v.selected_libe][v.selected_weapon];
+                // console.log( unit_data );
+
+                // $('#unit_amount').val( unit_data.amount );
+                v.update_number_field = unit_data.amount;
+
+                $('#unit_amount').attr('min', unit_data.min);
+                $('#unit_amount').attr('max', unit_data.max);
+
+                $('#unit_amount').attr('step', unit_data.increment_step);
+
+                set_unit_amount_change( unit_data.amount )
+            },
+            update_number_field: function( event ) {
+                set_unit_amount_change( event )
             }
         }
     });
@@ -31,66 +40,19 @@ const set_vue = function(){
     v.weapon_select_data = weapon_select_data[ v.selected_libe ];
     v.selected_weapon = $('#selected_weapon').val();
 
+    var units_data = JSON.parse( $('#units_data').val() );
+
+    const set_unit_amount_change = function(new_amount ) {
+        var unit_data = units_data[v.selected_libe][v.selected_weapon];
+        $('#unit_points').val( ( parseFloat( new_amount ) / unit_data.amount ) * unit_data.cost );
+    };
+
 }
-
-const set_unit_type_selection = function() {
-    $('#unit_libe').change(
-        function() {
-            var selected_unit_type = $( "#unit_libe" ).val();
-            $('#unit_weapon').html( weapon_select_options_prepared_strings[selected_unit_type] );
-
-            $('#unit_weapon').trigger('change');
-    });
-};
-
-const set_weapon_selection = function() {
-    $('#unit_weapon').change(
-        function() {
-            var selected_unit_type = $( "#unit_libe" ).val();
-            var selected_weapon_type = $( "#unit_weapon" ).val();
-
-            var unit_data = units_data[selected_unit_type][selected_weapon_type];
-
-            console.log( unit_data );
-
-            $('#unit_amount').val( unit_data.amount );
-            $('#unit_amount').attr( 'min', unit_data.min );
-            $('#unit_amount').attr( 'max', unit_data.max );
-
-            $('#unit_amount').attr( 'step', unit_data.increment_step );
-
-            $('#unit_points').val( unit_data.cost );
-        });
-};
-
-const set_unit_amount_change = function() {
-    $('#unit_amount').change(
-        function() {
-            var selected_unit_type = $( "#unit_libe" ).val();
-            var selected_weapon_type = $( "#unit_weapon" ).val();
-
-            var unit_data = units_data[selected_unit_type][selected_weapon_type];
-
-            var cost = parseFloat( $('#unit_amount').val() / unit_data.amount ) * unit_data.cost;
-            $('#unit_points').val( cost );
-        });
-};
-
 
 // Initialisation
 $(function() {
     if ( window.location.pathname.match( /units\/\d+\/edit/ ) ||
         window.location.pathname.match( /gangs\/\d+\/units\/new/ ) ) {
-
-        // weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() );
-        // units_data = JSON.parse( $('#units_data').val() );
-
-        set_vue()
-        // set_unit_type_selection();
-        // set_weapon_selection();
-        // set_unit_amount_change();
-
-        // $('#unit_libe').val( 'seigneur' ).trigger('change');
-        // $('#unit_weapon').val( '-' ).trigger('change');
+        set_units_vue();
     }
 });

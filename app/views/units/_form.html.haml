@@ -9,18 +9,18 @@
 
     %b
       Type d'unité
-    = f.select( :libe, options_for_vue( :libe_select_options ), {}, class: 'form-control', 'v-model' => :selected_libe )
+    = f.select( :libe, options_for_vue( :libe_select_options ), {}, class: 'form-control', 'v-model' => :selected_libe, disabled: @edition )
 
     %b
       Arme
-    = f.select( :weapon, options_for_vue( :weapon_select_options ), {}, class: 'form-control', 'v-model' => :selected_weapon )
+    = f.select( :weapon, options_for_vue( :weapon_select_options ), {}, class: 'form-control', 'v-model' => :selected_weapon, disabled: @edition )
 
     .mt-3
 
     -# In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
     .row
       .col-3
-        -#= f.number_field :amount, number_field_options( edition )
+        = f.number_field :amount, class: 'form-control', 'v-model' => :update_number_field
 
       .col-2
         = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true
@@ -29,7 +29,7 @@
       = f.submit 'Enregistrer', class: 'mt-2 btn btn-secondary'
 
   -#= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
-  -#= hidden_field_tag :units_data, @units.to_json
+  = hidden_field_tag :units_data, @units.to_json
   = hidden_field_tag :libe_select_data, GameRules::FactionsVue.libe_select_data( @player ).to_json
   = hidden_field_tag :weapons_select_data, GameRules::FactionsVue.weapons_select_data( @player ).to_json
 
