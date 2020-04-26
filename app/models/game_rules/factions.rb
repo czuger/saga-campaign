@@ -16,10 +16,10 @@ module GameRules
 
     START_PP = 18
 
+    attr_reader :data
+
     def initialize
-      unless @data
-        @data = YAML.load_file( 'data/factions.yaml' )
-      end
+      @data ||= YAML.load_file( 'data/factions.yaml' )
     end
 
     # This is used to show the factions.

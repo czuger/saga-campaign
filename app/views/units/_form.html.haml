@@ -1,32 +1,38 @@
-= form_for [ @gang, @unit ] do |f|
-  - if @unit.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
-      %ul
-        - @unit.errors.full_messages.each do |message|
-          %li= message
+#unit_edit_form
+  = form_for [ @gang, @unit ] do |f|
+    - if @unit.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@unit.errors.count, "error")} prohibited this unit from being saved:"
+        %ul
+          - @unit.errors.full_messages.each do |message|
+            %li= message
 
-  %b
-    Type d'unité
-  -#= select_tag( 'unit[libe]', options_for_select( @unit_select_options_for_faction, @unit.libe ), class: 'form-control')
-  = f.select( :libe, @unit_select_options_for_faction, {}, class: 'form-control')
+    %b
+      Type d'unité
+    = f.select( :libe, options_for_vue( :libe_select_options ), {}, class: 'form-control', 'v-model' => :selected_libe )
 
-  %b
-    Arme
-  = f.select( :weapon, @weapon_select_options_for_faction_warlord, {}, class: 'form-control')
+    %b
+      Arme
+    = f.select( :weapon, options_for_vue( :weapon_select_options ), {}, class: 'form-control', 'v-model' => :selected_weapon )
 
-  .mt-3
+    .mt-3
 
-  -# In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
-  .row
-    .col-3
-      = f.number_field :amount, class: 'form-control', placeholder: 'Nombre de figurines', min: @unit_data[:min], max: @unit_data[:max], step: @unit_data[:step]
+    -# In case we need autocompletion, here are something : https://bootstrap-autocomplete.readthedocs.io/en/latest/
+    .row
+      .col-3
+        -#= f.number_field :amount, number_field_options( edition )
 
-    .col-2
-      = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true
+      .col-2
+        = f.number_field :points, class: 'form-control', placeholder: 'Points', readonly: true
 
-  .actions
-    = f.submit 'Enregistrer', class: 'mt-2 btn btn-secondary'
+    .actions
+      = f.submit 'Enregistrer', class: 'mt-2 btn btn-secondary'
 
-= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
-= hidden_field_tag :units_data, @units.to_json
+  -#= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
+  -#= hidden_field_tag :units_data, @units.to_json
+  = hidden_field_tag :libe_select_data, GameRules::FactionsVue.libe_select_data( @player ).to_json
+  = hidden_field_tag :weapons_select_data, GameRules::FactionsVue.weapons_select_data( @player ).to_json
+
+  = hidden_field_tag :selected_libe, @unit.libe
+  = hidden_field_tag :selected_weapon, @unit.weapon
+

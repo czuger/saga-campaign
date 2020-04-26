@@ -2,9 +2,36 @@
 
 var weapon_select_options_prepared_strings = null;
 var units_data = null;
+var edition;
 
 // TODO : switch to vue-js
 // see : https://codepen.io/adnanshussain/pen/KqVxXL?editors=1010
+
+const set_vue = function(){
+    var v = new Vue({
+        el: "#unit_edit_form",
+        data: {
+            selected_libe: null,
+            selected_weapon: null,
+            libe_select_options: '',
+            weapon_select_options: '',
+        },
+        watch: {
+            selected_libe: function( event ) {
+                v.weapon_select_options = weapon_select_data[ event ];
+                v.selected_weapon = v.weapon_select_options[ 0 ].id
+            }
+        }
+    });
+
+    v.libe_select_options = JSON.parse( $('#libe_select_data').val() );
+    v.selected_libe = $('#selected_libe').val();
+
+    var weapon_select_data = JSON.parse( $('#weapons_select_data').val() );
+    v.weapon_select_data = weapon_select_data[ v.selected_libe ];
+    v.selected_weapon = $('#selected_weapon').val();
+
+}
 
 const set_unit_type_selection = function() {
     $('#unit_libe').change(
@@ -23,6 +50,8 @@ const set_weapon_selection = function() {
             var selected_weapon_type = $( "#unit_weapon" ).val();
 
             var unit_data = units_data[selected_unit_type][selected_weapon_type];
+
+            console.log( unit_data );
 
             $('#unit_amount').val( unit_data.amount );
             $('#unit_amount').attr( 'min', unit_data.min );
@@ -53,12 +82,13 @@ $(function() {
     if ( window.location.pathname.match( /units\/\d+\/edit/ ) ||
         window.location.pathname.match( /gangs\/\d+\/units\/new/ ) ) {
 
-        weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() );
-        units_data = JSON.parse( $('#units_data').val() );
+        // weapon_select_options_prepared_strings = JSON.parse( $('#weapon_select_options_prepared_strings').val() );
+        // units_data = JSON.parse( $('#units_data').val() );
 
-        set_unit_type_selection();
-        set_weapon_selection();
-        set_unit_amount_change();
+        set_vue()
+        // set_unit_type_selection();
+        // set_weapon_selection();
+        // set_unit_amount_change();
 
         // $('#unit_libe').val( 'seigneur' ).trigger('change');
         // $('#unit_weapon').val( '-' ).trigger('change');
