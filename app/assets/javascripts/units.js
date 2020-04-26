@@ -7,7 +7,7 @@ const set_units_vue = function(){
             selected_weapon: null,
             update_number_field: null,
             libe_select_options: '',
-            weapon_select_options: '',
+            weapon_select_options: ''
         },
         watch: {
             selected_libe: function (event) {
@@ -20,15 +20,16 @@ const set_units_vue = function(){
                 // $('#unit_amount').val( unit_data.amount );
                 v.update_number_field = unit_data.amount;
 
-                $('#unit_amount').attr('min', unit_data.min);
-                $('#unit_amount').attr('max', unit_data.max);
+                var ua = $('#unit_amount');
+                ua.attr('min', unit_data.min);
+                ua.attr('max', unit_data.max);
 
-                $('#unit_amount').attr('step', unit_data.increment_step);
+                ua.attr('step', unit_data.increment_step);
 
-                set_unit_amount_change( unit_data.amount )
+                set_unit_amount_change( unit_data.amount );
             },
             update_number_field: function( event ) {
-                set_unit_amount_change( event )
+                set_unit_amount_change( event );
             }
         }
     });
@@ -46,8 +47,7 @@ const set_units_vue = function(){
         var unit_data = units_data[v.selected_libe][v.selected_weapon];
         $('#unit_points').val( ( parseFloat( new_amount ) / unit_data.amount ) * unit_data.cost );
     };
-
-}
+};
 
 // Initialisation
 $(function() {
