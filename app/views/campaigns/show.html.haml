@@ -1,37 +1,37 @@
 .row.my-3
 
-  .col-4
+  .col-12.col-lg-4.mb-1
     %button.btn.btn-secondary.btn-block{ type: :button }
       Créateur
       %span.badge.badge-light
         = @campaign.user.name
 
-  .col-4
+  .col-12.col-lg-4.mb-1
     %button.btn.btn-secondary.btn-block{ type: :button }
       Nom de la campagne
       %span.badge.badge-light
         = @campaign.name
 
-  .col-4
+  .col-12.col-lg-4.mb-1
     %button.btn.btn-secondary.btn-block{ type: :button }
       Joueurs
       %span.badge.badge-light
         = @players.map{ |e| e.user.name }.join( ', ' )
 
 .row.my-3
-  .col-4
+  .col-12.col-lg-4.mb-1
     %button.btn.btn-secondary.btn-block{ type: :button }
       Joueur
       %span.badge.badge-light
         = @player.user.name
 
-  .col-4
+  .col-12.col-lg-4.mb-1
     %button.btn.btn-secondary.btn-block{ type: :button }
       Tour
       %span.badge.badge-light
         = @campaign.turn
 
-  -#.col-4
+  -#.col-12.col-lg-4
   -#  %button.btn.btn-secondary.btn-block{ type: :button }
   -#    PP
   -#    %span.badge.badge-light
@@ -39,7 +39,7 @@
 
 - if @movements_finalized
   .row.my-3
-    .col-4
+    .col-12.col-lg-4
       = link_to t( '.move_bands' ), campaign_resolve_movements_path( @campaign ), class: 'btn btn-danger btn-block', role: 'button', 'aria-disabled' => 'true'
 
 %hr

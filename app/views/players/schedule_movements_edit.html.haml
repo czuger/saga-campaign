@@ -26,7 +26,7 @@
   = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
 
   .actions
-    = submit_tag t('.save') , class: 'btn btn-primary'
+    = submit_tag t('.save') , class: 'btn btn-primary mb-1'
     = submit_tag t('.validate') , class: 'btn btn-danger', name: :validate
 
 = hidden_field_tag :prepared_movements_options_for_select, GameRules::Map.prepared_movements_options_for_select.to_json
