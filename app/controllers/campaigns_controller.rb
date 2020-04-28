@@ -88,7 +88,7 @@ class CampaignsController < ApplicationController
 
   def show_movements
     @movements = @campaign.movements_results.includes( :gang, { player: :user } ).order( :id )
-    @gangs = @campaign.gangs.joins( :player ).includes( { player: :user } ).order( 'players.initiative', :movement_order )
+    @gangs = @campaign.gangs.where.not( movement_order: nil ).joins( :player ).includes( { player: :user } ).order( 'players.initiative', :movement_order )
   end
 
   def show_victory_status

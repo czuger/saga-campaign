@@ -1,23 +1,24 @@
 %h1 Liste des combats
 
-%table.table
-  %thead
-    %tr
-      %th Lieu
-
-      %th Attaquant
-      %th Défenseur
-
-      %th Date
-
-  %tbody
-    - @fights.each do |f|
+.table-responsive
+  %table.table
+    %thead
       %tr
-        %td= f.location
+        %th Lieu
 
-        -# Required while first test campaign still running
-        %td= participant_libe( f.fight_data[:attacker], f.fight_data[:attacking_gang_name] )
-        %td= participant_libe( f.fight_data[:defender], f.fight_data[:defending_gang_name] )
+        %th Attaquant
+        %th Défenseur
 
-        %td= link_to( l( f.updated_at.localtime, format: :long ).capitalize, campaign_fight_path( @campaign, f ),
-          class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true' )
+        %th Date
+
+    %tbody
+      - @fights.each do |f|
+        %tr
+          %td= f.location
+
+          -# Required while first test campaign still running
+          %td= participant_libe( f.fight_data[:attacker], f.fight_data[:attacking_gang_name] )
+          %td= participant_libe( f.fight_data[:defender], f.fight_data[:defending_gang_name] )
+
+          %td= link_to( l( f.updated_at.localtime, format: :long ).capitalize, campaign_fight_path( @campaign, f ),
+            class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true' )

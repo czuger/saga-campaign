@@ -1,25 +1,26 @@
-%table.table
-  %thead
-    %tr
-      %th Unité
-      %th Pertes
-      %th Unité détruite
-      %th Reste
-      %th Remonte à
-      %th Score
+.table-responsive
+  %table.table
+    %thead
+      %tr
+        %th Unité
+        %th Pertes
+        %th Unité détruite
+        %th Reste
+        %th Remonte à
+        %th Score
 
-  %tbody
-    - bc&.each do |casualty|
-      %tr{ class: fight_table_color( casualty ) }
-        %td= casualty.name.upcase_first
-        %td= casualty.units_lost
-        %td= casualty.destroyed ? 'Oui' : 'Non'
-        %td= casualty.remaining_units
-        %td= casualty.recover_to
-        %td= casualty.losses_points
+    %tbody
+      - bc&.each do |casualty|
+        %tr{ class: fight_table_color( casualty ) }
+          %td= casualty.name.upcase_first
+          %td= casualty.units_lost
+          %td= casualty.destroyed ? 'Oui' : 'Non'
+          %td= casualty.remaining_units
+          %td= casualty.recover_to
+          %td= casualty.losses_points
 
-    %tr{ class: 'table-info'}
-      %td{ colspan: 5 }
-        %b= total_name
-      %td
-        %b= total_score
+      %tr{ class: 'table-info'}
+        %td{ colspan: 5 }
+          %b= total_name
+        %td
+          %b= total_score
