@@ -8,31 +8,33 @@
 
 %br
 
-%table.table
-  %thead
-    %tr
-      %th Bande
-      %th N°
-      %th Nom
-      %th Points
-      %th Position
-      %th
-      %th
-      %th
-
-  %tbody
-    - @gangs.each do |gang|
+.table-responsive
+  %table.table
+    %thead
       %tr
-        %td= image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
-        %td= gang.number
-        %td= gang.name
+        %th.d-none.d-lg-table-cell N°
+        %th Bande
+        %th
+        %th Points
+        %th Position
+        %th
+        %th.d-none.d-lg-table-cell
+        %th
 
-        %td= gang.points
-        %td= gang.location
+    %tbody
+      - @gangs.each do |gang|
+        %tr
+          %td.d-none.d-lg-table-cell= gang.number
+          %td= gang.name
+          %td= image_tag( 'gangs_icons/' + gang.icon, class: 'gang_icon' )
 
-        - if can_modify_gang?( gang )
-          %td= link_to 'Modifier la composition', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+          %td= gang.points
+          %td= gang.location
 
-        %td= link_to 'Renommer la bande', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+          %td
+            - if can_modify_gang?( gang )
+              = link_to 'Modifier', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
-        %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+          %td.d-none.d-lg-table-cell= link_to 'Renommer', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+
+          %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

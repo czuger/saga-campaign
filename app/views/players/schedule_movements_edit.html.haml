@@ -2,26 +2,27 @@
 
 = form_tag player_schedule_movements_save_path( @player ) do
 
-  %table.table
-    %thead
-      %tr
-        %th= t('.gang')
-        %th
-        %th= t('.current_position')
-        %th= t('.movement_1')
-        %th= t('.movement_2')
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th= t('.gang')
+          %th
+          %th= t('.current_position')
+          %th= t('.movement_1')
+          %th= t('.movement_2')
 
-    %tbody#sortable_gangs_table
-      - @gangs.each do |gang|
-        %tr{ gang_id: gang.id }
-          %td= gang.name
-          %td= image_tag( 'gangs_icons/' + gang.icon, class: 'small_gang_icon' )
-          %td= gang.location
-          - unless gang_cant_move?( gang )
-            %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location, @player ), get_movement( gang, 0 ) ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
-            %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( get_movement( gang, 0 ), @player ), get_movement( gang, 1 ) ), { include_blank: true, class: 'form-control' } )
-          - else
-            %td{ colspan: 2 } La bande est trop faible pour bouger. Rajoutez des unités.
+      %tbody#sortable_gangs_table
+        - @gangs.each do |gang|
+          %tr{ gang_id: gang.id }
+            %td= gang.name
+            %td= image_tag( 'gangs_icons/' + gang.icon, class: 'small_gang_icon' )
+            %td= gang.location
+            - unless gang_cant_move?( gang )
+              %td= select_tag( "gang_movement[1][#{gang.id}]", options_for_select( available_movements( gang.location, @player ), get_movement( gang, 0 ) ), { include_blank: true, class: 'form-control linked_select', original_location: gang.location } )
+              %td= select_tag( "gang_movement[2][#{gang.id}]", options_for_select( available_movements( get_movement( gang, 0 ), @player ), get_movement( gang, 1 ) ), { include_blank: true, class: 'form-control' } )
+            - else
+              %td{ colspan: 2 } La bande est trop faible pour bouger. Rajoutez des unités.
 
   = hidden_field_tag :gangs_order, @gangs.pluck( :id ).join( ',' )
 
