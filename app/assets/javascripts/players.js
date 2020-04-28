@@ -42,24 +42,71 @@ const linked_selects = function() {
 };
 
 // Initialisation
-const sort_gangs = function() {
-    $( "#sortable_gangs_table" ).sortable(
-        {
-            stop: function(){
-                var order = [];
-                $("#sortable_gangs_table").children().each(function(){
-                    order.push( $(this).attr('gang_id') );
-                });
+// const sort_gangs = function() {
+//     $( "#sortable_gangs_table" ).sortable(
+//         {
+//             stop: function(){
+//                 var order = [];
+//                 $("#sortable_gangs_table").children().each(function(){
+//                     order.push( $(this).attr('gang_id') );
+//                 });
+//
+//                 $("#gangs_order" ).val( order );
+//             }
+//         }
+//     );
+//     $( "#sortable" ).disableSelection();
+// };
 
-                $("#gangs_order" ).val( order );
+const set_btn_sortable = function(){
+    var v = new Vue({
+        el: "#movement_table",
+        data: {
+            selected_btn: null
+        },
+        methods: {
+            select_btn: function ( gang_id ) {
+                if( this.selected_btn == null ){
+                    var r = $( '#gang_name_' + gang_id );
+
+                    r.removeClass( 'btn-primary' );
+                    r.addClass( 'btn-success' );
+
+                    this.selected_btn = gang_id;
+                }
+                else{
+                    var from = $( '#gang_id_' + this.selected_btn );
+                    var to = $( '#gang_id_' + gang_id );
+
+                    // console.log( "from :", from );
+                    // console.log( "to", to );
+
+                    p = from.detach();
+                    // console.log( p );
+
+                    p.insertBefore( to );
+
+                    $( '.gang-btn' ).removeClass( 'btn-success' );
+                    $( '.gang-btn' ).addClass( 'btn-primary' );
+
+                    this.selected_btn = null;
+
+                    var order = [];
+                    $("#sortable_gangs_table").children().each(function(){
+                        order.push( $(this).attr('gang_id') );
+                    });
+
+                    $("#gangs_order" ).val( order );
+                }
             }
         }
-    );
-    $( "#sortable" ).disableSelection();
-}
+    });
+};
 
 $(function() {
     if (window.location.pathname.match( /players\/\d+\/schedule_movements_edit/ )) {
+
+        set_btn_sortable();
 
         prepared_movements_options_for_select = JSON.parse( $('#prepared_movements_options_for_select').val() );
         forbidden_movements = JSON.parse( $('#forbidden_movements').val() );
@@ -68,6 +115,6 @@ $(function() {
 
         linked_selects();
 
-        return sort_gangs();
+        // return sort_gangs();
     }
 });

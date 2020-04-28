@@ -2,7 +2,7 @@
 
 = form_tag player_schedule_movements_save_path( @player ) do
 
-  .table-responsive
+  .table-responsive#movement_table
     %table.table
       %thead
         %tr
@@ -14,8 +14,10 @@
 
       %tbody#sortable_gangs_table
         - @gangs.each do |gang|
-          %tr{ gang_id: gang.id }
-            %td= gang.name
+          %tr{ id: "gang_id_#{gang.id.to_s}", gang_id: gang.id }
+            %td
+              %button.btn.btn-primary.btn-block.gang-btn{ id: "gang_name_#{gang.id}", type: :button, 'v-on:click' => "select_btn( #{gang.id.to_s} )" }
+                = gang.name
             %td= image_tag( 'gangs_icons/' + gang.icon, class: 'small_gang_icon' )
             %td= gang.location
             - unless gang_cant_move?( gang )
