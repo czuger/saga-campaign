@@ -44,4 +44,13 @@ fr:
         bet_for_initiative: Les joueurs doivent faire les mises pour l'initiative
         campaign_finished: La campagne est terminée
 
+      status-mobile:
+        waiting_for_players: En attente de joueurs
+        waiting_for_players_to_choose_their_faction: Choix des factions
+        hiring_and_movement_schedule: Recrutements et mouvements
+        first_hiring_and_movement_schedule: Recrutements et mouvements
+        bet_for_initiative: Initiative
+        campaign_finished: Terminée
+
+
 
