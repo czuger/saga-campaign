@@ -17,8 +17,10 @@
         %th Points
         %th Position
         %th
-        %th.d-none.d-lg-table-cell
-        %th
+
+        - unless @player.maintenance_required
+          %th.d-none.d-lg-table-cell
+          %th
 
     %tbody
       - @gangs.each do |gang|
@@ -34,6 +36,6 @@
             - if can_modify_gang?( gang )
               = link_to 'Modifier', gang_units_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
-          %td.d-none.d-lg-table-cell= link_to 'Renommer', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
-
-          %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+          - unless @player.maintenance_required
+            %td.d-none.d-lg-table-cell= link_to 'Renommer', edit_gang_path( gang ), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+            %td= link_to 'Supprimer', [ gang ], method: :delete, data: { confirm: 'Etes-vous sur de vouloir supprimer cette bande ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

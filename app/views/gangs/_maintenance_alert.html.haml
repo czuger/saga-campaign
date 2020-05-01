@@ -1,5 +1,5 @@
 - if @player.maintenance_required
-  .alert.alert-danger{ role: :alert, test_message: :maintenance_too_high }
+  .alert.alert-danger.mt-3{ role: :alert, test_message: :maintenance_too_high }
     Vous ne pouvez pas entretenir toutes vos unités. Vous devez en supprimer
     = GameRules::ControlPoints.units_to_remove_due_to_maintenance_costs( @player )
     \.

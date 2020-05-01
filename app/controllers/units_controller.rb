@@ -78,7 +78,13 @@ class UnitsController < ApplicationController
 
           check_maintenance_status!
 
-          format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
+          format.html do
+            if @maintenance_status_fixed
+              redirect_to campaigns_path
+            else
+              redirect_to gang_units_path( @gang ), notice: t( '.success' ), alert: @alert_message
+            end
+          end
         else
           set_units_rules_data
           flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
@@ -103,11 +109,11 @@ class UnitsController < ApplicationController
       check_maintenance_status!
     end
 
-    respond_to do |format|
-      format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
-
+    if @maintenance_status_fixed
+      redirect_to campaigns_path
+    else
+      redirect_to gang_units_path( @gang ), notice: t( '.success' ), alert: @alert_message
     end
-
   end
 
   private
@@ -125,6 +131,13 @@ class UnitsController < ApplicationController
       @campaign.logs.create!( data: log_string )
 
       set_gang_points
+
+      if @player.maintenance_required
+        if @gang.points < 4
+          @gang.retreat!
+          @alert_message = t( 'log.gangs.retreating_after_update', location: @gang.location )
+        end
+      end
     end
 
     def set_gang_points
@@ -187,6 +200,8 @@ class UnitsController < ApplicationController
             cp_manager.loose_pp_for_mainteance!
 
             @campaign.players_bet_for_initiative!
+
+            @maintenance_status_fixed = true
           end
         end
 

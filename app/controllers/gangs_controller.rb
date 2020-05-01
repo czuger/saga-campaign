@@ -60,10 +60,8 @@ class GangsController < ApplicationController
       if @gang.update(gang_params)
         format.html { redirect_to player_gangs_path( @player ),
                                   notice: I18n.t( 'gangs.notice.updated', name: @gang.name ) }
-
       else
         format.html { render :edit }
-
       end
     end
   end
