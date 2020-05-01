@@ -50,4 +50,13 @@ class Campaign < ApplicationRecord
     end
   end
 
+  # A dangerous method that destroy all campaigns (for dev only)
+  def self.cleanup
+    Campaign.all.each do |c|
+      c.winner_id = nil
+      c.save!
+      c.destroy
+    end
+  end
+
 end

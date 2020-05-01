@@ -6,7 +6,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = @gang.units
+    @units = @gang.units.order( :id )
   end
 
   # GET /units/1

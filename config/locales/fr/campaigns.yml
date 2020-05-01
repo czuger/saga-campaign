@@ -43,6 +43,7 @@ fr:
         first_hiring_and_movement_schedule: Les joueurs recrutent et planifient leurs mouvements
         bet_for_initiative: Les joueurs doivent faire les mises pour l'initiative
         campaign_finished: La campagne est terminée
+        troop_maintenance_required: Des joueurs ont trop de troupes
 
       status-mobile:
         waiting_for_players: En attente de joueurs
@@ -51,6 +52,7 @@ fr:
         first_hiring_and_movement_schedule: Recrutements et mouvements
         bet_for_initiative: Initiative
         campaign_finished: Terminée
+        troop_maintenance_required: Maintenance des troupes
 
 
 
