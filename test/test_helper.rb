@@ -38,4 +38,10 @@ class ActiveSupport::TestCase
     post '/auth/discord'
     follow_redirect!
   end
+
+  def create_second_player
+    @second_user = create( :user )
+    @second_player = create( :player, user: @second_user, campaign: @campaign )
+  end
+
 end

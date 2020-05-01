@@ -23,6 +23,20 @@ class UnitsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to gang_units_url( @gang )
   end
 
+  test 'should be able to create an unit even if maintenance costs are too high' do
+    1.upto( 50 ).each do
+      create( :unit_guerriers_nature, gang: @gang )
+    end
+    @gang.points += 50
+    @gang.save!
+
+    assert_difference('Unit.count') do
+      post gang_units_url( @gang ), params: { unit: { libe: 'gardes', amount: 4, points: 1, weapon: '-' } }
+    end
+
+    assert_redirected_to gang_units_url( @gang )
+  end
+
   test 'test that we always pay the right price when buying an unit' do
     [ 0.5, 1.5, 2.27 ].each do |cost|
       assert_difference('Unit.count') do

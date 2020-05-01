@@ -78,7 +78,7 @@ module GameRules
         next_movement_found = false
 
         gangs.each do |gang|
-          next_movement = gang.movements.shift
+          next_movement = gang.movements&.shift
           result << [ gang, next_movement ] if next_movement
 
           next_movement_found ||= next_movement

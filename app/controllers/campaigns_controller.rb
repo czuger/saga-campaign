@@ -87,7 +87,7 @@ class CampaignsController < ApplicationController
 
       if cp_manager.maintenance_required?
         @campaign.require_troop_maintenance!
-        redirect_to player_gangs_path( @player )
+        redirect_to campaigns_path
       else
         @campaign.players_bet_for_initiative!
         redirect_to campaign_show_movements_path( @campaign )
