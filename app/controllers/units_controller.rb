@@ -46,6 +46,8 @@ class UnitsController < ApplicationController
           after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name ) )
           pay_unit( @unit.points )
 
+          check_maintenance_status!
+
           format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
         else
           set_units_rules_data
@@ -74,6 +76,8 @@ class UnitsController < ApplicationController
           after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name ) )
           pay_unit( @unit.points - current_points )
 
+          check_maintenance_status!
+
           format.html { redirect_to gang_units_path( @gang ), notice: t( '.success' ) }
         else
           set_units_rules_data
@@ -99,6 +103,7 @@ class UnitsController < ApplicationController
       )
 
       pay_unit( - current_points )
+      check_maintenance_status!
     end
 
     respond_to do |format|
@@ -163,5 +168,12 @@ class UnitsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
       params.require(:unit).permit(:libe, :amount, :points, :weapon)
+    end
+
+    def check_maintenance_status!
+      # Only if maintenance is required. Maintenance cost is not paid when buying units.
+      if @player.maintenance_required
+        GameRules::ControlPoints.check_maintenance_cost_for_single_player! @player
+      end
     end
 end

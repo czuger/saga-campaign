@@ -80,9 +80,18 @@ class CampaignsController < ApplicationController
 
     Campaign.transaction do
       GameRules::Movements.new( @campaign ).run!
-      GameRules::ControlPoints.new( @campaign ).set_control_of_locations!
+      cp_manager = GameRules::ControlPoints.new( @campaign )
 
-      redirect_to campaign_show_movements_path( @campaign )
+      cp_manager.set_control_of_locations!
+      cp_manager.check_maintenance_cost_for_all_player!
+
+      if cp_manager.maintenance_required?
+        @campaign.require_troop_maintenance!
+        redirect_to player_gangs_path( @player )
+      else
+        @campaign.players_bet_for_initiative!
+        redirect_to campaign_show_movements_path( @campaign )
+      end
     end
   end
 

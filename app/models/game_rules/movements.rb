@@ -49,8 +49,6 @@ module GameRules
         end
 
         finalize_movements!
-
-        @campaign.players_bet_for_initiative!
       end
     end
 

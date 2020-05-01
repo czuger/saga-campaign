@@ -194,6 +194,7 @@ class PlayersController < ApplicationController
   # The following methods should be moved elsewhere
   def next_turn!
     @campaign.gangs.update_all( retreating: false )
+    @campaign.players.update_all( maintenance_required: false )
 
     compute_points_for_players!
     unless check_for_victory!
