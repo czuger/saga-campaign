@@ -83,6 +83,7 @@ class CampaignsController < ApplicationController
       cp_manager = GameRules::ControlPoints.new( @campaign )
 
       cp_manager.set_control_of_locations!
+      cp_manager.gain_pp_for_control_points!
       cp_manager.check_maintenance_cost_for_all_player!
 
       if cp_manager.maintenance_required?

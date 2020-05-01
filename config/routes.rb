@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :campaigns do
-    resources :players, except: [ :edit, :update, :index, :destroy ]
+    resources :players, only: [ :new, :create, :show ]
 
     resources :fights, only: [ :index, :show ]
 

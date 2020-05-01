@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class PlayersControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     create_full_campaign
   end
@@ -245,21 +246,49 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     # puts @response.body
   end
 
-  # test 'should get edit' do
-  #   get campaign_edit_player_url(@player)
-  #   assert_response :success
-  # end
-  #
-  # test 'should update player' do
-  #   patch player_url(@player), params: { player: { god_favor: @player.god_favor, pp: @player.pp, user_id: @player.user_id } }
-  #   assert_redirected_to player_url(@player)
-  # end
+  test 'Player should not have troop maintenance issue' do
+    @campaign.players_choose_faction!
+    @campaign.players_first_hire_and_move!
 
-  # test 'should destroy player' do
-  #   assert_difference('Player.count', -1) do
-  #     delete campaign_player_url( @campaign, @player )
-  #   end
-  #
-  #   assert_redirected_to campaign_players_url
-  # end
+    @player.pp = 0
+    @player.controls_points = %w( O1 O2 O10 )
+    @player.save!
+
+    units_amount = 23
+    1.upto( units_amount ).each do
+      create( :unit_guerriers_nature, gang: @gang )
+    end
+    @gang.points += units_amount
+    @gang.save!
+
+    get campaign_resolve_movements_path( @campaign )
+
+    # p @player.reload.pp
+
+    refute_equal 'troop_maintenance_required', @campaign.reload.aasm_state
+  end
+
+  test 'Player should have troop maintenance issue' do
+    @campaign.players_choose_faction!
+    @campaign.players_first_hire_and_move!
+
+    @player.pp = 0
+    @player.controls_points = %w( O1 O2 O10 )
+    @player.save!
+
+    units_amount = 24
+    1.upto( units_amount ).each do
+      create( :unit_guerriers_nature, gang: @gang )
+    end
+    @gang.points += units_amount
+    @gang.save!
+
+    get campaign_resolve_movements_path( @campaign )
+
+    # p @player.reload.pp
+
+    assert_equal 'troop_maintenance_required', @campaign.reload.aasm_state
+  end
+
+
 end
