@@ -69,11 +69,21 @@ module GameRules
       player.save!
     end
 
-    def self.maintenance_cost( player )
+    def self.maintenance_cost( player, modification: 0 )
       # ( player.gangs.sum( :points ) * 0.5 ).ceil
       @@golden_ratio ||= ( 1 + Math.sqrt( 5 ) ) / 2
 
-      ( ( @@golden_ratio * 0.1 + 1 - 0.1 ) ** ( ( player.gangs.sum( :points ) ) * @@golden_ratio ) ).ceil
+      ( ( @@golden_ratio * 0.1 + 1 - 0.1 ) ** ( ( player.gangs.sum( :points ) + modification ) * @@golden_ratio ) ).ceil
+    end
+
+    # Really bad algo. Need to be fixed later.
+    def self.units_to_remove_due_to_maintenance_costs( player )
+      1.upto( 99 ).each do |amount|
+        mc = maintenance_cost( player, modification: -amount )
+        # p mc, player.pp
+        return amount if mc <= player.pp
+      end
+      raise "Maintenance costs reached 99 for player #{player.inspect}"
     end
 
     private

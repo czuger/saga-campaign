@@ -1,6 +1,6 @@
 %h1 Liste des points controlés
 
-- @campaign.players.includes( :user ).each do |player|
+- @campaign.players.order( :id ).includes( :user ).each do |player|
 
   %table.table
     %thead

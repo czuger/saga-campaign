@@ -2,7 +2,8 @@
 
 = render partial: 'maintenance_alert'
 
-= link_to 'Ajouter une bande', new_player_gang_path( @player ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
+- unless @player.maintenance_required
+  = link_to 'Ajouter une bande', new_player_gang_path( @player ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
 
 %br
 

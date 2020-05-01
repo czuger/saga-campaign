@@ -97,10 +97,7 @@ class UnitsController < ApplicationController
       @unit.destroy
 
       set_gang_points
-      @campaign.logs.create!(
-        data:
-          after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name ) )
-      )
+      after_unit_update( t( '.log', user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name ) )
 
       pay_unit( - current_points )
       check_maintenance_status!
@@ -137,16 +134,23 @@ class UnitsController < ApplicationController
     end
 
     def pay_unit( amount )
-      @player.pp -= amount
-      @player.save!
 
-      # No log if we pay nothing
-      if amount > 0
-        @campaign.logs.create!( data: I18n.t( 'log.pp.decrease', name: @player.user.name, count: amount ) )
-      elsif amount < 0
-        @campaign.logs.create!( data: I18n.t( 'log.pp.increase', name: @player.user.name, count: -amount ) )
+      # We are not being refunded when removing maintenance units
+      unless @player.maintenance_required
+        @player.pp -= amount
+        @player.save!
+
+        # No log if we pay nothing
+        if amount > 0
+          @campaign.logs.create!( data: I18n.t( 'log.pp.decrease', name: @player.user.name, count: amount ) )
+        elsif amount < 0
+          @campaign.logs.create!( data: I18n.t( 'log.pp.increase', name: @player.user.name, count: -amount ) )
+        end
+      else
+        if amount > 0
+          raise "We shouldn't be able to add new units when maintenance is required."
+        end
       end
-
     end
 
     def set_units_rules_data
@@ -174,6 +178,18 @@ class UnitsController < ApplicationController
       # Only if maintenance is required. Maintenance cost is not paid when buying units.
       if @player.maintenance_required
         GameRules::ControlPoints.check_maintenance_cost_for_single_player! @player
+
+        # If we have fixed our troop count and all players did we switch to next step.
+        unless @player.maintenance_required
+          if @campaign.players.where( maintenance_required: true ).count == 0
+
+            cp_manager = GameRules::ControlPoints.new( @campaign )
+            cp_manager.loose_pp_for_mainteance!
+
+            @campaign.players_bet_for_initiative!
+          end
+        end
+
       end
     end
 end

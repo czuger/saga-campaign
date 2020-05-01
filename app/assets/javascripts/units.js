@@ -7,7 +7,8 @@ const set_units_vue = function(){
             selected_weapon: null,
             update_number_field: null,
             libe_select_options: '',
-            weapon_select_options: ''
+            weapon_select_options: '',
+            troop_maintenance: null
         },
         watch: {
             selected_libe: function (event) {
@@ -15,14 +16,17 @@ const set_units_vue = function(){
                 v.selected_weapon = v.weapon_select_options[0].id;
 
                 var unit_data = units_data[v.selected_libe][v.selected_weapon];
-                // console.log( unit_data );
 
-                // $('#unit_amount').val( unit_data.amount );
                 v.update_number_field = unit_data.amount;
 
                 var ua = $('#unit_amount');
                 ua.attr('min', unit_data.min);
-                ua.attr('max', unit_data.max);
+
+                if( v.troop_maintenance ){
+                    ua.attr('max', v.update_number_field);
+                }else{
+                    ua.attr('max', unit_data.max);
+                }
 
                 ua.attr('step', unit_data.increment_step);
 
@@ -35,6 +39,7 @@ const set_units_vue = function(){
     });
 
     v.libe_select_options = JSON.parse( $('#libe_select_data').val() );
+    v.troop_maintenance = $('#troop_maintenance').val() == 'true';
     v.selected_libe = $('#selected_libe').val();
 
     var weapon_select_data = JSON.parse( $('#weapons_select_data').val() );

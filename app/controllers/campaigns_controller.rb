@@ -90,6 +90,7 @@ class CampaignsController < ApplicationController
         @campaign.require_troop_maintenance!
         redirect_to campaigns_path
       else
+        cp_manager.loose_pp_for_mainteance!
         @campaign.players_bet_for_initiative!
         redirect_to campaign_show_movements_path( @campaign )
       end

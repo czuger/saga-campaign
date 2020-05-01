@@ -74,8 +74,10 @@ class GangsController < ApplicationController
     Gang.transaction do
       gang_cost = @gang.points
 
-      @player.pp -= gang_cost
-      @player.save!
+      unless @player.maintenance_required
+        @player.pp -= gang_cost
+        @player.save!
+      end
 
       @gang.destroy
       respond_to do |format|

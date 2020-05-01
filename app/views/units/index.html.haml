@@ -2,6 +2,11 @@
 
 %h1 Liste des unités de la bande
 
+- unless @player.maintenance_required
+  = link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
+
+%br
+
 %table.table
   %thead
     %tr
@@ -34,8 +39,3 @@
       %td= @gang.points
       %td
       %td
-
-
-%br
-
-= link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'btn btn-secondary', role: 'button', 'aria-disabled' => 'true'

@@ -6,4 +6,5 @@
   - when 'bet_for_initiative'
     = simple_menu_link( t('menu.initiative_bet'), player_initiative_bet_edit_path( @player ) )
   - when 'troop_maintenance_required'
-    = simple_menu_link( t('menu.maintenance'), player_gangs_path( @player ) )
+    - if @player.maintenance_required
+      = simple_menu_link( t('menu.maintenance'), player_gangs_path( @player ) )
