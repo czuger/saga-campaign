@@ -30,8 +30,8 @@
 
   -#= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
   = hidden_field_tag :units_data, @units.to_json
-  = hidden_field_tag :libe_select_data, GameRules::FactionsVue.libe_select_data( @player ).to_json
-  = hidden_field_tag :weapons_select_data, GameRules::FactionsVue.weapons_select_data( @player ).to_json
+  = hidden_field_tag :libe_select_data, @factions_vue.libe_select_data( @player ).to_json
+  = hidden_field_tag :weapons_select_data, @factions_vue.weapons_select_data( @player ).to_json
 
   = hidden_field_tag :selected_libe, @unit.libe
   = hidden_field_tag :selected_weapon, @unit.weapon

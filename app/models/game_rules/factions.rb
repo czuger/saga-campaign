@@ -18,8 +18,13 @@ module GameRules
 
     attr_reader :data
 
-    def initialize
-      @data ||= YAML.load_file( 'data/factions.yaml' )
+    def initialize( campaign )
+      @campaign = campaign
+
+      unless @data
+        @data = YAML.load_file( 'data/factions.yaml' )
+        @data = @data[ campaign.campaign_mode.to_sym ]
+      end
     end
 
     # This is used to show the factions.

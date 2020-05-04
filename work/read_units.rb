@@ -5,7 +5,7 @@ require_relative 'libs/google_spreadsheet'
 require_relative 'libs/weapons_analysis'
 
 data = {}
-allowance = {}
+allowance = { test: {}, regular: {} }
 fr_translation = {}
 
 def to_key( _libe )
@@ -18,16 +18,16 @@ def to_key( _libe )
   libe
 end
 
-def set_allowance(allowance, fr_translation, libe, unit, weapon_key)
+def set_allowance(allowance, campaign_mode, fr_translation, libe, unit, weapon_key)
   if libe != ''
     libe_key = to_key( libe )
 
     fr_translation['fr']['faction'] ||= {}
     fr_translation['fr']['faction'][libe_key] = libe
 
-    allowance[libe_key] ||= {}
-    allowance[libe_key][unit] ||= []
-    allowance[libe_key][unit] << weapon_key
+    allowance[campaign_mode][libe_key] ||= {}
+    allowance[campaign_mode][libe_key][unit] ||= []
+    allowance[campaign_mode][libe_key][unit] << weapon_key
   end
 
   return allowance, fr_translation
@@ -42,13 +42,13 @@ gs.range( 'Sheet2!A1:AZ100' ).values.each_with_index do |line, index|
 
   unit_name, weapon_name, nature, horde, morts, souterrains, royaumes, outremonde, cost, amount, saga_dice,
     min_units_for_saga_dice, min, max, increment_step, massacre_points, activation_chance, being_targeted_chance,
-    legendary, active, movement, attack_range, initiative, armor, damage, activation_dice, initial_position,
+    legendary, test_mode_only, movement, attack_range, initiative, armor, damage, activation_dice, initial_position,
     algo_advance, options = line
 
   options ||= ''
   options = options.chomp.gsub('.', '')
 
-  active = (active == 'oui')
+  test_mode_only = (test_mode_only == 'oui')
 
   unit_key = to_key( unit_name )
 
@@ -73,10 +73,9 @@ gs.range( 'Sheet2!A1:AZ100' ).values.each_with_index do |line, index|
 
   # p active
 
-  if active
-    [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
-      allowance, fr_translation = set_allowance( allowance, fr_translation, libe, unit_key, weapon_key )
-    end
+  [ nature, horde, morts, souterrains, royaumes, outremonde ].each do |libe|
+    allowance, fr_translation = set_allowance( allowance, :test,fr_translation, libe, unit_key, weapon_key ) if test_mode_only
+    allowance, fr_translation = set_allowance( allowance, :regular, fr_translation, libe, unit_key, weapon_key )
   end
 
   data[unit_key][weapon_key][:cost] = cost.gsub( ',', '.' ).to_f
@@ -92,7 +91,6 @@ gs.range( 'Sheet2!A1:AZ100' ).values.each_with_index do |line, index|
   data[unit_key][weapon_key][:massacre_points] = massacre_points.to_r
   data[unit_key][weapon_key][:legendary] = legendary == 'Oui'
 
-  data[unit_key][weapon_key][:active] = active
   data[unit_key][weapon_key][:movement] = movement.to_f
   data[unit_key][weapon_key][:algo_advance] = algo_advance.to_f
   data[unit_key][weapon_key][:attack_range] = attack_range.to_i

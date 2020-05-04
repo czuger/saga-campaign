@@ -167,16 +167,11 @@ class UnitsController < ApplicationController
     end
 
     def set_units_rules_data
-      faction_data = GameRules::Factions.new
-
+      faction_data = GameRules::Factions.new( @campaign )
+      @factions_data = faction_data.data[@player.faction]
       @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
-      # @weapon_select_options_for_faction_warlord = faction_data.weapon_select_options_for_faction_and_unit(
-      #   @gang.faction, @unit.libe )
 
-      # @weapon_select_options_prepared_strings = faction_data.weapon_select_options_prepared_strings( @gang.faction )
-
-      @factions_data = GameRules::Factions.new.data[@player.faction]
-
+      @factions_vue = GameRules::FactionsVue.new( @campaign )
 
       @units = GameRules::Unit.new.data
       @unit_data = @units[@unit.libe][@unit.weapon]
