@@ -1,6 +1,14 @@
 fr:
   campaigns:
 
+    controlled_points:
+      title: Liste des points controlés
+      controller: Lieux controllés par %{player_name}
+      score: Points
+      total: Total
+      maintenance: Maintenance
+      remains: Reste
+
     create:
       success: La campagne a été crée avec succès.
       failure: La création de la campagne a échouée.
@@ -30,8 +38,10 @@ fr:
 
     index:
       title: Mes campagnes
+      id: Id
       owner: Créateur
       name: Nom de la campagne
+      players: Joueurs
       status_title: Status
       details: Details
       new: Nouvelle campagne

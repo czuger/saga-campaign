@@ -4,18 +4,23 @@
   %table.table
     %thead
       %tr
+        %th.d-none.d-lg-table-cell= t( '.id' )
         %th.d-none.d-lg-table-cell= t( '.owner' )
         %th= t( '.name' )
+        %th= t( '.players' )
         %th= t( '.status_title' )
         %th
         -#%th
         -#%th
 
     %tbody
-      - @campaigns.includes(:user, { winner: :user }).each do |campaign|
+      - @campaigns.each do |campaign|
         %tr
+          %td.d-none.d-lg-table-cell= campaign.id
           %td.d-none.d-lg-table-cell= campaign.user.name
           %td= campaign.name
+
+          %td.d-none.d-lg-table-cell= campaign.players.map{ |e| e.user.name }.join( ', ' )
 
           %td.d-table-cell.d-lg-none= t( '.status-mobile.' + campaign.aasm_state )
           %td.d-none.d-lg-table-cell= t( '.status.' + campaign.aasm_state )

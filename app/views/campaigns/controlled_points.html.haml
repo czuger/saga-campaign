@@ -1,4 +1,4 @@
-%h1 Liste des points controlés
+%h1= t( '.title' )
 
 - @campaign.players.order( :id ).includes( :user ).each do |player|
 
@@ -6,9 +6,9 @@
     %thead
       %tr
         %th
-          = "Lieux controllés par #{player.user.name}"
+          = t( '.controller', player_name: player.user.name )
         %th
-          Points
+          = t( '.score' )
     %tbody
       - total = 0
       - player.controls_points&.sort&.each do |control|
@@ -18,20 +18,20 @@
           - total += @map.position_value( control )
       %tr
         %td
-          %b Total
+          %b= t( '.total' )
         %td
           %b= total
 
       - maintenance = GameRules::ControlPoints.maintenance_cost( player )
       %tr
         %td
-          %b Maintenance
+          %b= t('.maintenance')
         %td
           %b= maintenance
 
       %tr
         %td
-          %b Reste
+          %b= t('.remains')
         %td
           %b= total - maintenance
 
