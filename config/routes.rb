@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   resources :units, only: [ :edit, :destroy ]
 
   resources :players, only: [] do
-    resources :gangs, only: [ :index, :new, :create ]
+    resources :gangs, only: [ :index, :new, :create ] do
+      post :regular_gang
+    end
 
     get :schedule_movements_edit
     post :schedule_movements_save

@@ -2,36 +2,7 @@ namespace :fill_db do
 
   desc 'Opponents move gangs'
   task opponent_move_gangs: :environment do
-
-    user = User.find_by_name( :foo )
-    Player.where( user_id: user.id ).where.not( faction: nil ).each do |p|
-      next if p.campaign.aasm_state == 'campaign_finished'
-
-      used_second_movements = []
-
-      p.gangs.each_with_index do |g, i|
-        used_second_movements << g.location
-
-        g.movement_order = i + 1
-
-        forbidden_movements = GameRules::Factions.opponent_recruitment_positions( p )
-
-        g.movements = []
-        g.movements << ( GameRules::Map.available_movements( g.location ) - forbidden_movements ).sample
-
-        available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements - forbidden_movements
-        second_movement = available_second_movements.sample
-        used_second_movements << second_movement
-        g.movements << second_movement
-        g.save!
-
-        puts "Moving gang #{g.name} to #{g.movements}"
-      end
-
-      p.movements_orders_finalized = true
-      p.initiative_bet = 2
-      p.save!
-    end
+    Engines::AutoPlayBot.new.run
   end
 
   desc 'Opponents create gangs'

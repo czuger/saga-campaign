@@ -98,7 +98,7 @@ class PlayersController < ApplicationController
     already_selected_factions = @campaign.players.pluck( :faction ).compact
     selected_faction = already_selected_factions.first
 
-    @selected_bloc = GameRules::Factions::FACTIONS_TO_BLOCS[ selected_faction ]
+    @selected_bloc = GameRules::Factions::FACTIONS_TO_BLOCS[ selected_faction.to_sym ]
 
     # @select_factions_options = GameRules::Factions.new.faction_select_options(
     #   GameRules::Factions::FACTIONS_BLOCS[ selected_bloc ] )

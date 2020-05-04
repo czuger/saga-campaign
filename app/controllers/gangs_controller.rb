@@ -50,7 +50,6 @@ class GangsController < ApplicationController
         end
       end
     end
-
   end
 
   # PATCH/PUT /gangs/1
