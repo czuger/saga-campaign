@@ -15,7 +15,6 @@
         - @player.errors.full_messages.each do |message|
           %li= "Player : #{message}"
 
-
   .form-group
     = f.label :name, t( '.name' )
     = f.text_field :name, class: 'form-control'
@@ -26,13 +25,12 @@
     .row.mb-2
       .col-6.col-lg-3
         %label.btn.btn-light.btn-block
-          %input#option1{name: 'campaign[campaign_mode]', value: :test, type: :radio, autocomplete: :off }
+          %input#option1{name: 'campaign[campaign_mode]', value: :test, type: :radio, autocomplete: :off, checked: true }
             = t( '.mode_test' )
       .col-6.col-lg-3
         %label.btn.btn-light.btn-block
-          %input#option2{name: 'campaign[campaign_mode]', value: :regular, type: :radio, autocomplete: :off, checked: true }
+          %input#option2{name: 'campaign[campaign_mode]', value: :regular, type: :radio, autocomplete: :off, disabled: true }
             = t( '.mode_regular' )
-
 
   .actions
     = f.submit t('.create'), class: 'btn btn-primary'

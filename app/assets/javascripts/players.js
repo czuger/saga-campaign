@@ -48,23 +48,29 @@ const set_btn_sortable = function(){
                     this.selected_btn = gang_id;
                 }
                 else{
-                    var from = $( '#gang_id_' + this.selected_btn );
-                    var to = $( '#gang_id_' + gang_id );
+                    if( this.selected_btn != gang_id ){
+                        var from = $( '#gang_id_' + this.selected_btn );
+                        var to = $( '#gang_id_' + gang_id );
 
-                    p = from.detach();
-                    p.insertBefore( to );
+                        p = from.detach();
+                        p.insertBefore( to );
+
+                        this.selected_btn = null;
+
+                        var order = [];
+                        $("#sortable_gangs_table").children().each(function(){
+                            order.push( $(this).attr('gang_id') );
+                        });
+
+                        $("#gangs_order" ).val( order );
+                    }
+                    else
+                    {
+                        this.selected_btn = null;
+                    }
 
                     $( '.gang-btn' ).removeClass( 'btn-success' );
                     $( '.gang-btn' ).addClass( 'btn-primary' );
-
-                    this.selected_btn = null;
-
-                    var order = [];
-                    $("#sortable_gangs_table").children().each(function(){
-                        order.push( $(this).attr('gang_id') );
-                    });
-
-                    $("#gangs_order" ).val( order );
                 }
             }
         }
