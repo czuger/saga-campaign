@@ -1,6 +1,6 @@
 ---
 :test:
-  nature:
+  :nature:
     seigneur:
     - "-"
     - arc
@@ -18,7 +18,7 @@
     - arc
     levees:
     - javelots
-  horde:
+  :horde:
     seigneur:
     - "-"
     - arme_lourde
@@ -35,7 +35,7 @@
     - arme_lourde
     levees:
     - arc_ou_fronde
-  morts:
+  :morts:
     seigneur:
     - "-"
     monstre:
@@ -49,7 +49,7 @@
     guerriers:
     - "-"
     - arc
-  souterrains:
+  :souterrains:
     seigneur:
     - "-"
     - arme_lourde
@@ -69,7 +69,7 @@
     levees:
     - "-"
     - arc_ou_fronde
-  royaumes:
+  :royaumes:
     seigneur:
     - "-"
     - arme_lourde
@@ -85,7 +85,7 @@
     - "-"
     levees:
     - arc_ou_fronde
-  outremonde:
+  :outremonde:
     seigneur:
     - "-"
     - arme_lourde
@@ -100,7 +100,7 @@
     - "-"
     - arme_lourde
 :regular:
-  nature:
+  :nature:
     seigneur:
     - "-"
     - arc
@@ -141,7 +141,7 @@
     - "-"
     molosses:
     - "-"
-  horde:
+  :horde:
     seigneur:
     - "-"
     - arme_lourde
@@ -181,7 +181,7 @@
     - "-"
     les_bersekers:
     - "-"
-  morts:
+  :morts:
     seigneur:
     - "-"
     - monture_animal
@@ -221,7 +221,7 @@
     - "-"
     les_quatres_cavaliers_de_l'apocalypse:
     - "-"
-  souterrains:
+  :souterrains:
     seigneur:
     - "-"
     - arme_lourde
@@ -258,7 +258,7 @@
     - "-"
     les_aberrations_mutantes:
     - "-"
-  royaumes:
+  :royaumes:
     seigneur:
     - "-"
     - arme_lourde
@@ -313,7 +313,7 @@
     - "-"
     fanatiques_devoues:
     - "-"
-  outremonde:
+  :outremonde:
     seigneur:
     - "-"
     - arme_lourde

@@ -20,7 +20,7 @@ end
 
 def set_allowance(allowance, campaign_mode, fr_translation, libe, unit, weapon_key)
   if libe != ''
-    libe_key = to_key( libe )
+    libe_key = to_key( libe ).to_sym
 
     fr_translation['fr']['faction'] ||= {}
     fr_translation['fr']['faction'][libe_key] = libe

@@ -1,0 +1,70 @@
+---
+:O3:
+  :order: :O1
+  :chaos: :C1
+:O4:
+  :order: :O1
+  :chaos: :C1
+:O5:
+  :order: :O2
+  :chaos: :C2
+:O6:
+  :order: :O2
+  :chaos: :C2
+:O7:
+  :order: :O1
+  :chaos: :C1
+:O8:
+  :order: :O2
+  :chaos: :C2
+:O9:
+  :order: :O1
+  :chaos: :C1
+:O10:
+  :order: :O2
+  :chaos: :C2
+:O11:
+  :order: :O1
+  :chaos: :C1
+:C3:
+  :order: :O1
+  :chaos: :C1
+:C4:
+  :order: :O1
+  :chaos: :C1
+:C5:
+  :order: :O2
+  :chaos: :C2
+:C6:
+  :order: :O2
+  :chaos: :C2
+:C7:
+  :order: :O1
+  :chaos: :C1
+:C8:
+  :order: :O2
+  :chaos: :C2
+:C9:
+  :order: :O1
+  :chaos: :C1
+:C10:
+  :order: :O2
+  :chaos: :C2
+:C11:
+  :order: :O1
+  :chaos: :C1
+:P1:
+  :order: :O1
+  :chaos: :C1
+:P2:
+  :order: :O1
+  :chaos: :C1
+:P3:
+  :order: :O1
+  :chaos: :C1
+:P4:
+  :order: :O2
+  :chaos: :C2
+:P5:
+  :order: :O2
+  :chaos: :C2

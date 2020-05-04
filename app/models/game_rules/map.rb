@@ -11,14 +11,7 @@ module GameRules
     @@movements_table = nil
 
     def initialize
-      unless @data
-        @data = YAML.load_file( 'data/map.yaml' )
-      end
-
-      unless @positions
-        @positions = YAML.load_file( 'data/map_positions.yaml' )
-      end
-
+      @positions ||= YAML.load_file( 'data/map_positions.yaml' )
       @localisations = @positions.keys
     end
 
