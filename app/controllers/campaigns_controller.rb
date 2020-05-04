@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = current_user.participating_campaigns.includes(:user, { players: :user }, { winner: :user }).order( 'id DESC' )
+    @campaigns = current_user.participating_campaigns.includes({ players: :user }, { winner: :user }).order( 'id DESC' )
   end
 
   # GET /campaigns/1

@@ -5,7 +5,7 @@
     %thead
       %tr
         %th.d-none.d-lg-table-cell= t( '.id' )
-        %th.d-none.d-lg-table-cell= t( '.owner' )
+        -#%th.d-none.d-lg-table-cell= t( '.owner' )
         %th= t( '.name' )
         %th= t( '.players' )
         %th= t( '.status_title' )
@@ -17,7 +17,7 @@
       - @campaigns.each do |campaign|
         %tr
           %td.d-none.d-lg-table-cell= campaign.id
-          %td.d-none.d-lg-table-cell= campaign.user.name
+          -#%td.d-none.d-lg-table-cell= campaign.user.name
           %td= campaign.name
 
           %td.d-none.d-lg-table-cell= campaign.players.map{ |e| e.user.name }.join( ', ' )
@@ -26,7 +26,7 @@
           %td.d-none.d-lg-table-cell= t( '.status.' + campaign.aasm_state )
 
           %td
-            - unless campaign.aasm_state == 'campaign_finished'
+            - unless campaign.campaign_finished?
               = link_to t( '.details' ), get_detail_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
             -else
               Gagnant :
