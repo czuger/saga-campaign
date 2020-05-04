@@ -32,6 +32,9 @@ fr:
       name: Nom
       choose_faction: Choisissez une faction
       create: Créer
+      mode: Mode
+      mode_test: Test
+      mode_regular: Normal
 
     edit:
       title: Edition d'une campagne

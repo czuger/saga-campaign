@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_164544) do
+ActiveRecord::Schema.define(version: 2020_05_04_103252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_164544) do
     t.integer "max_players", limit: 2, default: 2, null: false
     t.integer "turn", limit: 2, default: 1, null: false
     t.bigint "winner_id"
+    t.string "campaign_mode", default: "test", null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
