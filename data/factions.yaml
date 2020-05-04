@@ -137,6 +137,10 @@
     - javelots
     nuee:
     - "-"
+    le_veneur_et_la_grande_chasse:
+    - "-"
+    molosses:
+    - "-"
   horde:
     seigneur:
     - "-"
@@ -215,6 +219,8 @@
     - "-"
     les_spectres:
     - "-"
+    les_quatres_cavaliers_de_l'apocalypse:
+    - "-"
   souterrains:
     seigneur:
     - "-"
@@ -247,6 +253,10 @@
     - mobile
     - volante_vol
     equipe_de_destrucion:
+    - "-"
+    la_fouisseuse:
+    - "-"
+    les_aberrations_mutantes:
     - "-"
   royaumes:
     seigneur:
@@ -334,4 +344,6 @@
     traqueurs:
     - "-"
     l'archidemon:
+    - "-"
+    l'avatar:
     - "-"

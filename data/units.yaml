@@ -2986,7 +2986,7 @@ les_bersekers:
       :can_attack: 75
 l'archidemon:
   "-":
-    :cost: 2.0
+    :cost: 1.0
     :amount: 1
     :saga_dice: 1
     :min_units_for_saga_dice: 1
@@ -3078,3 +3078,243 @@ les_spectres:
       :protection_points: 0
       :being_targeted: 37.5
       :can_attack: 75
+le_veneur_et_la_grande_chasse:
+  "-":
+    :cost: 1.0
+    :amount: 1
+    :saga_dice: 2
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :being_targeted_chance: 50.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 6
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 50.0
+      :can_attack: 75
+molosses:
+  "-":
+    :cost: 0.0
+    :amount: 2
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
+    :min: 2
+    :max: 2
+    :increment_step: 1
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 0
+    :being_targeted_chance: 0.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 4
+      :ranged: 4
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 5
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 0.0
+      :can_attack: 0
+les_quatres_cavaliers_de_l'apocalypse:
+  "-":
+    :cost: 2.0
+    :amount: 4
+    :saga_dice: 4
+    :min_units_for_saga_dice: 1
+    :min: 4
+    :max: 4
+    :increment_step: 1
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 0
+    :being_targeted_chance: 0.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 1
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 5
+      :ranged: 6
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 2
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 0.0
+      :can_attack: 0
+l'avatar:
+  "-":
+    :cost: 2.0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 1
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 0
+    :being_targeted_chance: 0.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 4
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 16
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 0.0
+      :can_attack: 0
+la_fouisseuse:
+  "-":
+    :cost: 1.0
+    :amount: 1
+    :saga_dice: 0
+    :min_units_for_saga_dice: 0
+    :min: 1
+    :max: 1
+    :increment_step: 1
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 0
+    :being_targeted_chance: 0.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 6
+      :ranged: 6
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 0.0
+      :can_attack: 0
+les_aberrations_mutantes:
+  "-":
+    :cost: 2.0
+    :amount: 2
+    :saga_dice: 4
+    :min_units_for_saga_dice: 2
+    :min: 2
+    :max: 4
+    :increment_step: 2
+    :activation_chance: !ruby/object:Rational
+      denominator: 1
+      numerator: 0
+    :being_targeted_chance: 0.0
+    :massacre_points: !ruby/object:Rational
+      denominator: 1
+      numerator: 2
+    :legendary: true
+    :movement: 0.0
+    :algo_advance: 0.0
+    :attack_range: 0
+    :initiative: 0
+    :activation_dice: 
+    :initial_position: 0
+    :armor:
+      :cac: 5
+      :ranged: 5
+    :damage:
+      :cac: !ruby/object:Rational
+        denominator: 1
+        numerator: 6
+      :ranged: !ruby/object:Rational
+        denominator: 1
+        numerator: 0
+    :fight_info:
+      :rapide: false
+      :lent: false
+      :distance: false
+      :protection_points: 0
+      :being_targeted: 0.0
+      :can_attack: 0

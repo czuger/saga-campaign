@@ -106,6 +106,8 @@ gs.range( 'Sheet2!A1:AZ100' ).values.each_with_index do |line, index|
   data[unit_key][weapon_key][:damage] ||= {}
   m = damage.match( /(.+) \((.+)\)/ )
 
+  p damage
+
   damage_cac = m[1]
   damage_ranged = m[2]
 
