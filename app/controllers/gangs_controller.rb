@@ -100,8 +100,7 @@ class GangsController < ApplicationController
     end
 
     def set_gang_additional_information
-      @icons = Dir["app/assets/images/gangs_icons/#{@player.faction}/*.svg"].map{ |e| e.gsub( 'app/assets/images/gangs_icons/', '' ) }
-      @icons -= @player.gangs.pluck( :icon )
+      @icons = @player.remaining_icons_list
       @select_localisations_options = GameRules::Factions.starting_positions( @campaign, @player )
     end
 end

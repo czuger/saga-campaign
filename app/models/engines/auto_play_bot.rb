@@ -11,7 +11,12 @@ module Engines
       @session.get '/auth/developer/callback', params: auth_params
 
       @user = User.find_by_uid_and_provider( :foo, :developer )
-      # @players_ostruct_array = @players.map{ |p| OpenStruct.new( status: :move, initiative_bet: false, player: p ) }
+
+      @units_to_hire = [
+        ['seigneur', '-', 1], ['monstre', 'behemoth', 1], ['creatures', 'bipedes', 2], ['gardes', 'arme_lourde', 4],
+        ['guerriers', '-', 8], ['guerriers', '-', 8], ['levees', 'arc_ou_fronde', 12]
+      ].freeze
+
     end
 
     def run
@@ -30,28 +35,13 @@ module Engines
     def player_action( player )
       campaign = player.reload.campaign
 
-      if campaign.waiting_for_players_to_choose_their_faction?
-        choose_faction( player )
+      if campaign.first_hiring_and_movement_schedule?
+        unless player.movements_orders_finalized
+          first_hiring( player )
+          move( player )
+        end
       end
 
-    end
-
-    def check_status( player_ostruct )
-
-      player_ostruct.player.reload
-      campaign = player_ostruct.player.campaign
-
-      player_ostruct.initiative_bet = true if campaign.bet_for_initiative?
-
-      if player_ostruct.initiative_bet
-        player_ostruct.status = :move if campaign.hiring_and_movement_schedule? || campaign.first_hiring_and_movement_schedule?
-      end
-
-      # p player_ostruct
-      # p player_ostruct.player.campaign.aasm_state
-      # puts
-
-      player_ostruct
     end
 
     def reset_status( player_ostruct )
@@ -70,17 +60,43 @@ module Engines
       )
     end
 
-    def move( player_ostruct )
-      puts "Movement for #{player_ostruct.player.user.name}"
+    def first_hiring( player )
+      puts "Will hire first gangs for campaign  #{player.campaign.name}"
+      GameRules::Factions::FACTIONS_STARTING_POSITIONS[:order].each do |location|
+        hire_gang( player, location, 6 )
+      end
+    end
+
+    def hire_gang( player, location, max_size )
+      next_free_icon = player.remaining_icons_list.first
+
+      uth = @units_to_hire[ 0 .. max_size ]
+
+      csrf_interaction(
+        "/players/#{player.id}/gangs/new", :post,
+        "/players/#{player.id}/gangs",
+        gang: {
+          icon: next_free_icon, faction: 'royaumes', number: (player.gangs.maximum( :number ) || 0 )+1, location: location,
+          name: GameRules::UnitNameGenerator.generate_unique_unit_name( player.campaign ) }
+      )
+
+      created_gang_id = player.gangs.maximum( :id )
+
+      uth.each do |unit|
+        csrf_interaction(
+          "/gangs/#{created_gang_id}/units/new", :post,
+          "/gangs/#{created_gang_id}/units",
+          unit: { libe: unit[0], amount: unit[2], points: 1, weapon: unit[1] }
+        )
+      end
+    end
+
+    def move( player )
+      puts "Movement for #{player.user.name}"
 
       locations_memories = []
       gangs_order = []
       scheduled_movements = {}
-
-      player = player_ostruct.player
-
-      # p player
-      # p player.gangs.all
 
       player.gangs.each_with_index do |gang, i|
         puts "Moving gang #{gang.name}"
@@ -92,7 +108,6 @@ module Engines
         forbidden_movements = GameRules::Factions.opponent_recruitment_positions( player )
 
         target = ( GameRules::Map.available_movements( gang.location ) - forbidden_movements - locations_memories ).sample
-        puts "Moving gang #{gang.name} to #{gang.movements}"
 
         if target
           scheduled_movements[ gang.id ] = target
@@ -106,7 +121,8 @@ module Engines
         gang_movement: {
           '1' => scheduled_movements,
           '2' => Hash[ gangs_order.map{ |e| [e, ''] } ] },
-        gangs_order: gangs_order.join( ',' )
+        gangs_order: gangs_order.join( ',' ),
+        validate: true
       )
 
     end
@@ -122,7 +138,7 @@ module Engines
       @session.process( :get, get_url )
       csrf_token = @session.session.to_hash['_csrf_token']
 
-      p csrf_token
+      # p csrf_token
 
       interaction_params[ :authenticity_token ] = csrf_token
 

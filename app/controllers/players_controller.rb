@@ -56,7 +56,6 @@ class PlayersController < ApplicationController
     @player.destroy
     respond_to do |format|
       format.html { redirect_to players_url, notice: t( '.success' ) }
-
     end
   end
 

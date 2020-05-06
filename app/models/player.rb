@@ -17,4 +17,9 @@ class Player < ApplicationRecord
     campaign.logs.create!( data: "Joueur #{user.name} ajouté à la campagne.")
     player
   end
+
+  def remaining_icons_list
+    icons = Dir["app/assets/images/gangs_icons/#{faction}/*.svg"].map{ |e| e.gsub( 'app/assets/images/gangs_icons/', '' ) }
+    icons - gangs.pluck( :icon )
+  end
 end
