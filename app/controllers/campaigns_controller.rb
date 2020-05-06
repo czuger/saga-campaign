@@ -91,8 +91,17 @@ class CampaignsController < ApplicationController
         redirect_to campaigns_path
       else
         cp_manager.loose_pp_for_mainteance!
-        @campaign.players_bet_for_initiative!
-        redirect_to campaign_show_movements_path( @campaign )
+
+        compute_points_for_players!
+
+        if check_for_victory!
+          @campaign.terminate_campaign!
+          redirect_to campaigns_path
+        else
+          @campaign.players_bet_for_initiative!
+          redirect_to campaign_show_movements_path( @campaign )
+        end
+
       end
     end
   end
@@ -127,6 +136,47 @@ class CampaignsController < ApplicationController
       result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
       @player = Player.create_new_player( @campaign, current_user )
       result && @player.errors.empty?
+    end
+  end
+
+  def check_for_victory!
+    if @campaign.turn == 6
+      players_sums = @campaign.victory_points_histories.group( :player_id ).sum( :points_total )
+
+      max_sum = players_sums.values.max
+      potential_winners = players_sums.select{ |_, v| v == max_sum }
+      potential_winners = potential_winners.keys
+
+      @campaign.result = { win_method: :points }
+    else
+      @campaign.players.each do |player|
+        potential_winners ||= []
+        potential_winners << player.id if GameRules::Map.prestigious_locations_count( player ) >= 4
+
+        @campaign.capture = { win_method: :points } if potential_winners.count > 0
+      end
+    end
+
+    if potential_winners.count > 0
+      if potential_winners.count == 1
+        @campaign.winner = Player.find( potential_winners.first )
+      else
+        winner = Player.where( id: potential_winners ).order( :initiative ).first
+        @campaign.winner = winner
+      end
+
+      return true
+    end
+
+    false
+  end
+
+  def compute_points_for_players!
+    @campaign.players.each do |player|
+      _controlled_locations = player.controls_points.select{ |p| p =~ /P./ }
+      VictoryPointsHistory.create!(
+        player: player, turn: @campaign.turn, controlled_locations: _controlled_locations,
+        points_total: _controlled_locations.count )
     end
   end
 

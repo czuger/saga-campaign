@@ -15,10 +15,11 @@ Campaign < ApplicationRecord
   has_many :gangs, dependent: :destroy
   has_many :units, through: :gangs
 
-  # has_one :winner, class_name: 'Player', :foreign_key => 'winner_id'
   belongs_to :winner, class_name: 'Player', optional: true
 
   validates :name, presence: true, uniqueness: true
+
+  serialize :result
 
   aasm do
     state :waiting_for_players, initial: true
@@ -47,7 +48,7 @@ Campaign < ApplicationRecord
     end
 
     event :terminate_campaign do
-      transitions from: [:bet_for_initiative], to: :campaign_finished
+      transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :campaign_finished
     end
   end
 

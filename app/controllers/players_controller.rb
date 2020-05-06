@@ -141,12 +141,7 @@ class PlayersController < ApplicationController
         next_turn!
       end
 
-      if @campaign.aasm_state == 'campaign_finished'
-        redirect_to campaigns_path
-      else
-        redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
-      end
-
+      redirect_to campaign_path( @campaign ), notice: I18n.t( 'players.notices.modification_success' )
     end
   end
 
@@ -195,46 +190,10 @@ class PlayersController < ApplicationController
     @campaign.gangs.update_all( retreating: false )
     @campaign.players.update_all( maintenance_required: false )
 
-    compute_points_for_players!
-    unless check_for_victory!
-      @campaign.turn += 1
-      @campaign.players_hire_and_move!
+    @campaign.turn += 1
+    @campaign.players_hire_and_move!
 
-      @campaign.save!
-    end
-  end
-
-
-  def compute_points_for_players!
-    @campaign.players.each do |player|
-      _controlled_locations = player.controls_points.select{ |p| p =~ /P./ }
-      VictoryPointsHistory.create!(
-        player: player, turn: @campaign.turn, controlled_locations: _controlled_locations,
-        points_total: _controlled_locations.count )
-    end
-  end
-
-  def check_for_victory!
-    if @campaign.turn == 6
-      players_sums = @campaign.victory_points_histories.group( :player_id ).sum( :points_total )
-      max_sum = players_sums.values.max
-      potential_winners = players_sums.select{ |_, v| v == max_sum }
-
-      potential_winners = potential_winners.keys
-
-      if potential_winners.count == 1
-        @campaign.winner = Player.find( potential_winners.first )
-      else
-        winner = Player.where( id: potential_winners ).order( :initiative ).first
-        @campaign.winner = winner
-      end
-
-      @campaign.terminate_campaign!
-      @campaign.save!
-
-      return true
-    end
-    false
+    @campaign.save!
   end
 
 end
