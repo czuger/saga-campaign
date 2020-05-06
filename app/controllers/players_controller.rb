@@ -72,7 +72,7 @@ class PlayersController < ApplicationController
 
       gang_order_hash = Hash[ params[:gangs_order].split( ',' ).each_with_index.map{ |e, i| [ e.strip.to_i, i ] } ]
 
-      @player.gangs.where( id: gang_order_hash.keys ).each do |gang|
+      @player.gangs.includes( :campaign ).where( id: gang_order_hash.keys ).each do |gang|
         gang.movement_order = gang_order_hash[ gang.id ] + 1
         gang.movements = gang_movements_array( gang.id )
         gang.save!

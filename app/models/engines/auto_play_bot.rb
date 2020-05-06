@@ -3,7 +3,14 @@ module Engines
   class AutoPlayBot
 
     def initialize
-      @user = User.find_by_name( :foo )
+      @session = ActionDispatch::Integration::Session.new( Rails.application )
+      @session.host = 'localhost:3000'
+      @session.https!
+
+      auth_params = { email: :foo, name: :foo }
+      @session.get '/auth/developer/callback', params: auth_params
+
+      @user = User.find_by_uid_and_provider( :foo, :developer )
       players = @user.players.where.not( faction: nil ).reject{ |p| p.campaign.campaign_finished? }
       @players_ostruct_array = players.map{ |p| OpenStruct.new( status: :move, initiative_bet: false, player: p ) }
     end
@@ -12,7 +19,7 @@ module Engines
         loop do
 
           @players_ostruct_array.each do |player_ostruct|
-            player_ostruct = check_status( player_ostruct )
+            payer_ostruct = check_status( player_ostruct )
 
             if player_ostruct.status != :waiting
               move( player_ostruct )
@@ -20,6 +27,8 @@ module Engines
               player_ostruct = reset_status( player_ostruct )
             end
           end
+
+          break
 
           sleep( 3 )
       end
@@ -53,37 +62,51 @@ module Engines
 
     def move( player_ostruct )
       puts "Movement for #{player_ostruct.player.user.name}"
-      used_second_movements = []
+
+      locations_memories = []
+      gangs_order = []
+      scheduled_movements = {}
 
       player = player_ostruct.player
 
       # p player
       # p player.gangs.all
 
-      player.gangs.each_with_index do |g, i|
-        puts "Moving gang #{g.name}"
+      player.gangs.each_with_index do |gang, i|
+        puts "Moving gang #{gang.name}"
 
-        used_second_movements << g.location
+        locations_memories << gang.location
 
-        g.movement_order = i + 1
+        gangs_order << gang.id
 
         forbidden_movements = GameRules::Factions.opponent_recruitment_positions( player )
 
-        g.movements = []
-        g.movements << ( GameRules::Map.available_movements( g.location ) - forbidden_movements ).sample
+        target = ( GameRules::Map.available_movements( gang.location ) - forbidden_movements - locations_memories ).sample
+        puts "Moving gang #{gang.name} to #{gang.movements}"
 
-        available_second_movements = GameRules::Map.available_movements( g.movements[0] ) - used_second_movements - forbidden_movements
-        second_movement = available_second_movements.sample
-        used_second_movements << second_movement
-        g.movements << second_movement
-        g.save!
+        if target
+          scheduled_movements[ gang.id ] = target
+        end
 
-        puts "Moving gang #{g.name} to #{g.movements}"
       end
 
-      player.movements_orders_finalized = true
-      player.initiative_bet = 2
-      player.save!
+      @session.process( :get, "/players/#{player.id}/schedule_movements_edit" )
+      # puts @session.response.body
+      csrf_token = @session.session.to_hash['_csrf_token']
+
+      params = {
+        gang_movement: {
+          '1' => scheduled_movements,
+          '2' => Hash[ gangs_order.map{ |e| [e, ''] } ] },
+        gangs_order: gangs_order.join( ',' ),
+        authenticity_token: csrf_token
+      }
+
+      @session.process( :post, "/players/#{player.id}/schedule_movements_save", params: params )
+      # puts @session.response.body
+        # player.movements_orders_finalized = true
+      # player.initiative_bet = 2
+      # player.save!
 
     end
 
