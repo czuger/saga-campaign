@@ -16,13 +16,14 @@ module GameRules
     end
 
     def position_value( position )
+      position = position.to_sym
       return 4 if HIGH_VALUES.include?( position )
       return 2 if LOW_VALUES.include?( position )
       0
     end
 
     def position_style( location )
-      p = OpenStruct.new( @positions[ location ] )
+      p = OpenStruct.new( @positions[ location.to_sym ] )
 
       if p.x
         "left:#{p.x-162}px;top:#{p.y-58}px;"
@@ -32,7 +33,7 @@ module GameRules
     end
 
     def marker_position_style( location )
-      p = OpenStruct.new( @positions[ location ] )
+      p = OpenStruct.new( @positions[ location.to_sym ] )
 
       if p.x
         "left:#{p.x-162+5}px;top:#{p.y-58-30}px;"
@@ -44,7 +45,7 @@ module GameRules
     # Methods used for movement on the map.
     def self.available_movements( current_location )
       @@movements_table ||= YAML.load_file( 'data/map_connections.yaml' )
-      @@movements_table[ current_location ]
+      @@movements_table[ current_location.to_sym ]
     end
 
     def self.prepared_movements_options_for_select

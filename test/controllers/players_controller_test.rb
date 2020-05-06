@@ -270,7 +270,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     @campaign.players_first_hire_and_move!
 
     @player.pp = 0
-    @player.controls_points = %w( O1 O2 O10 )
+    @player.controls_points = %i( O1 O2 O10 )
     @player.save!
 
     units_amount = 23
@@ -292,7 +292,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     @campaign.players_first_hire_and_move!
 
     @player.pp = 0
-    @player.controls_points = %w( O1 O2 O10 )
+    @player.controls_points = %i( O1 O2 O10 )
     @player.save!
 
     units_amount = 24
