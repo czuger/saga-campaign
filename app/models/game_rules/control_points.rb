@@ -18,7 +18,7 @@ module GameRules
           end
         end
         @campaign.gangs.each do |gang|
-          location_to_player_hash[ gang.location ] = gang.player_id
+          location_to_player_hash[ gang.location.to_sym ] = gang.player_id
         end
 
         player_to_locations_hash = {}

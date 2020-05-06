@@ -40,8 +40,16 @@ module Engines
           first_hiring( player )
           move( player )
         end
+      elsif campaign.bet_for_initiative?
+        unless player.initiative_bet
+          initiative_bet( player )
+        end
+      elsif campaign.hiring_and_movement_schedule?
+        unless player.movements_orders_finalized
+          each_turn_hiring( player )
+          move( player )
+        end
       end
-
     end
 
     def reset_status( player_ostruct )
@@ -60,11 +68,28 @@ module Engines
       )
     end
 
+    def initiative_bet( player )
+      puts "Bet for initiative in campaign  #{player.campaign.name}"
+      bet = Hazard.d4 - 1
+
+      csrf_interaction(
+        "/players/#{player.id}/initiative_bet_edit", :post,
+        "/players/#{player.id}/initiative_bet_save",
+        { pp: bet }
+      )
+    end
+
     def first_hiring( player )
       puts "Will hire first gangs for campaign  #{player.campaign.name}"
       GameRules::Factions::FACTIONS_STARTING_POSITIONS[:order].each do |location|
         hire_gang( player, location, 6 )
       end
+    end
+
+    def each_turn_hiring( player )
+      puts "Will hire each turn gangs for campaign  #{player.campaign.name}"
+      location = GameRules::Factions::FACTIONS_RECRUITMENT_POSITIONS[:order].sample
+      hire_gang( player, location, 4 )
     end
 
     def hire_gang( player, location, max_size )

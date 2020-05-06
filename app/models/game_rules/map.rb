@@ -5,8 +5,8 @@ module GameRules
 
     attr_reader :localisations
 
-    HIGH_VALUES = %w( O1 O2 O3 O4 O5 O6 C1 C2 C3 C4 C5 C6 )
-    LOW_VALUES = %w( O7 O8 O9 O10 O11 C7 C8 C9 C10 C11 )
+    HIGH_VALUES = %i( O1 O2 O3 O4 O5 O6 C1 C2 C3 C4 C5 C6 )
+    LOW_VALUES = %i( O7 O8 O9 O10 O11 C7 C8 C9 C10 C11 )
 
     @@movements_table = nil
 
