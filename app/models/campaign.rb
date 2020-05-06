@@ -1,4 +1,5 @@
-class Campaign < ApplicationRecord
+class
+Campaign < ApplicationRecord
   include AASM
 
   belongs_to :user

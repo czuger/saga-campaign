@@ -48,14 +48,9 @@ namespace :fill_db do
     end
   end
 
-  desc 'Opponents create player'
-  task opponent_create_player: :environment do
-    User.create!( name: :foo, provider: :test, uid: :bar, icon_url: :foobar )
-  end
-
   desc 'Clear database'
   task clear_db: :environment do
-    Campaign.destroy_all
+    Campaign.cleanup
   end
 
 

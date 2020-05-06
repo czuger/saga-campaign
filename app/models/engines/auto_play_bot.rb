@@ -11,30 +11,30 @@ module Engines
       @session.get '/auth/developer/callback', params: auth_params
 
       @user = User.find_by_uid_and_provider( :foo, :developer )
-      players = @user.players.where.not( faction: nil ).reject{ |p| p.campaign.campaign_finished? }
-      @players_ostruct_array = players.map{ |p| OpenStruct.new( status: :move, initiative_bet: false, player: p ) }
+      # @players_ostruct_array = @players.map{ |p| OpenStruct.new( status: :move, initiative_bet: false, player: p ) }
     end
 
     def run
         loop do
+          load_players
 
-          @players_ostruct_array.each do |player_ostruct|
-            payer_ostruct = check_status( player_ostruct )
-
-            if player_ostruct.status != :waiting
-              move( player_ostruct )
-
-              player_ostruct = reset_status( player_ostruct )
-            end
-          end
-
-          break
+          @players_needing_faction_choice.each{ |p| choose_faction( p ) }
+          @players_needing_action.each{ |p| player_action( p ) }
 
           sleep( 3 )
       end
     end
 
     private
+
+    def player_action( player )
+      campaign = player.reload.campaign
+
+      if campaign.waiting_for_players_to_choose_their_faction?
+        choose_faction( player )
+      end
+
+    end
 
     def check_status( player_ostruct )
 
@@ -58,6 +58,16 @@ module Engines
       player_ostruct.status = :waiting
       player_ostruct.initiative_bet = false
       player_ostruct
+    end
+
+    def choose_faction( player )
+      puts "Faction choice request detected for campaign #{player.campaign.name}."
+
+      csrf_interaction(
+        "/players/#{player.campaign_id}/choose_faction_new", :patch,
+        "/players/#{player.id}/choose_faction_save",
+        faction: :royaumes
+      )
     end
 
     def move( player_ostruct )
@@ -90,24 +100,33 @@ module Engines
 
       end
 
-      @session.process( :get, "/players/#{player.id}/schedule_movements_edit" )
-      # puts @session.response.body
-      csrf_token = @session.session.to_hash['_csrf_token']
-
-      params = {
+      csrf_interaction(
+        "/players/#{player.id}/schedule_movements_edit", :post,
+        "/players/#{player.id}/schedule_movements_save",
         gang_movement: {
           '1' => scheduled_movements,
           '2' => Hash[ gangs_order.map{ |e| [e, ''] } ] },
-        gangs_order: gangs_order.join( ',' ),
-        authenticity_token: csrf_token
-      }
+        gangs_order: gangs_order.join( ',' )
+      )
 
-      @session.process( :post, "/players/#{player.id}/schedule_movements_save", params: params )
-      # puts @session.response.body
-        # player.movements_orders_finalized = true
-      # player.initiative_bet = 2
-      # player.save!
+    end
 
+    def load_players
+      basic_players_request = @user.players.reload.joins( :campaign ).where( "campaigns.aasm_state != 'campaign_finished'")
+
+      @players_needing_faction_choice = basic_players_request.where( faction: nil )
+      @players_needing_action = basic_players_request.where.not( faction: nil )
+    end
+
+    def csrf_interaction(get_url, method, interaction_url, interaction_params )
+      @session.process( :get, get_url )
+      csrf_token = @session.session.to_hash['_csrf_token']
+
+      p csrf_token
+
+      interaction_params[ :authenticity_token ] = csrf_token
+
+      @session.process( method, interaction_url, params: interaction_params )
     end
 
   end

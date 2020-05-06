@@ -24,6 +24,25 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should show schedule movement edit screen' do
+    @campaign.players_choose_faction!
+    @campaign.players_first_hire_and_move!
+    get player_schedule_movements_edit_url( @player )
+    assert_response :success
+  end
+
+  test 'should show choose faction screen' do
+    @campaign.players_choose_faction!
+    get players_choose_faction_new_url( @campaign )
+    assert_response :success
+  end
+
+  test 'should show choose a faction' do
+    @campaign.players_choose_faction!
+    patch player_choose_faction_save_url( @player, params: { faction: :royaumes } )
+    assert_redirected_to campaigns_url
+  end
+
   test 'Validate that movements parameters are correctly injected in gangs' do
     @player.initiative = 1
     @player.save!
