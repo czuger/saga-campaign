@@ -20,7 +20,8 @@ module GameRules
 
             if gang
               next if gang.retreating
-              next if @intercepted_gang_ids.include?( gang.id )
+              # This is no more required since we handle retreat and lead to unwanted behaviour.
+              # next if @intercepted_gang_ids.include?( gang.id )
 
               original_location = gang.location
 
@@ -114,10 +115,10 @@ module GameRules
 
       if intercepted_gang
         intercepted_gang.movements = []
-        @intercepted_gang_ids << intercepted_gang.id
+        # @intercepted_gang_ids << intercepted_gang.id
 
         intercepting_gang.movements = []
-        @intercepted_gang_ids << intercepting_gang.id
+        # @intercepted_gang_ids << intercepting_gang.id
 
         [
           intercepted_gang,

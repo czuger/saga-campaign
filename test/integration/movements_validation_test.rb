@@ -19,16 +19,16 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     @player2.initiative = 1
     @player2.save!
     cg1 = @gang2
-    cg1.location = 'O9'
+    cg1.location = 'C6'
     cg1.name = 'cg1'
     cg1.save!
-    cg2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C11', name: 'cg2' )
+    cg2 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C6', name: 'cg2' )
     cg3 = create( :gang, player: @player2, campaign: @campaign, faction: :horde, location: 'C6', name: 'cg3' )
 
     post player_schedule_movements_save_path(
            @player2, params: {
-           gang_movement: { '1' => { cg1.id => 'C9', cg2.id => 'C8', cg3.id => 'C5' },
-                            '2' => { cg1.id => 'C4', cg2.id => 'C5', cg3.id => 'C2' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}", validate: :validate )
+           gang_movement: { '1' => { cg1.id => 'C10', cg2.id => 'C10', cg3.id => 'C10' },
+                            '2' => { cg1.id => 'P5', cg2.id => 'P5', cg3.id => 'P5' } } }, gangs_order: "#{cg1.id}, #{cg2.id}, #{cg3.id}", validate: :validate )
     # assert_redirected_to campaign_show_movements_path( @campaign )
     follow_redirect!
 
@@ -37,14 +37,17 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     og1 = @gang
     og1.location = 'C10'
     og1.name = 'og1'
+    og1.points = 20
     og1.save!
-    og2 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O11', name: 'og2' )
-    og3 = create( :gang, player: @player, campaign: @campaign, faction: :royaumes, location: 'O4', name: 'og3' )
+
+    1.upto( 20 ).each do
+      create( :unit_guerriers_nature, gang: og1 )
+    end
 
     post player_schedule_movements_save_path(
            @player, params: {
-           gang_movement: { '1' => { og1.id => '', og2.id => 'O8', og3.id => '' },
-                            '2' => { og1.id => '', og2.id => 'O6', og3.id => '' } } }, gangs_order: "#{og1.id}, #{og2.id}, #{og3.id}" )
+           gang_movement: { '1' => { og1.id => '' },
+                            '2' => { og1.id => '' } } }, gangs_order: "#{og1.id}" )
     # assert_redirected_to campaign_show_movements_path( @campaign )
     follow_redirect!
 
@@ -58,50 +61,23 @@ class MovementsValidationTest < ActionDispatch::IntegrationTest
     m = movements.shift
     assert_equal @player2, m.player
     assert_equal cg1, m.gang
-    assert_equal 'O9', m.from
-    assert_equal 'C9', m.to
-
-    m = movements.shift
-    assert_equal @player, m.player
-    assert_equal og2, m.gang
-    assert_equal 'O11', m.from
-    assert_equal 'O8', m.to
+    assert_equal 'C6', m.from
+    assert_equal 'C10', m.to
 
     m = movements.shift
     assert_equal @player2, m.player
     assert_equal cg2, m.gang
-    assert_equal 'C11', m.from
-    assert_equal 'C8', m.to
-
-    m = movements.shift
-    assert_equal @player, m.player
-    assert_equal og2, m.gang
-    assert_equal 'O8', m.from
-    assert_equal 'O6', m.to
+    assert_equal 'C6', m.from
+    assert_equal 'C10', m.to
 
     m = movements.shift
     assert_equal @player2, m.player
     assert_equal cg3, m.gang
     assert_equal 'C6', m.from
-    assert_equal 'C5', m.to
+    assert_equal 'C10', m.to
 
     m = movements.shift
-    assert_equal @player2, m.player
-    assert_equal cg1, m.gang
-    assert_equal 'C9', m.from
-    assert_equal 'C4', m.to
-
-    m = movements.shift
-    assert_equal @player2, m.player
-    assert_equal cg2, m.gang
-    assert_equal 'C8', m.from
-    assert_equal 'C5', m.to
-
-    m = movements.shift
-    assert_equal @player2, m.player
-    assert_equal cg3, m.gang
-    assert_equal 'C5', m.from
-    assert_equal 'C2', m.to
+    refute m
 
     assert_empty movements
   end
