@@ -25,7 +25,7 @@ Campaign < ApplicationRecord
     state :waiting_for_players, initial: true
     state :waiting_for_players_to_choose_their_faction
     state :first_hiring_and_movement_schedule, :hiring_and_movement_schedule, :bet_for_initiative
-    state :troop_maintenance_required, :campaign_finished
+    state :troop_maintenance_required, :campaign_finished, :combat_phase
 
     event :players_choose_faction do
       transitions from: [:waiting_for_players], to: :waiting_for_players_to_choose_their_faction

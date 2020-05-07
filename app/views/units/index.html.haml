@@ -23,8 +23,8 @@
     - @units.each do |unit|
       %tr
         %td= unit.amount
-        %td= I18n.t( "units.#{unit.libe}" )
-        %td= I18n.t( "weapon.#{unit.weapon}" )
+        %td= I18n.t( "unit_name.libe.#{unit.libe}" ).upcase_first
+        %td= I18n.t( "unit_name.weapon.#{unit.weapon}" )
         %td= unit.long_name.upcase_first
         %td= unit.points
         %td= link_to 'Modifier', edit_unit_path(unit), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'

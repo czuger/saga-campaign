@@ -12,7 +12,7 @@ module GameRules
     end
 
     def libe_select_data( player )
-      @data[ player.faction.to_sym ].keys.map{ |e| { text: I18n.t( "units.#{e}" ), id: e.to_s } }
+      @data[ player.faction.to_sym ].keys.map{ |e| { text: I18n.t( "unit_name.libe.#{e}" ), id: e.to_s } }
     end
 
     def weapons_select_data( player )
@@ -20,7 +20,7 @@ module GameRules
       result = @data[ faction ].keys.map{ |libe|
         [
           libe,
-          @data[ faction ][ libe ].map{ |e| { text: I18n.t( "weapon.#{e}" ), id: e } }
+          @data[ faction ][ libe ].map{ |e| { text: I18n.t( "unit_name.weapon.#{e}" ), id: e } }
         ]
       }
       Hash[result]

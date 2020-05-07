@@ -2984,7 +2984,7 @@ les_bersekers:
       :protection_points: 0
       :being_targeted: 150.0
       :can_attack: 75
-l'archidemon:
+l_archidemon:
   "-":
     :cost: 1.0
     :amount: 1
@@ -3158,7 +3158,7 @@ molosses:
       :protection_points: 0
       :being_targeted: 0.0
       :can_attack: 0
-les_quatres_cavaliers_de_l'apocalypse:
+les_quatres_cavaliers_de_l_apocalypse:
   "-":
     :cost: 2.0
     :amount: 4
@@ -3198,7 +3198,7 @@ les_quatres_cavaliers_de_l'apocalypse:
       :protection_points: 0
       :being_targeted: 0.0
       :can_attack: 0
-l'avatar:
+l_avatar:
   "-":
     :cost: 2.0
     :amount: 1

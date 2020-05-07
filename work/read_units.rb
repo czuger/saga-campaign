@@ -11,7 +11,7 @@ fr_translation = {}
 def to_key( _libe )
   libe = _libe.downcase
   libe.gsub!( /[(),!]/, '' )
-  libe.gsub!( ' ', '_' )
+  libe.gsub!( /[ ']/, '_' )
   libe.gsub!( /[éèê]/, 'e' )
   libe.gsub!( /[à]/, 'a' )
   libe.gsub!( /[ïî]/, 'i' )
