@@ -28,8 +28,8 @@ class Unit < ApplicationRecord
   end
 
   def long_name
-    I18n.t( 'unit_name.long.' + Unit.unit_name_code( libe, weapon ),
-            name: name )
+    french_hack I18n.t( 'unit_name.long.' + Unit.unit_name_code( libe, weapon ),
+            name: name ), name
   end
 
   def short_name
@@ -112,6 +112,13 @@ class Unit < ApplicationRecord
   def self.name_from_log_data( log_data, name_type )
     I18n.t( name_type + unit_name_code( log_data.libe, log_data.weapon ),
             name: log_data.name )
+  end
+
+  def french_hack( result, name )
+    if I18n.locale == :fr && name =~ /^[aeiouyAEIOIY]/
+      result.sub!( 'de ', "d'" )
+    end
+    result
   end
 
 
