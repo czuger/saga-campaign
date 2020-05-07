@@ -146,14 +146,10 @@ class CampaignsController < ApplicationController
       max_sum = players_sums.values.max
       potential_winners = players_sums.select{ |_, v| v == max_sum }
       potential_winners = potential_winners.keys
-
-      @campaign.result = { win_method: :points }
     else
       @campaign.players.each do |player|
         potential_winners ||= []
         potential_winners << player.id if GameRules::Map.prestigious_locations_count( player ) >= 4
-
-        @campaign.capture = { win_method: :points } if potential_winners.count > 0
       end
     end
 

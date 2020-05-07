@@ -213,7 +213,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
         post player_initiative_bet_save_url( other_player, params: { pp: 4 } )
       end
     end
-    assert_redirected_to campaigns_url
+    assert_redirected_to campaign_url( @campaign )
     assert_equal 'campaign_finished', other_campaign.reload.aasm_state
 
     assert_equal 1, other_player.reload.initiative
@@ -254,7 +254,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    assert_redirected_to campaigns_url
+    assert_redirected_to campaign_url( @campaign )
     assert_equal 'campaign_finished', other_campaign.reload.aasm_state
 
     assert_equal 1, other_player.reload.initiative

@@ -29,8 +29,7 @@
             - unless campaign.campaign_finished?
               = link_to t( '.details' ), get_detail_path( campaign ), class: 'btn btn-secondary btn-sm btn-block', role: 'button', 'aria-disabled' => 'true'
             -else
-              Gagnant :
-              = campaign.winner.user.name
+              = link_to 'Gagnant : ' + campaign.winner.user.name, campaign_path( campaign )
 
           -#%td= link_to 'Renommer', edit_campaign_path(campaign), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
           -#%td= link_to 'Supprimer', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
