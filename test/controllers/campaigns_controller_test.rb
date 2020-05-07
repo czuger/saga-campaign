@@ -29,7 +29,7 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
   test 'should create campaign' do
     assert_difference('Campaign.count') do
       assert_difference('Player.count') do
-        post campaigns_url, params: { campaign: { name: 'Campaign test name', user_id: @campaign.user_id } }
+        post campaigns_url, params: { campaign: { name: 'Campaign test name', user_id: @campaign.user_id, campaign_mode: :test } }
       end
     end
 

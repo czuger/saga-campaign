@@ -4,6 +4,8 @@ FactoryBot.define do
     sequence :name do |n|
       "campaign-#{n}"
     end
+
+    campaign_mode { 'test' }
   end
 
 end

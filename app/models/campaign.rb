@@ -43,12 +43,16 @@ Campaign < ApplicationRecord
       transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :troop_maintenance_required
     end
 
+    event :to_combat_phase do
+      transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :combat_phase
+    end
+
     event :players_bet_for_initiative do
-      transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule, :troop_maintenance_required], to: :bet_for_initiative
+      transitions from: [:combat_phase, :first_hiring_and_movement_schedule, :hiring_and_movement_schedule, :troop_maintenance_required], to: :bet_for_initiative
     end
 
     event :terminate_campaign do
-      transitions from: [:first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :campaign_finished
+      transitions from: [:combat_phase, :first_hiring_and_movement_schedule, :hiring_and_movement_schedule], to: :campaign_finished
     end
   end
 

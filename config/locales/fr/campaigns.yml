@@ -57,6 +57,7 @@ fr:
         bet_for_initiative: Les joueurs doivent faire les mises pour l'initiative
         campaign_finished: La campagne est terminée
         troop_maintenance_required: Des joueurs ont trop de troupes
+        combat_phase: Les joueurs doivent faire leurs combats et entrer les résultats
 
       status-mobile:
         waiting_for_players: En attente de joueurs
@@ -66,6 +67,7 @@ fr:
         bet_for_initiative: Initiative
         campaign_finished: Terminée
         troop_maintenance_required: Maintenance des troupes
+        combat_phase: Combats des joueurs
 
 
 

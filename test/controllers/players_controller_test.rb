@@ -213,13 +213,11 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
         post player_initiative_bet_save_url( other_player, params: { pp: 4 } )
       end
     end
-    assert_redirected_to campaign_url( @campaign )
-    assert_equal 'campaign_finished', other_campaign.reload.aasm_state
+    assert_redirected_to campaign_url( other_campaign )
+    assert other_campaign.reload.hiring_and_movement_schedule?
 
     assert_equal 1, other_player.reload.initiative
     assert_equal 2, player.reload.initiative
-
-    assert_equal other_player, other_campaign.winner
 
     # puts @response.body
   end
@@ -254,13 +252,11 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    assert_redirected_to campaign_url( @campaign )
-    assert_equal 'campaign_finished', other_campaign.reload.aasm_state
+    assert_redirected_to campaign_url( other_campaign )
+    assert other_campaign.reload.hiring_and_movement_schedule?
 
     assert_equal 1, other_player.reload.initiative
     assert_equal 2, player.reload.initiative
-
-    assert_equal player, other_campaign.winner
 
     # puts @response.body
   end

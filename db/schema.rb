@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_103252) do
+ActiveRecord::Schema.define(version: 2020_05_07_121557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_103252) do
     t.integer "max_players", limit: 2, default: 2, null: false
     t.integer "turn", limit: 2, default: 1, null: false
     t.bigint "winner_id"
-    t.string "campaign_mode", default: "test", null: false
+    t.string "campaign_mode", null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
@@ -74,9 +74,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_103252) do
     t.bigint "gang_id", null: false
     t.string "from", null: false
     t.string "to", null: false
-    t.string "interception"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "interception_info"
+    t.boolean "interception", default: true, null: false
     t.index ["campaign_id"], name: "index_movements_results_on_campaign_id"
     t.index ["gang_id"], name: "index_movements_results_on_gang_id"
     t.index ["player_id"], name: "index_movements_results_on_player_id"

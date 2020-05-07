@@ -6,5 +6,5 @@ class MovementsResult < ApplicationRecord
 
   has_one :fight_result
 
-  serialize :interception
+  serialize :interception_info
 end

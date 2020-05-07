@@ -79,29 +79,13 @@ class CampaignsController < ApplicationController
     # if validate_movements && @campaign.players.where( movements_orders_finalized: false ).count <= 1
 
     Campaign.transaction do
-      GameRules::Movements.new( @campaign ).run!
-      cp_manager = GameRules::ControlPoints.new( @campaign )
+      interceptions_count = GameRules::Movements.new( @campaign ).run!
 
-      cp_manager.set_control_of_locations!
-      cp_manager.gain_pp_for_control_points!
-      cp_manager.check_maintenance_cost_for_all_player!
-
-      if cp_manager.maintenance_required?
-        @campaign.require_troop_maintenance!
-        redirect_to campaigns_path
+      if interceptions_count == 0 || @campaign.campaign_mode.to_sym == :test
+        after_move_and_combats
       else
-        cp_manager.loose_pp_for_mainteance!
-
-        compute_points_for_players!
-
-        if check_for_victory!
-          @campaign.terminate_campaign!
-          redirect_to campaigns_path
-        else
-          @campaign.players_bet_for_initiative!
-          redirect_to campaign_show_movements_path( @campaign )
-        end
-
+        @campaign.to_combat_phase!
+        redirect_to campaigns_path
       end
     end
   end
@@ -117,6 +101,31 @@ class CampaignsController < ApplicationController
   end
 
   private
+
+  def after_move_and_combats
+    cp_manager = GameRules::ControlPoints.new( @campaign )
+
+    cp_manager.set_control_of_locations!
+    cp_manager.gain_pp_for_control_points!
+    cp_manager.check_maintenance_cost_for_all_player!
+
+    if cp_manager.maintenance_required?
+      @campaign.require_troop_maintenance!
+      redirect_to campaigns_path
+    else
+      cp_manager.loose_pp_for_mainteance!
+
+      compute_points_for_players!
+
+      if check_for_victory!
+        @campaign.terminate_campaign!
+        redirect_to campaigns_path
+      else
+        @campaign.players_bet_for_initiative!
+        redirect_to campaign_show_movements_path( @campaign )
+      end
+    end
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def campaign_params
