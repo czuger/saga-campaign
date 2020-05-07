@@ -76,10 +76,11 @@ ActiveRecord::Schema.define(version: 2020_05_07_121557) do
     t.string "to", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "interception_info"
+    t.bigint "intercepted_gang_id"
     t.boolean "interception", default: true, null: false
     t.index ["campaign_id"], name: "index_movements_results_on_campaign_id"
     t.index ["gang_id"], name: "index_movements_results_on_gang_id"
+    t.index ["intercepted_gang_id"], name: "index_movements_results_on_intercepted_gang_id"
     t.index ["player_id"], name: "index_movements_results_on_player_id"
   end
 
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_121557) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "weapon", null: false
     t.string "name"
+    t.integer "losses", limit: 2
     t.index ["gang_id"], name: "index_units_on_gang_id"
   end
 
@@ -149,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_121557) do
   add_foreign_key "logs", "campaigns"
   add_foreign_key "movements_results", "campaigns"
   add_foreign_key "movements_results", "gangs"
+  add_foreign_key "movements_results", "gangs", column: "intercepted_gang_id"
   add_foreign_key "movements_results", "players"
   add_foreign_key "players", "campaigns"
   add_foreign_key "players", "users"

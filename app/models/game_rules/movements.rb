@@ -28,11 +28,11 @@ module GameRules
               original_location = gang.location
 
               gang.location = movement
-              interception, intercepted_gang, interception_info = check_for_interception!( gang )
+              interception, intercepted_gang = check_for_interception!( gang )
 
               mr = @campaign.movements_results.create!(
                 campaign: @campaign, player: p_struct.player, gang: gang, from: original_location, to: movement,
-                interception: interception, interception_info: interception_info )
+                interception: interception, intercepted_gang: intercepted_gang )
 
               interceptions_count += 1 if interception
 
@@ -126,18 +126,7 @@ module GameRules
         intercepting_gang.movements = []
       end
 
-
-      [
-        !intercepted_gang.nil?,
-        intercepted_gang,
-        # We have to save the name because the gang can be destroyed. The id is used only for the next phase
-        # When the players have to input the combat result.
-        OpenStruct.new( intercepted_gang_name: intercepted_gang&.name,
-                        intercepted_gang_id: intercepted_gang&.id,
-                        intercepting_gang_name: intercepting_gang&.name,
-                        intercepting_gang_id: intercepted_gang&.id,
-                        location: intercepting_gang&.location)
-      ]
+      return !intercepted_gang.nil?, intercepted_gang
     end
 
     def check_for_retreat!( gang )

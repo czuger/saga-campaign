@@ -169,7 +169,6 @@ class UnitsController < ApplicationController
     def set_units_rules_data
       faction_data = GameRules::Factions.new( @campaign )
       @factions_data = faction_data.data[@player.faction]
-      @unit_select_options_for_faction = faction_data.unit_select_options_for_faction( @gang.faction )
 
       @factions_vue = GameRules::FactionsVue.new( @campaign )
 

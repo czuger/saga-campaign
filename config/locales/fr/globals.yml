@@ -42,6 +42,7 @@ fr:
     player: Joueur
     initiative_bet: Miser pour l'initiative
     maintenance: Maintenance
+    input_combat: Resultat des combats
 
     map: Carte
     rules: Règles

@@ -6,6 +6,8 @@ fr:
       seigneur: "le seigneur %{name}"
       sorcier: "le sorcier %{name}"
       necromant: "le nécromant %{name}"
+      l_archidemon: "l'archidémon %{name}"
+
       lieutenant: "le lieutenant %{name}"
 
       titan: "le titan %{name}"
@@ -24,7 +26,8 @@ fr:
 
       les_quatres_cavaliers_de_l_apocalypse: &four_horses Les quatres cavaliers de l'apocalypse
       les_spectres: &wraiths les spectres
-
+      l_avatar: &avatar l'avatar
+      traqueurs: "Les traqueurs %{name}"
 
     unit_name_short:
       seigneur: "seigneur %{name}"
@@ -68,6 +71,8 @@ fr:
       l'archidemon: L'archidémon
       les_spectres: *wraiths
       les_quatres_cavaliers_de_l_apocalypse: *four_horses
+      l_archidemon: L'archidémon
+      l_avatar: *avatar
 
     weapon:
       "-": "-"

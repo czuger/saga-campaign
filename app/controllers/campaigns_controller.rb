@@ -100,6 +100,13 @@ class CampaignsController < ApplicationController
     @vp_sums = @campaign.victory_points_histories.joins( { player: :user } ).group( 'users.name' ).sum( :points_total )
   end
 
+  def input_combats_edit
+    @fights = @campaign.movements_results.where( interception: true )
+  end
+
+  def input_combats_save
+  end
+
   private
 
   def after_move_and_combats

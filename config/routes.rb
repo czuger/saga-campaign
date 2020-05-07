@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     get :show_movements
 
     get :show_victory_status
+
+    get :input_combats_edit
+    post :input_combats_save
   end
 
   get 'players/:campaign_id/choose_faction_new', to: 'players#choose_faction_new', as: 'players_choose_faction_new'

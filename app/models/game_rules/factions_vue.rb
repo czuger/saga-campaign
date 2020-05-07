@@ -12,7 +12,7 @@ module GameRules
     end
 
     def libe_select_data( player )
-      @data[ player.faction.to_sym ].keys.map{ |e| { text: I18n.t( "unit_name.libe.#{e}" ), id: e.to_s } }
+      @data[ player.faction.to_sym ].keys.map{ |e| { text: I18n.t( "unit_name.libe.#{e}" ).upcase_first, id: e.to_s } }
     end
 
     def weapons_select_data( player )

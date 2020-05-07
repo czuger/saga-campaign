@@ -1,10 +1,13 @@
-- case @campaign.aasm_state
-  - when 'first_hiring_and_movement_schedule', 'hiring_and_movement_schedule'
+- case @campaign.aasm_state.to_sym
+  - when :first_hiring_and_movement_schedule, :hiring_and_movement_schedule
     = dropdown_menu_block( t('menu.actions') ) do
       = dropdown_sub_menu_link( t('menu.gangs'), player_gangs_path( @player ) )
       = dropdown_sub_menu_link( t('menu.movements'), player_schedule_movements_edit_path( @player ) )
-  - when 'bet_for_initiative'
+  - when :bet_for_initiative
     = simple_menu_link( t('menu.initiative_bet'), player_initiative_bet_edit_path( @player ) )
-  - when 'troop_maintenance_required'
+  - when :troop_maintenance_required
     - if @player.maintenance_required
       = simple_menu_link( t('menu.maintenance'), player_gangs_path( @player ) )
+  - when :combat_phase
+    = simple_menu_link( t('menu.input_combat'), campaign_input_combats_edit_path( @campaign ) )
+
