@@ -5,7 +5,7 @@
   Entrez le nombre d'unités restante après la bataille.
 
   %h2 Attaquant
-  = render partial: 'gang_report', locales: { units: @attacking_units }
+  = render partial: 'gang_report', locals: { units: @attacking_units }
 
   %h2 Defenseur
-  = render partial: 'gang_report', locales: { units: @defending_units }
+  = render partial: 'gang_report', locals: { units: @defending_units }

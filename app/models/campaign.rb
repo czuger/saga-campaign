@@ -19,7 +19,7 @@ Campaign < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  serialize :result
+  validates :campaign_mode, inclusion: { in: %w(test regular), strict: true }
 
   aasm do
     state :waiting_for_players, initial: true

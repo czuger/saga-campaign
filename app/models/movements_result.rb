@@ -1,3 +1,9 @@
+class InterceptionValidator < ActiveModel::Validator
+  def validate(record)
+    record.interception && record.intercepted_gang_id
+  end
+end
+
 class MovementsResult < ApplicationRecord
 
   belongs_to :campaign
@@ -7,5 +13,5 @@ class MovementsResult < ApplicationRecord
 
   has_one :fight_result
 
-  serialize :interception_info
+  validates_with InterceptionValidator, strict: true
 end
