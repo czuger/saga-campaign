@@ -6,5 +6,5 @@ if [[ -z "$1" ]]
     exit
 fi
 
-psql -c "CREATE ROLE saga_campaign WITH LOGIN NOSUPERUSER NOCREATEROLE INHERIT NOREPLICATION CONNECTION LIMIT -1 PASSWORD '$1'";
-psql -c "CREATE DATABASE saga_campaign_prod OWNER saga_campaign;"
+psql -p 5434 -h localhost -U postgres -c "CREATE ROLE saga_campaign WITH LOGIN NOSUPERUSER NOCREATEROLE INHERIT NOREPLICATION CONNECTION LIMIT -1 PASSWORD '$1'";
+psql -p 5434 -h localhost -U postgres -c "CREATE DATABASE saga_campaign_prod OWNER saga_campaign;"
