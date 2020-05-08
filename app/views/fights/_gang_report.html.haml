@@ -1,0 +1,8 @@
+- gang.each do |unit|
+  .row.mt-1
+    .col-7.my-auto
+      = unit.long_name.upcase_first
+    .col-2.my-auto.text-center
+      = unit.amount
+    .col-3
+      = number_field_tag "remains[#{unit.id}]", unit.remains, 'v-on:keyup' => "input_remains( #{unit.id} )", class: 'form-control text-center', min: 0, max: unit.amount

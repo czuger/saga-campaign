@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
   before_action :require_logged_in!
-  before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_unit, only: [:edit, :update, :destroy, :remains]
   before_action :set_gang, only: [:index, :new, :create]
 
   # GET /units
@@ -114,6 +114,18 @@ class UnitsController < ApplicationController
     else
       redirect_to gang_units_path( @gang ), notice: t( '.success' ), alert: @alert_message
     end
+  end
+
+  def remains
+    @campaign = @unit.gang.player.campaign
+
+    cu = current_user
+    allowed_users_ids = @campaign.players.map{ |p| p.user_id }
+
+    raise "#{cu.inspect} not allowed to modify unit #{@unit.inspect}" unless allowed_users_ids.include?( cu.id )
+
+    @unit.remains = [ params[ :remains ].to_f, @unit.amount ].min
+    @unit.save!
   end
 
   private

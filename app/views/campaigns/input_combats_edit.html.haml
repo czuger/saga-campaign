@@ -1,1 +1,5 @@
-- @fights.each do |fight|
+- @fights.includes( :gang, :intercepted_gang ).each do |f|
+  .row
+    .col.mt-1
+      = link_to fight_report_path( f ), class: 'btn btn-secondary btn-block', role: 'button', 'aria-disabled' => 'true' do
+        = t( '.interception', interceptor: f.gang.player.user.name, intercepted: f.intercepted_gang.player.user.name, location: f.to )

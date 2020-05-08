@@ -7,7 +7,7 @@ class AddInterceptionInfoToMovementsResult < ActiveRecord::Migration[6.0]
     add_column :movements_results, :interception, :boolean, null: false, default: true
     remove_column :movements_results, :interception_info, :string
 
-    add_column :units, :losses, :integer, limit: 2
+    add_column :units, :remains, :integer, limit: 2
 
   end
 end

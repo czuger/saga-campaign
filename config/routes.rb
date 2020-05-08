@@ -20,10 +20,12 @@ Rails.application.routes.draw do
     get :show_victory_status
 
     get :input_combats_edit
-    post :input_combats_save
   end
 
   get 'players/:campaign_id/choose_faction_new', to: 'players#choose_faction_new', as: 'players_choose_faction_new'
+
+  get 'fights/:movement_result_id/report', to: 'fights#report_edit', as: :fight_report
+  post 'fights/:movement_result_id/report', to: 'fights#report_create'
 
   resources :units, only: [ :edit, :destroy ]
 
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
   resources :gangs, only: [ :destroy, :edit, :update ] do
     resources :units, only: [ :new, :create, :update, :index ]
   end
+
+  patch 'units/:unit_id/remains', to: 'units#remains'
 
   # Used to set icons position on map
   get 'map/create_positions', to: 'map#create_positions'

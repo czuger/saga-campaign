@@ -1,6 +1,9 @@
 fr:
   campaigns:
 
+    input_combats_edit:
+      interception: "%{interceptor} contre %{intercepted} en %{location}"
+
     controlled_points:
       title: Liste des points controlés
       controller: Lieux controllés par %{player_name}

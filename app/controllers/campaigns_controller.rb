@@ -101,10 +101,8 @@ class CampaignsController < ApplicationController
   end
 
   def input_combats_edit
-    @fights = @campaign.movements_results.where( interception: true )
-  end
-
-  def input_combats_save
+    @fights = @campaign.movements_results.where( interception: true ).includes(
+      { gang: { player: :user } }, { intercepted_gang: { player: :user } } )
   end
 
   private
