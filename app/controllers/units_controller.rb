@@ -148,7 +148,7 @@ class UnitsController < ApplicationController
     def after_unit_update( log_action, log_params )
 
       log_params[ :unit_name ] = {
-        code: 'unit_name.in_sentence', amount: @unit.amount, unit_libe: @unit.libe }
+        code: 'unit_name.in_sentence', amount: @unit.amount, unit_libe: Unit.unit_name_code( @unit.libe, @unit.weapon ) }
       log_params.delete( :amount )
       log_params.delete( :unit_libe )
 
