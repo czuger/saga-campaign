@@ -14,7 +14,7 @@ class Player < ApplicationRecord
     player = Player.create(
       user: user, campaign: campaign, pp: GameRules::Factions::START_PP )
 
-    campaign.logs.create!( data: "Joueur #{user.name} ajouté à la campagne.")
+    campaign.add_log( :campaign, :player_added, name: user.name )
     player
   end
 

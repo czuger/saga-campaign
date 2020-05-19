@@ -38,7 +38,7 @@ module GameRules
       @campaign.players.each do |player|
         total_pp = ControlPoints.pp_to_gain(player )
         player.pp += total_pp
-        @campaign.logs.create!( data: I18n.t( 'log.pp.control_points_gain', name: player.user.name, count: total_pp ) )
+        @campaign.add_log( :pp, :control_points_gain, name: player.user.name, count: total_pp )
 
         player.save!
       end
@@ -48,7 +48,7 @@ module GameRules
       @campaign.players.each do |player|
         maintenance = ControlPoints.maintenance_cost( player )
         player.pp -= maintenance
-        @campaign.logs.create!( data: I18n.t( 'log.pp.maintenance_loss', name: player.user.name, count: maintenance ) )
+        @campaign.add_log( :pp, :maintenance_loss, name: player.user.name, count: maintenance )
 
         player.save!
       end

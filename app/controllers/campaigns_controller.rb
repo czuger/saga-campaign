@@ -147,7 +147,8 @@ class CampaignsController < ApplicationController
 
       raise @campaign.errors.inspect unless result
 
-      result &&= @campaign.logs.create( data: I18n.t( 'log.campaign.created' ) )
+      result &&= @campaign.add_log( :campaign, :created )
+
       @player = Player.create_new_player( @campaign, current_user )
       result && @player.errors.empty?
     end

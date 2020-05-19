@@ -40,3 +40,8 @@ fr:
       
       movement: "La bande %{gang_name} de %{player_name} se déplace en %{location}."
       take_control: "%{user_name} prend le contrôle de %{location}."
+
+    units:
+      create: "%{user_name} a ajouté une unité de %{amount} %{unit_libe} à la bande %{gang_name}."
+      update: "%{user_name} a modifié une unité de %{amount} %{unit_libe} de la bande %{gang_name}."
+      destroy: "%{user_name} a supprimé une unité de %{amount} %{unit_libe} de la bande %{gang_name}."

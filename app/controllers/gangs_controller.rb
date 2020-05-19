@@ -36,7 +36,7 @@ class GangsController < ApplicationController
     Gang.transaction do
       respond_to do |format|
         if @gang.save
-          @campaign.logs.create!( data: I18n.t( 'log.gangs.created', player_name: @player.user.name, gang_name: @gang.name ) )
+          @campaign.add_log( :gangs, :created, player_name: @player.user.name, gang_name: @gang.name )
 
           format.html { redirect_to gang_units_path( @gang ),
                                     notice: I18n.t( 'gangs.notice.created', name: @gang.name ) }
@@ -80,8 +80,8 @@ class GangsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to player_gangs_path( @player ),
                                   notice: I18n.t( 'gangs.notice.destroyed', name: @gang.name ) }
-
-        @campaign.logs.create!( data: I18n.t( 'log.gangs.destroyed', player_name: @player.user.name, gang_name: @gang.name ) )
+        
+        @campaign.add_log( :gangs, :destroyed, player_name: @player.user.name, gang_name: @gang.name )
 
         if gang_cost > 0
           @campaign.logs.create!( data: I18n.t( 'log.pp.increase', name: @player.user.name, count: gang_cost ) )

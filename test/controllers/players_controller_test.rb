@@ -303,6 +303,8 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     # p @player.reload.pp
 
     assert_equal 'troop_maintenance_required', @campaign.reload.aasm_state
+
+    # p @campaign.logs.reload.all
   end
 
 
