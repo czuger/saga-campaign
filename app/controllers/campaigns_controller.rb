@@ -108,6 +108,11 @@ class CampaignsController < ApplicationController
   private
 
   def after_move_and_combats
+    # after movements, all non retreating gangs are marked as finalized.
+    # Whether they moved or not. The finalized boolean prevent user to modify the type of
+    # the unit (Monster becomes Lord)
+    @campaign.gangs.update_all( finalized: true )
+
     cp_manager = GameRules::ControlPoints.new( @campaign )
 
     cp_manager.set_control_of_locations!

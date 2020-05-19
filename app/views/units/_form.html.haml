@@ -9,11 +9,11 @@
 
     %b
       Type d'unité
-    = f.select( :libe, options_for_vue( :libe_select_options ), {}, class: 'form-control', 'v-model' => :selected_libe, disabled: @edition )
+    = f.select( :libe, options_for_vue( :libe_select_options ), {}, class: 'form-control', 'v-model' => :selected_libe, disabled: @edition_disabled )
 
     %b
       Arme
-    = f.select( :weapon, options_for_vue( :weapon_select_options ), {}, class: 'form-control', 'v-model' => :selected_weapon, disabled: @edition )
+    = f.select( :weapon, options_for_vue( :weapon_select_options ), {}, class: 'form-control', 'v-model' => :selected_weapon, disabled: @edition_disabled )
 
     .mt-3
 

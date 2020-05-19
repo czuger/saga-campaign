@@ -24,12 +24,15 @@ class UnitsController < ApplicationController
     @unit.points = 0
 
     set_units_rules_data
+
+    @edition_disabled = false
   end
 
   # GET /units/1/edit
   def edit
     set_units_rules_data
-    @edition = true
+
+    @edition_disabled = @gang.finalized && !@campaign.first_hiring_and_movement_schedule?
   end
 
   # POST /units
