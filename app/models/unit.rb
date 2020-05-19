@@ -115,12 +115,10 @@ class Unit < ApplicationRecord
   end
 
   def french_hack( result, name )
-    if I18n.locale == :fr && name =~ /^[aeiouyhAEIOIYH]/
+    if I18n.locale == :fr && !result.frozen? && name =~ /^[aeiouyhAEIOIYH]/
       result.sub!( 'de ', "d'" )
     end
     result
   end
-
-
 
 end

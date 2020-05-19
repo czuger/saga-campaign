@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'players/:campaign_id/choose_faction_new', to: 'players#choose_faction_new', as: 'players_choose_faction_new'
 
   get 'fights/:movement_result_id/report', to: 'fights#report_edit', as: :fight_report
-  post 'fights/:movement_result_id/report', to: 'fights#report_create'
+  post 'fights/:movement_result_id/report', to: 'fights#report_save'
 
   resources :units, only: [ :edit, :destroy ]
 

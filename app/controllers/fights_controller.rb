@@ -8,6 +8,7 @@ class FightsController < ApplicationController
   end
 
   def report_save
+
   end
 
   def show

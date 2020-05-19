@@ -1,6 +1,15 @@
 ---
 fr:
   fights:
+
+    report_edit:
+
+      title: Rapport de bataille
+      sub_title: Entrez le nombre d'unités restante après la bataille.
+      attacker: Attaquant
+      defender: Defenseur
+      validate: Valider
+
     opponent_turn_detail:
 
       attack_detail_string: "L'unité %{attacker_name}(%{attacker_count}) %{attack_phase} l'unité %{defender_name}(%{defender_count})

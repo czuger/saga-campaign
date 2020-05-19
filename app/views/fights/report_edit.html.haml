@@ -1,11 +1,14 @@
 #fight_results
 
-  %h1 Rapport de bataille
+  %h1= t( '.title' )
 
-  Entrez le nombre d'unités restante après la bataille.
+  = t( '.sub_title' )
 
-  %h2 Attaquant
+  %h2= t( '.attacker' )
   = render partial: 'gang_report', locals: { units: @attacking_units }
 
-  %h2 Defenseur
+  %h2= t( '.defender' )
   = render partial: 'gang_report', locals: { units: @defending_units }
+
+  = link_to( t( '.validate' ), fight_report_path( @movement_result ), method: :post,
+          class: 'btn btn-secondary btn-block mt-1', role: 'button', 'aria-disabled' => 'true' )
