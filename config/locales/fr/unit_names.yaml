@@ -31,7 +31,7 @@ fr:
       le_veneur_et_la_grande_chasse: &le_veneur_et_la_grande_chasse le veneur et la grande chasse
       molosses: &molosses molosses
       le_monstre_de_guerre: &le_monstre_de_guerre le monstre de guerre
-      le_conclave: &le_conclave Le conclave
+      le_conclave: &le_conclave le conclave
       la_machine_incroyable_et_extraordinaire: &la_machine_incroyable_et_extraordinaire la machine incroyable et extraordinaire
       les_aberrations_mutantes: "les aberrations mutantes de %{name}"
 
@@ -42,6 +42,93 @@ fr:
       la_fouisseuse: "la fouisseuse %{name}"
       fanatiques_devoues: "les fanatiques dévoués de %{name}"
       equipe_de_destrucion: "l'équipe de destruction %{name}"
+
+    in_sentence:
+      seigneur:
+        one: "un seigneur"
+        other: "%{count} seigneurs"
+      sorcier:
+        one: "un sorcier"
+        other: "%{count} sorciers"
+      necromant:
+        one: "un nécromant"
+        other: "%{count} nécromants"
+      l_archidemon:
+        one: "un archidémon"
+        other: "%{count} archidémons"
+      lieutenant:
+        one: "un lieutenant"
+        other: "%{count} lieutenants"
+      titan:
+        one: "un titan"
+        other: "%{count} titans"
+      behemoth:
+        one: "un behemoth"
+        other: "%{count} behemoths"
+      fleau:
+        one: "un fléau"
+        other: "%{count} fleaux"
+      fleau_vol:
+        one: "un fléau"
+        other: "%{count} fléaux"
+      creatures:
+        one: "une créature"
+        other: "%{count} créatures"
+      gardes:
+        one: "un garde"
+        other: "%{count} gardes"
+      guerriers:
+        one: "un guerrier"
+        other: "%{count} guerriers"
+      levees:
+        one: "une unité de levée"
+        other: "%{count} unités de levées"
+      decerebres:
+        one: "un décérébré"
+        other: "%{count} décérébrés"
+      nuee:
+        one: "une unité de nuée"
+        other: "%{count} unités de nuées"
+      machine_de_guerre:
+        one: "une machine de guerre"
+        other: "%{count} machines de guerre"
+      les_quatres_cavaliers_de_l_apocalypse: *four_horses
+      les_spectres:
+        one: "une unité de spectre"
+        other: "%{count} unités de spectres"
+      l_avatar: *avatar
+      le_veneur_et_la_grande_chasse: *le_veneur_et_la_grande_chasse
+      molosses:
+        one: "un molosse"
+        other: "%{count} molosses"
+      le_monstre_de_guerre: *le_monstre_de_guerre
+      le_conclave: *le_conclave
+      la_machine_incroyable_et_extraordinaire: *la_machine_incroyable_et_extraordinaire
+      les_aberrations_mutantes:
+        one: "une aberration mutante"
+        other: "%{count} abberations mutantes"
+      traqueurs:
+        one: "un traqueur"
+        other: "%{count} traqueurs"
+      char_de_guerre:
+        one: "un char de guerre"
+        other: "%{count} chars de guerre"
+      les_bersekers:
+        one: "un berserker"
+        other: "%{count} berserkers"
+      paladin:
+        one: "un paladin"
+        other: "%{count} paladins"
+      la_fouisseuse:
+        one: "une fouisseuse"
+        other: "%{count} fouisseuses"
+      fanatiques_devoues:
+        one: "un fanatique dévoué"
+        other: "%{count} fanatiques dévoués"
+      equipe_de_destrucion: "l'équipe de destruction %{name}"
+      equipe_de_destrucion:
+        one: "un membre d'équipe de destruction"
+        other: "%{count} membres d'équipe de destruction"
 
     unit_name_short:
       seigneur: "seigneur %{name}"

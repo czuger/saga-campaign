@@ -1,7 +1,7 @@
 namespace :bot do
 
   desc 'Run an auto play bot'
-  task opponent_move_gangs: :environment do
+  task play: :environment do
     Engines::AutoPlayBot.new.run
   end
 

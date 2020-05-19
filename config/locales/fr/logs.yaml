@@ -3,45 +3,45 @@ fr:
   log:
     campaign:
       created: Campagne crée
-      player_added: "Joueur %{name} ajouté à la campagne."
+      player_added: "Joueur ajouté à la campagne."
 
     initiative:
       bet:
-        zero: "Le joueur %{name} n'a rien misé pour l'initiative."
-        one: "Le joueur %{name} a misé 1 point de pouvoir pour l'initiative."
-        other: "Le joueur %{name} a misé %{count} pour l'initiative."
+        zero: "N'a rien misé pour l'initiative."
+        one: "A misé un point de pouvoir pour l'initiative."
+        other: "A misé %{count} pour l'initiative."
 
       order:
-        one: "Le joueur %{name} a la faveur des dieux."
-        other: "Le joueur %{name} joue en %{count}e."
+        one: "A la faveur des dieux."
+        other: "Joue en %{count}e."
 
     pp:
       decrease:
-        one: "Le joueur %{name} a perdu un point de pouvoir."
-        other: "Le joueur %{name} a perdu %{count} points de pouvoir."
+        one: "A perdu un point de pouvoir."
+        other: " A perdu %{count} points de pouvoir."
       increase:
-        one: "Le joueur %{name} a gagné un point de pouvoir."
-        other: "Le joueur %{name} a gagné %{count} points de pouvoir."
+        one: " A gagné un point de pouvoir."
+        other: " A gagné %{count} points de pouvoir."
 
       control_points_gain:
-        one: "Le joueur %{name} a gagné un point de pouvoir grâce aux points qu'il contrôle."
-        other: "Le joueur %{name} a gagné %{count} points de pouvoir grâce aux points qu'il contrôle."
+        one: " A gagné un point de pouvoir grâce aux points qu'il contrôle."
+        other: " A gagné %{count} points de pouvoir grâce aux points qu'il contrôle."
 
       maintenance_loss:
-          one: "Le joueur %{name} a perdu un point de pouvoir à cause de la maintenance de ses troupes."
-          other: "Le joueur %{name} a perdu %{count} points de pouvoir à cause de la maintenance de ses troupes."
+          one: " A perdu un point de pouvoir à cause de la maintenance de ses troupes."
+          other: " A perdu %{count} points de pouvoir à cause de la maintenance de ses troupes."
 
     gangs:
-      created: "Le joueur %{player_name} a créé la bande %{gang_name}."
-      destroyed: "Le joueur %{player_name} a supprimé la bande %{gang_name}."
+      created: " A créé la bande %{gang_name}."
+      destroyed: " A supprimé la bande %{gang_name}."
       retreating: "La bande %{gang_name} fait retraite en %{location}."
 
       retreating_after_update: "La bande est trop faible et fait retraite en %{location}."
       
       movement: "La bande %{gang_name} de %{player_name} se déplace en %{location}."
-      take_control: "%{user_name} prend le contrôle de %{location}."
+      take_control: "Prend le contrôle de %{location}."
 
     units:
-      create: "%{user_name} a ajouté une unité de %{amount} %{unit_libe} à la bande %{gang_name}."
-      update: "%{user_name} a modifié une unité de %{amount} %{unit_libe} de la bande %{gang_name}."
-      destroy: "%{user_name} a supprimé une unité de %{amount} %{unit_libe} de la bande %{gang_name}."
+      create: " A ajouté une unité de %{unit_name} à la bande %{gang_name}."
+      update: " A modifié une unité de %{unit_name} de la bande %{gang_name}."
+      destroy: " A supprimé une unité de %{unit_name} de la bande %{gang_name}."

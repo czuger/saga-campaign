@@ -44,7 +44,7 @@ class UnitsController < ApplicationController
         if @can_pay_unit && @unit.save
 
           after_unit_update( :create,
-                             user_name: @user.name, amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name )
+                             amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name )
 
           pay_unit( @unit.points )
 
@@ -76,7 +76,7 @@ class UnitsController < ApplicationController
         if @can_pay_unit && @unit.update(unit_params)
 
           after_unit_update( :update,
-            user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name )
+            amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name )
 
           pay_unit( @unit.points - current_points )
 
@@ -108,7 +108,7 @@ class UnitsController < ApplicationController
 
       set_gang_points
       after_unit_update( :destroy,
-                         user_name: @user.name, amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name )
+                         amount: @unit.amount,  unit_libe: @unit.libe, gang_name: @gang.name )
 
 
       pay_unit( - current_points )
@@ -147,7 +147,10 @@ class UnitsController < ApplicationController
 
     def after_unit_update( log_action, log_params )
 
-      # log_params[ sub_translations: [ { translation: } ] ]
+      log_params[ :unit_name ] = {
+        code: 'unit_name.in_sentence', amount: @unit.amount, unit_libe: @unit.libe }
+      log_params.delete( :amount )
+      log_params.delete( :unit_libe )
 
       @campaign.add_log( @player,:units, log_action, log_params )
 
@@ -176,9 +179,9 @@ class UnitsController < ApplicationController
 
         # No log if we pay nothing
         if amount > 0
-          @campaign.add_log( @player,:pp, :decrease, name: @player.user.name, count: amount )
+          @campaign.add_log( @player,:pp, :decrease, count: amount )
         elsif amount < 0
-          @campaign.add_log( @player,:pp, :increase, name: @player.user.name, count: -amount )
+          @campaign.add_log( @player,:pp, :increase, count: -amount )
         end
       else
         if amount > 0

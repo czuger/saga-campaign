@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1.json
   def show
     @players = @campaign.players.includes( :user ).all
-    @logs = @campaign.logs.order( 'updated_at DESC' ).paginate( page: params[:page] )
+    @logs = @campaign.logs.includes( { player: :user } ).order( 'updated_at DESC' ).paginate( page: params[:page] )
     @movements_finalized = @campaign.players.where( movements_orders_finalized: false ).count == 0
   end
 
