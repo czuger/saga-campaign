@@ -146,7 +146,10 @@ class UnitsController < ApplicationController
     end
 
     def after_unit_update( log_action, log_params )
-      @campaign.add_log( :units, log_action, log_params )
+
+      # log_params[ sub_translations: [ { translation: } ] ]
+
+      @campaign.add_log( @player,:units, log_action, log_params )
 
       set_gang_points
 
@@ -173,9 +176,9 @@ class UnitsController < ApplicationController
 
         # No log if we pay nothing
         if amount > 0
-          @campaign.add_log( :pp, :decrease, name: @player.user.name, count: amount )
+          @campaign.add_log( @player,:pp, :decrease, name: @player.user.name, count: amount )
         elsif amount < 0
-          @campaign.add_log( :pp, :increase, name: @player.user.name, count: -amount )
+          @campaign.add_log( @player,:pp, :increase, name: @player.user.name, count: -amount )
         end
       else
         if amount > 0

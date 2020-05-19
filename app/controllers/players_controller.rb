@@ -162,7 +162,7 @@ class PlayersController < ApplicationController
 
     tmp_players = []
     @campaign.players.includes( :user ).order( 'initiative_bet DESC' ).each do |player|
-      @campaign.add_log( :initiative, :bet, name: player.user.name, count: player.initiative_bet )
+      @campaign.add_log( @player, :initiative, :bet, name: player.user.name, count: player.initiative_bet )
       tmp_players << player
     end
     new_first_player, new_second_player = tmp_players
@@ -175,13 +175,13 @@ class PlayersController < ApplicationController
     new_first_player.pp -= new_first_player.initiative_bet
     new_first_player.initiative_bet = nil
     new_first_player.save!
-    @campaign.add_log( :initiative, :order, name: new_first_player.user.name, count: new_first_player.initiative )
+    @campaign.add_log( new_first_player,:initiative, :order, name: new_first_player.user.name, count: new_first_player.initiative )
 
     new_second_player.initiative = 2
     new_second_player.pp -= new_second_player.initiative_bet
     new_second_player.initiative_bet = nil
     new_second_player.save!
-    @campaign.add_log( :initiative, :order, name: new_second_player.user.name, count: new_second_player.initiative )
+    @campaign.add_log( new_second_player,:initiative, :order, name: new_second_player.user.name, count: new_second_player.initiative )
 
   end
 

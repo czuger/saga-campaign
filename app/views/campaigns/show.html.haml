@@ -53,7 +53,7 @@
   %tbody
     - @logs.each do |log|
       %tr
-        %td= log.data
+        %td= t( "log.#{log.category}.#{log.translation_string}".freeze, log.translation_data )
         %td= l( log.updated_at.localtime, format: :long ).capitalize
 
 = will_paginate( @logs, previous_label: t( '.previous_login' ), next_label: t( '.next_login' ), renderer: WillPaginate::ActionView::BootstrapLinkRenderer )

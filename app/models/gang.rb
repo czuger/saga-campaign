@@ -12,7 +12,7 @@ class Gang < ApplicationRecord
   def retreat!
     unless self.retreating
       retreating_location = GameRules::Factions.retreating_position( player, self )
-      campaign.add_log( :gangs, :retreating,gang_name: name, location: retreating_location )
+      campaign.add_log( player,:gangs, :retreating,gang_name: name, location: retreating_location )
 
       self.location = retreating_location
 

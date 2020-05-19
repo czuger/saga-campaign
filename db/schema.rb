@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_131754) do
     t.bigint "campaign_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "player_id", null: false
     t.string "category", null: false
     t.string "translation_string", null: false
     t.string "translation_data"
@@ -151,6 +152,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_131754) do
   add_foreign_key "gangs", "campaigns"
   add_foreign_key "gangs", "players"
   add_foreign_key "logs", "campaigns"
+  add_foreign_key "logs", "players"
   add_foreign_key "movements_results", "campaigns"
   add_foreign_key "movements_results", "gangs"
   add_foreign_key "movements_results", "gangs", column: "intercepted_gang_id"

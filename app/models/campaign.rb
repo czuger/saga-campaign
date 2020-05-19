@@ -56,17 +56,8 @@ Campaign < ApplicationRecord
     end
   end
 
-  def add_log( category, translation_string, translation_data = nil )
-    logs.create!( category: category, translation_string: translation_string, translation_data: translation_data )
-  end
-
-  # A dangerous method that destroy all campaigns (for dev only)
-  def self.cleanup
-    Campaign.all.each do |c|
-      c.winner_id = nil
-      c.save!
-      c.destroy
-    end
+  def add_log( player, category, translation_string, translation_data = nil )
+    logs.create!( player: player, category: category, translation_string: translation_string, translation_data: translation_data )
   end
 
 end

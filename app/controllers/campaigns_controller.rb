@@ -147,9 +147,9 @@ class CampaignsController < ApplicationController
 
       raise @campaign.errors.inspect unless result
 
-      result &&= @campaign.add_log( :campaign, :created )
-
       @player = Player.create_new_player( @campaign, current_user )
+      result &&= @campaign.add_log( @player, :campaign, :created )
+
       result && @player.errors.empty?
     end
   end
