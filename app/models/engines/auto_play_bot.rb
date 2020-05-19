@@ -64,7 +64,7 @@ module Engines
       csrf_interaction(
         "/players/#{player.campaign_id}/choose_faction_new", :patch,
         "/players/#{player.id}/choose_faction_save",
-        faction: :royaumes
+        faction: GameRules::Factions::FACTIONS_TO_BLOCS.keys.sample 
       )
     end
 
@@ -81,14 +81,14 @@ module Engines
 
     def first_hiring( player )
       puts "Will hire first gangs for campaign  #{player.campaign.name}"
-      GameRules::Factions::FACTIONS_STARTING_POSITIONS[:order].each do |location|
+      GameRules::Factions.starting_positions(player.campaign, player ).each do |location|
         hire_gang( player, location, 6 )
       end
     end
 
     def each_turn_hiring( player )
       puts "Will hire each turn gangs for campaign  #{player.campaign.name}"
-      location = GameRules::Factions::FACTIONS_RECRUITMENT_POSITIONS[:order].sample
+      location = GameRules::Factions.starting_positions(player.campaign, player ).sample
       hire_gang( player, location, 4 )
     end
 
@@ -101,7 +101,7 @@ module Engines
         "/players/#{player.id}/gangs/new", :post,
         "/players/#{player.id}/gangs",
         gang: {
-          icon: next_free_icon, faction: 'royaumes', number: (player.gangs.maximum( :number ) || 0 )+1, location: location,
+          icon: next_free_icon, faction: player.faction, number: (player.gangs.maximum( :number ) || 0 )+1, location: location,
           name: GameRules::UnitNameGenerator.generate_unique_unit_name( player.campaign ) }
       )
 
