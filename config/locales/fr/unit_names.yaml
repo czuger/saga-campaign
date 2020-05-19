@@ -21,13 +21,27 @@ fr:
       levees: "la levée de %{name}"
 
       decerebres: "les décérébrés %{name}"
+      nuee: "La nuée"
 
       machine_de_guerre: "la machine de guerre %{name}"
 
-      les_quatres_cavaliers_de_l_apocalypse: &four_horses Les quatres cavaliers de l'apocalypse
+      les_quatres_cavaliers_de_l_apocalypse: &four_horses les quatres cavaliers de l'apocalypse
       les_spectres: &wraiths les spectres
       l_avatar: &avatar l'avatar
+      le_veneur_et_la_grande_chasse: &le_veneur_et_la_grande_chasse le veneur et la grande chasse
+      molosses: &molosses molosses
+      le_monstre_de_guerre: &le_monstre_de_guerre le monstre de guerre
+      le_conclave: &le_conclave Le conclave
+      la_machine_incroyable_et_extraordinaire: &la_machine_incroyable_et_extraordinaire la machine incroyable et extraordinaire
+      les_aberrations_mutantes: "les aberrations mutantes de %{name}"
+
       traqueurs: "Les traqueurs %{name}"
+      char_de_guerre: "le char de guerre de %{name}"
+      les_bersekers: "les berserkers %{name}"
+      paladin: "le paladin %{name}"
+      la_fouisseuse: "la fouisseuse %{name}"
+      fanatiques_devoues: "les fanatiques dévoués de %{name}"
+      equipe_de_destrucion: "l'équipe de destruction %{name}"
 
     unit_name_short:
       seigneur: "seigneur %{name}"
@@ -45,6 +59,8 @@ fr:
       guerriers: "guerriers de %{name}"
       levees: "levée de %{name}"
 
+      decerebres: "décérébrés %{name}"
+      nuee: "nuée"
 
     libe:
       seigneur: Seigneur
@@ -63,8 +79,8 @@ fr:
       char_de_guerre: Char de guerre
       traqueurs: Traqueurs
       equipe_de_destrucion: Équipe de destrucion
-      le_conclave: Le conclave
-      la_machine_incroyable_et_extraordinaire: La machine incroyable et extraordinaire
+      le_conclave: *le_conclave
+      la_machine_incroyable_et_extraordinaire: *la_machine_incroyable_et_extraordinaire
       fanatiques_devoues: Fanatiques dévoués
       le_monstre_de_guerre: Le monstre de guerre
       les_bersekers: Les bersekers
@@ -73,6 +89,12 @@ fr:
       les_quatres_cavaliers_de_l_apocalypse: *four_horses
       l_archidemon: L'archidémon
       l_avatar: *avatar
+      le_veneur_et_la_grande_chasse: *le_veneur_et_la_grande_chasse
+      molosses: *molosses
+      le_monstre_de_guerre: *le_monstre_de_guerre
+      char_de_guerre: "Char de guerre"
+      les_aberrations_mutantes: "Les aberrations mutantes"
+      la_fouisseuse: "La fouisseuse"
 
     weapon:
       "-": "-"
