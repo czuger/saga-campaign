@@ -5,10 +5,11 @@ const set_units_vue = function(){
         data: {
             selected_libe: null,
             selected_weapon: null,
+
             update_number_field: null,
+
             libe_select_options: '',
-            weapon_select_options: '',
-            troop_maintenance: null
+            weapon_select_options: ''
         },
         watch: {
             selected_libe: function (event) {
@@ -17,17 +18,28 @@ const set_units_vue = function(){
 
                 var unit_data = units_data[v.selected_libe][v.selected_weapon];
 
-                v.update_number_field = unit_data.amount;
+                if( hash_for_vue_js.on_edit ){
+                    v.update_number_field = hash_for_vue_js.current_amount;
+                }
+                else{
+                    v.update_number_field = unit_data.amount;
+                }
 
                 var ua = $('#unit_amount');
                 ua.attr('min', unit_data.min);
 
-                if( v.troop_maintenance ){
-                    ua.attr('max', v.update_number_field);
+                if( hash_for_vue_js.troop_maintenance || !hash_for_vue_js.can_add_units ){
+                    var max_units = v.update_number_field;
                 }else{
-                    ua.attr('max', unit_data.max);
+                    var max_units = unit_data.max;
                 }
+                var max_affordable_units =
+                    ( unit_data.amount / unit_data.cost ) * hash_for_vue_js.player_pp + hash_for_vue_js.current_amount;
 
+                console.log( max_affordable_units );
+                max_units = Math.min( max_units, max_affordable_units );
+
+                ua.attr('max', max_units);
                 ua.attr('step', unit_data.increment_step);
 
                 set_unit_amount_change( unit_data.amount );
@@ -38,15 +50,17 @@ const set_units_vue = function(){
         }
     });
 
-    v.libe_select_options = JSON.parse( $('#libe_select_data').val() );
-    v.troop_maintenance = $('#troop_maintenance').val() == 'true';
-    v.selected_libe = $('#selected_libe').val();
+    var hash_for_vue_js = JSON.parse( $('#hash_for_vue_js').val() );
+    console.log( hash_for_vue_js );
 
-    var weapon_select_data = JSON.parse( $('#weapons_select_data').val() );
+    var units_data = hash_for_vue_js.units_data;
+
+    v.libe_select_options = hash_for_vue_js.libe_select_data;
+    v.selected_libe = hash_for_vue_js.selected_libe;
+
+    var weapon_select_data = hash_for_vue_js.weapons_select_data;
     v.weapon_select_data = weapon_select_data[ v.selected_libe ];
-    v.selected_weapon = $('#selected_weapon').val();
-
-    var units_data = JSON.parse( $('#units_data').val() );
+    v.selected_weapon = hash_for_vue_js.selected_weapon;
 
     const set_unit_amount_change = function(new_amount ) {
         var unit_data = units_data[v.selected_libe][v.selected_weapon];
@@ -57,7 +71,8 @@ const set_units_vue = function(){
 // Initialisation
 $(function() {
     if ( window.location.pathname.match( /units\/\d+\/edit/ ) ||
-        window.location.pathname.match( /gangs\/\d+\/units\/new/ ) ) {
+        window.location.pathname.match( /gangs\/\d+\/units/ ) ) // Don't be so strict we have to catch after update and create routes (on errors)
+    {
         set_units_vue();
     }
 });

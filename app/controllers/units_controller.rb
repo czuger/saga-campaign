@@ -8,7 +8,7 @@ class UnitsController < ApplicationController
   # GET /units.json
   def index
     @units = @gang.units.order( :id )
-    @can_add_units = @gang.points < 10 && @player.pp > 0
+    @can_add_units = can_add_units
   end
 
   # GET /units/1
@@ -28,13 +28,13 @@ class UnitsController < ApplicationController
     set_units_rules_data
 
     @edition_disabled = false
+
+    set_hash_for_vue(false )
   end
 
   # GET /units/1/edit
   def edit
-    set_units_rules_data
-
-    @edition_disabled = @gang.finalized && !@campaign.first_hiring_and_movement_schedule?
+    sub_edit
   end
 
   # POST /units
@@ -59,6 +59,7 @@ class UnitsController < ApplicationController
         else
           set_units_rules_data
           flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
+          set_hash_for_vue( true )
           format.html { render :new }
         end
       end
@@ -71,19 +72,18 @@ class UnitsController < ApplicationController
   def update
     # add_gang_to_unit
 
-    @can_pay_unit = unit_params[ :points ].to_f <= @player.pp
+    unit_cost = unit_params[ :points ].to_f - @unit.points
+    @can_pay_unit = unit_cost <= @player.pp
 
     Unit.transaction do
       respond_to do |format|
-
-        current_points = @unit.points
 
         if @can_pay_unit && @unit.update(unit_params)
 
           after_unit_update( :update,
             amount: @unit.amount, unit_libe: @unit.libe, gang_name: @gang.name )
 
-          pay_unit( @unit.points - current_points )
+          pay_unit( unit_cost )
 
           check_maintenance_status!
 
@@ -95,7 +95,7 @@ class UnitsController < ApplicationController
             end
           end
         else
-          set_units_rules_data
+          sub_edit
           flash[ :alert ] = @can_pay_unit ? '' : I18n.t( 'units.alert.cant_pay' )
           format.html { render :edit }
         end
@@ -234,4 +234,43 @@ class UnitsController < ApplicationController
     def maintenance_cost_warning
       @maintenance_warning = true if GameRules::ControlPoints.anticipating_maintenance_costs?(@player )
     end
+
+    def set_hash_for_vue( on_edit )
+      @hash_for_vue_js = {}
+
+      # All the units data. This contains all info on potentially selected units.
+      @hash_for_vue_js[ :units_data ] = @units
+
+      # Translated data for the libe select
+      @hash_for_vue_js[ :libe_select_data ] = @factions_vue.libe_select_data( @player )
+      # Translated data for the weapon select
+      @hash_for_vue_js[ :weapons_select_data ] = @factions_vue.weapons_select_data( @player )
+
+      # Data of the current unit item if available
+      @hash_for_vue_js[ :selected_libe ] = @unit.libe
+      @hash_for_vue_js[ :selected_weapon ] = @unit.weapon
+      @hash_for_vue_js[ :current_amount ] = @unit.amount
+
+      # The remaining player pp to ensure modification of units will not cost too much
+      @hash_for_vue_js[ :player_pp ] = @player.pp
+
+      # Flags representing differents states
+      # If maintenance is required, then the player can't add more units
+      @hash_for_vue_js[ :troop_maintenance ] = @player.maintenance_required
+      # The can add unit flag is false when player can't buy the units
+      @hash_for_vue_js[ :can_add_units ] = can_add_units
+
+      # The behavior of the vue is different on edit mode than new mode
+      @hash_for_vue_js[ :on_edit ] = on_edit
+    end
+
+    def can_add_units
+      @gang.points < 10 && @player.pp > 0
+    end
+
+  def sub_edit
+    set_units_rules_data
+    @edition_disabled = @gang.finalized && !@campaign.first_hiring_and_movement_schedule?
+    set_hash_for_vue( true )
+  end
 end

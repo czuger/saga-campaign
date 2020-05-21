@@ -28,17 +28,4 @@
     .actions
       = f.submit 'Enregistrer', class: 'mt-2 btn btn-secondary'
 
-  -#= hidden_field_tag :weapon_select_options_prepared_strings, @weapon_select_options_prepared_strings.to_json
-  = hidden_field_tag :units_data, @units.to_json
-  = hidden_field_tag :libe_select_data, @factions_vue.libe_select_data( @player ).to_json
-  = hidden_field_tag :weapons_select_data, @factions_vue.weapons_select_data( @player ).to_json
-
-  = hidden_field_tag :selected_libe, @unit.libe
-  = hidden_field_tag :selected_weapon, @unit.weapon
-
-  = hidden_field_tag :troop_maintenance, @player.maintenance_required
-
-  -# TODO : Prevent over recruitment by modification
-  -# There also is a bug, on modification the amount shown is the base amount not the current.
-  = hidden_field_tag :can_add_units, @can_add_units
-
+= hidden_field_tag :hash_for_vue_js, @hash_for_vue_js.to_json
