@@ -44,3 +44,5 @@ coverage
 
 google_credentials.json
 google_spreadsheet_id.txt
+
+public/photos

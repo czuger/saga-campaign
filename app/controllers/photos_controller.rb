@@ -1,3 +1,5 @@
+# require 'mini_magick'
+
 class PhotosController < ApplicationController
 
   before_action :set_player
@@ -27,7 +29,12 @@ class PhotosController < ApplicationController
       new_picture_path = 'public/' + @photo.path
       FileUtils.mkdir_p( new_picture_path )
 
-      FileUtils.mv( picture_path, new_picture_path + new_filename )
+      new_picture_path += new_filename
+      FileUtils.mv( picture_path, new_picture_path )
+
+      image = MiniMagick::Image.open(new_picture_path )
+      image.resize '1024x1024>'
+      image.write new_picture_path
     end
   end
 
