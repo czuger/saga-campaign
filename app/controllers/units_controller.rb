@@ -2,11 +2,13 @@ class UnitsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_unit, only: [:edit, :update, :destroy, :remains]
   before_action :set_gang, only: [:index, :new, :create]
+  after_action :maintenance_cost_warning, only: [:create, :update]
 
   # GET /units
   # GET /units.json
   def index
     @units = @gang.units.order( :id )
+    @max_points_reached = @gang.points >= 10
   end
 
   # GET /units/1
@@ -227,5 +229,9 @@ class UnitsController < ApplicationController
         end
 
       end
+    end
+
+    def maintenance_cost_warning
+      @maintenance_warning = true if GameRules::ControlPoints.maintenance_required_for_player?( @player )
     end
 end

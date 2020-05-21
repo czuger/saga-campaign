@@ -3,7 +3,7 @@
 %h1 Liste des unités de la bande
 
 - unless @player.maintenance_required
-  = link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: 'mb-3 btn btn-secondary', role: 'button', 'aria-disabled' => 'true'
+  = link_to 'Ajouter une unité', new_gang_unit_path( @gang ), class: "mb-3 btn btn-secondary #{disabled_class}", role: 'button', 'aria-disabled' => 'true'
 
 %br
 
@@ -28,7 +28,7 @@
         %td= unit.long_name.upcase_first
         %td= unit.points
         %td= link_to 'Modifier', edit_unit_path(unit), class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
-        %td= link_to 'Dupliquer', duplicate_link(unit), method: :post, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
+        %td= link_to 'Dupliquer', duplicate_link(unit), method: :post, class: "btn btn-secondary btn-sm #{disabled_class}", role: 'button', 'aria-disabled' => 'true'
         %td= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes vous sur de vouloir supprimer cette unité ?' }, class: 'btn btn-secondary btn-sm', role: 'button', 'aria-disabled' => 'true'
 
     %tr

@@ -17,7 +17,10 @@ module UnitsHelper
   end
 
   def readonly_select?
+  end
 
+  def disabled_class
+    'disabled' if @max_points_reached
   end
 
 end
