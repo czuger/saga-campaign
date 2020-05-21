@@ -3,3 +3,11 @@
     Vous ne pouvez pas entretenir toutes vos unités. Vous devez en supprimer
     = GameRules::ControlPoints.units_to_remove_due_to_maintenance_costs( @player )
     \.
+
+- if @maintenance_warning
+  .alert.alert-warning.mt-3{ role: :alert, test_message: :maintenance_too_high_anticipated }
+    Vos frais de maintenance au prochain tour seront trop haut. Vous ne pourrez pas maintenir toutes vos troupes.
+    %br
+    Si vous ne capturez pas plus de points au prochain tour vous devrez supprimer des unités.
+    %br
+    Pour plus d'information, rendez vous dans la section lieux contrôlés.

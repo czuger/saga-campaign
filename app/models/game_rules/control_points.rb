@@ -69,6 +69,10 @@ module GameRules
       player.save!
     end
 
+    def self.anticipating_maintenance_costs?( player )
+      maintenance_cost( player ) > ControlPoints.pp_to_gain(player ) + player.pp
+    end
+
     def self.maintenance_cost( player, modification: 0 )
       # ( player.gangs.sum( :points ) * 0.5 ).ceil
       @@golden_ratio ||= ( 1 + Math.sqrt( 5 ) ) / 2

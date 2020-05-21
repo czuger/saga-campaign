@@ -20,7 +20,7 @@ module UnitsHelper
   end
 
   def disabled_class
-    'disabled' if @max_points_reached
+    'disabled' unless @can_add_units
   end
 
 end
