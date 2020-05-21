@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resources :units, only: [ :edit, :destroy ]
 
   resources :players, only: [] do
+
+    resources :photos, only: [ :new, :create ]
+
     resources :gangs, only: [ :index, :new, :create ] do
       post :regular_gang
     end

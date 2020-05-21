@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :require_logged_in!
   before_action :set_campaign, except: [ :index, :new, :create ]
-  before_action :set_player_for_campaign, only: [ :show, :show_movements ]
+  before_action :set_player_for_campaign, only: [ :show, :show_movements, :input_combats_edit ]
 
   def controlled_points
     @map = GameRules::Map.new

@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_195112) do
+ActiveRecord::Schema.define(version: 2020_05_19_210349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "campaigns", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -88,6 +109,17 @@ ActiveRecord::Schema.define(version: 2020_05_19_195112) do
     t.index ["player_id"], name: "index_movements_results_on_player_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "fight_result_id", null: false
+    t.string "comment"
+    t.string "filename", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fight_result_id"], name: "index_photos_on_fight_result_id"
+    t.index ["player_id"], name: "index_photos_on_player_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.bigint "campaign_id", null: false
     t.bigint "user_id", null: false
@@ -147,6 +179,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_195112) do
     t.index ["player_id"], name: "index_victory_points_histories_on_player_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "players", column: "winner_id"
   add_foreign_key "campaigns", "users"
   add_foreign_key "fight_results", "campaigns"
@@ -158,6 +191,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_195112) do
   add_foreign_key "movements_results", "gangs"
   add_foreign_key "movements_results", "gangs", column: "intercepted_gang_id"
   add_foreign_key "movements_results", "players"
+  add_foreign_key "photos", "fight_results"
+  add_foreign_key "photos", "players"
   add_foreign_key "players", "campaigns"
   add_foreign_key "players", "users"
   add_foreign_key "unit_old_libe_strings", "users"

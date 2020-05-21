@@ -1,0 +1,20 @@
+= form_for [ @player, @photo ]do |f|
+  - if @photo.errors.any?
+    #error_explanation
+      %h2= t( 'error_explanation_message', count: @photo.errors.count, subject: 'cette photo' )
+      %ul
+        - @photo.errors.full_messages.each do |message|
+          %li= message
+
+  = hidden_field_tag( 'movements_result_id', @movements_result.id )
+
+  .form-group
+    = f.label :picture, t( '.name' )
+    = f.file_field :picture, class: 'form-control'
+
+  .form-group
+    = f.label :comment, t( '.name' )
+    = f.text_field :comment, class: 'form-control'
+
+  .actions
+    = f.submit t('save'), class: 'btn btn-primary'

@@ -1,5 +1,9 @@
 - @fights.includes( :gang, :intercepted_gang ).each do |f|
-  .row
-    .col.mt-1
+  .row.mt-1
+    .col
       = link_to fight_report_path( f ), class: 'btn btn-secondary btn-block', role: 'button', 'aria-disabled' => 'true' do
         = t( '.interception', interceptor: f.gang.player.user.name, intercepted: f.intercepted_gang.player.user.name, location: f.to )
+    .col
+      = link_to new_player_photo_path( @player, movements_result_id: f.id ), class: 'btn btn-secondary btn-block', role: 'button', 'aria-disabled' => 'true' do
+        Charger une image
+
