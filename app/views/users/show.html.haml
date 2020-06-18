@@ -3,5 +3,5 @@
 
   = @current_user.name
 
-= image_tag( @current_user.icon_url )
+= image_tag( @current_user.icon_url ) if @current_user.icon_url
 
