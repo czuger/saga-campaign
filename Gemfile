@@ -79,3 +79,5 @@ gem 'will_paginate-bootstrap4'
 gem 'aasm'
 
 gem "mini_magick"
+
+gem 'jquery-ui-rails'

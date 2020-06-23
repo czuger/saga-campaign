@@ -1,7 +1,7 @@
 const set_icon_movement = function(){
     $( '.on_map_gang_icon' ).click(function(){
 
-            console.log( $(this).attr('location') );
+            // console.log( $(this).attr('location') );
         }
     );
 };
@@ -13,17 +13,26 @@ $(function() {
         set_icon_movement();
     }
 
-    if ( window.location.pathname.match( /map\/create_positions/ ) ) {
-        console.log('In edit');
+    $('.on_map_gang_icon').draggable( {
+            stop: function ( event, ui ) {
+                console.log( $(this).attr('location'), $(this).attr('kind'), ui.position );
 
-        $('#map').mousedown(function(event) {
+                $.post( "/map/save_position", { location: $(this).attr('location'), position: ui.position, kind: $(this).attr('kind') } );
+            }
+        }
+    )
 
-            var searchParams = new URLSearchParams(window.location.search);
-            var letter = searchParams.get('letter');
-
-            console.log( letter, event.pageX, event.pageY );
-
-            $.post( "/map/save_position", { letter: letter, x: event.pageX, y: event.pageY } );
-        });
-    }
+    // if ( window.location.pathname.match( /map\/create_positions/ ) ) {
+    //     console.log('In edit');
+    //
+    //     $('#map').mousedown(function(event) {
+    //
+    //         var searchParams = new URLSearchParams(window.location.search);
+    //         var letter = searchParams.get('letter');
+    //
+    //         console.log( letter, event.pageX, event.pageY );
+    //
+    //         $.post( "/map/save_position", { letter: letter, x: event.pageX, y: event.pageY } );
+    //     });
+    // }
 });
