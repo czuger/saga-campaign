@@ -2,18 +2,20 @@
   = image_tag 'map_2_small.jpg'
 
   - @original_map.localisations.each do |location|
-    = image_tag( 'flying-flag-blue.svg', class: 'on_map_gang_icon', style: position_style2( location, :flag ),
+    = image_tag( 'flying-flag-blue.svg', class: 'on_map_gang_icon draggable', style: position_style2( location, :flag ),
       location: location, kind: :flag )
 
-    = image_tag( 'gangs_icons/horde/brute.svg', class: 'on_map_gang_icon', style: position_style2( location, :army1 ),
-      location: location, kind: :army1 )
+    .on_map_gang_icon_pack{ location: location, kind: :army, class: :draggable, style: position_style2( location, :army ) }
 
-    = image_tag( 'gangs_icons/morts/scythe.svg', class: 'on_map_gang_icon', style: position_style2( location, :army2 ),
-      location: location, kind: :army2 )
+      = image_tag( 'gangs_icons/horde/brute.svg', class: 'on_map_gang_icon', style: 'left:0px;top:0px;',
+        location: location, kind: :army )
 
-    = image_tag( 'gangs_icons/outremonde/behold.svg', class: 'on_map_gang_icon', style: position_style2( location, :army3 ),
-      location: location, kind: :army3 )
+      = image_tag( 'gangs_icons/morts/scythe.svg', class: 'on_map_gang_icon', style: 'left:31px;top:0px;',
+        location: location, kind: :army )
 
-    = image_tag( 'gangs_icons/souterrains/rock.svg', class: 'on_map_gang_icon', style: position_style2( location, :army4 ),
-      location: location, kind: :army4 )
+      = image_tag( 'gangs_icons/outremonde/behold.svg', class: 'on_map_gang_icon', style: 'left:0px;top:31px;',
+        location: location, kind: :army )
+
+      = image_tag( 'gangs_icons/souterrains/rock.svg', class: 'on_map_gang_icon', style: 'left:31px;top:31px;',
+        location: location, kind: :army )
 

@@ -1,6 +1,6 @@
 module MapHelper
 
-  def position_style2( location, kind )
+  def position_style2( location, kind, col=0, row=0 )
 
     # p location
 
@@ -8,7 +8,7 @@ module MapHelper
                           @original_map.positions[ location.to_sym ] )
 
     if p.x
-      "left:#{p.x}px;top:#{p.y}px;"
+      "left:#{p.x.to_i+(col*30)}px;top:#{p.y.to_i+(row*30)}px;"
     else
       ''
     end

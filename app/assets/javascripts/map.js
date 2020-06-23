@@ -13,7 +13,7 @@ $(function() {
         set_icon_movement();
     }
 
-    $('.on_map_gang_icon').draggable( {
+    $('.draggable').draggable( {
             stop: function ( event, ui ) {
                 console.log( $(this).attr('location'), $(this).attr('kind'), ui.position );
 
