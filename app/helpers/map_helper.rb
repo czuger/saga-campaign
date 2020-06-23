@@ -14,5 +14,10 @@ module MapHelper
     end
   end
 
+  def random_flag_path
+    flag = [ :horde, :morts, :nature, :outremonde, :royaumes, :souterrains ].freeze.sample
+
+    "flags/#{flag}.svg"
+  end
 
 end
