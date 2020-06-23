@@ -1,7 +1,7 @@
 #map
   = image_tag 'map_2_small.jpg'
 
-  - @map.keys.each do |location|
+  - @original_map.localisations.each do |location|
     = image_tag( 'flying-flag-blue.svg', class: 'on_map_gang_icon', style: position_style2( location, :flag ),
       location: location, kind: :flag )
 

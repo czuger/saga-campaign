@@ -11,7 +11,8 @@ class MapController < ApplicationController
   end
 
   def modify_positions
-    @map = YAML.load_file( TMP_FNAME )
+    @original_map = GameRules::Map.new
+    @icons_map = YAML.load_file( TMP_FNAME )
   end
 
   def create_positions
@@ -22,18 +23,18 @@ class MapController < ApplicationController
     position = { x: params[:position][:left], y: params[:position][:top] }
     kind = params[:kind]
 
-    unless File.exist?( tmp_fname )
-      File.open( tmp_fname, 'w') do |f|
+    unless File.exist?( TMP_FNAME )
+      File.open( TMP_FNAME, 'w') do |f|
         f.write({}.to_yaml)
       end
     end
 
-    letters_map = YAML.load_file( tmp_fname )
+    letters_map = YAML.load_file( TMP_FNAME )
 
     letters_map[ location.to_sym ] ||= {}
-    letters_map[ location.to_sym ][ kind.to_sym ] ||= position
+    letters_map[ location.to_sym ][ kind.to_sym ] = position
 
-    File.open( tmp_fname, 'w') do |f|
+    File.open( TMP_FNAME, 'w') do |f|
       f.write( letters_map.to_yaml )
     end
 
